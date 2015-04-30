@@ -63,6 +63,7 @@
 		927F61B9196C771E000F43EF /* iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F590E188484E7003F4D28 /* iPhone@2x.png */; };
 		927F61BA196C771E000F43EF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B737896D180762440076A88C /* Default.png */; };
 		927F61BB196C771E000F43EF /* iPad-old.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5907188484E7003F4D28 /* iPad-old.png */; };
+		B066F7C91AF1BAB100F9BC19 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = B066F7C81AF1BAB100F9BC19 /* README.md */; };
 		B0AE24971AE3A746001979A5 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B0AE24961AE3A746001979A5 /* GameScene.m */; };
 		B71F5911188484E7003F4D28 /* iPad-old.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5907188484E7003F4D28 /* iPad-old.png */; };
 		B71F5912188484E7003F4D28 /* iPad-old@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5908188484E7003F4D28 /* iPad-old@2x.png */; };
@@ -176,6 +177,7 @@
 		8392007918EE8E3300B6C429 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		927F61BF196C771E000F43EF /* Ligger Android.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ligger Android.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9534242F9355FECD6304D9F9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		B066F7C81AF1BAB100F9BC19 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B0AE24951AE3A746001979A5 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = Source/GameScene.h; sourceTree = "<group>"; };
 		B0AE24961AE3A746001979A5 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameScene.m; path = Source/GameScene.m; sourceTree = "<group>"; };
 		B0AE24981AE3F861001979A5 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = Source/Constants.h; sourceTree = "<group>"; };
@@ -487,6 +489,7 @@
 		B77F1B2517B978D7009739AE = {
 			isa = PBXGroup;
 			children = (
+				B066F7C81AF1BAB100F9BC19 /* README.md */,
 				B737893C1807616C0076A88C /* Source */,
 				B77F1B4617B978D7009739AE /* Resources */,
 				9222E2B918734FF800A246C7 /* libs */,
@@ -839,6 +842,7 @@
 			files = (
 				B73789871807631A0076A88C /* main.m in Sources */,
 				7A046D8C19E8A20E004C4763 /* MainScene.m in Sources */,
+				B066F7C91AF1BAB100F9BC19 /* README.md in Sources */,
 				B0AE24971AE3A746001979A5 /* GameScene.m in Sources */,
 				5B121038197487F2004C1E1D /* AppDelegate.m in Sources */,
 			);
