@@ -21,6 +21,7 @@
 @property (nonatomic) CCNode *obstacle8;
 @property (nonatomic) CCNode *obstacle9;
 @property (nonatomic) CCNode *obstacle10;
+@property (nonatomic) CCNode *bartender1;
 
 + (Boolean) halt;
 + (void) setHalt:(Boolean)value;

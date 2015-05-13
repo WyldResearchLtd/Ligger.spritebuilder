@@ -81,7 +81,20 @@ static Boolean halt = false;
     self.obstacle8 = [self getChildByName:@"obstacle8" recursively:YES];
     self.obstacle9 = [self getChildByName:@"obstacle9" recursively:YES];
     self.obstacle10 = [self getChildByName:@"obstacle10" recursively:YES];
-    self.obstacles = [NSMutableArray arrayWithObjects:self.obstacle1,self.obstacle2,self.obstacle3,self.obstacle4,self.obstacle5,self.obstacle6,self.obstacle7,self.obstacle8,self.obstacle9,self.obstacle10,nil];
+    self.bartender1 = [self getChildByName:@"bartender1" recursively:YES];
+    self.obstacles = [NSMutableArray arrayWithObjects:self.obstacle1,self.obstacle2,self.obstacle3,self.obstacle4,self.obstacle5,self.obstacle6,self.obstacle7,self.obstacle8,self.obstacle9,self.obstacle10,self.bartender1, nil];
+    
+    [self performSelector:@selector(startObstacle:forSequence:) withObject:self.obstacle1 withObject:@"default"];
+    [self performSelector:@selector(startObstacle:forSequence:) withObject:self.obstacle2 withObject:@"default"];
+    [self performSelector:@selector(startObstacle:forSequence:) withObject:self.obstacle3 withObject:@"default"];
+    [self performSelector:@selector(startObstacle:forSequence:) withObject:self.obstacle4 withObject:@"default"];
+    [self performSelector:@selector(startObstacle:forSequence:) withObject:self.obstacle5 withObject:@"default"];
+    [self performSelector:@selector(startObstacle:forSequence:) withObject:self.obstacle6 withObject:@"default"];
+    [self performSelector:@selector(startObstacle:forSequence:) withObject:self.obstacle7 withObject:@"default"];
+    [self performSelector:@selector(startObstacle:forSequence:) withObject:self.obstacle8 withObject:@"default"];
+    [self performSelector:@selector(startObstacle:forSequence:) withObject:self.obstacle9 withObject:@"default"];
+    [self performSelector:@selector(startObstacle:forSequence:) withObject:self.obstacle10 withObject:@"default"];
+    
 
 }
 
@@ -92,6 +105,7 @@ static Boolean halt = false;
 
 
 CGPoint lastPosition;
+int cntBartender = 0;
 
 -(void) update:(CCTime)delta
 {
@@ -110,6 +124,7 @@ CGPoint lastPosition;
 //        lastPosition = _playerNode.position;
 //    }
     
+    
     //Move the obstacles across the screen
     for (int i = 0; i < self.obstacles.count; i++)
     {
@@ -117,38 +132,74 @@ CGPoint lastPosition;
         //save last position to reset if collision found
         lastPosition = obstacle.position; //_playerNode.position;
         
+        //if on the last row, its a bartender, so move differently
         //every other row travels in the opposite direction -3.0 is left to right, 3.0 is right to left
-        obstacle.position = ccpSub(obstacle.position, ccp((i % 2)?3.0:-3.0,0));
-        
-        //check for collisions first
-        if ([self doesCollide:obstacle withPlayer:_playerNode])
+        if (i <10)
         {
-            NSLog(@"++++ COLLIDE ++++++");
-            GameScene.halt = true;
-            CCAnimationManager* animationManager = _playerNode.userObject;
-            [animationManager setPaused:YES];
-            //reset
-            obstacle.position = lastPosition;
-            return;
-        }
+            
+            obstacle.position = ccpSub(obstacle.position, ccp((i % 2)?3.0:-3.0,0));
+            
+            //obstacle2.position = CGPointMake(obstacle.position.x + 100, obstacle.position.y);
         
-        
-        if (i%2)
-        {
-            //Check if they have gone off screen, if they have reposition them
-            if (obstacle.position.x < -obstacle.contentSize.width )
+            //check for collisions first
+            if ([self doesCollide:obstacle withPlayer:_playerNode])
             {
-                obstacle.position = ccp(_levelNode.contentSizeInPoints.width+obstacle.contentSize.width+45,obstacle.position.y);
-                //NSLog(@"Offscreen");
+                NSLog(@"++++ COLLIDE ++++++");
+                GameScene.halt = true;
+                CCAnimationManager* animationManager = _playerNode.userObject;
+                [animationManager setPaused:YES];
+                //reset
+                obstacle.position = lastPosition;
+                return;
             }
+        
+        
+            if (i%2)
+            {
+                //Check if they have gone off screen, if they have reposition them
+                if (obstacle.position.x < -obstacle.contentSize.width )
+                {
+                    obstacle.position = ccp(_levelNode.contentSizeInPoints.width+obstacle.contentSize.width+45,obstacle.position.y);
+                    //NSLog(@"Offscreen");
+                }
 
-        } else {
-            //Check if they have gone off screen to the right, if they have reposition them
-            if (obstacle.position.x > _levelNode.contentSizeInPoints.width+45 )
-            {
-                obstacle.position = ccp(0-obstacle.contentSize.width+45,obstacle.position.y);
-                //NSLog(@"Offscreen");
+            } else {
+                //Check if they have gone off screen to the right, if they have reposition them
+                if (obstacle.position.x > _levelNode.contentSizeInPoints.width+45 )
+                {
+                    obstacle.position = ccp(0-obstacle.contentSize.width+45,obstacle.position.y);
+                    //NSLog(@"Offscreen");
+                }
             }
+        }
+        else//bartender
+        {
+            cntBartender += 1;
+            if (cntBartender < 60)
+            {
+                obstacle.position = CGPointMake(72.f, obstacle.position.y);
+            }
+            else if (cntBartender < 120)
+            {
+                 obstacle.position = CGPointMake(177.f, obstacle.position.y);
+                
+            }
+            else if (cntBartender < 180)
+            {
+                obstacle.position = CGPointMake(282.f, obstacle.position.y);
+            }
+            else if (cntBartender < 240)
+            {
+                obstacle.position = CGPointMake(387.f, obstacle.position.y);
+                
+            }
+            else if (cntBartender < 300)
+            {
+                obstacle.position = CGPointMake(492.f, obstacle.position.y);
+            }
+            if (cntBartender==300)cntBartender = 0;
+
+            
         }
     }
     
@@ -169,6 +220,18 @@ CGPoint lastPosition;
         if (obstacleWorld.x + obstacle.boundingBox.size.width >= playerWorld.x && obstacleWorld.x <= + playerWorld.x + player.boundingBox.size.height)
         {
             rtn = true;
+            
+            [self performSelector:@selector(pauseObstacle:) withObject:self.obstacle1];
+            [self performSelector:@selector(pauseObstacle:) withObject:self.obstacle2];
+            [self performSelector:@selector(pauseObstacle:) withObject:self.obstacle3];
+            [self performSelector:@selector(pauseObstacle:) withObject:self.obstacle4];
+            [self performSelector:@selector(pauseObstacle:) withObject:self.obstacle5];
+            [self performSelector:@selector(pauseObstacle:) withObject:self.obstacle6];
+            [self performSelector:@selector(pauseObstacle:) withObject:self.obstacle7];
+            [self performSelector:@selector(pauseObstacle:) withObject:self.obstacle8];
+            [self performSelector:@selector(pauseObstacle:) withObject:self.obstacle9];
+            [self performSelector:@selector(pauseObstacle:) withObject:self.obstacle10];
+
         }
     }
   
@@ -185,6 +248,22 @@ CGPoint lastPosition;
     viewPos.y = MAX(0.0, MIN(viewPos.y, levelSize.height - viewSize.height));
     _levelNode.positionInPoints = ccpNeg(viewPos);
 }
+
+- (void)startObstacle:(CCNode*)node forSequence:(NSString*)sequenceName
+{
+    // the animation manager of each node is stored in the 'animationManager' property
+    CCAnimationManager* animationManager = node.animationManager;
+    // timelines can be referenced and run by name
+    [animationManager runAnimationsForSequenceNamed:sequenceName];
+}
+
+- (void)pauseObstacle:(CCNode*)node
+{
+    // the animation manager of each node is stored in the 'animationManager' property
+    CCAnimationManager* animationManager = node.animationManager;
+    [animationManager setPaused:YES];
+}
+
 
 - (void)startHustle
 {
