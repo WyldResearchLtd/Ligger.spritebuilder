@@ -81,8 +81,14 @@ static Boolean halt = false;
     self.obstacle8 = [self getChildByName:@"obstacle8" recursively:YES];
     self.obstacle9 = [self getChildByName:@"obstacle9" recursively:YES];
     self.obstacle10 = [self getChildByName:@"obstacle10" recursively:YES];
+    self.obstacles = [NSMutableArray arrayWithObjects:self.obstacle1,self.obstacle2,self.obstacle3,self.obstacle4,self.obstacle5,self.obstacle6,self.obstacle7,self.obstacle8,self.obstacle9,self.obstacle10, nil];
+    
     self.bartender1 = [self getChildByName:@"bartender1" recursively:YES];
-    self.obstacles = [NSMutableArray arrayWithObjects:self.obstacle1,self.obstacle2,self.obstacle3,self.obstacle4,self.obstacle5,self.obstacle6,self.obstacle7,self.obstacle8,self.obstacle9,self.obstacle10,self.bartender1, nil];
+    self.bartender2 = [self getChildByName:@"bartender1" recursively:YES];
+    self.bartender3 = [self getChildByName:@"bartender1" recursively:YES];
+    self.bartender4 = [self getChildByName:@"bartender1" recursively:YES];
+    self.bartender5 = [self getChildByName:@"bartender1" recursively:YES];
+    self.bartenders = [NSMutableArray arrayWithObjects:self.bartender1, self.bartender2,self.bartender3,self.bartender4,self.bartender5, nil];
     
     [self performSelector:@selector(startObstacle:forSequence:) withObject:self.obstacle1 withObject:@"default"];
     [self performSelector:@selector(startObstacle:forSequence:) withObject:self.obstacle2 withObject:@"default"];
@@ -105,7 +111,10 @@ static Boolean halt = false;
 
 
 CGPoint lastPosition;
+CGPoint lastBartenderPos;
+int idxBartender = 0;//the current choosen bartender
 int cntBartender = 0;
+int ttBartender = 0; //the total time for this bartender round
 
 -(void) update:(CCTime)delta
 {
@@ -125,7 +134,7 @@ int cntBartender = 0;
 //    }
     
     
-    //Move the obstacles across the screen
+    //Move the OBSTACLES across the screen
     for (int i = 0; i < self.obstacles.count; i++)
     {
         CCNode *obstacle = self.obstacles[i];
@@ -134,8 +143,8 @@ int cntBartender = 0;
         
         //if on the last row, its a bartender, so move differently
         //every other row travels in the opposite direction -3.0 is left to right, 3.0 is right to left
-        if (i <10)
-        {
+        //if (i <10)
+        //{
             
             obstacle.position = ccpSub(obstacle.position, ccp((i % 2)?3.0:-3.0,0));
             
@@ -171,42 +180,85 @@ int cntBartender = 0;
                     //NSLog(@"Offscreen");
                 }
             }
-        }
-        else//bartender
-        {
-            cntBartender += 1;
-            if (cntBartender < 60)
-            {
-                obstacle.position = CGPointMake(72.f, obstacle.position.y);
-            }
-            else if (cntBartender < 120)
-            {
-                 obstacle.position = CGPointMake(177.f, obstacle.position.y);
-                
-            }
-            else if (cntBartender < 180)
-            {
-                obstacle.position = CGPointMake(282.f, obstacle.position.y);
-            }
-            else if (cntBartender < 240)
-            {
-                obstacle.position = CGPointMake(387.f, obstacle.position.y);
-                
-            }
-            else if (cntBartender < 300)
-            {
-                obstacle.position = CGPointMake(492.f, obstacle.position.y);
-            }
-            if (cntBartender==300)cntBartender = 0;
+        
+        //}
+        //else//bartender
+        //{
+        
+    }
 
             
-        }
-    }
+        //}
+        //Move the BARTENDERS across the screen
+        //for (int i = 0; i < self.bartenders.count; i++)
+        //{
+            //CCNode *bartender = self.bartenders[i];
+            //save last position to reset if collision found
+            //lastBartenderPos = bartender.position;
+            
+            if (0==cntBartender)  //first pass,
+            {
+                
+                // generate a real number between 0 and 5
+                idxBartender = (int)(arc4random() % 5000) / 1000.f;
+            
+                // generate a random number between 1.0 and 3.0
+                float stay = ((arc4random() % 2000) / 1000.f)+1;
+            
+                
+                ttBartender = stay * 30; //stay in secs mult by 30 fps
+                
+                int point = (72+((105*(idxBartender))+1));
+                ((CCNode*)self.bartenders[idxBartender]).position = CGPointMake( point, ((CCNode*)self.bartenders[idxBartender]).position.y);
+                
+                cntBartender = 1;
+                
+               
+                
+            }
+            else if (cntBartender==ttBartender)
+            {
+                cntBartender = 0;
+            }
+            else
+            {
+                cntBartender += 1;
+            }
+            
+                
+       
+                
+//                if (cntBartender < ttBartender)
+//                {
+//                    bartender.position = CGPointMake(72.f, bartender.position.y);
+//                    bartender[idxBartender].position
+//                    
+//                }
+//                else
+//                {
+//                    bartender.position = CGPointMake(177.f, bartender.position.y);
+//                }
+//                else if (cntBartender < 180)
+//                {
+//                    bartender.position = CGPointMake(282.f, bartender.position.y);
+//                }
+//                else if (cntBartender < 240)
+//                {
+//                    bartender.position = CGPointMake(387.f, bartender.position.y);
+//                }
+//                else if (cntBartender < 300)
+//                {
+//                bartender.position = CGPointMake(492.f, bartender.position.y);
+//                }
+//                if (cntBartender==300)cntBartender = 0;
+//                }
+//       
+    
     
 
        
-   } //if !Halt
-    
+   //} //if !Halt
+   }
 }
 
 -(Boolean) doesCollide:(CCNode*)obstacle withPlayer:(CCNode*) player

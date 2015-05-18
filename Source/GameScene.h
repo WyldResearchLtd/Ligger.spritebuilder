@@ -11,6 +11,8 @@
 @interface GameScene : CCNode
 
 @property (nonatomic) NSMutableArray* obstacles;
+@property (nonatomic) NSMutableArray* bartenders;
+@property (nonatomic) NSMutableArray* promotors;
 @property (nonatomic) CCNode *obstacle1;
 @property (nonatomic) CCNode *obstacle2;
 @property (nonatomic) CCNode *obstacle3;
@@ -22,6 +24,10 @@
 @property (nonatomic) CCNode *obstacle9;
 @property (nonatomic) CCNode *obstacle10;
 @property (nonatomic) CCNode *bartender1;
+@property (nonatomic) CCNode *bartender2;
+@property (nonatomic) CCNode *bartender3;
+@property (nonatomic) CCNode *bartender4;
+@property (nonatomic) CCNode *bartender5;
 
 + (Boolean) halt;
 + (void) setHalt:(Boolean)value;
