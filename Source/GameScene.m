@@ -20,7 +20,7 @@
 }
 
 static Boolean halt = false;
-
+//a static implemntation of Halt
 + (Boolean) halt { return halt; }
 + (void) setHalt:(Boolean)value { halt = value; }
 
@@ -68,7 +68,7 @@ static Boolean halt = false;
 -(void) loadLevelNamed:(NSString*)levelCCB
 {
     // get the current level's player in the scene by searching for it recursively
-    _playerNode = [self getChildByName:@"player" recursively:YES];
+    _playerNode = [self getChildByName:@"player1m" recursively:YES];
     NSAssert1(_playerNode, @"player node not found in level: %@", levelCCB);
     
     self.obstacle1 = [self getChildByName:@"obstacle1" recursively:YES];
@@ -109,7 +109,8 @@ static Boolean halt = false;
 //    _playerNode.position = [touch locationInNode:self];
 //}
 
-
+bool bBartenderServering = false;
+int cntServing = 0;
 CGPoint lastPosition;
 CGPoint lastBartenderPos;
 int idxBartender = 0;//the current choosen bartender
@@ -121,18 +122,8 @@ int ttBartender = 0; //the total time for this bartender round
     
    if (!GameScene.halt)
    {
-   
     // update scroll node position to player node, with offset to center player in the view
     [self scrollToTarget:_playerNode];
-    
-    
-    //only log the position if its changed
-//    if (_playerNode.position.x != lastPosition.x || _playerNode.position.y != lastPosition.y)
-//    {
-//        NSLog(@"Player Position x: %2f y: %2f",_playerNode.position.x,_playerNode.position.y);
-//        lastPosition = _playerNode.position;
-//    }
-    
     
     //Move the OBSTACLES across the screen
     for (int i = 0; i < self.obstacles.count; i++)
@@ -141,10 +132,6 @@ int ttBartender = 0; //the total time for this bartender round
         //save last position to reset if collision found
         lastPosition = obstacle.position; //_playerNode.position;
         
-        //if on the last row, its a bartender, so move differently
-        //every other row travels in the opposite direction -3.0 is left to right, 3.0 is right to left
-        //if (i <10)
-        //{
             
             obstacle.position = ccpSub(obstacle.position, ccp((i % 2)?3.0:-3.0,0));
             
@@ -159,6 +146,19 @@ int ttBartender = 0; //the total time for this bartender round
                 [animationManager setPaused:YES];
                 //reset
                 obstacle.position = lastPosition;
+                
+                [self performSelector:@selector(pauseObstacle:) withObject:self.obstacle1];
+                [self performSelector:@selector(pauseObstacle:) withObject:self.obstacle2];
+                [self performSelector:@selector(pauseObstacle:) withObject:self.obstacle3];
+                [self performSelector:@selector(pauseObstacle:) withObject:self.obstacle4];
+                [self performSelector:@selector(pauseObstacle:) withObject:self.obstacle5];
+                [self performSelector:@selector(pauseObstacle:) withObject:self.obstacle6];
+                [self performSelector:@selector(pauseObstacle:) withObject:self.obstacle7];
+                [self performSelector:@selector(pauseObstacle:) withObject:self.obstacle8];
+                [self performSelector:@selector(pauseObstacle:) withObject:self.obstacle9];
+                [self performSelector:@selector(pauseObstacle:) withObject:self.obstacle10];
+
+                
                 return;
             }
         
@@ -181,83 +181,70 @@ int ttBartender = 0; //the total time for this bartender round
                 }
             }
         
-        //}
-        //else//bartender
-        //{
-        
+
     }
 
-            
-        //}
-        //Move the BARTENDERS across the screen
-        //for (int i = 0; i < self.bartenders.count; i++)
-        //{
-            //CCNode *bartender = self.bartenders[i];
-            //save last position to reset if collision found
-            //lastBartenderPos = bartender.position;
-            
-            if (0==cntBartender)  //first pass,
-            {
-                
-                // generate a real number between 0 and 5
-                idxBartender = (int)(arc4random() % 5000) / 1000.f;
-            
-                // generate a random number between 1.0 and 3.0
-                float stay = ((arc4random() % 2000) / 1000.f)+1;
-            
-                
-                ttBartender = stay * 30; //stay in secs mult by 30 fps
-                
-                int point = (72+((105*(idxBartender))+1));
-                ((CCNode*)self.bartenders[idxBartender]).position = CGPointMake( point, ((CCNode*)self.bartenders[idxBartender]).position.y);
-                
-                cntBartender = 1;
-                
-               
-                
-            }
-            else if (cntBartender==ttBartender)
-            {
-                cntBartender = 0;
-            }
-            else
-            {
-                cntBartender += 1;
-            }
-            
-                
        
+    //Move the bartender and time his stay
+    //TODO Add magic numbers below as constants
+    if (0==cntBartender )  //first pass,
+    {
                 
-//                if (cntBartender < ttBartender)
-//                {
-//                    bartender.position = CGPointMake(72.f, bartender.position.y);
-//                    bartender[idxBartender].position
-//                    
-//                }
-//                else
-//                {
-//                    bartender.position = CGPointMake(177.f, bartender.position.y);
-//                }
-//                else if (cntBartender < 180)
-//                {
-//                    bartender.position = CGPointMake(282.f, bartender.position.y);
-//                }
-//                else if (cntBartender < 240)
-//                {
-//                    bartender.position = CGPointMake(387.f, bartender.position.y);
-//                }
-//                else if (cntBartender < 300)
-//                {
-//                bartender.position = CGPointMake(492.f, bartender.position.y);
-//                }
-//                if (cntBartender==300)cntBartender = 0;
-//                }
-//       
-    
-    
+        // generate a real number between 0 and 5
+        int oldIdx = idxBartender;
+        
+        //this loop gets a new random Character if it matches the previous Character
+        while (idxBartender==oldIdx) {
+            idxBartender = (int)(arc4random() % 5000) / 1000.f; //5 magic number
+        }
+            
+        // generate a random number between 2.0 and 7.0
+        float stay = ((arc4random() % 5000) / 1000.f)+3;//2 magic number
+            
+                
+        ttBartender = stay * 30; //stay in secs mult by 30 fps
+                
+        int point = (72+((105*(idxBartender))+1)); //72 & 105- magic numbers
+        ((CCNode*)self.bartenders[idxBartender]).position = CGPointMake( point, ((CCNode*)self.bartenders[idxBartender]).position.y);
+        
+        if ([self doesCollide:self.bartenders[idxBartender] withPlayer:_playerNode])
+        {
+            NSLog(@"BARTENDER %d SERVING", idxBartender);
+            bBartenderServering = true;
+        }
+        
+        cntBartender = 1;
+                
+   }
+   else if (cntBartender==ttBartender)
+   {
+       cntBartender = 0;
+   }
+   else
+   {
+       
+       if (bBartenderServering)
+       {
+           cntServing += 1;
+           
+           //one sec serving time has elapsed
+           if (cntServing==150)
+           {
+               //do an animation here or just flip the ligger
+               NSLog(@"BARTENDER Finished SERVING");
+               cntBartender = 0;
+               cntServing = 0;
+               bBartenderServering= false;
+           }
+       }
+       else
+       {
+           cntBartender += 1;
+       }
+   }
 
-       
-   //} //if !Halt
+
+
    }
 }
 
@@ -271,19 +258,7 @@ int ttBartender = 0; //the total time for this bartender round
         //and the horizontal axis collides
         if (obstacleWorld.x + obstacle.boundingBox.size.width >= playerWorld.x && obstacleWorld.x <= + playerWorld.x + player.boundingBox.size.height)
         {
-            rtn = true;
-            
-            [self performSelector:@selector(pauseObstacle:) withObject:self.obstacle1];
-            [self performSelector:@selector(pauseObstacle:) withObject:self.obstacle2];
-            [self performSelector:@selector(pauseObstacle:) withObject:self.obstacle3];
-            [self performSelector:@selector(pauseObstacle:) withObject:self.obstacle4];
-            [self performSelector:@selector(pauseObstacle:) withObject:self.obstacle5];
-            [self performSelector:@selector(pauseObstacle:) withObject:self.obstacle6];
-            [self performSelector:@selector(pauseObstacle:) withObject:self.obstacle7];
-            [self performSelector:@selector(pauseObstacle:) withObject:self.obstacle8];
-            [self performSelector:@selector(pauseObstacle:) withObject:self.obstacle9];
-            [self performSelector:@selector(pauseObstacle:) withObject:self.obstacle10];
-
+            rtn = true;//doesCollide
         }
     }
   
@@ -317,20 +292,36 @@ int ttBartender = 0; //the total time for this bartender round
 }
 
 
-- (void)startHustle
+- (void)startHustleRight
 {
     // the animation manager of each node is stored in the 'animationManager' property
     CCAnimationManager* animationManager = _playerNode.animationManager;
     // timelines can be referenced and run by name
-    [animationManager runAnimationsForSequenceNamed:@"Hustle"];
+    [animationManager runAnimationsForSequenceNamed:@"HustleRight"];
 }
 
-- (void)startHustleReversed
+- (void)startHustleLeft
 {
     // the animation manager of each node is stored in the 'animationManager' property
     CCAnimationManager* animationManager = _playerNode.animationManager;
     // timelines can be referenced and run by name
-    [animationManager runAnimationsForSequenceNamed:@"HustleReversed"];
+    [animationManager runAnimationsForSequenceNamed:@"HustleLeft"];
+}
+
+- (void)startHustleUp
+{
+    // the animation manager of each node is stored in the 'animationManager' property
+    CCAnimationManager* animationManager = _playerNode.animationManager;
+    // timelines can be referenced and run by name
+    [animationManager runAnimationsForSequenceNamed:@"HustleUp"];
+}
+
+- (void)startHustleDown
+{
+    // the animation manager of each node is stored in the 'animationManager' property
+    CCAnimationManager* animationManager = _playerNode.animationManager;
+    // timelines can be referenced and run by name
+    [animationManager runAnimationsForSequenceNamed:@"HustleDown"];
 }
 
 
@@ -345,28 +336,28 @@ int ttBartender = 0; //the total time for this bartender round
                 //ccp is a macro for CGPointMake(x, y)
                 _playerNode.position = CGPointMake(_playerNode.position.x,_playerNode.position.y+kVERTICALMOVE);
             // call method to start animation
-            [self performSelector:@selector(startHustleReversed) withObject:nil];
+            [self performSelector:@selector(startHustleUp) withObject:nil];
             break;
         case UISwipeGestureRecognizerDirectionDown:
             NSLog(@"SwipeDown");
             if ((_playerNode.position.y) > kBOARDBOTTOMBOUND) //keeps with bottom boundry
                 _playerNode.position = CGPointMake(_playerNode.position.x,_playerNode.position.y-kVERTICALMOVE);
             // call method to start animation
-            [self performSelector:@selector(startHustle) withObject:nil];
+            [self performSelector:@selector(startHustleDown) withObject:nil];
             break;
         case UISwipeGestureRecognizerDirectionLeft:
             NSLog(@"SwipeLeft");
             if ((_playerNode.position.x) > kBOARDLEFTBOUND) //keeps with left boundry
                 _playerNode.position = CGPointMake(_playerNode.position.x-kHORIZONTALMOVE,_playerNode.position.y);
             // call method to start animation
-            [self performSelector:@selector(startHustleReversed) withObject:nil];
+            [self performSelector:@selector(startHustleLeft) withObject:nil];
             break;
         case UISwipeGestureRecognizerDirectionRight:
             NSLog(@"SwipeRight");
             if ((_playerNode.position.x) < kBOARDRIGHTBOUND) //keeps with right boundry
                 _playerNode.position = CGPointMake(_playerNode.position.x+kHORIZONTALMOVE,_playerNode.position.y);
             // call method to start animation
-            [self performSelector:@selector(startHustle) withObject:nil];
+            [self performSelector:@selector(startHustleRight) withObject:nil];
             break;
     }
     

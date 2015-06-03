@@ -78,13 +78,46 @@
 			<key>previewFolderHidden</key>
 			<true/>
 		</dict>
+		<key>Prefabs</key>
+		<dict>
+			<key>previewFolderHidden</key>
+			<false/>
+		</dict>
 		<key>SpriteSheets/Global</key>
 		<dict>
 			<key>isSmartSpriteSheet</key>
 			<true/>
 		</dict>
 		<key>Sprites</key>
-		<dict/>
+		<dict>
+			<key>previewFolderHidden</key>
+			<false/>
+		</dict>
+		<key>animation-player1m/back/state2</key>
+		<dict>
+			<key>previewFolderHidden</key>
+			<false/>
+		</dict>
+		<key>animation-player1m/front/state2</key>
+		<dict>
+			<key>previewFolderHidden</key>
+			<false/>
+		</dict>
+		<key>animation-player1m/left/state1</key>
+		<dict>
+			<key>previewFolderHidden</key>
+			<false/>
+		</dict>
+		<key>animation-player1m/right/state0</key>
+		<dict>
+			<key>previewFolderHidden</key>
+			<false/>
+		</dict>
+		<key>animation-player1m/right/state1</key>
+		<dict>
+			<key>previewFolderHidden</key>
+			<false/>
+		</dict>
 		<key>ccbResources</key>
 		<dict>
 			<key>previewFolderHidden</key>
