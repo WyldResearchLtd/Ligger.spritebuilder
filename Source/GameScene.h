@@ -34,6 +34,10 @@
 
 
 -(Boolean) doesCollide:(CCNode*)obstacle withPlayer:(CCNode*) player;
-- (void)startHustle;
+- (void)startHustleLeft;
+- (void)startHustleRight;
+- (void)startHustleUp;
+- (void)startHustleDown;
+
 
 @end
