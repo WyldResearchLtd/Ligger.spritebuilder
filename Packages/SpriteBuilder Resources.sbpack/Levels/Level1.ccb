@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>92</integer>
+	<integer>93</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -149,7 +149,7 @@
 			</dict>
 			<dict>
 				<key>UUID</key>
-				<integer>91</integer>
+				<integer>92</integer>
 				<key>baseClass</key>
 				<string>CCSprite</string>
 				<key>children</key>
@@ -157,7 +157,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>BGx2</string>
+				<string>BGx</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -179,8 +179,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>283.87454223632812</real>
-							<real>501.2645263671875</real>
+							<real>285.27572631835938</real>
+							<real>500.37496948242188</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -204,8 +204,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>2.0061805248260498</real>
-							<real>2.0151925086975098</real>
+							<real>0.86219865083694458</real>
+							<real>0.85772538185119629</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -217,8 +217,8 @@
 						<string>FloatXY</string>
 						<key>value</key>
 						<array>
+							<real>-0.13476213812828064</real>
 							<real>0.0</real>
-							<real>0.54408186674118042</real>
 						</array>
 					</dict>
 					<dict>
@@ -229,7 +229,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>Sprites/BGx2.png</string>
+							<string>Sprites/BGx.png</string>
 						</array>
 					</dict>
 					<dict>
