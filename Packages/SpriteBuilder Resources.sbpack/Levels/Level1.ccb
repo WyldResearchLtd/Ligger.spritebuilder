@@ -265,8 +265,6 @@
 						<array/>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -362,8 +360,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>-32</real>
-							<real>815.2457275390625</real>
+							<real>-33</real>
+							<real>857.2457275390625</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -376,8 +374,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
+							<real>0.62815719842910767</real>
+							<real>0.71561366319656372</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -415,7 +413,7 @@
 						<key>type</key>
 						<string>StringSimple</string>
 						<key>value</key>
-						<string>JohnGiddings</string>
+						<string>promotor2</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -477,7 +475,7 @@
 						<key>type</key>
 						<string>StringSimple</string>
 						<key>value</key>
-						<string>RobDaBank</string>
+						<string>promotor4</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -515,6 +513,8 @@
 						<string>Prefabs/Rob.ccb</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -539,7 +539,7 @@
 						<key>type</key>
 						<string>StringSimple</string>
 						<key>value</key>
-						<string>MichaelEvis</string>
+						<string>promotor1</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -601,7 +601,7 @@
 						<key>type</key>
 						<string>StringSimple</string>
 						<key>value</key>
-						<string>MelvynBenn</string>
+						<string>promotor3</string>
 					</dict>
 					<dict>
 						<key>name</key>

@@ -10,11 +10,19 @@
 #define Ligger_Constants_h
 
 
+typedef enum PlayerState {NoBeers, TwoBeers, OneBeer} PlayerState;
+typedef enum LevelState {GameSetup, PlayGame, LevelUp} LevelState;
+
+
 const int kBOARDTOPBOUND = 800;
 const int kBOARDBOTTOMBOUND = 50;
 const int kBOARDLEFTBOUND = 100;
 const int kBOARDRIGHTBOUND = 450;
 const int kHORIZONTALMOVE = 52;
 const int kVERTICALMOVE = 64;
+const int kMedianStripRow = 432;
+
+const int kStartOffset = 4;
+const int kStopOffset = 3;
 
 #endif
