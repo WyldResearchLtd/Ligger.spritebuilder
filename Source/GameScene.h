@@ -8,6 +8,7 @@
 
 #import "CCNode.h"
 #import "Constants.h"
+#import "CCActionInterval.h"
 
 @interface GameScene : CCNode
 

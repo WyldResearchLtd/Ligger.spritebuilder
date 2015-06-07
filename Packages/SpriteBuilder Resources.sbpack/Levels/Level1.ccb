@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>93</integer>
+	<integer>94</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -360,8 +360,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>-33</real>
-							<real>857.2457275390625</real>
+							<real>-29</real>
+							<real>858.2457275390625</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -374,8 +374,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.62815719842910767</real>
-							<real>0.71561366319656372</real>
+							<real>1.0461773872375488</real>
+							<real>1.0461773872375488</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -513,8 +513,6 @@
 						<string>Prefabs/Rob.ccb</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>

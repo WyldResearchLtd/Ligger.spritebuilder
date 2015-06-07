@@ -12,6 +12,8 @@
 #import "Constants.h"
 
 
+
+
 @implementation GameScene
 {
     __weak CCNode* _levelNode;
@@ -25,14 +27,14 @@ static Boolean halt = false;
 + (Boolean) halt { return halt; }
 + (void) setHalt:(Boolean)value { halt = value; }
 
-bool bBartenderServering = false;
+bool bBartenderServing = false;
 CGPoint lastPosition;
 CGPoint lastBartenderPos;
 int idxBartender = 0;//the current choosen bartender
 int cntBartender = 0;
 int ttBartender = 0; //the total time for this bartender round
 bool isPromotorSetupStarted = false;
-
+bool isCollisionInProgress = false;
 
 -(void) didLoadFromCCB
 {
@@ -117,9 +119,12 @@ bool isPromotorSetupStarted = false;
 
 -(void) update:(CCTime)delta
 {
+    //HACK:
+   if (isCollisionInProgress) return;
+    
    if (!GameScene.halt)
    {
-        //NSLog(@"Player Column: %f",_playerNode.position.x);
+        //NSLog(@"Player Row: %f",_playerNode.position.y);
         // update scroll node position to player node, with offset to center player in the view
         [self scrollToTarget:_playerNode];
        
@@ -133,14 +138,23 @@ bool isPromotorSetupStarted = false;
         {
             [self moveBartender];
         }
+       else if (self.levelState==CompleteLevel)
+       {
+           [self completeLevel];
+       }
+       else if (self.levelState==LevelUp)
+       {
+           [self LevelUp];
+       }
    }
 }
 
--(void) resetBartender
-{
-    cntBartender = 0;
-    bBartenderServering= false;
-}
+//-(void) resetBartender
+//{
+//    [self performSelector:@selector(nextCustomer) withObject:nil];
+//    cntBartender = 0;
+//    bBartenderServing= false;
+//}
 
 -(Boolean) doesCollide:(CCNode*)obstacle withPlayer:(CCNode*) player
 {
@@ -168,8 +182,11 @@ bool isPromotorSetupStarted = false;
     //NSLog(@"Player at bar pos: %d Bartender: %d Row: %f %f",idxPlayer/108,idxBartender*2,player.position.y,playerWorld.y);
     if (player.position.y>800 && ((idxPlayer/108)==(idxBartender*2)))
     {
-        if (! bBartenderServering) NSLog(@"PLAYER %d being Served",(idxPlayer/108)/2);
-        rtn= TRUE;
+        if (! bBartenderServing)
+        {
+            NSLog(@"PLAYER %d being Served",(idxPlayer/108)/2);
+            rtn= TRUE;
+        }
     }
     
     return rtn;
@@ -194,31 +211,29 @@ bool isPromotorSetupStarted = false;
                     if (self.playerState==TwoBeers)
                     {
                         //Partical SPLASH!
-                        NSLog(@"++++ SPLASH ++++++");
-                        //move to meridian
-                        _playerNode.position = CGPointMake(_playerNode.position.x,kMedianStripRow);
+                        NSLog(@"++++ SPLASH 2Beers++++++");
+                        
+                        [self particleEffect:_playerNode loadCCBName:@"Prefabs/Splash"];
+
                         //set to One beer
                         self.playerState=OneBeer;
+                        //TODO: TEST!!
                         [self performSelector:@selector(startHustleDown) withObject:nil];
+                        //move to meridian
+                        [self performSelector:@selector(movePlayerToMedian) withObject:nil afterDelay:1.5f];
+                        //this is set to false in method movePlayerToMedian
+                        isCollisionInProgress = true;
+                        
+                        //[NSThread sleepForTimeInterval:0.1f];
                     }
                     else //if NoBeers or OneBeer- Stop
                     {
-                            GameScene.halt = true;
-                            CCAnimationManager* animationManager = _playerNode.userObject;
-                            [animationManager setPaused:YES];
-                            //reset
-                            obstacle.position = lastPosition;
-    
-                            [self performSelector:@selector(pauseAnimation:) withObject:self.obstacle1];
-                            [self performSelector:@selector(pauseAnimation:) withObject:self.obstacle2];
-                            [self performSelector:@selector(pauseAnimation:) withObject:self.obstacle3];
-                            [self performSelector:@selector(pauseAnimation:) withObject:self.obstacle4];
-                            [self performSelector:@selector(pauseAnimation:) withObject:self.obstacle5];
-                            [self performSelector:@selector(pauseAnimation:) withObject:self.obstacle6];
-                            [self performSelector:@selector(pauseAnimation:) withObject:self.obstacle7];
-                            [self performSelector:@selector(pauseAnimation:) withObject:self.obstacle8];
-                            [self performSelector:@selector(pauseAnimation:) withObject:self.obstacle9];
-                            [self performSelector:@selector(pauseAnimation:) withObject:self.obstacle10];
+                        NSLog(@"++++ SPLASH ++++++");
+                        
+                        [self pauseGame:obstacle];
+                        
+                        [self particleEffect:_playerNode loadCCBName:@"Prefabs/Splash"];
+                        
                     }
                     return;
                 }
@@ -246,13 +261,14 @@ bool isPromotorSetupStarted = false;
 
 -(void) moveBartender
 {
+    if (bBartenderServing || (self.playerState == TwoBeers)) return; //stops re-entry issues
+    
     //Move the bartender and time his stay
-    if (0==cntBartender )  //first pass,
+    if (0==cntBartender)  //first pass,
     {
-        
-        // generate a real number between 0 and 5
+
+        // generate a real number between 0 and 5 - the number od bars
         int oldIdx = idxBartender;
-        
         //this loop gets a new random Character if it matches the previous Character
         while (idxBartender==oldIdx) {
             idxBartender = (int)(arc4random() % (5*1000)) / 1000.f; //5 is the number of Bars
@@ -265,15 +281,16 @@ bool isPromotorSetupStarted = false;
         ttBartender = stay * 30; //stay in secs mult by 30 fps
         
         int point = (72+(105*idxBartender)+1); //72 & 105- magic numbers
-        //this gets a random character
+        //this gets a random character- no longer used
         //((CCNode*)self.bartenders[idxBartender]).position = CGPointMake( point, ((CCNode*)self.bartenders[idxBartender]).position.y);
         ((CCNode*)self.bartender1).position = CGPointMake( point, ((CCNode*)self.bartender1).position.y);
         
         //if ([self doesCollide:self.bartenders[idxBartender] withPlayer:_playerNode])
-        if ([self isServing:idxBartender withPlayer:_playerNode]  && (! bBartenderServering))
+        if ([self isServing:idxBartender withPlayer:_playerNode])
         {
-            NSLog(@"BARTENDER %d SERVING", idxBartender);
-            bBartenderServering = true;
+            NSLog(@"BARTENDER %d SERVING(1)", idxBartender);
+            [self performSelector:@selector(serve2Beers) withObject:nil];
+            bBartenderServing = true;
         }
         
         cntBartender = 1;
@@ -281,42 +298,81 @@ bool isPromotorSetupStarted = false;
     }
     else if (cntBartender==ttBartender)
     {
+        //TODO - Time still wrong....
         NSLog(@"BARTENDER RESET: Cnt: %d Secs: %d", cntBartender, ttBartender/30);
         cntBartender = 0;
-        
-        
     }
     else
     {
         
-        //if ([self doesCollide:self.bartenders[idxBartender] withPlayer:_playerNode])
-        
-        if ([self isServing:idxBartender withPlayer:_playerNode] && (! bBartenderServering))
+        //if we know we're already serving, dont check again
+        if ([self isServing:idxBartender withPlayer:_playerNode])
         {
-            NSLog(@"BARTENDER %d SERVING", idxBartender);
-            bBartenderServering = true;
-        }
-        
-        
-        if (bBartenderServering)
-        {
-            //set the player to 2Beers state
-            self.playerState = TwoBeers;
-            //animate bartender
+            bBartenderServing = true;
+            NSLog(@"BARTENDER %d SERVING(2)", idxBartender);
+            [self performSelector:@selector(serve2Beers) withObject:nil];
             
-            // call method to start animation
-            [self performSelector:@selector(startHustleUp) withObject:nil];
-            //don't move the bartender
+             //turn the ligger around
+            [self performSelector:@selector(startHustleDown) withObject:nil  afterDelay:1.5f];
+            [self performSelector:@selector(nextCustomer) withObject:nil afterDelay:1.5f];
+            //forces it restart timer
+            cntBartender=0;
             
         }
         else
         {
+
             cntBartender += 1;
-            //NSLog(@"Bartender elaspedtime %d", cntBartender/30);
         }
     }
 
 }
+
+-(void) advancePromotor
+{
+    if (!isPromotorSetupStarted)
+    {
+        [self performSelector:@selector(startAnimation:forSequence:) withObject:((CCNode*)self.promotors[0]) withObject:@"walk"];
+        isPromotorSetupStarted = true;
+    }
+    
+    if (((CCNode*)self.promotors[0]).position.x < 250)
+    {
+        ((CCNode*)self.promotors[0]).position = ccpSub(((CCNode*)self.promotors[0]).position, ccp(-1.0,0));
+    }
+    else
+    {
+        [self pauseAnimation:(CCNode*)self.promotors[0]];
+        [self performSelector:@selector(startHustleUp) withObject:nil];
+        isPromotorSetupStarted = false;
+        self.levelState = PlayGame;
+    }
+}
+
+-(void) completeLevel
+{
+    if (_playerNode.position.x > 281)
+    {
+        //move to left
+        _playerNode.position = ccpSub(_playerNode.position, ccp(1.0,0));
+    }
+    else
+    {
+        //particle explosion
+        //flip ligger to right
+        [self performSelector:@selector(startHustleRight) withObject:nil];
+        (self.levelState=LevelUp);
+        NSLog(@"+++++++START LEVELUP SEQUENCE+++++++");
+    }
+    
+}
+
+-(void) LevelUp
+{
+    _playerNode.position = ccpSub(_playerNode.position, ccp(-1.0,0));
+    ((CCNode*)self.promotors[0]).position = ccpSub(((CCNode*)self.promotors[0]).position, ccp(-1.0,0));
+}
+
 
 -(void) scrollToTarget:(CCNode*)target
 {
@@ -344,34 +400,57 @@ bool isPromotorSetupStarted = false;
     [animationManager setPaused:YES];
 }
 
-
-
--(void) advancePromotor
+//
+- (void) particleEffect:(CCNode*)node loadCCBName:(NSString*)particleCCB
 {
-    if (!isPromotorSetupStarted)
-    {
-        [self performSelector:@selector(startAnimation:forSequence:) withObject:((CCNode*)self.promotors[0]) withObject:@"walk"];
-        isPromotorSetupStarted = true;
-    }
-    
-    if (((CCNode*)self.promotors[0]).position.x < 250)
-    {
-        ((CCNode*)self.promotors[0]).position = ccpSub(((CCNode*)self.promotors[0]).position, ccp(-1.0,0));
-    }
-    else
-    {
-        [self pauseAnimation:(CCNode*)self.promotors[0]];
-        [self performSelector:@selector(startHustleUp) withObject:nil];
-        isPromotorSetupStarted = false;
-        self.levelState = PlayGame;
-    }
+    // load particle effect
+    CCParticleSystem *explosion = (CCParticleSystem *)[CCBReader load:particleCCB];
+    NSAssert( explosion != nil, @"Particle Effect must be non-nil");
+    // make the particle effect clean itself up, once it is completed
+    explosion.autoRemoveOnFinish = TRUE;
+    // place the particle effect on the players position
+    explosion.position = node.position;
+    // add the particle effect to the same node the player is on
+    [node.parent addChild:explosion];
 }
 
+- (void)serve2Beers
+{
+    CCAnimationManager* animationManager = _bartender1.animationManager;
+    [animationManager runAnimationsForSequenceNamed:@"Serve2Beers"];
+    //set the player to 2Beers state
+    self.playerState = TwoBeers;
+
+}
+
+- (void) nextCustomer
+{
+    CCAnimationManager* animationManager = _bartender1.animationManager;
+    [animationManager runAnimationsForSequenceNamed:@"empty"];
+    
+}
+
+
+//used to move Player to the Median
+//in a method so you can call it after a delay
+//eg: [self performSelector:@selector(movePlayerToMedian) withObject:nil afterDelay:3.0f];
+-(void) movePlayerToMedian
+{
+    NSLog(@"Moving Player to Median");
+    _playerNode.position = CGPointMake(_playerNode.position.x,kMedianStripRow);
+    [self scrollToTarget:_playerNode];
+    //very important if this is called with a delay- stops reentry
+    isCollisionInProgress = false;
+}
 
 
 - (void)startHustleRight
 {
-    if (bBartenderServering) bBartenderServering = FALSE;
+    //restarts the bartender animation
+    if (bBartenderServing)
+    {
+        bBartenderServing = FALSE;
+    }
     
     // the animation manager of each node is stored in the 'animationManager' property
     CCAnimationManager* animationManager = _playerNode.animationManager;
@@ -392,7 +471,11 @@ bool isPromotorSetupStarted = false;
 
 - (void)startHustleLeft
 {
-    if (bBartenderServering) bBartenderServering = FALSE;
+    //restarts the bartender animation
+    if (bBartenderServing)
+    {
+        bBartenderServing = FALSE;
+    }
     
     // the animation manager of each node is stored in the 'animationManager' property
     CCAnimationManager* animationManager = _playerNode.animationManager;
@@ -430,7 +513,11 @@ bool isPromotorSetupStarted = false;
 
 - (void)startHustleDown
 {
-    if (bBartenderServering) bBartenderServering = FALSE;
+    //restarts the bartender animation
+    if (bBartenderServing)
+    {
+        bBartenderServing = FALSE;
+    }
     
     // the animation manager of each node is stored in the 'animationManager' property
     CCAnimationManager* animationManager = _playerNode.animationManager;
@@ -473,6 +560,24 @@ bool isPromotorSetupStarted = false;
                 {
                     _playerNode.position = CGPointMake(_playerNode.position.x,_playerNode.position.y-kVERTICALMOVE);
                     [self performSelector:@selector(startHustleDown) withObject:nil];
+                    //NSLog(@"Player Row: %f Column: %f",_playerNode.position.y, _playerNode.position.x);
+                    
+                    //if we move away from the bar, right, left or down, reset the bartender
+                    
+                    //if we get back to the promotors area with a beers or two, we're done
+                    if (_playerNode.position.y < 110 && self.playerState != NoBeers)
+                    {
+                       NSLog(@"+++++++LEVEL COMPLETED+++++++");
+                        self.levelState=CompleteLevel;
+                       //if (_playerNode.position.x < 281)
+                           [self performSelector:@selector(startHustleLeft) withObject:nil];
+
+                        //else
+                        //    ;
+                       
+                    } else {
+                        NSLog(@"NOT COMPLETED LEVEL, Y: %f PlayerState: %d",_playerNode.position.y,self.playerState != NoBeers);
+                    }
                 }
             }
             break;
@@ -500,6 +605,26 @@ bool isPromotorSetupStarted = false;
             break;
     }
     
+}
+
+-(void) pauseGame:(CCNode*) obstacle
+{
+    GameScene.halt = true;
+    CCAnimationManager* animationManager = _playerNode.userObject;
+    [animationManager setPaused:YES];
+    //reset
+    obstacle.position = lastPosition;
+    
+    [self performSelector:@selector(pauseAnimation:) withObject:self.obstacle1];
+    [self performSelector:@selector(pauseAnimation:) withObject:self.obstacle2];
+    [self performSelector:@selector(pauseAnimation:) withObject:self.obstacle3];
+    [self performSelector:@selector(pauseAnimation:) withObject:self.obstacle4];
+    [self performSelector:@selector(pauseAnimation:) withObject:self.obstacle5];
+    [self performSelector:@selector(pauseAnimation:) withObject:self.obstacle6];
+    [self performSelector:@selector(pauseAnimation:) withObject:self.obstacle7];
+    [self performSelector:@selector(pauseAnimation:) withObject:self.obstacle8];
+    [self performSelector:@selector(pauseAnimation:) withObject:self.obstacle9];
+    [self performSelector:@selector(pauseAnimation:) withObject:self.obstacle10];
 }
 
 //-(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
