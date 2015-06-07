@@ -49,7 +49,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCBFile</string>
+				<string>level1</string>
 				<key>memberVarAssignmentName</key>
 				<string>_levelNode</string>
 				<key>memberVarAssignmentType</key>
