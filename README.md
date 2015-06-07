@@ -30,7 +30,7 @@ before you continue your trek.
 Level 2
 
 Things get a little faster here, and yes, you didn't imagine that, that is a giant frog on the flower lined path. Careful, your 
-Ligger can be flattened by that Frogger.
+Ligger can be flattened by the Frogger. ;-)
 
 
 Level 3
@@ -38,4 +38,31 @@ Level 3
 Lookout for Phil O. Cybin, a new character in Level 3. On some days, once you meet Phil, life can be wonderful and full of 
 Sunflowers that bring you much joy and more points. But on other days, you'll be confronted by Multi-eyed Monsters, that seem 
 to appear from nowhere and will haunt your dreams and rob your bank.
+
+
+TODO
+----
+* Remove the failed promotor from the collection, or when a promotor exists
+* Cycle though promotors
+Gameplay refinement
+P1
+* Slide out the backstage entrance
+* instead of walking left to promotor, and then back to the right, have the promotor meet the ligger? or only allow the ligger
+to return to the spot by the promotor?
+
+P2
+* Bartender should show only a single drink if player.state = OneBeer
+* Add particle effect for getting drink
+* add timeline for walking Ligger (2Beers and 1Beer)
+* if the Bartender comes to Ligger, the ligger isn't flipped to face forward as it does when the Ligger goes to the Bartender
+* Mask the obstacles so collisions are more accurate
+P3 (Optional)
+* Ligger movement too blocky (Jack)
+* ((CCNode*)self.promotors[0])  -- used a collection generic <CCNode*> to eliminate the casts
+* In startGame and pauseGame, loop through obstacle collection
+* The particle effect for a NoBeer Ligger shouldn't be a splash
+* FIx the obstacles that disappear before fully existing screen
+
+
+
 

@@ -9,6 +9,9 @@
 #import "CCNode.h"
 #import "Constants.h"
 #import "CCActionInterval.h"
+//#import "UITouch+CC.h"
+#import "CCDirector.h"
+#import "Constants.h"
 
 @interface GameScene : CCNode
 
@@ -39,6 +42,7 @@
 
 -(Boolean) doesCollide:(CCNode*)obstacle withPlayer:(CCNode*) player;
 -(Boolean) isServing:(int)idxBartender withPlayer:(CCNode*) player;
+
 - (void)startHustleLeft;
 - (void)startHustleRight;
 - (void)startHustleUp;

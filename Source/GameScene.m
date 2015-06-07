@@ -7,11 +7,6 @@
 //
 
 #import "GameScene.h"
-//#import "UITouch+CC.h"
-#import "CCDirector.h"
-#import "Constants.h"
-
-
 
 
 @implementation GameScene
@@ -27,12 +22,11 @@ static Boolean halt = false;
 + (Boolean) halt { return halt; }
 + (void) setHalt:(Boolean)value { halt = value; }
 
-bool bBartenderServing = false;
-CGPoint lastPosition;
-CGPoint lastBartenderPos;
+
 int idxBartender = 0;//the current choosen bartender
-int cntBartender = 0;
+int cntBartender = 0; //current bartender frame count
 int ttBartender = 0; //the total time for this bartender round
+bool bBartenderServing = false;
 bool isPromotorSetupStarted = false;
 bool isCollisionInProgress = false;
 
@@ -93,6 +87,7 @@ bool isCollisionInProgress = false;
     self.obstacle8 = [self getChildByName:@"obstacle8" recursively:YES];
     self.obstacle9 = [self getChildByName:@"obstacle9" recursively:YES];
     self.obstacle10 = [self getChildByName:@"obstacle10" recursively:YES];
+    
     self.obstacles = [NSMutableArray arrayWithObjects:self.obstacle1,self.obstacle2,self.obstacle3,self.obstacle4,self.obstacle5,self.obstacle6,self.obstacle7,self.obstacle8,self.obstacle9,self.obstacle10, nil];
     
     self.bartender1 = [self getChildByName:@"bartender1" recursively:YES];
@@ -101,18 +96,10 @@ bool isCollisionInProgress = false;
     self.promotor2 = [self getChildByName:@"promotor2" recursively:YES];
     self.promotor3 = [self getChildByName:@"promotor3" recursively:YES];
     self.promotor4 = [self getChildByName:@"promotor4" recursively:YES];
+    
     self.promotors = [NSMutableArray arrayWithObjects:self.promotor1, self.promotor2,self.promotor3,self.promotor4, nil];
     
-    [self performSelector:@selector(startAnimation:forSequence:) withObject:self.obstacle1 withObject:@"default"];
-    [self performSelector:@selector(startAnimation:forSequence:) withObject:self.obstacle2 withObject:@"default"];
-    [self performSelector:@selector(startAnimation:forSequence:) withObject:self.obstacle3 withObject:@"default"];
-    [self performSelector:@selector(startAnimation:forSequence:) withObject:self.obstacle4 withObject:@"default"];
-    [self performSelector:@selector(startAnimation:forSequence:) withObject:self.obstacle5 withObject:@"default"];
-    [self performSelector:@selector(startAnimation:forSequence:) withObject:self.obstacle6 withObject:@"default"];
-    [self performSelector:@selector(startAnimation:forSequence:) withObject:self.obstacle7 withObject:@"default"];
-    [self performSelector:@selector(startAnimation:forSequence:) withObject:self.obstacle8 withObject:@"default"];
-    [self performSelector:@selector(startAnimation:forSequence:) withObject:self.obstacle9 withObject:@"default"];
-    [self performSelector:@selector(startAnimation:forSequence:) withObject:self.obstacle10 withObject:@"default"];
+    [self startGame];
     
 
 }
@@ -148,13 +135,6 @@ bool isCollisionInProgress = false;
        }
    }
 }
-
-//-(void) resetBartender
-//{
-//    [self performSelector:@selector(nextCustomer) withObject:nil];
-//    cntBartender = 0;
-//    bBartenderServing= false;
-//}
 
 -(Boolean) doesCollide:(CCNode*)obstacle withPlayer:(CCNode*) player
 {
@@ -198,8 +178,6 @@ bool isCollisionInProgress = false;
             for (int i = 0; i < self.obstacles.count; i++)
             {
                 CCNode *obstacle = self.obstacles[i];
-                //save last position to reset if collision found
-                lastPosition = obstacle.position; //_playerNode.position;
     
                 obstacle.position = ccpSub(obstacle.position, ccp((i % 2)?3.0:-3.0,0));
     
@@ -215,11 +193,8 @@ bool isCollisionInProgress = false;
                         
                         [self particleEffect:_playerNode loadCCBName:@"Prefabs/Splash"];
 
-                        //set to One beer
                         self.playerState=OneBeer;
-                        //TODO: TEST!!
                         [self performSelector:@selector(startHustleDown) withObject:nil];
-                        //move to meridian
                         [self performSelector:@selector(movePlayerToMedian) withObject:nil afterDelay:1.5f];
                         //this is set to false in method movePlayerToMedian
                         isCollisionInProgress = true;
@@ -230,9 +205,9 @@ bool isCollisionInProgress = false;
                     {
                         NSLog(@"++++ SPLASH ++++++");
                         
-                        [self pauseGame:obstacle];
-                        
+                        [self pauseGame];
                         [self particleEffect:_playerNode loadCCBName:@"Prefabs/Splash"];
+                        [self performSelector:@selector(restartSetup) withObject:nil afterDelay:1.5f];
                         
                     }
                     return;
@@ -330,6 +305,19 @@ bool isCollisionInProgress = false;
 
 -(void) advancePromotor
 {
+    if (self.promotors.count==0)
+    {
+        NSLog(@"No more promotors******");
+        //next level
+        
+        //TODO Temp!!!!
+        CCScene* scene = [CCBReader loadAsScene:@"MainScene"];
+        CCTransition* transition = [CCTransition transitionFadeWithDuration:1.5];
+        [[CCDirector sharedDirector] presentScene:scene withTransition:transition];
+        
+        return;
+    }
+    
     if (!isPromotorSetupStarted)
     {
         [self performSelector:@selector(startAnimation:forSequence:) withObject:((CCNode*)self.promotors[0]) withObject:@"walk"];
@@ -371,6 +359,36 @@ bool isCollisionInProgress = false;
 {
     _playerNode.position = ccpSub(_playerNode.position, ccp(-1.0,0));
     ((CCNode*)self.promotors[0]).position = ccpSub(((CCNode*)self.promotors[0]).position, ccp(-1.0,0));
+    
+    //Check if the promotor has gone off screen
+    
+    if (((CCNode*)self.promotors[0]).position.x > _levelNode.contentSizeInPoints.width+45)
+    {
+        NSLog(@"PROMOTOR Offscreen");
+        //remove the promotor- Should Promotors collection be global?
+        //[self.promotors removeObjectAtIndex:0];
+        //LevelUp
+        //TODO Temp!!!! 
+        CCScene* scene = [CCBReader loadAsScene:@"MainScene"];
+        CCTransition* transition = [CCTransition transitionFadeWithDuration:1.5];
+        [[CCDirector sharedDirector] presentScene:scene withTransition:transition];
+        
+
+    }
+}
+
+/*
+ * removed the current promotor from the collection and
+ * then set the state to GameSetup and restarts animations
+ */
+-(void) restartSetup
+{
+    [((CCNode*)self.promotors[0]) removeFromParent];
+    [self.promotors removeObjectAtIndex:0];
+    //put the Ligger back at the start position
+    _playerNode.position = ccp(280.268311,48.001999);
+    self.levelState = GameSetup;
+    [self startGame];
 }
 
 
@@ -430,10 +448,11 @@ bool isCollisionInProgress = false;
     
 }
 
-
-//used to move Player to the Median
-//in a method so you can call it after a delay
-//eg: [self performSelector:@selector(movePlayerToMedian) withObject:nil afterDelay:3.0f];
+/*
+ * used to move Player to the Median
+ * in a method so you can call it after a delay
+ * eg: [self performSelector:@selector(movePlayerToMedian) withObject:nil afterDelay:1.5f];
+ */
 -(void) movePlayerToMedian
 {
     NSLog(@"Moving Player to Median");
@@ -607,14 +626,31 @@ bool isCollisionInProgress = false;
     
 }
 
--(void) pauseGame:(CCNode*) obstacle
+-(void) startGame
+{
+    NSLog(@"PLAYER START POS- x:%f y:%f",_playerNode.position.x,_playerNode.position.y);
+    
+    GameScene.halt = false;
+    
+    //TODO: iterate through the obstacles collection instead
+    [self performSelector:@selector(startAnimation:forSequence:) withObject:self.obstacle1 withObject:@"default"];
+    [self performSelector:@selector(startAnimation:forSequence:) withObject:self.obstacle2 withObject:@"default"];
+    [self performSelector:@selector(startAnimation:forSequence:) withObject:self.obstacle3 withObject:@"default"];
+    [self performSelector:@selector(startAnimation:forSequence:) withObject:self.obstacle4 withObject:@"default"];
+    [self performSelector:@selector(startAnimation:forSequence:) withObject:self.obstacle5 withObject:@"default"];
+    [self performSelector:@selector(startAnimation:forSequence:) withObject:self.obstacle6 withObject:@"default"];
+    [self performSelector:@selector(startAnimation:forSequence:) withObject:self.obstacle7 withObject:@"default"];
+    [self performSelector:@selector(startAnimation:forSequence:) withObject:self.obstacle8 withObject:@"default"];
+    [self performSelector:@selector(startAnimation:forSequence:) withObject:self.obstacle9 withObject:@"default"];
+    [self performSelector:@selector(startAnimation:forSequence:) withObject:self.obstacle10 withObject:@"default"];
+}
+
+
+-(void) pauseGame //:(CCNode*) obstacle
 {
     GameScene.halt = true;
-    CCAnimationManager* animationManager = _playerNode.userObject;
-    [animationManager setPaused:YES];
-    //reset
-    obstacle.position = lastPosition;
     
+    //TODO: iterate through the obstacles collection instead
     [self performSelector:@selector(pauseAnimation:) withObject:self.obstacle1];
     [self performSelector:@selector(pauseAnimation:) withObject:self.obstacle2];
     [self performSelector:@selector(pauseAnimation:) withObject:self.obstacle3];
