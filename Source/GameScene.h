@@ -27,14 +27,22 @@
 @property (nonatomic) CCNode *obstacle8;
 @property (nonatomic) CCNode *obstacle9;
 @property (nonatomic) CCNode *obstacle10;
+@property (nonatomic) CCNode *obstacle11;
+
 @property (nonatomic) CCNode *bartender1;
 @property (nonatomic) CCNode *promotor1;
 @property (nonatomic) CCNode *promotor2;
 @property (nonatomic) CCNode *promotor3;
 @property (nonatomic) CCNode *promotor4;
 
+@property (nonatomic) CCNode *bkstage_f;
+@property (nonatomic) CCNode *bkstage_b;
+
+
 @property (nonatomic) PlayerState playerState;
 @property (nonatomic) LevelState levelState;
+@property (nonatomic) PlayerMoveState playerMoveState;
+@property (nonatomic) int moveLength;
 
 + (Boolean) halt;
 + (void) setHalt:(Boolean)value;

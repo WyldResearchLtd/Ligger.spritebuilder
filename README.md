@@ -48,6 +48,7 @@ P1
 to return to the spot by the promotor?  
 * don't allow Ligger to enter inside the promotors area'  
 * create a level controller  
+* add all obstacles incl new female streaker  
   
 P2  
 * Bartender should show only a single drink if player.state = OneBeer  
@@ -66,19 +67,25 @@ P3 (Optional)
 OTHER  
 Add Crashlytics  
 Add to Travis  
+
+  
+Game Over- Looser- Scoring....with buttins to play again or menu  
   
 Menu
 ===================
-*Play Ligger* 
-*Credits(The Garden)* 
+*Play Ligger*  
+*Credits(The Garden)*  
   
 *Options*  
 *Leaderboard*  
-*About, The Story, Rules, Instructions, Gameplay)...need a better word*
+*About, The Story, Rules, Instructions, Gameplay)...need a better word*  
   
 Profile  
 ==================  
 registration info  
 change character  
 sound on/off  
+connect with facebook
+  
+Welcome Back Notification like Frogger!  
   

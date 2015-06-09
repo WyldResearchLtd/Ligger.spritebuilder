@@ -87,8 +87,9 @@ bool isCollisionInProgress = false;
     self.obstacle8 = [self getChildByName:@"obstacle8" recursively:YES];
     self.obstacle9 = [self getChildByName:@"obstacle9" recursively:YES];
     self.obstacle10 = [self getChildByName:@"obstacle10" recursively:YES];
+    self.obstacle11 = [self getChildByName:@"obstacle11" recursively:YES];
     
-    self.obstacles = [NSMutableArray arrayWithObjects:self.obstacle1,self.obstacle2,self.obstacle3,self.obstacle4,self.obstacle5,self.obstacle6,self.obstacle7,self.obstacle8,self.obstacle9,self.obstacle10, nil];
+    self.obstacles = [NSMutableArray arrayWithObjects:self.obstacle1,self.obstacle2,self.obstacle3,self.obstacle4,self.obstacle5,self.obstacle6,self.obstacle7,self.obstacle8,self.obstacle9,self.obstacle10,self.obstacle11, nil];
     
     self.bartender1 = [self getChildByName:@"bartender1" recursively:YES];
     
@@ -98,6 +99,11 @@ bool isCollisionInProgress = false;
     self.promotor4 = [self getChildByName:@"promotor4" recursively:YES];
     
     self.promotors = [NSMutableArray arrayWithObjects:self.promotor1, self.promotor2,self.promotor3,self.promotor4, nil];
+    
+    self.bkstage_f = [self getChildByName:@"backstage-front" recursively:YES];
+    self.bkstage_b = [self getChildByName:@"backstage-back" recursively:YES];
+    NSAssert1(self.bkstage_f, @"backstage-front node not found in level: %@", levelCCB);
+    NSAssert1(self.bkstage_b, @"backstage-back node not found in level: %@", levelCCB);
     
     [self startGame];
     
@@ -123,6 +129,7 @@ bool isCollisionInProgress = false;
         }
         else if (self.levelState==PlayGame)
         {
+            //[self movePlayer];
             [self moveBartender];
         }
        else if (self.levelState==CompleteLevel)
@@ -174,63 +181,68 @@ bool isCollisionInProgress = false;
 
 -(void) moveObstacles
 {
-            //Move the OBSTACLES across the screen
-            for (int i = 0; i < self.obstacles.count; i++)
-            {
-                CCNode *obstacle = self.obstacles[i];
-    
-                obstacle.position = ccpSub(obstacle.position, ccp((i % 2)?3.0:-3.0,0));
-    
-                //check for collisions first
-                if ([self doesCollide:obstacle withPlayer:_playerNode])
-                {
-                    NSLog(@"++++ COLLIDE ++++++");
-    
-                    if (self.playerState==TwoBeers)
-                    {
-                        //Partical SPLASH!
-                        NSLog(@"++++ SPLASH 2Beers++++++");
-                        
-                        [self particleEffect:_playerNode loadCCBName:@"Prefabs/Splash"];
+    //Move the OBSTACLES across the screen
+    for (int i = 0; i < self.obstacles.count; i++)
+    {
+        CCNode *obstacle = self.obstacles[i];
 
-                        self.playerState=OneBeer;
-                        [self performSelector:@selector(startHustleDown) withObject:nil];
-                        [self performSelector:@selector(movePlayerToMedian) withObject:nil afterDelay:1.5f];
-                        //this is set to false in method movePlayerToMedian
-                        isCollisionInProgress = true;
-                        
-                        //[NSThread sleepForTimeInterval:0.1f];
-                    }
-                    else //if NoBeers or OneBeer- Stop
-                    {
-                        NSLog(@"++++ SPLASH ++++++");
-                        
-                        [self pauseGame];
-                        [self particleEffect:_playerNode loadCCBName:@"Prefabs/Splash"];
-                        [self performSelector:@selector(restartSetup) withObject:nil afterDelay:1.5f];
-                        
-                    }
-                    return;
-                }
+        obstacle.position = ccpSub(obstacle.position, ccp((i % 2)?3.0:-3.0,0));
+
+        //check for collisions first
+        if ([self doesCollide:obstacle withPlayer:_playerNode])
+        {
+            NSLog(@"++++ COLLIDE ++++++");
+
+            if (self.playerState==TwoBeers)
+            {
+                //Partical SPLASH!
+                NSLog(@"++++ SPLASH 2Beers++++++");
                 
-                if (i%2)
-                {
-                    //Check if they have gone off screen, if they have reposition them
-                    if (obstacle.position.x < -obstacle.contentSize.width )
-                    {
-                        obstacle.position = ccp(_levelNode.contentSizeInPoints.width+obstacle.contentSize.width+45,obstacle.position.y);
-                        //NSLog(@"Offscreen");
-                    }
-                    
-                } else {
-                    //Check if they have gone off screen to the right, if they have reposition them
-                    if (obstacle.position.x > _levelNode.contentSizeInPoints.width+45 )
-                    {
-                        obstacle.position = ccp(0-obstacle.contentSize.width+45,obstacle.position.y);
-                        //NSLog(@"Offscreen");
-                    }
-                }
+                [self particleEffect:_playerNode loadCCBName:@"Prefabs/Splash"];
+
+                self.playerState=OneBeer;
+                [self performSelector:@selector(startHustleDown) withObject:nil];
+                
+                [self performSelector:@selector(pauseGame) withObject:nil];
+                [self performSelector:@selector(resetGame) withObject:nil afterDelay:0.5f];
+                [self performSelector:@selector(startGame) withObject:nil];
+                //[self performSelector:@selector(movePlayerToMedian) withObject:nil afterDelay:1.5f];
+                
+                //this is set to false in method movePlayerToMedian
+                isCollisionInProgress = true;
+                
+                //[NSThread sleepForTimeInterval:0.1f];
             }
+            else //if NoBeers or OneBeer- Stop
+            {
+                NSLog(@"++++ SPLASH ++++++");
+                
+                [self pauseGame];
+                [self particleEffect:_playerNode loadCCBName:@"Prefabs/Splash"];
+                [self performSelector:@selector(restartSetup) withObject:nil afterDelay:1.5f];
+                
+            }
+            return;
+        }
+        
+        if (i%2)
+        {
+            //Check if they have gone off screen, if they have reposition them
+            if (obstacle.position.x < -obstacle.contentSize.width )
+            {
+                obstacle.position = ccp(_levelNode.contentSizeInPoints.width+obstacle.contentSize.width+45,obstacle.position.y);
+                //NSLog(@"Offscreen");
+            }
+            
+        } else {
+            //Check if they have gone off screen to the right, if they have reposition them
+            if (obstacle.position.x > _levelNode.contentSizeInPoints.width+45 )
+            {
+                obstacle.position = ccp(0-obstacle.contentSize.width+45,obstacle.position.y);
+                //NSLog(@"Offscreen");
+            }
+        }
+    }
 
 }
 
@@ -288,7 +300,8 @@ bool isCollisionInProgress = false;
             [self performSelector:@selector(serve2Beers) withObject:nil];
             
              //turn the ligger around
-            [self performSelector:@selector(startHustleDown) withObject:nil  afterDelay:1.5f];
+            [self performSelector:@selector(faceHustleDown) withObject:nil  afterDelay:1.5f];
+            //reset the bartender- folder arms
             [self performSelector:@selector(nextCustomer) withObject:nil afterDelay:1.5f];
             //forces it restart timer
             cntBartender=0;
@@ -331,7 +344,8 @@ bool isCollisionInProgress = false;
     else
     {
         [self pauseAnimation:(CCNode*)self.promotors[0]];
-        [self performSelector:@selector(startHustleUp) withObject:nil];
+        //just face the Ligger Up
+        [self performSelector:@selector(faceHustleUp) withObject:nil];
         isPromotorSetupStarted = false;
         self.levelState = PlayGame;
     }
@@ -347,8 +361,10 @@ bool isCollisionInProgress = false;
     else
     {
         //particle explosion
-        //flip ligger to right
-        [self performSelector:@selector(startHustleRight) withObject:nil];
+        //walk the ligger to right
+        [self performSelector:@selector(walkRight) withObject:nil];
+        //start promotor animation
+        [self performSelector:@selector(startAnimation:forSequence:) withObject:((CCNode*)self.promotors[0]) withObject:@"walk"];
         (self.levelState=LevelUp);
         NSLog(@"+++++++START LEVELUP SEQUENCE+++++++");
     }
@@ -358,7 +374,16 @@ bool isCollisionInProgress = false;
 -(void) LevelUp
 {
     _playerNode.position = ccpSub(_playerNode.position, ccp(-1.0,0));
+
     ((CCNode*)self.promotors[0]).position = ccpSub(((CCNode*)self.promotors[0]).position, ccp(-1.0,0));
+
+
+    //move the backstage entrance until it gets to its final point
+    if (self.bkstage_b.position.x > 498.5)
+    {
+        self.bkstage_f.position = ccpSub(self.bkstage_f.position, ccp(1.0,0));
+        self.bkstage_b.position = ccpSub(self.bkstage_b.position, ccp(1.0,0));
+    }
     
     //Check if the promotor has gone off screen
     
@@ -385,6 +410,9 @@ bool isCollisionInProgress = false;
 {
     [((CCNode*)self.promotors[0]) removeFromParent];
     [self.promotors removeObjectAtIndex:0];
+    self.playerState=NoBeers;
+    //just face the Ligger Up
+    [self performSelector:@selector(faceHustleUp) withObject:nil];
     //put the Ligger back at the start position
     _playerNode.position = ccp(280.268311,48.001999);
     self.levelState = GameSetup;
@@ -465,6 +493,8 @@ bool isCollisionInProgress = false;
 
 - (void)startHustleRight
 {
+    self.playerMoveState = PlayerRight;
+    
     //restarts the bartender animation
     if (bBartenderServing)
     {
@@ -488,8 +518,27 @@ bool isCollisionInProgress = false;
 
 }
 
+- (void)walkRight
+{
+    
+    // the animation manager of each node is stored in the 'animationManager' property
+    CCAnimationManager* animationManager = _playerNode.animationManager;
+    // timelines can be referenced and run by name
+    switch (self.playerState) {
+        case TwoBeers:
+            [animationManager runAnimationsForSequenceNamed:@"WalkRight-2Beers"];
+            break;
+        case OneBeer:
+            [animationManager runAnimationsForSequenceNamed:@"WalkRight-1Beer"];
+            break;
+    }
+    
+}
+
 - (void)startHustleLeft
 {
+    self.playerMoveState = PlayerLeft;
+    
     //restarts the bartender animation
     if (bBartenderServing)
     {
@@ -514,6 +563,9 @@ bool isCollisionInProgress = false;
 
 - (void)startHustleUp
 {
+    self.playerMoveState = PlayerUp;
+    self.moveLength = 64;//kVERTICALMOVE;
+    
     // the animation manager of each node is stored in the 'animationManager' property
     CCAnimationManager* animationManager = _playerNode.animationManager;
     switch (self.playerState) {
@@ -530,8 +582,41 @@ bool isCollisionInProgress = false;
     
 }
 
+/*
+ * Fce the Ligger Up (back) with NoBeers
+ */
+- (void)faceHustleUp
+{
+    
+    // the animation manager of each node is stored in the 'animationManager' property
+    CCAnimationManager* animationManager = _playerNode.animationManager;
+
+   [animationManager runAnimationsForSequenceNamed:@"FaceUp"];
+
+    
+}
+
+/*
+ * Face the Ligger Down(front) with TwoBeers
+ */
+- (void)faceHustleDown
+{
+    
+    // the animation manager of each node is stored in the 'animationManager' property
+    CCAnimationManager* animationManager = _playerNode.animationManager;
+    
+    [animationManager runAnimationsForSequenceNamed:@"FaceDown2"];
+    
+    
+}
+
+
+
+
 - (void)startHustleDown
 {
+    self.playerMoveState = PlayerDown;
+    
     //restarts the bartender animation
     if (bBartenderServing)
     {
@@ -575,11 +660,15 @@ bool isCollisionInProgress = false;
             NSLog(@"SwipeDown");
             if (self.levelState==PlayGame)
             {
-                if ((_playerNode.position.y) > kBOARDBOTTOMBOUND) //keeps with bottom boundry
+                if ((_playerNode.position.y) > kBOARDBOTTOMBOUND ) //keeps with bottom boundry
                 {
+                    NSLog(@"Player Row: %f Column: %f",_playerNode.position.y, _playerNode.position.x);
+                    //dont let the Ligger enter the Promotor area
+                    //TODO: make constants
+                    if (_playerNode.position.y < 113 && (_playerNode.position.x < 229|| _playerNode.position.x > 436)) break;
+                    
                     _playerNode.position = CGPointMake(_playerNode.position.x,_playerNode.position.y-kVERTICALMOVE);
                     [self performSelector:@selector(startHustleDown) withObject:nil];
-                    //NSLog(@"Player Row: %f Column: %f",_playerNode.position.y, _playerNode.position.x);
                     
                     //if we move away from the bar, right, left or down, reset the bartender
                     
@@ -588,11 +677,8 @@ bool isCollisionInProgress = false;
                     {
                        NSLog(@"+++++++LEVEL COMPLETED+++++++");
                         self.levelState=CompleteLevel;
-                       //if (_playerNode.position.x < 281)
-                           [self performSelector:@selector(startHustleLeft) withObject:nil];
-
-                        //else
-                        //    ;
+  
+                        [self performSelector:@selector(startHustleLeft) withObject:nil];
                        
                     } else {
                         NSLog(@"NOT COMPLETED LEVEL, Y: %f PlayerState: %d",_playerNode.position.y,self.playerState != NoBeers);
@@ -606,6 +692,12 @@ bool isCollisionInProgress = false;
             {
                 if ((_playerNode.position.x) > kBOARDLEFTBOUND) //keeps with left boundry
                 {
+                    NSLog(@"Player Row: %f Column: %f",_playerNode.position.y, _playerNode.position.x);
+                    //dont let the Ligger enter the Promotor area
+                    //TODO- CONSTANTS!!
+                    if (_playerNode.position.y < 49 && _playerNode.position.x < 281) break;
+                    
+
                     _playerNode.position = CGPointMake(_playerNode.position.x-kHORIZONTALMOVE,_playerNode.position.y);
                     [self performSelector:@selector(startHustleLeft) withObject:nil];
                 }
@@ -615,8 +707,12 @@ bool isCollisionInProgress = false;
             NSLog(@"SwipeRight");
             if (self.levelState==PlayGame)
             {
+                
                 if ((_playerNode.position.x) < kBOARDRIGHTBOUND) //keeps with right boundry
                 {
+                    if (_playerNode.position.y < 49 && _playerNode.position.x > 384) break;
+                    
+                    NSLog(@"Player Row: %f Column: %f",_playerNode.position.y, _playerNode.position.x);
                     _playerNode.position = CGPointMake(_playerNode.position.x+kHORIZONTALMOVE,_playerNode.position.y);
                     [self performSelector:@selector(startHustleRight) withObject:nil];
                 }
@@ -628,21 +724,14 @@ bool isCollisionInProgress = false;
 
 -(void) startGame
 {
-    NSLog(@"PLAYER START POS- x:%f y:%f",_playerNode.position.x,_playerNode.position.y);
+    //NSLog(@"PLAYER START POS- x:%f y:%f Numb obstabcle: %lu",_playerNode.position.x,_playerNode.position.y,(unsigned long)self.obstacles.count);
     
     GameScene.halt = false;
     
-    //TODO: iterate through the obstacles collection instead
-    [self performSelector:@selector(startAnimation:forSequence:) withObject:self.obstacle1 withObject:@"default"];
-    [self performSelector:@selector(startAnimation:forSequence:) withObject:self.obstacle2 withObject:@"default"];
-    [self performSelector:@selector(startAnimation:forSequence:) withObject:self.obstacle3 withObject:@"default"];
-    [self performSelector:@selector(startAnimation:forSequence:) withObject:self.obstacle4 withObject:@"default"];
-    [self performSelector:@selector(startAnimation:forSequence:) withObject:self.obstacle5 withObject:@"default"];
-    [self performSelector:@selector(startAnimation:forSequence:) withObject:self.obstacle6 withObject:@"default"];
-    [self performSelector:@selector(startAnimation:forSequence:) withObject:self.obstacle7 withObject:@"default"];
-    [self performSelector:@selector(startAnimation:forSequence:) withObject:self.obstacle8 withObject:@"default"];
-    [self performSelector:@selector(startAnimation:forSequence:) withObject:self.obstacle9 withObject:@"default"];
-    [self performSelector:@selector(startAnimation:forSequence:) withObject:self.obstacle10 withObject:@"default"];
+    for (int i = 0; i < self.obstacles.count; i++)
+    {
+        [self performSelector:@selector(startAnimation:forSequence:) withObject:(CCNode*)self.obstacles[i] withObject:@"default"];
+    }
 }
 
 
@@ -650,17 +739,37 @@ bool isCollisionInProgress = false;
 {
     GameScene.halt = true;
     
-    //TODO: iterate through the obstacles collection instead
-    [self performSelector:@selector(pauseAnimation:) withObject:self.obstacle1];
-    [self performSelector:@selector(pauseAnimation:) withObject:self.obstacle2];
-    [self performSelector:@selector(pauseAnimation:) withObject:self.obstacle3];
-    [self performSelector:@selector(pauseAnimation:) withObject:self.obstacle4];
-    [self performSelector:@selector(pauseAnimation:) withObject:self.obstacle5];
-    [self performSelector:@selector(pauseAnimation:) withObject:self.obstacle6];
-    [self performSelector:@selector(pauseAnimation:) withObject:self.obstacle7];
-    [self performSelector:@selector(pauseAnimation:) withObject:self.obstacle8];
-    [self performSelector:@selector(pauseAnimation:) withObject:self.obstacle9];
-    [self performSelector:@selector(pauseAnimation:) withObject:self.obstacle10];
+    for (int i = 0; i < self.obstacles.count; i++)
+    {
+        [self performSelector:@selector(pauseAnimation:) withObject:(CCNode*)self.obstacles[i]];
+    }
+
+}
+
+-(void) resetGame //:(CCNode*) obstacle
+{
+
+    
+    for (int i = 0; i < self.obstacles.count; i++)
+    {
+
+        
+        if (i%2)
+        {
+
+                ((CCNode*)self.obstacles[i]).position = ccp(_levelNode.contentSizeInPoints.width+((CCNode*)self.obstacles[i]).contentSize.width+45,((CCNode*)self.obstacles[i]).position.y);
+
+            
+        } else {
+
+                ((CCNode*)self.obstacles[i]).position = ccp(0-((CCNode*)self.obstacles[i]).contentSize.width+45,((CCNode*)self.obstacles[i]).position.y);
+
+
+        }
+    
+        GameScene.halt = false;
+        isCollisionInProgress = false;
+    }
 }
 
 //-(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
