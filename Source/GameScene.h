@@ -43,6 +43,8 @@
 @property (nonatomic) LevelState levelState;
 @property (nonatomic) PlayerMoveState playerMoveState;
 @property (nonatomic) int moveLength;
+@property (nonatomic) int screenWidth;
+@property (nonatomic) int screenHeight;
 
 + (Boolean) halt;
 + (void) setHalt:(Boolean)value;
@@ -55,6 +57,7 @@
 - (void)startHustleRight;
 - (void)startHustleUp;
 - (void)startHustleDown;
-
+- (CCNode*) getScreen;
+-(void) gameOver;
 
 @end

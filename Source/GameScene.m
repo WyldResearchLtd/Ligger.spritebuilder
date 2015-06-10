@@ -7,7 +7,7 @@
 //
 
 #import "GameScene.h"
-
+#import "LevelTimer.h"
 
 @implementation GameScene
 {
@@ -59,8 +59,14 @@ bool isCollisionInProgress = false;
     // enable receiving input events
     self.userInteractionEnabled = YES;
     
+    CGSize winSize = [[CCDirector sharedDirector] viewSize];
+    self.screenWidth = winSize.width;
+    self.screenHeight = winSize.height;
+    
+    LevelTimer* levelTimer = [[LevelTimer alloc] initWithGame:self x:20 y:self.screenHeight-20];
+    [levelTimer startTimer];
 }
-
+ 
 -(void) exitButtonPressed
 {
     NSLog(@"exitButtonPressed");
@@ -68,6 +74,17 @@ bool isCollisionInProgress = false;
     CCScene* scene = [CCBReader loadAsScene:@"MainScene"];
     CCTransition* transition = [CCTransition transitionFadeWithDuration:1.5];
     [[CCDirector sharedDirector] presentScene:scene withTransition:transition];
+}
+
+-(void) gameOver
+{
+    
+    
+}
+
+- (CCNode*) getScreen
+{
+    return self;
 }
 
 -(void) loadLevelNamed:(NSString*)levelCCB
@@ -107,7 +124,7 @@ bool isCollisionInProgress = false;
     
     [self startGame];
     
-
+    
 }
 
 -(void) update:(CCTime)delta
@@ -246,6 +263,8 @@ bool isCollisionInProgress = false;
 
 }
 
+
+
 -(void) moveBartender
 {
     if (bBartenderServing || (self.playerState == TwoBeers)) return; //stops re-entry issues
@@ -254,7 +273,7 @@ bool isCollisionInProgress = false;
     if (0==cntBartender)  //first pass,
     {
 
-        // generate a real number between 0 and 5 - the number od bars
+        // generate a real number between 0 and 5 - the number of bars
         int oldIdx = idxBartender;
         //this loop gets a new random Character if it matches the previous Character
         while (idxBartender==oldIdx) {
@@ -477,6 +496,7 @@ bool isCollisionInProgress = false;
 }
 
 /*
+ * NO LONGER USED
  * used to move Player to the Median
  * in a method so you can call it after a delay
  * eg: [self performSelector:@selector(movePlayerToMedian) withObject:nil afterDelay:1.5f];
