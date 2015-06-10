@@ -63,8 +63,8 @@ bool isCollisionInProgress = false;
     self.screenWidth = winSize.width;
     self.screenHeight = winSize.height;
     
-    LevelTimer* levelTimer = [[LevelTimer alloc] initWithGame:self x:20 y:self.screenHeight-20];
-    [levelTimer startTimer];
+    _timer = [[LevelTimer alloc] initWithGame:self x:20 y:self.screenHeight-20];
+    
 }
  
 -(void) exitButtonPressed
@@ -78,8 +78,10 @@ bool isCollisionInProgress = false;
 
 -(void) gameOver
 {
+    NSLog(@"Game Over*****************");
     
-    
+    NSLog(@"Game Duration: %d",((LevelTimer*)_timer).seconds);
+    [self pauseGame];
 }
 
 - (CCNode*) getScreen
@@ -123,8 +125,6 @@ bool isCollisionInProgress = false;
     NSAssert1(self.bkstage_b, @"backstage-back node not found in level: %@", levelCCB);
     
     [self startGame];
-    
-    
 }
 
 -(void) update:(CCTime)delta
@@ -146,7 +146,6 @@ bool isCollisionInProgress = false;
         }
         else if (self.levelState==PlayGame)
         {
-            //[self movePlayer];
             [self moveBartender];
         }
        else if (self.levelState==CompleteLevel)
@@ -284,7 +283,7 @@ bool isCollisionInProgress = false;
         float stay = ((arc4random() % (kStopOffset *1000)) / 1000.f)+ kStartOffset;//kStartOffset is the starting number of secs
         //NSLog(@"Bartender Stay %f", stay);
         
-        ttBartender = stay * 30; //stay in secs mult by 30 fps
+        ttBartender = stay * 60; //stay in secs mult by 60 fps
         
         int point = (72+(105*idxBartender)+1); //72 & 105- magic numbers
         //this gets a random character- no longer used
@@ -305,7 +304,7 @@ bool isCollisionInProgress = false;
     else if (cntBartender==ttBartender)
     {
         //TODO - Time still wrong....
-        NSLog(@"BARTENDER RESET: Cnt: %d Secs: %d", cntBartender, ttBartender/30);
+        NSLog(@"BARTENDER RESET: Cnt: %d Secs: %d", cntBartender, ttBartender/60);
         cntBartender = 0;
     }
     else
@@ -367,6 +366,8 @@ bool isCollisionInProgress = false;
         [self performSelector:@selector(faceHustleUp) withObject:nil];
         isPromotorSetupStarted = false;
         self.levelState = PlayGame;
+        [((LevelTimer*)_timer) startTimer];
+        NSLog(@"GAME LEVELTIMER STARTED");
     }
 }
 
@@ -392,6 +393,9 @@ bool isCollisionInProgress = false;
 
 -(void) LevelUp
 {
+    [((LevelTimer*)_timer) pauseTimer];
+    NSLog(@"GAME LEVELTIMER PAUSED");
+    
     _playerNode.position = ccpSub(_playerNode.position, ccp(-1.0,0));
 
     ((CCNode*)self.promotors[0]).position = ccpSub(((CCNode*)self.promotors[0]).position, ccp(-1.0,0));
@@ -412,7 +416,10 @@ bool isCollisionInProgress = false;
         //remove the promotor- Should Promotors collection be global?
         //[self.promotors removeObjectAtIndex:0];
         //LevelUp
-        //TODO Temp!!!! 
+        
+        NSLog(@"Seconds: %d",((LevelTimer*)_timer).seconds);
+        
+        //TODO Temp!!!!
         CCScene* scene = [CCBReader loadAsScene:@"MainScene"];
         CCTransition* transition = [CCTransition transitionFadeWithDuration:1.5];
         [[CCDirector sharedDirector] presentScene:scene withTransition:transition];
@@ -747,6 +754,8 @@ bool isCollisionInProgress = false;
     //NSLog(@"PLAYER START POS- x:%f y:%f Numb obstabcle: %lu",_playerNode.position.x,_playerNode.position.y,(unsigned long)self.obstacles.count);
     
     GameScene.halt = false;
+
+    NSLog(@"ANIMATION STARTED");
     
     for (int i = 0; i < self.obstacles.count; i++)
     {
@@ -758,6 +767,10 @@ bool isCollisionInProgress = false;
 -(void) pauseGame //:(CCNode*) obstacle
 {
     GameScene.halt = true;
+    
+    [_timer pauseTimer];
+    
+    [self performSelector:@selector(pauseAnimation:) withObject:self.bartender1];
     
     for (int i = 0; i < self.obstacles.count; i++)
     {

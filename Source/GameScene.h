@@ -13,6 +13,7 @@
 #import "CCDirector.h"
 #import "Constants.h"
 
+
 @interface GameScene : CCNode
 
 @property (nonatomic) NSMutableArray* obstacles;
@@ -38,13 +39,13 @@
 @property (nonatomic) CCNode *bkstage_f;
 @property (nonatomic) CCNode *bkstage_b;
 
-
+@property (nonatomic) id timer;
 @property (nonatomic) PlayerState playerState;
 @property (nonatomic) LevelState levelState;
 @property (nonatomic) PlayerMoveState playerMoveState;
-@property (nonatomic) int moveLength;
-@property (nonatomic) int screenWidth;
-@property (nonatomic) int screenHeight;
+@property int moveLength;
+@property int screenWidth;
+@property int screenHeight;
 
 + (Boolean) halt;
 + (void) setHalt:(Boolean)value;

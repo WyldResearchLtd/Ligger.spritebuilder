@@ -15,7 +15,7 @@
     int _seconds;
     float _timeDecrement;
     
-    CCSprite * _timeLabel;
+    //CCSprite * _timeLabel;
     CCSprite * _timeBar;
     
     NSTimer * _timer;
@@ -25,8 +25,9 @@
 }
 
 @property int seconds;
+@property (nonatomic) GameScene* game;
 
--(id) initWithGame:(GameScene *)game x:(float)posx y:(float)posy;
+-(id) initWithGame:(GameScene *)gameScene x:(float)posx y:(float)posy;
 -(void) pauseTimer;
 -(void) startTimer;
 -(void) tickTock;
