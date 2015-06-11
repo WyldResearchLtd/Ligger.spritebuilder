@@ -1,13 +1,13 @@
 //
 //  LevelTimer.m
-//  FroggerSparrow
+//  
 //
-//  Created by Rogerio Engelbert on 12/15/11.
-//  Copyright (c) 2011 rengelbert.com. All rights reserved.
+//  Created by Gene Myers
+//  Copyright (c) 2015 Fezzee Ltd. All rights reserved.
 //
 
 #import "LevelTimer.h"
-#import "GameScene.h"
+//#import "GameScene.h"
 
 
 @implementation LevelTimer
@@ -30,6 +30,7 @@
         
         
         _timeBar = [CCSprite spriteWithImageNamed:@"Published-iOS/Sprites/resources-phone/timerbar.png"];
+        NSAssert(_timeBar!=nil, @"timebar.png is Nil");
         //_timeBar = [_game.imageCache getSkin:@"time_bar.png"];
         [_timeBar setAnchorPoint:ccp(0,0)];
         _timeBar.position = CGPointMake(posx + _game.screenWidth * 0.08, posy - _timeBar.textureRect.size.height * 0.5);

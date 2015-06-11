@@ -13,8 +13,9 @@
 typedef enum PlayerMoveState {PlayerUp, PlayerDown, PlayerLeft, PlayerRight} PlayerMoveState;
 typedef enum PlayerState {NoBeers, TwoBeers, OneBeer} PlayerState;
 typedef enum LevelState {GameSetup, PlayGame, CompleteLevel, LevelUp} LevelState;
+typedef enum ObstacleDirection {MoveLeft,MoveRight} ObstacleDirection;
 
-const bool EASYPASS = true; //used to make it easy to level up
+const bool EASYPASS = false; //used to make it easy to level up
 
 const int kBOARDTOPBOUND = 800;
 const int kBOARDBOTTOMBOUND = 50;
@@ -28,5 +29,7 @@ const int kMedianStripRow = 432;
 
 const int kStartOffset = 4;
 const int kStopOffset = 3;
+
+const float kSPEED = 2.5;//3.5;3.0;2.5;
 
 #endif

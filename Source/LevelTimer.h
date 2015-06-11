@@ -1,9 +1,9 @@
 //
 //  LevelTimer.h
-//  FroggerSparrow
 //
-//  Created by Rogerio Engelbert on 12/15/11.
-//  Copyright (c) 2011 rengelbert.com. All rights reserved.
+//
+//  Created by Gene Myers
+//  Copyright (c) 2015 Fezzee Ltd. All rights reserved.
 //
 
 #import "GameScene.h"

@@ -60,6 +60,7 @@
 		927F61BA196C771E000F43EF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B737896D180762440076A88C /* Default.png */; };
 		927F61BB196C771E000F43EF /* iPad-old.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5907188484E7003F4D28 /* iPad-old.png */; };
 		B04E04991B272505009E6DA3 /* LevelTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = B04E04981B272505009E6DA3 /* LevelTimer.m */; };
+		B062DF0E1B29666F0014ADA5 /* Obstacle.m in Sources */ = {isa = PBXBuildFile; fileRef = B062DF0D1B29666F0014ADA5 /* Obstacle.m */; };
 		B0AE24971AE3A746001979A5 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B0AE24961AE3A746001979A5 /* GameScene.m */; };
 		B71F5911188484E7003F4D28 /* iPad-old.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5907188484E7003F4D28 /* iPad-old.png */; };
 		B71F5912188484E7003F4D28 /* iPad-old@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5908188484E7003F4D28 /* iPad-old@2x.png */; };
@@ -173,6 +174,8 @@
 		9534242F9355FECD6304D9F9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B04E04971B272505009E6DA3 /* LevelTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LevelTimer.h; path = Source/LevelTimer.h; sourceTree = "<group>"; };
 		B04E04981B272505009E6DA3 /* LevelTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LevelTimer.m; path = Source/LevelTimer.m; sourceTree = "<group>"; };
+		B062DF0C1B29666F0014ADA5 /* Obstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Obstacle.h; path = Source/Obstacle.h; sourceTree = "<group>"; };
+		B062DF0D1B29666F0014ADA5 /* Obstacle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Obstacle.m; path = Source/Obstacle.m; sourceTree = "<group>"; };
 		B066F7C81AF1BAB100F9BC19 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B0AE24951AE3A746001979A5 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = Source/GameScene.h; sourceTree = "<group>"; };
 		B0AE24961AE3A746001979A5 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameScene.m; path = Source/GameScene.m; sourceTree = "<group>"; };
@@ -455,6 +458,8 @@
 				B0AE24951AE3A746001979A5 /* GameScene.h */,
 				B0AE24961AE3A746001979A5 /* GameScene.m */,
 				B0AE24981AE3F861001979A5 /* Constants.h */,
+				B062DF0C1B29666F0014ADA5 /* Obstacle.h */,
+				B062DF0D1B29666F0014ADA5 /* Obstacle.m */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -831,6 +836,7 @@
 				B04E04991B272505009E6DA3 /* LevelTimer.m in Sources */,
 				7A046D8C19E8A20E004C4763 /* MainScene.m in Sources */,
 				B0AE24971AE3A746001979A5 /* GameScene.m in Sources */,
+				B062DF0E1B29666F0014ADA5 /* Obstacle.m in Sources */,
 				5B121038197487F2004C1E1D /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

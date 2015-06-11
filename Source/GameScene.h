@@ -14,11 +14,13 @@
 #import "Constants.h"
 
 
+
 @interface GameScene : CCNode
 
 @property (nonatomic) NSMutableArray* obstacles;
 @property (nonatomic) NSMutableArray* promotors;
 @property (nonatomic) CCNode *obstacle1;
+@property (nonatomic) CCNode *obstacle1a; //TEST
 @property (nonatomic) CCNode *obstacle2;
 @property (nonatomic) CCNode *obstacle3;
 @property (nonatomic) CCNode *obstacle4;
@@ -59,6 +61,9 @@
 - (void)startHustleUp;
 - (void)startHustleDown;
 - (CCNode*) getScreen;
--(void) gameOver;
+- (void) gameOver;
+
+- (void) showPopoverNamed:(NSString*)popoverName;
+- (void) removePopover;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "GameScene.h"
 #import "LevelTimer.h"
+#import "Obstacle.h"
 
 @implementation GameScene
 {
@@ -96,21 +97,42 @@ bool isCollisionInProgress = false;
     self.playerState = NoBeers;
     NSAssert1(_playerNode, @"player node not found in level: %@", levelCCB);
     
-    self.obstacle1 = [self getChildByName:@"obstacle1" recursively:YES];
-    self.obstacle2 = [self getChildByName:@"obstacle2" recursively:YES];
-    self.obstacle3 = [self getChildByName:@"obstacle3" recursively:YES];
-    self.obstacle4 = [self getChildByName:@"obstacle4" recursively:YES];
-    self.obstacle5 = [self getChildByName:@"obstacle5" recursively:YES];
-    self.obstacle6 = [self getChildByName:@"obstacle6" recursively:YES];
-    self.obstacle7 = [self getChildByName:@"obstacle7" recursively:YES];
-    self.obstacle8 = [self getChildByName:@"obstacle8" recursively:YES];
-    self.obstacle9 = [self getChildByName:@"obstacle9" recursively:YES];
-    self.obstacle10 = [self getChildByName:@"obstacle10" recursively:YES];
-    self.obstacle11 = [self getChildByName:@"obstacle11" recursively:YES];
-    
-    self.obstacles = [NSMutableArray arrayWithObjects:self.obstacle1,self.obstacle2,self.obstacle3,self.obstacle4,self.obstacle5,self.obstacle6,self.obstacle7,self.obstacle8,self.obstacle9,self.obstacle10,self.obstacle11, nil];
+    if (EASYPASS)
+    {
+        self.obstacle1 = [self getChildByName:@"obstacle1" recursively:YES];
+        self.obstacle2 = [self getChildByName:@"obstacle2" recursively:YES];
+        self.obstacle3 = [self getChildByName:@"obstacle3" recursively:YES];
+        self.obstacle4 = [self getChildByName:@"obstacle4" recursively:YES];
+        self.obstacle5 = [self getChildByName:@"obstacle5" recursively:YES];
+        self.obstacle6 = [self getChildByName:@"obstacle6" recursively:YES];
+        self.obstacle7 = [self getChildByName:@"obstacle7" recursively:YES];
+        self.obstacle8 = [self getChildByName:@"obstacle8" recursively:YES];
+        self.obstacle9 = [self getChildByName:@"obstacle9" recursively:YES];
+        self.obstacle10 = [self getChildByName:@"obstacle10" recursively:YES];
+        self.obstacle11 = [self getChildByName:@"obstacle11" recursively:YES];
+
+        self.obstacles = [NSMutableArray arrayWithObjects:self.obstacle1,self.obstacle2,self.obstacle3,self.obstacle4,self.obstacle5,self.obstacle6,self.obstacle7,self.obstacle8,self.obstacle9,self.obstacle10,self.obstacle11, nil];
+    }
+    else
+    {
+       
+        Obstacle* ob1 = (Obstacle*)[self getChildByName:@"obstacle1" recursively:YES];
+        ob1.direction=1;//1 is right
+        Obstacle* ob2 = (Obstacle*)[CCBReader load:@"Prefabs/Streaker-r"];;
+        ob2.position = ccpSub(ob1.position, ccp(-100,0));
+        ob2.direction = 1;//1 is right
+        [self addChild:ob2];
+        Obstacle* ob3 = (Obstacle*)[self getChildByName:@"obstacle2" recursively:YES];
+        ob3.direction = 0; //0 is left
+
+        
+        self.obstacles = [NSMutableArray arrayWithObjects:ob1,ob2,ob3, nil];
+
+        
+    }
     
     self.bartender1 = [self getChildByName:@"bartender1" recursively:YES];
+    NSAssert1(self.bartender1, @"backstage-front node not found in level: %@", levelCCB);
     
     self.promotor1 = [self getChildByName:@"promotor1" recursively:YES];
     self.promotor2 = [self getChildByName:@"promotor2" recursively:YES];
@@ -125,6 +147,30 @@ bool isCollisionInProgress = false;
     NSAssert1(self.bkstage_b, @"backstage-back node not found in level: %@", levelCCB);
     
     [self startGame];
+}
+
++ (CCNode*) cloneCCNode:(CCNode*)source
+{
+    CCNode* clone = [CCNode node];
+    for (CCNode* srcSubnode in source.children) {
+        
+        CCNode* subnode;
+        
+        if ([srcSubnode isKindOfClass:[CCSprite class]]) { //only CCSprites are copied, add other subclasses if you need to
+            CCSprite* srcSprite = (CCSprite*)srcSubnode;
+            subnode = [CCSprite spriteWithTexture:srcSprite.texture];
+            //((CCSprite*)subnode).//displayFrame = srcSprite.displayFrame;
+        } else {
+            subnode = [self cloneCCNode:srcSubnode];
+        }
+        
+        subnode.rotation = srcSubnode.rotation;
+        subnode.position = srcSubnode.position;
+        subnode.anchorPoint = srcSubnode.anchorPoint;
+        subnode.zOrder = srcSubnode.zOrder;
+        [clone addChild:subnode];
+    }
+    return clone;
 }
 
 -(void) update:(CCTime)delta
@@ -201,9 +247,13 @@ bool isCollisionInProgress = false;
     for (int i = 0; i < self.obstacles.count; i++)
     {
         CCNode *obstacle = self.obstacles[i];
-
-        obstacle.position = ccpSub(obstacle.position, ccp((i % 2)?3.0:-3.0,0));
-
+ 
+        if (EASYPASS)
+            obstacle.position = ccpSub(obstacle.position, ccp((i % 2)?kSPEED:-kSPEED,0));
+        else
+            obstacle.position = ccpSub(obstacle.position, ccp( (!((Obstacle*)obstacle).direction)?kSPEED:-kSPEED,0)); //if !right
+  
+        
         //check for collisions first
         if ([self doesCollide:obstacle withPlayer:_playerNode])
         {
@@ -318,9 +368,9 @@ bool isCollisionInProgress = false;
             [self performSelector:@selector(serve2Beers) withObject:nil];
             
              //turn the ligger around
-            [self performSelector:@selector(faceHustleDown) withObject:nil  afterDelay:1.5f];
+            [self performSelector:@selector(faceHustleDown) withObject:nil  afterDelay:0.5f];
             //reset the bartender- folder arms
-            [self performSelector:@selector(nextCustomer) withObject:nil afterDelay:1.5f];
+            [self performSelector:@selector(nextCustomer) withObject:nil afterDelay:0.6f];
             //forces it restart timer
             cntBartender=0;
             
@@ -492,14 +542,12 @@ bool isCollisionInProgress = false;
     [animationManager runAnimationsForSequenceNamed:@"Serve2Beers"];
     //set the player to 2Beers state
     self.playerState = TwoBeers;
-
 }
 
 - (void) nextCustomer
 {
     CCAnimationManager* animationManager = _bartender1.animationManager;
     [animationManager runAnimationsForSequenceNamed:@"empty"];
-    
 }
 
 /*
@@ -805,6 +853,30 @@ bool isCollisionInProgress = false;
     }
 }
 
+-(void) showPopoverNamed:(NSString*)name
+{
+//    if (_popoverMenuLayer == nil)
+//    {
+//        GameMenuLayer* newMenuLayer = (GameMenuLayer*)[CCBReader load:name];
+//        NSAssert(newMenuLayer!=nil, @"GameMenuLayer in showPopoverNamed is Nil");
+//        [self addChild:newMenuLayer];
+//        _popoverMenuLayer = newMenuLayer;
+//        _popoverMenuLayer.gameScene = self;
+//        _gameMenuLayer.visible = NO;
+//        _levelNode.paused = YES;
+//    }
+}
+
+-(void) removePopover
+{
+//    if (_popoverMenuLayer)
+//    {
+//        [_popoverMenuLayer removeFromParent];
+//        _popoverMenuLayer = nil;
+//        _gameMenuLayer.visible = YES;
+//        _levelNode.paused = NO;
+//    }
+}
 //-(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 //{
 //    _playerNode.position = [touch locationInNode:self];

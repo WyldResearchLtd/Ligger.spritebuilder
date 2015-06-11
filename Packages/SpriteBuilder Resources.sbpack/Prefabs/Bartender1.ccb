@@ -16,7 +16,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>2</integer>
+	<integer>0</integer>
 	<key>docDimensionsType</key>
 	<integer>1</integer>
 	<key>fileType</key>
@@ -57,7 +57,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_2beer/barman_2beer_00000_00000.png</string>
+								<string>animation-bartenders/bartender_1beer/barman_1beer_00000.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -75,7 +75,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_2beer/barman_2beer_00000_00001.png</string>
+								<string>animation-bartenders/bartender_1beer/barman_1beer_00001.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -93,7 +93,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_2beer/barman_2beer_00000_00002.png</string>
+								<string>animation-bartenders/bartender_1beer/barman_1beer_00002.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -111,7 +111,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_2beer/barman_2beer_00000_00003.png</string>
+								<string>animation-bartenders/bartender_1beer/barman_1beer_00003.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -129,7 +129,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_2beer/barman_2beer_00000_00004.png</string>
+								<string>animation-bartenders/bartender_1beer/barman_1beer_00004.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -147,7 +147,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_2beer/barman_2beer_00000_00005.png</string>
+								<string>animation-bartenders/bartender_1beer/barman_1beer_00005.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -165,7 +165,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_2beer/barman_2beer_00000_00006.png</string>
+								<string>animation-bartenders/bartender_1beer/barman_1beer_00006.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -183,7 +183,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_2beer/barman_2beer_00000_00007.png</string>
+								<string>animation-bartenders/bartender_1beer/barman_1beer_00007.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -201,7 +201,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_2beer/barman_2beer_00000_00008.png</string>
+								<string>animation-bartenders/bartender_1beer/barman_1beer_00008.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -219,7 +219,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_2beer/barman_2beer_00000_00009.png</string>
+								<string>animation-bartenders/bartender_1beer/barman_1beer_00009.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -237,7 +237,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_2beer/barman_2beer_00000_00010.png</string>
+								<string>animation-bartenders/bartender_1beer/barman_1beer_00010.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -255,7 +255,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_2beer/barman_2beer_00000_00011.png</string>
+								<string>animation-bartenders/bartender_1beer/barman_1beer_00011.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -273,7 +273,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_2beer/barman_2beer_00000_00012.png</string>
+								<string>animation-bartenders/bartender_1beer/barman_1beer_00012.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -291,7 +291,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_2beer/barman_2beer_00000_00013.png</string>
+								<string>animation-bartenders/bartender_1beer/barman_1beer_00013.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -309,7 +309,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_2beer/barman_2beer_00000_00014.png</string>
+								<string>animation-bartenders/bartender_1beer/barman_1beer_00014.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -327,7 +327,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_2beer/barman_2beer_00000_00015.png</string>
+								<string>animation-bartenders/bartender_1beer/barman_1beer_00015.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -345,7 +345,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_2beer/barman_2beer_00000_00016.png</string>
+								<string>animation-bartenders/bartender_1beer/barman_1beer_00016.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -363,7 +363,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_2beer/barman_2beer_00000_00017.png</string>
+								<string>animation-bartenders/bartender_1beer/barman_1beer_00017.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -381,7 +381,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_2beer/barman_2beer_00000_00018.png</string>
+								<string>animation-bartenders/bartender_1beer/barman_1beer_00018.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -399,7 +399,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_2beer/barman_2beer_00000_00019.png</string>
+								<string>animation-bartenders/bartender_1beer/barman_1beer_00019.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -417,7 +417,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_2beer/barman_2beer_00000_00020.png</string>
+								<string>animation-bartenders/bartender_1beer/barman_1beer_00020.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -435,7 +435,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_2beer/barman_2beer_00000_00021.png</string>
+								<string>animation-bartenders/bartender_1beer/barman_1beer_00021.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -453,7 +453,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_2beer/barman_2beer_00000_00022.png</string>
+								<string>animation-bartenders/bartender_1beer/barman_1beer_00022.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -471,7 +471,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_2beer/barman_2beer_00000_00023.png</string>
+								<string>animation-bartenders/bartender_1beer/barman_1beer_00023.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -489,7 +489,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_2beer/barman_2beer_00000_00024.png</string>
+								<string>animation-bartenders/bartender_1beer/barman_1beer_00024.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -507,7 +507,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_2beer/barman_2beer_00000_00025.png</string>
+								<string>animation-bartenders/bartender_1beer/barman_1beer_00025.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -525,7 +525,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_2beer/barman_2beer_00000_00026.png</string>
+								<string>animation-bartenders/bartender_1beer/barman_1beer_00026.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -543,7 +543,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_2beer/barman_2beer_00000_00027.png</string>
+								<string>animation-bartenders/bartender_1beer/barman_1beer_00027.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -561,7 +561,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_2beer/barman_2beer_00000_00028.png</string>
+								<string>animation-bartenders/bartender_1beer/barman_1beer_00028.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -579,7 +579,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_2beer/barman_2beer_00000_00029.png</string>
+								<string>animation-bartenders/bartender_1beer/barman_1beer_00029.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -610,7 +610,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_1beer/barman_1beer_00000.png</string>
+								<string>animation-bartenders/bartender_2beer/barman_2beer_00000.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -628,7 +628,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_1beer/barman_1beer_00001.png</string>
+								<string>animation-bartenders/bartender_2beer/barman_2beer_00001.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -646,7 +646,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_1beer/barman_1beer_00002.png</string>
+								<string>animation-bartenders/bartender_2beer/barman_2beer_00002.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -664,7 +664,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_1beer/barman_1beer_00003.png</string>
+								<string>animation-bartenders/bartender_2beer/barman_2beer_00003.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -682,7 +682,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_1beer/barman_1beer_00004.png</string>
+								<string>animation-bartenders/bartender_2beer/barman_2beer_00004.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -700,7 +700,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_1beer/barman_1beer_00005.png</string>
+								<string>animation-bartenders/bartender_2beer/barman_2beer_00005.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -718,7 +718,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_1beer/barman_1beer_00006.png</string>
+								<string>animation-bartenders/bartender_2beer/barman_2beer_00006.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -736,7 +736,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_1beer/barman_1beer_00007.png</string>
+								<string>animation-bartenders/bartender_2beer/barman_2beer_00007.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -754,7 +754,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_1beer/barman_1beer_00008.png</string>
+								<string>animation-bartenders/bartender_2beer/barman_2beer_00008.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -772,7 +772,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_1beer/barman_1beer_00009.png</string>
+								<string>animation-bartenders/bartender_2beer/barman_2beer_00009.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -790,7 +790,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_1beer/barman_1beer_00010.png</string>
+								<string>animation-bartenders/bartender_2beer/barman_2beer_00010.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -808,7 +808,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_1beer/barman_1beer_00011.png</string>
+								<string>animation-bartenders/bartender_2beer/barman_2beer_00011.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -826,7 +826,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_1beer/barman_1beer_00012.png</string>
+								<string>animation-bartenders/bartender_2beer/barman_2beer_00012.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -844,7 +844,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_1beer/barman_1beer_00013.png</string>
+								<string>animation-bartenders/bartender_2beer/barman_2beer_00013.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -862,7 +862,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_1beer/barman_1beer_00014.png</string>
+								<string>animation-bartenders/bartender_2beer/barman_2beer_00014.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -880,7 +880,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_1beer/barman_1beer_00015.png</string>
+								<string>animation-bartenders/bartender_2beer/barman_2beer_00015.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -898,7 +898,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_1beer/barman_1beer_00016.png</string>
+								<string>animation-bartenders/bartender_2beer/barman_2beer_00016.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -916,7 +916,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_1beer/barman_1beer_00017.png</string>
+								<string>animation-bartenders/bartender_2beer/barman_2beer_00017.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -934,7 +934,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_1beer/barman_1beer_00018.png</string>
+								<string>animation-bartenders/bartender_2beer/barman_2beer_00018.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -952,7 +952,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_1beer/barman_1beer_00019.png</string>
+								<string>animation-bartenders/bartender_2beer/barman_2beer_00019.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -970,7 +970,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_1beer/barman_1beer_00020.png</string>
+								<string>animation-bartenders/bartender_2beer/barman_2beer_00020.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -988,7 +988,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_1beer/barman_1beer_00021.png</string>
+								<string>animation-bartenders/bartender_2beer/barman_2beer_00021.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -1006,7 +1006,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_1beer/barman_1beer_00022.png</string>
+								<string>animation-bartenders/bartender_2beer/barman_2beer_00022.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -1024,7 +1024,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_1beer/barman_1beer_00023.png</string>
+								<string>animation-bartenders/bartender_2beer/barman_2beer_00023.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -1042,7 +1042,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_1beer/barman_1beer_00024.png</string>
+								<string>animation-bartenders/bartender_2beer/barman_2beer_00024.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -1060,7 +1060,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_1beer/barman_1beer_00025.png</string>
+								<string>animation-bartenders/bartender_2beer/barman_2beer_00025.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -1078,7 +1078,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_1beer/barman_1beer_00026.png</string>
+								<string>animation-bartenders/bartender_2beer/barman_2beer_00026.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -1096,7 +1096,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_1beer/barman_1beer_00027.png</string>
+								<string>animation-bartenders/bartender_2beer/barman_2beer_00027.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -1114,7 +1114,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_1beer/barman_1beer_00028.png</string>
+								<string>animation-bartenders/bartender_2beer/barman_2beer_00028.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -1132,7 +1132,7 @@
 							<integer>7</integer>
 							<key>value</key>
 							<array>
-								<string>animation-bartenders/bartender1_1beer/barman_1beer_00029.png</string>
+								<string>animation-bartenders/bartender_2beer/barman_2beer_00029.png</string>
 								<string>Use regular file</string>
 							</array>
 						</dict>
@@ -1207,7 +1207,7 @@
 			<dict>
 				<key>baseValue</key>
 				<array>
-					<string>animation-bartenders/bartender1_2beer/barman_2beer_00000_00000.png</string>
+					<string>animation-bartenders/bartender_1beer/barman_1beer_00000.png</string>
 					<string>Use regular file</string>
 				</array>
 				<key>name</key>
@@ -1217,7 +1217,7 @@
 				<key>value</key>
 				<array>
 					<string></string>
-					<string>animation-bartenders/bartender1_2beer/barman_2beer_00000_00000.png</string>
+					<string>animation-bartenders/bartender_1beer/barman_1beer_00000.png</string>
 				</array>
 			</dict>
 			<dict>
@@ -1340,7 +1340,7 @@
 			<key>length</key>
 			<real>1</real>
 			<key>name</key>
-			<string>Serve2Beers</string>
+			<string>Serve1Beer</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
@@ -1376,11 +1376,11 @@
 			<key>length</key>
 			<real>1</real>
 			<key>name</key>
-			<string>Serve1Beer</string>
+			<string>Serve2Beers</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>0.86666667461395264</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

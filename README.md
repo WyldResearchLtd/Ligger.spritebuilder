@@ -88,4 +88,20 @@ sound on/off
 connect with facebook
   
 Welcome Back Notification like Frogger!  
+
+Rows  
+-------  
+11th-FStreakers-814.7 (63.5)  
+10th-Bongo-751.2 (61)  
+9th-Spinner- 690.2  (63)  
+8th-Hula-627.2 (133)  
+7th-Conga-563.2 (69)  
+6th-Cart 494.2  
+----  
+5th-Spinners 372    (+66)  
+4th-Fork Lift  306.5  (+66)  
+3rd-Hugger-  238.5  (+64)  
+2nd-Bongos-174.5   (+62.5)  
+1st-Streaker-112     (+ 64)  
+Ligger-           48  
   
