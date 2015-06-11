@@ -9,5 +9,6 @@
 #import "Obstacle.h"
 
 @implementation Obstacle
-@synthesize direction = _direction;
+
+
 @end

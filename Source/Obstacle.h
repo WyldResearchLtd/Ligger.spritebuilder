@@ -6,12 +6,15 @@
 //  Copyright (c) 2015 Apportable. All rights reserved.
 //
 
-#import "CCSprite.h"
+#import "CCNode.h"
 #import "Constants.h"
 
-@interface Obstacle : CCSprite
+@interface Obstacle : CCNode
 {
-    int _direction;
+    
 }
-@property int direction;  //0 left, 1 right
+
+@property (nonatomic) ObstacleDirection direction;
+@property (nonatomic) CCNode* sprite;
+
 @end

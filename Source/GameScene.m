@@ -97,36 +97,119 @@ bool isCollisionInProgress = false;
     self.playerState = NoBeers;
     NSAssert1(_playerNode, @"player node not found in level: %@", levelCCB);
     
+
+    Obstacle* ob1 = [[Obstacle alloc] init];
+    ob1.sprite = (Obstacle*)[self getChildByName:@"obstacle1" recursively:YES];
+    ob1.direction = MoveRight;
+    
+    Obstacle* ob2 = [[Obstacle alloc] init];
+    ob2.sprite = (Obstacle*)[self getChildByName:@"obstacle2" recursively:YES];
+    ob2.direction = MoveLeft;
+    
+    Obstacle* ob3 = [[Obstacle alloc] init];
+    ob3.sprite = (Obstacle*)[self getChildByName:@"obstacle3" recursively:YES];
+    ob3.direction = MoveRight;
+    
+    Obstacle* ob4 = [[Obstacle alloc] init];
+    ob4.sprite = (Obstacle*)[self getChildByName:@"obstacle4" recursively:YES];
+    ob4.direction = MoveLeft;
+    
+    Obstacle* ob5 = [[Obstacle alloc] init];
+    ob5.sprite = (Obstacle*)[self getChildByName:@"obstacle5" recursively:YES];
+    ob5.direction = MoveRight;
+    
+    Obstacle* ob6 = [[Obstacle alloc] init];
+    ob6.sprite = (Obstacle*)[self getChildByName:@"obstacle6" recursively:YES];
+    ob6.direction = MoveLeft;
+    
+    Obstacle* ob7 = [[Obstacle alloc] init];
+    ob7.sprite = (Obstacle*)[self getChildByName:@"obstacle7" recursively:YES];
+    ob7.direction = MoveRight;
+    
+    Obstacle* ob8 = [[Obstacle alloc] init];
+    ob8.sprite = (Obstacle*)[self getChildByName:@"obstacle8" recursively:YES];
+    ob8.direction = MoveLeft;
+    
+    Obstacle* ob9 = [[Obstacle alloc] init];
+    ob9.sprite = (Obstacle*)[self getChildByName:@"obstacle9" recursively:YES];
+    ob9.direction = MoveRight;
+    
+    Obstacle* ob10 = [[Obstacle alloc] init];
+    ob10.sprite = (Obstacle*)[self getChildByName:@"obstacle10" recursively:YES];
+    ob10.direction = MoveLeft;
+    
+    Obstacle* ob11 = [[Obstacle alloc] init];
+    ob11.sprite = (Obstacle*)[self getChildByName:@"obstacle11" recursively:YES];
+    ob11.direction = MoveRight;
+
     if (EASYPASS)
     {
-        self.obstacle1 = [self getChildByName:@"obstacle1" recursively:YES];
-        self.obstacle2 = [self getChildByName:@"obstacle2" recursively:YES];
-        self.obstacle3 = [self getChildByName:@"obstacle3" recursively:YES];
-        self.obstacle4 = [self getChildByName:@"obstacle4" recursively:YES];
-        self.obstacle5 = [self getChildByName:@"obstacle5" recursively:YES];
-        self.obstacle6 = [self getChildByName:@"obstacle6" recursively:YES];
-        self.obstacle7 = [self getChildByName:@"obstacle7" recursively:YES];
-        self.obstacle8 = [self getChildByName:@"obstacle8" recursively:YES];
-        self.obstacle9 = [self getChildByName:@"obstacle9" recursively:YES];
-        self.obstacle10 = [self getChildByName:@"obstacle10" recursively:YES];
-        self.obstacle11 = [self getChildByName:@"obstacle11" recursively:YES];
-
-        self.obstacles = [NSMutableArray arrayWithObjects:self.obstacle1,self.obstacle2,self.obstacle3,self.obstacle4,self.obstacle5,self.obstacle6,self.obstacle7,self.obstacle8,self.obstacle9,self.obstacle10,self.obstacle11, nil];
+        self.obstacles = [NSMutableArray arrayWithObjects:ob1,ob2,ob3,ob4,ob5,ob6,ob7,ob8,ob9,ob10,ob11, nil];
     }
     else
     {
-       
-        Obstacle* ob1 = (Obstacle*)[self getChildByName:@"obstacle1" recursively:YES];
-        ob1.direction=1;//1 is right
-        Obstacle* ob2 = (Obstacle*)[CCBReader load:@"Prefabs/Streaker-r"];;
-        ob2.position = ccpSub(ob1.position, ccp(-100,0));
-        ob2.direction = 1;//1 is right
-        [self addChild:ob2];
-        Obstacle* ob3 = (Obstacle*)[self getChildByName:@"obstacle2" recursively:YES];
-        ob3.direction = 0; //0 is left
-
+ 
+        Obstacle* ob1a = [[Obstacle alloc] init];
+        ob1a.sprite = [CCBReader load:@"Prefabs/CongaLine"];;
+        ob1a.sprite.position= CGPointMake(-350.0f,112.0f);
+        ob1a.direction = MoveRight;
+        [self addChild:ob1a.sprite];
+    
+        Obstacle* ob2a = [[Obstacle alloc] init];
+        ob2a.sprite = [CCBReader load:@"Prefabs/GolfCart"];;
+        ob2a.sprite.position= CGPointMake(-350.0f,174.5f);
+        ob2a.direction = MoveLeft;
+        [self addChild:ob2a.sprite];
         
-        self.obstacles = [NSMutableArray arrayWithObjects:ob1,ob2,ob3, nil];
+        Obstacle* ob3a = [[Obstacle alloc] init];
+        ob3a.sprite = [CCBReader load:@"Prefabs/Streaker-r"];;
+        ob3a.sprite.position= CGPointMake(-350.0f,238.5f);
+        ob3a.direction = MoveRight;
+        [self addChild:ob3a.sprite];
+        
+        Obstacle* ob4a = [[Obstacle alloc] init];
+        ob4a.sprite = [CCBReader load:@"Prefabs/HulaHoops"];;
+        ob4a.sprite.position= CGPointMake(-350.0f,306.5f);
+        ob4a.direction = MoveLeft;
+        [self addChild:ob4a.sprite];
+        
+        Obstacle* ob5a = [[Obstacle alloc] init];
+        ob5a.sprite = [CCBReader load:@"Prefabs/HulaHoops"];;
+        ob5a.sprite.position= CGPointMake(372.0f, -350.0f);
+        ob5a.direction = MoveRight;
+        [self addChild:ob5a.sprite];
+        /////////////////////////////////////////////////////
+        Obstacle* ob6a = [[Obstacle alloc] init];
+        ob6a.sprite = [CCBReader load:@"Prefabs/Streaker-r"];;
+        ob6a.sprite.position= CGPointMake(-350.0f,494.2f);
+        ob6a.direction = MoveLeft;
+        [self addChild:ob6a.sprite];
+
+        Obstacle* ob7a = [[Obstacle alloc] init];
+        ob7a.sprite = [CCBReader load:@"Prefabs/Streaker-r"];;
+        ob7a.sprite.position= CGPointMake(-350.0f,563.2f);
+        ob7a.direction = MoveRight;
+        [self addChild:ob7a.sprite];
+        
+        Obstacle* ob8a = [[Obstacle alloc] init];
+        ob8a.sprite = [CCBReader load:@"Prefabs/Streaker-r"];;
+        ob8a.sprite.position= CGPointMake(-350.0f,627.2f);
+        ob8a.direction = MoveLeft;
+        [self addChild:ob8a.sprite];
+        
+        Obstacle* ob9a = [[Obstacle alloc] init];
+        ob9a.sprite = [CCBReader load:@"Prefabs/Streaker-r"];;
+        ob9a.sprite.position= CGPointMake(-350.0f,690.2f);
+        ob9a.direction = MoveRight;
+        [self addChild:ob9a.sprite];
+        
+        Obstacle* ob10a = [[Obstacle alloc] init];
+        ob10a.sprite = [CCBReader load:@"Prefabs/Streaker-r"];;
+        ob10a.sprite.position= CGPointMake(-350.0f,751.2f);
+        ob10a.direction = MoveLeft;
+        [self addChild:ob10a.sprite];
+        
+        self.obstacles = [NSMutableArray arrayWithObjects:ob1,ob1a,ob2,ob2a,ob3,ob3a,ob4,ob4a,ob5,ob5a,ob6,ob6a,ob7,ob7a,ob8,ob8a,ob9,ob9a,ob10,ob10a,ob11, nil];
 
         
     }
@@ -246,13 +329,15 @@ bool isCollisionInProgress = false;
     //Move the OBSTACLES across the screen
     for (int i = 0; i < self.obstacles.count; i++)
     {
-        CCNode *obstacle = self.obstacles[i];
- 
-        if (EASYPASS)
+        CCNode *obstacle = nil;
+        if (EASYPASS) {
+            obstacle = self.obstacles[i];
             obstacle.position = ccpSub(obstacle.position, ccp((i % 2)?kSPEED:-kSPEED,0));
-        else
-            obstacle.position = ccpSub(obstacle.position, ccp( (!((Obstacle*)obstacle).direction)?kSPEED:-kSPEED,0)); //if !right
-  
+        } else {
+            obstacle = ((Obstacle*)self.obstacles[i]).sprite;
+            obstacle.position = ccpSub(obstacle.position, ccp( (!((Obstacle*)self.obstacles[i]).direction==MoveRight)?kSPEED:-kSPEED,0));
+        }
+
         
         //check for collisions first
         if ([self doesCollide:obstacle withPlayer:_playerNode])
@@ -291,7 +376,8 @@ bool isCollisionInProgress = false;
             return;
         }
         
-        if (i%2)
+        
+        if (((Obstacle*)self.obstacles[i]).direction == MoveLeft)//i%2)
         {
             //Check if they have gone off screen, if they have reposition them
             if (obstacle.position.x < -obstacle.contentSize.width )
@@ -807,7 +893,10 @@ bool isCollisionInProgress = false;
     
     for (int i = 0; i < self.obstacles.count; i++)
     {
+        if (EASYPASS)
         [self performSelector:@selector(startAnimation:forSequence:) withObject:(CCNode*)self.obstacles[i] withObject:@"default"];
+        else
+        [self performSelector:@selector(startAnimation:forSequence:) withObject:((Obstacle*)self.obstacles[i]).sprite withObject:@"default"];
     }
 }
 
