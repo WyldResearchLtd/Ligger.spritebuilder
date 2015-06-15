@@ -10,14 +10,15 @@
 
 -(void) startButtonPressed
 {
-    NSLog(@"startbuttonPressed");
+
+        NSLog(@"startbuttonPressed");
+
+        
+        CCScene* scene = [CCBReader loadAsScene:@"GameScene"];
+        GameScene.halt = false;
+        CCTransition* transition = [CCTransition transitionFadeWithDuration:1.5];
+        [[CCDirector sharedDirector] presentScene:scene withTransition:transition];
     
-    
-    
-    CCScene* scene = [CCBReader loadAsScene:@"GameScene"];
-    GameScene.halt = false;
-    CCTransition* transition = [CCTransition transitionFadeWithDuration:1.5];
-    [[CCDirector sharedDirector] presentScene:scene withTransition:transition];
 }
 
 @end

@@ -15,7 +15,7 @@ typedef enum PlayerState {NoBeers, TwoBeers, OneBeer} PlayerState;
 typedef enum LevelState {GameSetup, PlayGame, CompleteLevel, LevelUp} LevelState;
 typedef enum ObstacleDirection {MoveLeft,MoveRight} ObstacleDirection;
 
-const bool EASYPASS = false; //used to make it easy to level up
+const bool EASYPASS = true; //used to make it easy to level up
 
 const int kBOARDTOPBOUND = 800;
 const int kBOARDBOTTOMBOUND = 50;

@@ -9,6 +9,7 @@
 #import "GameScene.h"
 #import "LevelTimer.h"
 #import "Obstacle.h"
+#import "PopupLayer.h"
 
 @implementation GameScene
 {
@@ -16,6 +17,8 @@
     __weak CCPhysicsNode* _physicsNode;
     __weak CCNode* _playerNode;
     __weak CCNode* _backgroundNode;
+    
+    __weak PopupLayer* _popoverMenuLayer;
 }
 
 static Boolean halt = false;
@@ -70,11 +73,15 @@ bool isCollisionInProgress = false;
  
 -(void) exitButtonPressed
 {
-    NSLog(@"exitButtonPressed");
-    
-    CCScene* scene = [CCBReader loadAsScene:@"MainScene"];
-    CCTransition* transition = [CCTransition transitionFadeWithDuration:1.5];
-    [[CCDirector sharedDirector] presentScene:scene withTransition:transition];
+    //if a popup menu isn't hding this....
+    if (_popoverMenuLayer == nil)
+    {
+        NSLog(@"exitButtonPressed");
+        
+        CCScene* scene = [CCBReader loadAsScene:@"MainScene"];
+        CCTransition* transition = [CCTransition transitionFadeWithDuration:1.5];
+        [[CCDirector sharedDirector] presentScene:scene withTransition:transition];
+    }
 }
 
 -(void) gameOver
@@ -82,7 +89,10 @@ bool isCollisionInProgress = false;
     NSLog(@"Game Over*****************");
     
     NSLog(@"Game Duration: %d",((LevelTimer*)_timer).seconds);
-    [self pauseGame];
+    //[self pauseGame];
+    
+    if (_popoverMenuLayer == nil)
+        [self showPopoverNamed:@"Popups/GameOver"];
 }
 
 - (CCNode*) getScreen
@@ -97,7 +107,7 @@ bool isCollisionInProgress = false;
     self.playerState = NoBeers;
     NSAssert1(_playerNode, @"player node not found in level: %@", levelCCB);
     
-
+    //TODO: instead of self, use _levelNode and NO to recursive?
     Obstacle* ob1 = [[Obstacle alloc] init];
     ob1.sprite = (Obstacle*)[self getChildByName:@"obstacle1" recursively:YES];
     ob1.direction = MoveRight;
@@ -144,7 +154,7 @@ bool isCollisionInProgress = false;
 
     if (EASYPASS)
     {
-        self.obstacles = [NSMutableArray arrayWithObjects:ob1,ob2,ob3,ob4,ob5,ob6,ob7,ob8,ob9,ob10,ob11, nil];
+        self.obstacles = [NSMutableArray arrayWithObjects:ob1,ob2,ob3,ob4,ob5,ob6,ob7,ob8,ob9,ob10, nil];
     }
     else
     {
@@ -157,7 +167,7 @@ bool isCollisionInProgress = false;
     
         Obstacle* ob2a = [[Obstacle alloc] init];
         ob2a.sprite = [CCBReader load:@"Prefabs/GolfCart"];;
-        ob2a.sprite.position= CGPointMake(-350.0f,174.5f);
+        ob2a.sprite.position= CGPointMake(950.0f,174.5f);
         ob2a.direction = MoveLeft;
         [self addChild:ob2a.sprite];
         
@@ -169,19 +179,19 @@ bool isCollisionInProgress = false;
         
         Obstacle* ob4a = [[Obstacle alloc] init];
         ob4a.sprite = [CCBReader load:@"Prefabs/HulaHoops"];;
-        ob4a.sprite.position= CGPointMake(-350.0f,306.5f);
+        ob4a.sprite.position= CGPointMake(950.0f,306.5f);
         ob4a.direction = MoveLeft;
         [self addChild:ob4a.sprite];
         
         Obstacle* ob5a = [[Obstacle alloc] init];
         ob5a.sprite = [CCBReader load:@"Prefabs/HulaHoops"];;
-        ob5a.sprite.position= CGPointMake(372.0f, -350.0f);
+        ob5a.sprite.position= CGPointMake(-350.0f,372.0f);
         ob5a.direction = MoveRight;
         [self addChild:ob5a.sprite];
         /////////////////////////////////////////////////////
         Obstacle* ob6a = [[Obstacle alloc] init];
         ob6a.sprite = [CCBReader load:@"Prefabs/Streaker-r"];;
-        ob6a.sprite.position= CGPointMake(-350.0f,494.2f);
+        ob6a.sprite.position= CGPointMake(950.0f,494.2f);
         ob6a.direction = MoveLeft;
         [self addChild:ob6a.sprite];
 
@@ -193,7 +203,7 @@ bool isCollisionInProgress = false;
         
         Obstacle* ob8a = [[Obstacle alloc] init];
         ob8a.sprite = [CCBReader load:@"Prefabs/Streaker-r"];;
-        ob8a.sprite.position= CGPointMake(-350.0f,627.2f);
+        ob8a.sprite.position= CGPointMake(950.0f,627.2f);
         ob8a.direction = MoveLeft;
         [self addChild:ob8a.sprite];
         
@@ -205,7 +215,7 @@ bool isCollisionInProgress = false;
         
         Obstacle* ob10a = [[Obstacle alloc] init];
         ob10a.sprite = [CCBReader load:@"Prefabs/Streaker-r"];;
-        ob10a.sprite.position= CGPointMake(-350.0f,751.2f);
+        ob10a.sprite.position= CGPointMake(950.0f,751.2f);
         ob10a.direction = MoveLeft;
         [self addChild:ob10a.sprite];
         
@@ -232,29 +242,6 @@ bool isCollisionInProgress = false;
     [self startGame];
 }
 
-+ (CCNode*) cloneCCNode:(CCNode*)source
-{
-    CCNode* clone = [CCNode node];
-    for (CCNode* srcSubnode in source.children) {
-        
-        CCNode* subnode;
-        
-        if ([srcSubnode isKindOfClass:[CCSprite class]]) { //only CCSprites are copied, add other subclasses if you need to
-            CCSprite* srcSprite = (CCSprite*)srcSubnode;
-            subnode = [CCSprite spriteWithTexture:srcSprite.texture];
-            //((CCSprite*)subnode).//displayFrame = srcSprite.displayFrame;
-        } else {
-            subnode = [self cloneCCNode:srcSubnode];
-        }
-        
-        subnode.rotation = srcSubnode.rotation;
-        subnode.position = srcSubnode.position;
-        subnode.anchorPoint = srcSubnode.anchorPoint;
-        subnode.zOrder = srcSubnode.zOrder;
-        [clone addChild:subnode];
-    }
-    return clone;
-}
 
 -(void) update:(CCTime)delta
 {
@@ -330,13 +317,13 @@ bool isCollisionInProgress = false;
     for (int i = 0; i < self.obstacles.count; i++)
     {
         CCNode *obstacle = nil;
-        if (EASYPASS) {
-            obstacle = self.obstacles[i];
-            obstacle.position = ccpSub(obstacle.position, ccp((i % 2)?kSPEED:-kSPEED,0));
-        } else {
+//        if (EASYPASS) {
+//            obstacle = self.obstacles[i];
+//            obstacle.position = ccpSub(obstacle.position, ccp((i % 2)?kSPEED:-kSPEED,0));
+//        } else {
             obstacle = ((Obstacle*)self.obstacles[i]).sprite;
             obstacle.position = ccpSub(obstacle.position, ccp( (!((Obstacle*)self.obstacles[i]).direction==MoveRight)?kSPEED:-kSPEED,0));
-        }
+//        }
 
         
         //check for collisions first
@@ -371,7 +358,7 @@ bool isCollisionInProgress = false;
                 [self pauseGame];
                 [self particleEffect:_playerNode loadCCBName:@"Prefabs/Splash"];
                 [self performSelector:@selector(restartSetup) withObject:nil afterDelay:1.5f];
-                
+                [self performSelector:@selector(startGame) withObject:nil afterDelay:1.6f];
             }
             return;
         }
@@ -475,12 +462,9 @@ bool isCollisionInProgress = false;
     if (self.promotors.count==0)
     {
         NSLog(@"No more promotors******");
-        //next level
+       
+        [self gameOver];
         
-        //TODO Temp!!!!
-        CCScene* scene = [CCBReader loadAsScene:@"MainScene"];
-        CCTransition* transition = [CCTransition transitionFadeWithDuration:1.5];
-        [[CCDirector sharedDirector] presentScene:scene withTransition:transition];
         
         return;
     }
@@ -549,19 +533,19 @@ bool isCollisionInProgress = false;
     if (((CCNode*)self.promotors[0]).position.x > _levelNode.contentSizeInPoints.width+45)
     {
         NSLog(@"PROMOTOR Offscreen");
-        //remove the promotor- Should Promotors collection be global?
-        //[self.promotors removeObjectAtIndex:0];
-        //LevelUp
         
-        NSLog(@"Seconds: %d",((LevelTimer*)_timer).seconds);
-        
-        //TODO Temp!!!!
-        CCScene* scene = [CCBReader loadAsScene:@"MainScene"];
-        CCTransition* transition = [CCTransition transitionFadeWithDuration:1.5];
-        [[CCDirector sharedDirector] presentScene:scene withTransition:transition];
-        
+        [self restartSetup];
 
+        if (_popoverMenuLayer == nil)
+            [self showPopoverNamed:@"Popups/LevelScore"];
     }
+}
+
+-(void) backToMenu
+{
+    CCScene* scene = [CCBReader loadAsScene:@"MainScene"];
+    CCTransition* transition = [CCTransition transitionFadeWithDuration:1.5];
+    [[CCDirector sharedDirector] presentScene:scene withTransition:transition];
 }
 
 /*
@@ -574,11 +558,11 @@ bool isCollisionInProgress = false;
     [self.promotors removeObjectAtIndex:0];
     self.playerState=NoBeers;
     //just face the Ligger Up
-    [self performSelector:@selector(faceHustleUp) withObject:nil];
+    [self performSelector:@selector(faceHustleLeft) withObject:nil];
     //put the Ligger back at the start position
     _playerNode.position = ccp(280.268311,48.001999);
     self.levelState = GameSetup;
-    [self startGame];
+    
 }
 
 
@@ -636,20 +620,20 @@ bool isCollisionInProgress = false;
     [animationManager runAnimationsForSequenceNamed:@"empty"];
 }
 
-/*
- * NO LONGER USED
- * used to move Player to the Median
- * in a method so you can call it after a delay
- * eg: [self performSelector:@selector(movePlayerToMedian) withObject:nil afterDelay:1.5f];
- */
--(void) movePlayerToMedian
-{
-    NSLog(@"Moving Player to Median");
-    _playerNode.position = CGPointMake(_playerNode.position.x,kMedianStripRow);
-    [self scrollToTarget:_playerNode];
-    //very important if this is called with a delay- stops reentry
-    isCollisionInProgress = false;
-}
+///*
+// * NO LONGER USED
+// * used to move Player to the Median
+// * in a method so you can call it after a delay
+// * eg: [self performSelector:@selector(movePlayerToMedian) withObject:nil afterDelay:1.5f];
+// */
+//-(void) movePlayerToMedian
+//{
+//    NSLog(@"Moving Player to Median");
+//    _playerNode.position = CGPointMake(_playerNode.position.x,kMedianStripRow);
+//    [self scrollToTarget:_playerNode];
+//    //very important if this is called with a delay- stops reentry
+//    isCollisionInProgress = false;
+//}
 
 
 - (void)startHustleRight
@@ -744,18 +728,35 @@ bool isCollisionInProgress = false;
 }
 
 /*
- * Fce the Ligger Up (back) with NoBeers
+ * Face the Ligger Left with NoBeers
+ */
+- (void)faceHustleLeft
+{
+    
+    // the animation manager of each node is stored in the 'animationManager' property
+    CCAnimationManager* animationManager = _playerNode.animationManager;
+
+   [animationManager runAnimationsForSequenceNamed:@"empty"];
+
+    
+}
+
+
+/*
+ * Face the Ligger Left with NoBeers
  */
 - (void)faceHustleUp
 {
     
     // the animation manager of each node is stored in the 'animationManager' property
     CCAnimationManager* animationManager = _playerNode.animationManager;
-
-   [animationManager runAnimationsForSequenceNamed:@"FaceUp"];
-
+    
+    [animationManager runAnimationsForSequenceNamed:@"FaceUp"];
+    
     
 }
+
+
 
 /*
  * Face the Ligger Down(front) with TwoBeers
@@ -893,9 +894,9 @@ bool isCollisionInProgress = false;
     
     for (int i = 0; i < self.obstacles.count; i++)
     {
-        if (EASYPASS)
-        [self performSelector:@selector(startAnimation:forSequence:) withObject:(CCNode*)self.obstacles[i] withObject:@"default"];
-        else
+//        if (EASYPASS)
+//        [self performSelector:@selector(startAnimation:forSequence:) withObject:((Obstacle*)self.obstacles[i]).sprite  withObject:@"default"];
+//        else
         [self performSelector:@selector(startAnimation:forSequence:) withObject:((Obstacle*)self.obstacles[i]).sprite withObject:@"default"];
     }
 }
@@ -924,7 +925,7 @@ bool isCollisionInProgress = false;
     {
 
         
-        if (i%2)
+        if (((Obstacle*)self.obstacles[i]).direction == MoveLeft)//(i%2)
         {
 
                 ((CCNode*)self.obstacles[i]).position = ccp(_levelNode.contentSizeInPoints.width+((CCNode*)self.obstacles[i]).contentSize.width+45,((CCNode*)self.obstacles[i]).position.y);
@@ -942,29 +943,38 @@ bool isCollisionInProgress = false;
     }
 }
 
+
+
 -(void) showPopoverNamed:(NSString*)name
 {
-//    if (_popoverMenuLayer == nil)
-//    {
-//        GameMenuLayer* newMenuLayer = (GameMenuLayer*)[CCBReader load:name];
-//        NSAssert(newMenuLayer!=nil, @"GameMenuLayer in showPopoverNamed is Nil");
-//        [self addChild:newMenuLayer];
-//        _popoverMenuLayer = newMenuLayer;
-//        _popoverMenuLayer.gameScene = self;
-//        _gameMenuLayer.visible = NO;
-//        _levelNode.paused = YES;
-//    }
+    if (_popoverMenuLayer == nil)
+    {
+        PopupLayer* newMenuLayer = (PopupLayer*)[CCBReader load:name];
+        NSAssert(newMenuLayer!=nil, @"PopupLayer in showPopoverNamed is Nil");
+        [self addChild:newMenuLayer];
+        _popoverMenuLayer = newMenuLayer;
+        _popoverMenuLayer.gameScene = self;
+        GameScene.halt=true;
+        _levelNode.paused = YES;
+    }
 }
 
 -(void) removePopover
 {
-//    if (_popoverMenuLayer)
-//    {
-//        [_popoverMenuLayer removeFromParent];
-//        _popoverMenuLayer = nil;
-//        _gameMenuLayer.visible = YES;
-//        _levelNode.paused = NO;
-//    }
+    if (_popoverMenuLayer)
+    {
+        NSLog(@"Popup removed");
+        _popoverMenuLayer.visible = YES;
+        [_popoverMenuLayer removeFromParent];
+        _popoverMenuLayer = nil;
+        _levelNode.paused = NO;
+        GameScene.halt = false;
+        NSLog(@"Completed Popup removal");
+    }
+    else
+    {
+        NSLog(@"Unable to remove Popup");
+    }
 }
 //-(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 //{
