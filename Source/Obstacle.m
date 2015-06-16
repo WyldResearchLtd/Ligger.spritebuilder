@@ -11,4 +11,25 @@
 @implementation Obstacle
 
 
+-(id) initWithDirection:(ObstacleDirection) direction forSprite:(CCNode*) sprite
+{
+    if ( self = [super init] ) {
+        
+        _direction = direction;
+        _sprite = sprite;
+    }
+    return self;
+}
+
+-(id) initWithDirection:(ObstacleDirection) direction forSprite:(CCNode*) sprite atPosition:(CGPoint) position
+{
+    if ( self = [super init] ) {
+        
+        _direction = direction;
+        _sprite = (Obstacle*)sprite;
+        _sprite.position = position;
+    }
+    return self;
+}
+
 @end

@@ -17,4 +17,7 @@
 @property (nonatomic) ObstacleDirection direction;
 @property (nonatomic) CCNode* sprite;
 
+-(id) initWithDirection:(ObstacleDirection) direction forSprite:(CCNode*) sprite;
+-(id) initWithDirection:(ObstacleDirection) direction forSprite:(CCNode*) sprite atPosition:(CGPoint) position;
+
 @end

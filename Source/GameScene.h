@@ -12,39 +12,24 @@
 //#import "UITouch+CC.h"
 #import "CCDirector.h"
 #import "Constants.h"
-
+#import "GameData.h"
 
 
 @interface GameScene : CCNode
 
 @property (nonatomic) NSMutableArray* obstacles;
 @property (nonatomic) NSMutableArray* promotors;
-@property (nonatomic) CCNode *obstacle1;
-@property (nonatomic) CCNode *obstacle1a; //TEST
-@property (nonatomic) CCNode *obstacle2;
-@property (nonatomic) CCNode *obstacle3;
-@property (nonatomic) CCNode *obstacle4;
-@property (nonatomic) CCNode *obstacle5;
-@property (nonatomic) CCNode *obstacle6;
-@property (nonatomic) CCNode *obstacle7;
-@property (nonatomic) CCNode *obstacle8;
-@property (nonatomic) CCNode *obstacle9;
-@property (nonatomic) CCNode *obstacle10;
-@property (nonatomic) CCNode *obstacle11;
-
 @property (nonatomic) CCNode *bartender1;
-@property (nonatomic) CCNode *promotor1;
-@property (nonatomic) CCNode *promotor2;
-@property (nonatomic) CCNode *promotor3;
-@property (nonatomic) CCNode *promotor4;
-
 @property (nonatomic) CCNode *bkstage_f;
 @property (nonatomic) CCNode *bkstage_b;
+
+@property bool swiped;
 
 @property (nonatomic) id timer;
 @property (nonatomic) PlayerState playerState;
 @property (nonatomic) LevelState levelState;
 @property (nonatomic) PlayerMoveState playerMoveState;
+@property (nonatomic) GameData* gameData;
 @property int moveLength;
 @property int screenWidth;
 @property int screenHeight;
@@ -62,6 +47,7 @@
 - (void)startHustleDown;
 - (CCNode*) getScreen;
 - (void) gameOver;
+- (void) backToMenu;
 
 - (void) showPopoverNamed:(NSString*)popoverName;
 - (void) removePopover;

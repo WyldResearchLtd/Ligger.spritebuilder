@@ -11,14 +11,14 @@
 #import "Obstacle.h"
 #import "PopupLayer.h"
 
+
 @implementation GameScene
 {
     __weak CCNode* _levelNode;
-    __weak CCPhysicsNode* _physicsNode;
     __weak CCNode* _playerNode;
-    __weak CCNode* _backgroundNode;
-    
     __weak PopupLayer* _popoverMenuLayer;
+    //__weak CCPhysicsNode* _physicsNode;
+    //__weak CCNode* _backgroundNode;
 }
 
 static Boolean halt = false;
@@ -40,8 +40,11 @@ bool isCollisionInProgress = false;
     NSLog(@"GameScene created, Level: %@", _levelNode);
     self.levelState = GameSetup;
     
+    _gameData = [[GameData alloc]init];
+    
+    
     // load the current level
-    [self loadLevelNamed:nil];
+    [self loadLevel];
     
     UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeGesture:)];
     swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
@@ -89,10 +92,19 @@ bool isCollisionInProgress = false;
     NSLog(@"Game Over*****************");
     
     NSLog(@"Game Duration: %d",((LevelTimer*)_timer).seconds);
-    //[self pauseGame];
+   
+    if (self.playerState==TwoBeers)
+        [self.gameData finishTwoBeers:((LevelTimer*)self.timer).seconds];
+    else if (self.playerState==OneBeer)
+        [self.gameData finishTwoBeers:((LevelTimer*)self.timer).seconds];
+    [self.gameData calcBonus:kTOTALTIMER-((LevelTimer*)self.timer).seconds forPromotor:kPROMOTORS+1-(int)self.promotors.count];
     
     if (_popoverMenuLayer == nil)
+    {
         [self showPopoverNamed:@"Popups/GameOver"];
+         NSLog(@"+++++++GAME SCORE++++++: %d", _gameData.GameScore);
+         [_gameData printLog];
+    }
 }
 
 - (CCNode*) getScreen
@@ -100,57 +112,25 @@ bool isCollisionInProgress = false;
     return self;
 }
 
--(void) loadLevelNamed:(NSString*)levelCCB
+-(void) loadLevel
 {
     // get the current level's player in the scene by searching for it recursively
     _playerNode = [self getChildByName:@"player1m" recursively:TRUE];
     self.playerState = NoBeers;
-    NSAssert1(_playerNode, @"player node not found in level: %@", levelCCB);
+    NSAssert(_playerNode, @"player node not found in loadLevel");
     
-    //TODO: instead of self, use _levelNode and NO to recursive?
-    Obstacle* ob1 = [[Obstacle alloc] init];
-    ob1.sprite = (Obstacle*)[self getChildByName:@"obstacle1" recursively:YES];
-    ob1.direction = MoveRight;
-    
-    Obstacle* ob2 = [[Obstacle alloc] init];
-    ob2.sprite = (Obstacle*)[self getChildByName:@"obstacle2" recursively:YES];
-    ob2.direction = MoveLeft;
-    
-    Obstacle* ob3 = [[Obstacle alloc] init];
-    ob3.sprite = (Obstacle*)[self getChildByName:@"obstacle3" recursively:YES];
-    ob3.direction = MoveRight;
-    
-    Obstacle* ob4 = [[Obstacle alloc] init];
-    ob4.sprite = (Obstacle*)[self getChildByName:@"obstacle4" recursively:YES];
-    ob4.direction = MoveLeft;
-    
-    Obstacle* ob5 = [[Obstacle alloc] init];
-    ob5.sprite = (Obstacle*)[self getChildByName:@"obstacle5" recursively:YES];
-    ob5.direction = MoveRight;
-    
-    Obstacle* ob6 = [[Obstacle alloc] init];
-    ob6.sprite = (Obstacle*)[self getChildByName:@"obstacle6" recursively:YES];
-    ob6.direction = MoveLeft;
-    
-    Obstacle* ob7 = [[Obstacle alloc] init];
-    ob7.sprite = (Obstacle*)[self getChildByName:@"obstacle7" recursively:YES];
-    ob7.direction = MoveRight;
-    
-    Obstacle* ob8 = [[Obstacle alloc] init];
-    ob8.sprite = (Obstacle*)[self getChildByName:@"obstacle8" recursively:YES];
-    ob8.direction = MoveLeft;
-    
-    Obstacle* ob9 = [[Obstacle alloc] init];
-    ob9.sprite = (Obstacle*)[self getChildByName:@"obstacle9" recursively:YES];
-    ob9.direction = MoveRight;
-    
-    Obstacle* ob10 = [[Obstacle alloc] init];
-    ob10.sprite = (Obstacle*)[self getChildByName:@"obstacle10" recursively:YES];
-    ob10.direction = MoveLeft;
-    
-    Obstacle* ob11 = [[Obstacle alloc] init];
-    ob11.sprite = (Obstacle*)[self getChildByName:@"obstacle11" recursively:YES];
-    ob11.direction = MoveRight;
+    //Can use self and recursively:YES, or use _levelNode and NO to recursive
+    Obstacle* ob1 = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[_levelNode getChildByName:@"obstacle1" recursively:NO]];
+    Obstacle* ob2 = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[_levelNode getChildByName:@"obstacle2" recursively:NO]];
+    Obstacle* ob3 = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[_levelNode getChildByName:@"obstacle3" recursively:NO]];
+    Obstacle* ob4 = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[_levelNode getChildByName:@"obstacle4" recursively:NO]];
+    Obstacle* ob5 = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[_levelNode getChildByName:@"obstacle5" recursively:NO]];
+    Obstacle* ob6 = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[_levelNode getChildByName:@"obstacle6" recursively:NO]];
+    Obstacle* ob7 = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[_levelNode getChildByName:@"obstacle7" recursively:NO]];
+    Obstacle* ob8 = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[_levelNode getChildByName:@"obstacle8" recursively:NO]];
+    Obstacle* ob9 = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[_levelNode getChildByName:@"obstacle9" recursively:NO]];
+    Obstacle* ob10 = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[_levelNode getChildByName:@"obstacle10" recursively:NO]];
+
 
     if (EASYPASS)
     {
@@ -158,65 +138,37 @@ bool isCollisionInProgress = false;
     }
     else
     {
- 
-        Obstacle* ob1a = [[Obstacle alloc] init];
-        ob1a.sprite = [CCBReader load:@"Prefabs/CongaLine"];;
-        ob1a.sprite.position= CGPointMake(-350.0f,112.0f);
-        ob1a.direction = MoveRight;
-        [self addChild:ob1a.sprite];
-    
-        Obstacle* ob2a = [[Obstacle alloc] init];
-        ob2a.sprite = [CCBReader load:@"Prefabs/GolfCart"];;
-        ob2a.sprite.position= CGPointMake(950.0f,174.5f);
-        ob2a.direction = MoveLeft;
-        [self addChild:ob2a.sprite];
-        
-        Obstacle* ob3a = [[Obstacle alloc] init];
-        ob3a.sprite = [CCBReader load:@"Prefabs/Streaker-r"];;
-        ob3a.sprite.position= CGPointMake(-350.0f,238.5f);
-        ob3a.direction = MoveRight;
-        [self addChild:ob3a.sprite];
-        
-        Obstacle* ob4a = [[Obstacle alloc] init];
-        ob4a.sprite = [CCBReader load:@"Prefabs/HulaHoops"];;
-        ob4a.sprite.position= CGPointMake(950.0f,306.5f);
-        ob4a.direction = MoveLeft;
-        [self addChild:ob4a.sprite];
-        
-        Obstacle* ob5a = [[Obstacle alloc] init];
-        ob5a.sprite = [CCBReader load:@"Prefabs/HulaHoops"];;
-        ob5a.sprite.position= CGPointMake(-350.0f,372.0f);
-        ob5a.direction = MoveRight;
-        [self addChild:ob5a.sprite];
-        /////////////////////////////////////////////////////
-        Obstacle* ob6a = [[Obstacle alloc] init];
-        ob6a.sprite = [CCBReader load:@"Prefabs/Streaker-r"];;
-        ob6a.sprite.position= CGPointMake(950.0f,494.2f);
-        ob6a.direction = MoveLeft;
-        [self addChild:ob6a.sprite];
+        Obstacle* ob11 = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[_levelNode getChildByName:@"obstacle11" recursively:NO]];
+        //
+        Obstacle* ob1a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[CCBReader load:@"Prefabs/CongaLine"] atPosition:CGPointMake(-350.0f,112.0f)];
+        Obstacle* ob2a = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[CCBReader load:@"Prefabs/GolfCart"] atPosition:
+            CGPointMake(950.0f,174.5f)];
+        Obstacle* ob3a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[CCBReader load:@"Prefabs/Streaker-r"] atPosition:
+            CGPointMake(-350.0f,238.5f)];
+        Obstacle* ob4a = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[CCBReader load:@"Prefabs/HulaHoops"] atPosition:
+            CGPointMake(950.0f,306.5f)];
+        Obstacle* ob5a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[CCBReader load:@"Prefabs/HulaHoops"] atPosition:
+            CGPointMake(-350.0f,372.0f)];
+        Obstacle* ob6a = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[CCBReader load:@"Prefabs/Streaker-r"] atPosition:
+            CGPointMake(950.0f,494.2f)];
+        Obstacle* ob7a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[CCBReader load:@"Prefabs/Streaker-r"] atPosition:
+            CGPointMake(-350.0f,563.2f)];
+        Obstacle* ob8a = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[CCBReader load:@"Prefabs/Streaker-r"] atPosition:
+            CGPointMake(950.0f,627.2f)];
+        Obstacle* ob9a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[CCBReader load:@"Prefabs/Streaker-r"] atPosition:
+            CGPointMake(-350.0f,690.2f)];
+        Obstacle* ob10a = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[CCBReader load:@"Prefabs/Streaker-r"] atPosition:
+            CGPointMake(950.0f,751.2f)];
 
-        Obstacle* ob7a = [[Obstacle alloc] init];
-        ob7a.sprite = [CCBReader load:@"Prefabs/Streaker-r"];;
-        ob7a.sprite.position= CGPointMake(-350.0f,563.2f);
-        ob7a.direction = MoveRight;
+        [self addChild:ob1a.sprite];
+        [self addChild:ob2a.sprite];
+        [self addChild:ob3a.sprite];
+        [self addChild:ob4a.sprite];
+        [self addChild:ob5a.sprite];
+        [self addChild:ob6a.sprite];
         [self addChild:ob7a.sprite];
-        
-        Obstacle* ob8a = [[Obstacle alloc] init];
-        ob8a.sprite = [CCBReader load:@"Prefabs/Streaker-r"];;
-        ob8a.sprite.position= CGPointMake(950.0f,627.2f);
-        ob8a.direction = MoveLeft;
         [self addChild:ob8a.sprite];
-        
-        Obstacle* ob9a = [[Obstacle alloc] init];
-        ob9a.sprite = [CCBReader load:@"Prefabs/Streaker-r"];;
-        ob9a.sprite.position= CGPointMake(-350.0f,690.2f);
-        ob9a.direction = MoveRight;
         [self addChild:ob9a.sprite];
-        
-        Obstacle* ob10a = [[Obstacle alloc] init];
-        ob10a.sprite = [CCBReader load:@"Prefabs/Streaker-r"];;
-        ob10a.sprite.position= CGPointMake(950.0f,751.2f);
-        ob10a.direction = MoveLeft;
         [self addChild:ob10a.sprite];
         
         self.obstacles = [NSMutableArray arrayWithObjects:ob1,ob1a,ob2,ob2a,ob3,ob3a,ob4,ob4a,ob5,ob5a,ob6,ob6a,ob7,ob7a,ob8,ob8a,ob9,ob9a,ob10,ob10a,ob11, nil];
@@ -225,19 +177,19 @@ bool isCollisionInProgress = false;
     }
     
     self.bartender1 = [self getChildByName:@"bartender1" recursively:YES];
-    NSAssert1(self.bartender1, @"backstage-front node not found in level: %@", levelCCB);
+    NSAssert(self.bartender1,@"backstage-front node not found in loadLevel");
     
-    self.promotor1 = [self getChildByName:@"promotor1" recursively:YES];
-    self.promotor2 = [self getChildByName:@"promotor2" recursively:YES];
-    self.promotor3 = [self getChildByName:@"promotor3" recursively:YES];
-    self.promotor4 = [self getChildByName:@"promotor4" recursively:YES];
+    CCNode* promotor1 = [self getChildByName:@"promotor1" recursively:YES];
+    CCNode* promotor2 = [self getChildByName:@"promotor2" recursively:YES];
+    CCNode* promotor3 = [self getChildByName:@"promotor3" recursively:YES];
+    CCNode* promotor4 = [self getChildByName:@"promotor4" recursively:YES];
     
-    self.promotors = [NSMutableArray arrayWithObjects:self.promotor1, self.promotor2,self.promotor3,self.promotor4, nil];
+    self.promotors = [NSMutableArray arrayWithObjects:promotor1,promotor2,promotor3,promotor4, nil];
     
     self.bkstage_f = [self getChildByName:@"backstage-front" recursively:YES];
     self.bkstage_b = [self getChildByName:@"backstage-back" recursively:YES];
-    NSAssert1(self.bkstage_f, @"backstage-front node not found in level: %@", levelCCB);
-    NSAssert1(self.bkstage_b, @"backstage-back node not found in level: %@", levelCCB);
+    NSAssert(self.bkstage_f, @"backstage-front node not found in loadLevel");
+    NSAssert(self.bkstage_b, @"backstage-back node not found in  loadLevel");
     
     [self startGame];
 }
@@ -245,7 +197,6 @@ bool isCollisionInProgress = false;
 
 -(void) update:(CCTime)delta
 {
-    //HACK:
    if (isCollisionInProgress) return;
     
    if (!GameScene.halt)
@@ -317,13 +268,9 @@ bool isCollisionInProgress = false;
     for (int i = 0; i < self.obstacles.count; i++)
     {
         CCNode *obstacle = nil;
-//        if (EASYPASS) {
-//            obstacle = self.obstacles[i];
-//            obstacle.position = ccpSub(obstacle.position, ccp((i % 2)?kSPEED:-kSPEED,0));
-//        } else {
-            obstacle = ((Obstacle*)self.obstacles[i]).sprite;
-            obstacle.position = ccpSub(obstacle.position, ccp( (!((Obstacle*)self.obstacles[i]).direction==MoveRight)?kSPEED:-kSPEED,0));
-//        }
+        obstacle = ((Obstacle*)self.obstacles[i]).sprite;
+        obstacle.position = ccpSub(obstacle.position, ccp( (!((Obstacle*)self.obstacles[i]).direction==MoveRight)?kSPEED:-kSPEED,0));
+
 
         
         //check for collisions first
@@ -364,6 +311,8 @@ bool isCollisionInProgress = false;
         }
         
         
+        
+        //check the direction and move the obstacle
         if (((Obstacle*)self.obstacles[i]).direction == MoveLeft)//i%2)
         {
             //Check if they have gone off screen, if they have reposition them
@@ -381,6 +330,24 @@ bool isCollisionInProgress = false;
                 //NSLog(@"Offscreen");
             }
         }
+    }
+    
+    //Calculte scoring, because if this reached, there hasn't been a collision
+    if (self.playerMoveState==PlayerUp && self.swiped)
+    {
+        [self.gameData moveForward:_playerNode.position atSecs:((LevelTimer*)self.timer).seconds];
+        self.swiped=false;
+    }
+    else if (self.playerMoveState==PlayerDown && self.playerState==OneBeer && self.swiped)
+    {
+        [self.gameData moveBack:_playerNode.position atSecs:((LevelTimer*)self.timer).seconds];
+        self.swiped=false;
+    }
+    else if (self.playerMoveState==PlayerDown && self.playerState==TwoBeers && self.swiped)
+    {
+        [self.gameData moveBack2:_playerNode.position atSecs:((LevelTimer*)self.timer).seconds];
+        self.swiped=false;
+
     }
 
 }
@@ -417,8 +384,13 @@ bool isCollisionInProgress = false;
         if ([self isServing:idxBartender withPlayer:_playerNode])
         {
             NSLog(@"BARTENDER %d SERVING(1)", idxBartender);
+            //calc score
+            [self.gameData reachBartender:((LevelTimer*)self.timer).seconds];
+            //set state
             [self performSelector:@selector(serve2Beers) withObject:nil];
             bBartenderServing = true;
+            
+            
         }
         
         cntBartender = 1;
@@ -438,6 +410,9 @@ bool isCollisionInProgress = false;
         {
             bBartenderServing = true;
             NSLog(@"BARTENDER %d SERVING(2)", idxBartender);
+            //calc score
+            [self.gameData reachBartender:((LevelTimer*)self.timer).seconds];
+            //set state
             [self performSelector:@selector(serve2Beers) withObject:nil];
             
              //turn the ligger around
@@ -513,8 +488,11 @@ bool isCollisionInProgress = false;
 
 -(void) LevelUp
 {
-    [((LevelTimer*)_timer) pauseTimer];
-    NSLog(@"GAME LEVELTIMER PAUSED");
+    if ( ! ((LevelTimer*)_timer).timerPaused)
+    {
+        [((LevelTimer*)_timer) pauseTimer];
+        NSLog(@"GAME LEVELTIMER PAUSED");
+    }
     
     _playerNode.position = ccpSub(_playerNode.position, ccp(-1.0,0));
 
@@ -534,10 +512,23 @@ bool isCollisionInProgress = false;
     {
         NSLog(@"PROMOTOR Offscreen");
         
+        //now add the Completion score
+        if (self.playerState==TwoBeers)
+            [self.gameData finishTwoBeers:((LevelTimer*)self.timer).seconds];
+        else if (self.playerState==OneBeer)
+            [self.gameData finishTwoBeers:((LevelTimer*)self.timer).seconds];
+        //TODO- The Magic Numbers need to be kConstants
+         [self.gameData calcBonus:kTOTALTIMER-((LevelTimer*)self.timer).seconds forPromotor:kPROMOTORS+1-(int)self.promotors.count];
+        
         [self restartSetup];
 
         if (_popoverMenuLayer == nil)
+        {
             [self showPopoverNamed:@"Popups/LevelScore"];
+            NSLog(@"+++++++LEVEL SCORE++++++: %d", _gameData.GameScore);
+            
+            [_gameData printLog];
+        }
     }
 }
 
@@ -620,25 +611,10 @@ bool isCollisionInProgress = false;
     [animationManager runAnimationsForSequenceNamed:@"empty"];
 }
 
-///*
-// * NO LONGER USED
-// * used to move Player to the Median
-// * in a method so you can call it after a delay
-// * eg: [self performSelector:@selector(movePlayerToMedian) withObject:nil afterDelay:1.5f];
-// */
-//-(void) movePlayerToMedian
-//{
-//    NSLog(@"Moving Player to Median");
-//    _playerNode.position = CGPointMake(_playerNode.position.x,kMedianStripRow);
-//    [self scrollToTarget:_playerNode];
-//    //very important if this is called with a delay- stops reentry
-//    isCollisionInProgress = false;
-//}
-
-
 - (void)startHustleRight
 {
     self.playerMoveState = PlayerRight;
+    self.swiped=false;
     
     //restarts the bartender animation
     if (bBartenderServing)
@@ -683,6 +659,7 @@ bool isCollisionInProgress = false;
 - (void)startHustleLeft
 {
     self.playerMoveState = PlayerLeft;
+    self.swiped=false;
     
     //restarts the bartender animation
     if (bBartenderServing)
@@ -716,12 +693,15 @@ bool isCollisionInProgress = false;
     switch (self.playerState) {
         case TwoBeers:
             [animationManager runAnimationsForSequenceNamed:@"HustleUp-2Beers"];
+             self.swiped=false;
             break;
         case OneBeer:
             [animationManager runAnimationsForSequenceNamed:@"HustleUp-1Beer"];
+             self.swiped=false;
             break;
         default: //NoBeers
             [animationManager runAnimationsForSequenceNamed:@"HustleUp"];
+             self.swiped=true;
             break;
     }
     
@@ -732,13 +712,10 @@ bool isCollisionInProgress = false;
  */
 - (void)faceHustleLeft
 {
-    
     // the animation manager of each node is stored in the 'animationManager' property
     CCAnimationManager* animationManager = _playerNode.animationManager;
 
    [animationManager runAnimationsForSequenceNamed:@"empty"];
-
-    
 }
 
 
@@ -747,13 +724,10 @@ bool isCollisionInProgress = false;
  */
 - (void)faceHustleUp
 {
-    
     // the animation manager of each node is stored in the 'animationManager' property
     CCAnimationManager* animationManager = _playerNode.animationManager;
     
     [animationManager runAnimationsForSequenceNamed:@"FaceUp"];
-    
-    
 }
 
 
@@ -763,16 +737,11 @@ bool isCollisionInProgress = false;
  */
 - (void)faceHustleDown
 {
-    
     // the animation manager of each node is stored in the 'animationManager' property
     CCAnimationManager* animationManager = _playerNode.animationManager;
     
     [animationManager runAnimationsForSequenceNamed:@"FaceDown2"];
-    
-    
 }
-
-
 
 
 - (void)startHustleDown
@@ -791,12 +760,15 @@ bool isCollisionInProgress = false;
     switch (self.playerState) {
         case TwoBeers:
             [animationManager runAnimationsForSequenceNamed:@"HustleDown-2Beers"];
+            self.swiped=true;
             break;
         case OneBeer:
             [animationManager runAnimationsForSequenceNamed:@"HustleDown-1Beer"];
+            self.swiped=true;
             break;
         default: //NoBeers
             [animationManager runAnimationsForSequenceNamed:@"HustleDown"];
+            self.swiped=false;
             break;
     }
 }
@@ -889,14 +861,13 @@ bool isCollisionInProgress = false;
     //NSLog(@"PLAYER START POS- x:%f y:%f Numb obstabcle: %lu",_playerNode.position.x,_playerNode.position.y,(unsigned long)self.obstacles.count);
     
     GameScene.halt = false;
+    
+    [_gameData reset];
 
     NSLog(@"ANIMATION STARTED");
     
     for (int i = 0; i < self.obstacles.count; i++)
     {
-//        if (EASYPASS)
-//        [self performSelector:@selector(startAnimation:forSequence:) withObject:((Obstacle*)self.obstacles[i]).sprite  withObject:@"default"];
-//        else
         [self performSelector:@selector(startAnimation:forSequence:) withObject:((Obstacle*)self.obstacles[i]).sprite withObject:@"default"];
     }
 }
@@ -919,25 +890,15 @@ bool isCollisionInProgress = false;
 
 -(void) resetGame //:(CCNode*) obstacle
 {
-
-    
     for (int i = 0; i < self.obstacles.count; i++)
     {
-
-        
         if (((Obstacle*)self.obstacles[i]).direction == MoveLeft)//(i%2)
         {
-
                 ((CCNode*)self.obstacles[i]).position = ccp(_levelNode.contentSizeInPoints.width+((CCNode*)self.obstacles[i]).contentSize.width+45,((CCNode*)self.obstacles[i]).position.y);
-
-            
         } else {
 
                 ((CCNode*)self.obstacles[i]).position = ccp(0-((CCNode*)self.obstacles[i]).contentSize.width+45,((CCNode*)self.obstacles[i]).position.y);
-
-
         }
-    
         GameScene.halt = false;
         isCollisionInProgress = false;
     }
@@ -976,6 +937,7 @@ bool isCollisionInProgress = false;
         NSLog(@"Unable to remove Popup");
     }
 }
+
 //-(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 //{
 //    _playerNode.position = [touch locationInNode:self];

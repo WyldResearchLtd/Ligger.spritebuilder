@@ -67,13 +67,18 @@
     }
 }
 
+
+-(bool) timerPaused {
+    return !(_timer.isValid);
+}
+
 -(void) pauseTimer {
-   NSLog(@"Timer paused");
+   //NSLog(@"Timer paused");
    [_timer invalidate]; 
 }
 
 -(void) startTimer {
-    if (![_timer isValid]) {
+    if (self.timerPaused) {
         NSLog(@"Timer started");
         _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(tickTock) userInfo:nil repeats:YES];
     }

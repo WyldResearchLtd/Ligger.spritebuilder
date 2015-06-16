@@ -63,6 +63,7 @@
 		B062DF0E1B29666F0014ADA5 /* Obstacle.m in Sources */ = {isa = PBXBuildFile; fileRef = B062DF0D1B29666F0014ADA5 /* Obstacle.m */; };
 		B0AE24971AE3A746001979A5 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B0AE24961AE3A746001979A5 /* GameScene.m */; };
 		B0D7858F1B2EDB1000162C9E /* PopupLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D7858E1B2EDB1000162C9E /* PopupLayer.m */; };
+		B0D785921B2F504A00162C9E /* GameData.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D785911B2F504A00162C9E /* GameData.m */; };
 		B71F5911188484E7003F4D28 /* iPad-old.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5907188484E7003F4D28 /* iPad-old.png */; };
 		B71F5912188484E7003F4D28 /* iPad-old@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5908188484E7003F4D28 /* iPad-old@2x.png */; };
 		B71F5913188484E7003F4D28 /* iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5909188484E7003F4D28 /* iPad.png */; };
@@ -183,6 +184,8 @@
 		B0AE24981AE3F861001979A5 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = Source/Constants.h; sourceTree = "<group>"; };
 		B0D7858D1B2EDB1000162C9E /* PopupLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopupLayer.h; path = Source/PopupLayer.h; sourceTree = "<group>"; };
 		B0D7858E1B2EDB1000162C9E /* PopupLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopupLayer.m; path = Source/PopupLayer.m; sourceTree = "<group>"; };
+		B0D785901B2F504A00162C9E /* GameData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameData.h; sourceTree = "<group>"; };
+		B0D785911B2F504A00162C9E /* GameData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameData.m; sourceTree = "<group>"; };
 		B71F5907188484E7003F4D28 /* iPad-old.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad-old.png"; path = "Icons/iPad-old.png"; sourceTree = "<group>"; };
 		B71F5908188484E7003F4D28 /* iPad-old@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad-old@2x.png"; path = "Icons/iPad-old@2x.png"; sourceTree = "<group>"; };
 		B71F5909188484E7003F4D28 /* iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPad.png; path = Icons/iPad.png; sourceTree = "<group>"; };
@@ -465,6 +468,8 @@
 				B062DF0D1B29666F0014ADA5 /* Obstacle.m */,
 				B0D7858D1B2EDB1000162C9E /* PopupLayer.h */,
 				B0D7858E1B2EDB1000162C9E /* PopupLayer.m */,
+				B0D785901B2F504A00162C9E /* GameData.h */,
+				B0D785911B2F504A00162C9E /* GameData.m */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -838,6 +843,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0D7858F1B2EDB1000162C9E /* PopupLayer.m in Sources */,
+				B0D785921B2F504A00162C9E /* GameData.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
 				B04E04991B272505009E6DA3 /* LevelTimer.m in Sources */,
 				7A046D8C19E8A20E004C4763 /* MainScene.m in Sources */,

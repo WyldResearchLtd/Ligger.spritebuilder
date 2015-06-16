@@ -31,6 +31,6 @@
 -(void) pauseTimer;
 -(void) startTimer;
 -(void) tickTock;
-    
+-(bool) timerPaused;
 
 @end
