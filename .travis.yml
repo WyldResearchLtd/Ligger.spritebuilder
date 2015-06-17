@@ -1,0 +1,22 @@
+language: objective-c
+before_script:
+- ./scripts/add-key.sh
+- ./scripts/update-bundle.sh
+script:
+- xctool -workspace Ligger.xcworkspace -scheme Ligger -sdk iphoneos -configuration Release OBJROOT=$PWD/build SYMROOT=$PWD/build ONLY_ACTIVE_ARCH=NO 'CODE_SIGN_RESOURCE_RULES_PATH=$(SDKROOT)/ResourceRules.plist'
+
+after_success:
+- ./scripts/sign-and-upload.sh
+after_script:
+- ./scripts/remove-key.sh
+env:
+  global:
+  - BUILD_OFFSET="0"
+  - RELEASE_VERS="true"
+  - APP_NAME="Ligger"
+  - 'DEVELOPER_NAME="iPhone Distribution: Fezzee Corp."'
+  - PROFILE_NAME="XC_Ad_Hoc_comfezzee_star"
+  - INFO_PLIST="Source/Resources/Platforms/IOS/Info.plist"
+  - BUNDLE_DISPLAY_NAME="FLigger"
+  - BUNDLE_IDENTIFIER="com.fezzee.Ligger"
+
