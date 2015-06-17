@@ -61,6 +61,8 @@
 		927F61BB196C771E000F43EF /* iPad-old.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5907188484E7003F4D28 /* iPad-old.png */; };
 		B04E04991B272505009E6DA3 /* LevelTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = B04E04981B272505009E6DA3 /* LevelTimer.m */; };
 		B062DF0E1B29666F0014ADA5 /* Obstacle.m in Sources */ = {isa = PBXBuildFile; fileRef = B062DF0D1B29666F0014ADA5 /* Obstacle.m */; };
+		B07ED3BD1B31C3540004406E /* hustle.m4a in Resources */ = {isa = PBXBuildFile; fileRef = B07ED3BB1B31C3530004406E /* hustle.m4a */; };
+		B07ED3BE1B31C3540004406E /* hustle2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = B07ED3BC1B31C3540004406E /* hustle2.m4a */; };
 		B0AE24971AE3A746001979A5 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B0AE24961AE3A746001979A5 /* GameScene.m */; };
 		B0D7858F1B2EDB1000162C9E /* PopupLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D7858E1B2EDB1000162C9E /* PopupLayer.m */; };
 		B0D785921B2F504A00162C9E /* GameData.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D785911B2F504A00162C9E /* GameData.m */; };
@@ -179,6 +181,8 @@
 		B062DF0C1B29666F0014ADA5 /* Obstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Obstacle.h; path = Source/Obstacle.h; sourceTree = "<group>"; };
 		B062DF0D1B29666F0014ADA5 /* Obstacle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Obstacle.m; path = Source/Obstacle.m; sourceTree = "<group>"; };
 		B066F7C81AF1BAB100F9BC19 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		B07ED3BB1B31C3530004406E /* hustle.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = hustle.m4a; path = "Source/Resources/Published-iOS/Audio/hustle.m4a"; sourceTree = "<group>"; };
+		B07ED3BC1B31C3540004406E /* hustle2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = hustle2.m4a; path = "Source/Resources/Published-iOS/Audio/hustle2.m4a"; sourceTree = "<group>"; };
 		B0AE24951AE3A746001979A5 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = Source/GameScene.h; sourceTree = "<group>"; };
 		B0AE24961AE3A746001979A5 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameScene.m; path = Source/GameScene.m; sourceTree = "<group>"; };
 		B0AE24981AE3F861001979A5 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = Source/Constants.h; sourceTree = "<group>"; };
@@ -498,6 +502,8 @@
 		B77F1B2517B978D7009739AE = {
 			isa = PBXGroup;
 			children = (
+				B07ED3BB1B31C3530004406E /* hustle.m4a */,
+				B07ED3BC1B31C3540004406E /* hustle2.m4a */,
 				B0D785951B304FD700162C9E /* hustle.m4a */,
 				B0D785931B30492300162C9E /* hustle2.m4a */,
 				B066F7C81AF1BAB100F9BC19 /* README.md */,
@@ -759,6 +765,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B07ED3BD1B31C3540004406E /* hustle.m4a in Resources */,
+				B07ED3BE1B31C3540004406E /* hustle2.m4a in Resources */,
 				B71F5919188484E7003F4D28 /* Settings.png in Resources */,
 				B7378978180762440076A88C /* Default@2x.png in Resources */,
 				B71F5914188484E7003F4D28 /* iPad@2x.png in Resources */,
