@@ -18,7 +18,7 @@ typedef enum ObstacleDirection {MoveLeft,MoveRight} ObstacleDirection;
 const bool EASYPASS = true; //used to make it easy to level up
 
 const int kPROMOTORS = 4; //number of promotors
-const int kTOTALTIMER = 59; //Total Timer Seconds
+const int kTOTALTIMER = 120; //Total Timer Seconds
 
 const int kBOARDTOPBOUND = 800;
 const int kBOARDBOTTOMBOUND = 50;

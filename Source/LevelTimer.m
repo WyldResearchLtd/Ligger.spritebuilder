@@ -16,7 +16,7 @@
 
 -(id) initWithGame:(GameScene *)gameScene x:(float)posx y:(float)posy {
     
-    self = [super init]; //initWithGame:game x:posx y:posy];
+    self = [super init]; //initWithGame:game x:posx y:posy]2
     NSLog(@"LEVEL TIMER INITIALISED");
     
     if (self != nil) {
@@ -40,7 +40,7 @@
         // [[_game getScreen] addSprite:_timeBar];
         
         _textureRectangleFull = _textureRectangle = _timeBar.textureRect;
-        _timeDecrement = _timeBar.textureRect.size.width * 0.017;  //0.004=250 0.04=25 0.08=12.5  0.016=63  0.015=67
+        _timeDecrement = _timeBar.textureRect.size.width * 0.0082;  //0.004=250 0.04=25 0.08=12.5 0.017=59 0.016=63  0.015=67
         
     }
 

@@ -70,7 +70,7 @@ bool isCollisionInProgress = false;
     self.screenWidth = winSize.width;
     self.screenHeight = winSize.height;
     
-    _timer = [[LevelTimer alloc] initWithGame:self x:20 y:self.screenHeight-20];
+    _timer = [[LevelTimer alloc] initWithGame:self x:-46 y:self.screenHeight-6];
     
 }
  
@@ -290,7 +290,7 @@ bool isCollisionInProgress = false;
                 
                 [self performSelector:@selector(pauseGame) withObject:nil];
                 [self performSelector:@selector(resetGame) withObject:nil afterDelay:0.5f];
-                [self performSelector:@selector(startGame) withObject:nil];
+                [self performSelector:@selector(startGame) withObject:nil afterDelay:0.6f];
                 //[self performSelector:@selector(movePlayerToMedian) withObject:nil afterDelay:1.5f];
                 
                 //this is set to false in method movePlayerToMedian
@@ -545,6 +545,9 @@ bool isCollisionInProgress = false;
  */
 -(void) restartSetup
 {
+    self.bkstage_f.position = CGPointMake(645.5f, 82.0f);
+    self.bkstage_b.position = CGPointMake(645.5f, 92.5f);
+    
     [((CCNode*)self.promotors[0]) removeFromParent];
     [self.promotors removeObjectAtIndex:0];
     self.playerState=NoBeers;
@@ -866,6 +869,8 @@ bool isCollisionInProgress = false;
 
     NSLog(@"ANIMATION STARTED");
     
+    //_levelNode.paused=false;
+    
     for (int i = 0; i < self.obstacles.count; i++)
     {
         [self performSelector:@selector(startAnimation:forSequence:) withObject:((Obstacle*)self.obstacles[i]).sprite withObject:@"default"];
@@ -879,6 +884,8 @@ bool isCollisionInProgress = false;
     
     [_timer pauseTimer];
     
+    //_levelNode.paused=true;
+    
     [self performSelector:@selector(pauseAnimation:) withObject:self.bartender1];
     
     for (int i = 0; i < self.obstacles.count; i++)
@@ -890,6 +897,7 @@ bool isCollisionInProgress = false;
 
 -(void) resetGame //:(CCNode*) obstacle
 {
+    NSLog(@"~~~~~~RESET GAME~~~~~~");
     for (int i = 0; i < self.obstacles.count; i++)
     {
         if (((Obstacle*)self.obstacles[i]).direction == MoveLeft)//(i%2)
@@ -899,9 +907,11 @@ bool isCollisionInProgress = false;
 
                 ((CCNode*)self.obstacles[i]).position = ccp(0-((CCNode*)self.obstacles[i]).contentSize.width+45,((CCNode*)self.obstacles[i]).position.y);
         }
-        GameScene.halt = false;
-        isCollisionInProgress = false;
+        
     }
+    
+    GameScene.halt = false;
+    isCollisionInProgress = false;
 }
 
 
