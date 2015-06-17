@@ -64,8 +64,6 @@
 		B0AE24971AE3A746001979A5 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B0AE24961AE3A746001979A5 /* GameScene.m */; };
 		B0D7858F1B2EDB1000162C9E /* PopupLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D7858E1B2EDB1000162C9E /* PopupLayer.m */; };
 		B0D785921B2F504A00162C9E /* GameData.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D785911B2F504A00162C9E /* GameData.m */; };
-		B0D785941B30492300162C9E /* hustle2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = B0D785931B30492300162C9E /* hustle2.m4a */; };
-		B0D785961B304FD700162C9E /* hustle.m4a in Resources */ = {isa = PBXBuildFile; fileRef = B0D785951B304FD700162C9E /* hustle.m4a */; };
 		B71F5911188484E7003F4D28 /* iPad-old.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5907188484E7003F4D28 /* iPad-old.png */; };
 		B71F5912188484E7003F4D28 /* iPad-old@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5908188484E7003F4D28 /* iPad-old@2x.png */; };
 		B71F5913188484E7003F4D28 /* iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5909188484E7003F4D28 /* iPad.png */; };
@@ -761,8 +759,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0D785961B304FD700162C9E /* hustle.m4a in Resources */,
-				B0D785941B30492300162C9E /* hustle2.m4a in Resources */,
 				B71F5919188484E7003F4D28 /* Settings.png in Resources */,
 				B7378978180762440076A88C /* Default@2x.png in Resources */,
 				B71F5914188484E7003F4D28 /* iPad@2x.png in Resources */,
