@@ -19,4 +19,4 @@ env:
   - INFO_PLIST="Source/Resources/Platforms/IOS/Info.plist"
   - BUNDLE_DISPLAY_NAME="Ligger"
   - BUNDLE_IDENTIFIER="com.fezzee.Ligger"
-  - secure: FdePnLFrvDk+nSXY+cgJsO/N3KecEoN6GEYmfTdVtDb77UNr56Lr6V4EwdY5QX+4HaRHR4tyKjRQNNXl8AWPAkqCJMmDosCwN7HylRcbzPDlUNTrK6gwy/OfgVFUXSxAc25yqrprRd2WjrZGp5vkeY1XdtWGiztXFXEWmlDSMHE=
+  - secure: NRd8mZYK0EoGO1iXyG1X9CSuWDgC1FLYSQLdk4tGPgoEd9JApNDH8dkgbqwf9VehBBCHat51JkLhzJEAcJc5JBvMtXlG7uC6p+aOVl9+zfCFhfZzYdawJau4DyUM8sZr1Qjv8fvubntj70a9CJPLyudVwjA67ZyOFPfnt6cQqHE=
