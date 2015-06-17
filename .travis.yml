@@ -15,7 +15,7 @@ env:
   - RELEASE_VERS="true"
   - APP_NAME="Ligger"
   - 'DEVELOPER_NAME="iPhone Distribution: Fezzee Corp."'
-  - PROFILE_NAME="XC_Ad_Hoc_comfezzee_star"
+  - PROFILE_NAME="XC_Ad_Hoc_comfezzee"
   - INFO_PLIST="Source/Resources/Platforms/IOS/Info.plist"
   - BUNDLE_DISPLAY_NAME="Ligger"
   - BUNDLE_IDENTIFIER="com.fezzee.Ligger"
