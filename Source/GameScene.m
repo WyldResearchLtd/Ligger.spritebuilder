@@ -226,6 +226,7 @@ bool isCollisionInProgress = false;
    }
 }
 
+//TODO: move to Obstacle class
 -(Boolean) doesCollide:(CCNode*)obstacle withPlayer:(CCNode*) player
 {
     Boolean rtn = false;
@@ -570,6 +571,7 @@ bool isCollisionInProgress = false;
     viewPos.y = MAX(0.0, MIN(viewPos.y, levelSize.height - viewSize.height));
     _levelNode.positionInPoints = ccpNeg(viewPos);
 }
+
 
 - (void)startAnimation:(CCNode*)node forSequence:(NSString*)sequenceName
 {
