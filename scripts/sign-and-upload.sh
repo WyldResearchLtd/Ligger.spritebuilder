@@ -74,5 +74,5 @@ git push --tags origin master
     -ipaPath "$OUTPUTDIR/$APP_NAME.ipa" \
     -notifications YES \
     -groupAliases IOS \
-    -notesPath "RN/v$MAJORMINOR-$BUILDNUM.txt"
+#-notesPath "RN/v$MAJORMINOR-$BUILDNUM.txt"
 

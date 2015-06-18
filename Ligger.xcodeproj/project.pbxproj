@@ -63,11 +63,22 @@
 		B03DBA521B329D86009ECC4E /* hustle2.caf in Resources */ = {isa = PBXBuildFile; fileRef = B03DBA501B329D86009ECC4E /* hustle2.caf */; };
 		B03DBA6D1B32A693009ECC4E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03DBA6B1B32A693009ECC4E /* Fabric.framework */; };
 		B03DBA6E1B32A693009ECC4E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03DBA6C1B32A693009ECC4E /* Crashlytics.framework */; };
+		B03DBA791B32AB29009ECC4E /* GameData.m in Sources */ = {isa = PBXBuildFile; fileRef = B03DBA781B32AB29009ECC4E /* GameData.m */; };
+		B03DBA7B1B32AC66009ECC4E /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = B03DBA7A1B32AC66009ECC4E /* Constants.m */; };
+		B03DBA891B32AD1D009ECC4E /* add-key.sh in Resources */ = {isa = PBXBuildFile; fileRef = B03DBA7D1B32AD1D009ECC4E /* add-key.sh */; };
+		B03DBA8A1B32AD1E009ECC4E /* apple.cer in Resources */ = {isa = PBXBuildFile; fileRef = B03DBA7F1B32AD1D009ECC4E /* apple.cer */; };
+		B03DBA8B1B32AD1E009ECC4E /* dev.cer in Resources */ = {isa = PBXBuildFile; fileRef = B03DBA801B32AD1D009ECC4E /* dev.cer */; };
+		B03DBA8C1B32AD1E009ECC4E /* dev.p12 in Resources */ = {isa = PBXBuildFile; fileRef = B03DBA811B32AD1D009ECC4E /* dev.p12 */; };
+		B03DBA8D1B32AD1E009ECC4E /* dist.cer in Resources */ = {isa = PBXBuildFile; fileRef = B03DBA821B32AD1D009ECC4E /* dist.cer */; };
+		B03DBA8E1B32AD1E009ECC4E /* dist.p12 in Resources */ = {isa = PBXBuildFile; fileRef = B03DBA831B32AD1D009ECC4E /* dist.p12 */; };
+		B03DBA8F1B32AD1E009ECC4E /* XC_Ad_Hoc_comfezzeeLigger.mobileprovision in Resources */ = {isa = PBXBuildFile; fileRef = B03DBA851B32AD1D009ECC4E /* XC_Ad_Hoc_comfezzeeLigger.mobileprovision */; };
+		B03DBA901B32AD1E009ECC4E /* remove-key.sh in Resources */ = {isa = PBXBuildFile; fileRef = B03DBA861B32AD1D009ECC4E /* remove-key.sh */; };
+		B03DBA911B32AD1E009ECC4E /* sign-and-upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = B03DBA871B32AD1D009ECC4E /* sign-and-upload.sh */; };
+		B03DBA921B32AD1E009ECC4E /* update-bundle.sh in Resources */ = {isa = PBXBuildFile; fileRef = B03DBA881B32AD1D009ECC4E /* update-bundle.sh */; };
 		B04E04991B272505009E6DA3 /* LevelTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = B04E04981B272505009E6DA3 /* LevelTimer.m */; };
 		B062DF0E1B29666F0014ADA5 /* Obstacle.m in Sources */ = {isa = PBXBuildFile; fileRef = B062DF0D1B29666F0014ADA5 /* Obstacle.m */; };
 		B0AE24971AE3A746001979A5 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B0AE24961AE3A746001979A5 /* GameScene.m */; };
 		B0D7858F1B2EDB1000162C9E /* PopupLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D7858E1B2EDB1000162C9E /* PopupLayer.m */; };
-		B0D785921B2F504A00162C9E /* GameData.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D785911B2F504A00162C9E /* GameData.m */; };
 		B71F5911188484E7003F4D28 /* iPad-old.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5907188484E7003F4D28 /* iPad-old.png */; };
 		B71F5912188484E7003F4D28 /* iPad-old@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5908188484E7003F4D28 /* iPad-old@2x.png */; };
 		B71F5913188484E7003F4D28 /* iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5909188484E7003F4D28 /* iPad.png */; };
@@ -182,6 +193,19 @@
 		B03DBA501B329D86009ECC4E /* hustle2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = hustle2.caf; path = "Source/Resources/Published-iOS/Audio/hustle2.caf"; sourceTree = "<group>"; };
 		B03DBA6B1B32A693009ECC4E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		B03DBA6C1B32A693009ECC4E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		B03DBA771B32AB29009ECC4E /* GameData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameData.h; path = Source/GameData.h; sourceTree = "<group>"; };
+		B03DBA781B32AB29009ECC4E /* GameData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameData.m; path = Source/GameData.m; sourceTree = "<group>"; };
+		B03DBA7A1B32AC66009ECC4E /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Constants.m; path = Source/Constants.m; sourceTree = "<group>"; };
+		B03DBA7D1B32AD1D009ECC4E /* add-key.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "add-key.sh"; sourceTree = "<group>"; };
+		B03DBA7F1B32AD1D009ECC4E /* apple.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = apple.cer; sourceTree = "<group>"; };
+		B03DBA801B32AD1D009ECC4E /* dev.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = dev.cer; sourceTree = "<group>"; };
+		B03DBA811B32AD1D009ECC4E /* dev.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = dev.p12; sourceTree = "<group>"; };
+		B03DBA821B32AD1D009ECC4E /* dist.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = dist.cer; sourceTree = "<group>"; };
+		B03DBA831B32AD1D009ECC4E /* dist.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = dist.p12; sourceTree = "<group>"; };
+		B03DBA851B32AD1D009ECC4E /* XC_Ad_Hoc_comfezzeeLigger.mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = XC_Ad_Hoc_comfezzeeLigger.mobileprovision; sourceTree = "<group>"; };
+		B03DBA861B32AD1D009ECC4E /* remove-key.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "remove-key.sh"; sourceTree = "<group>"; };
+		B03DBA871B32AD1D009ECC4E /* sign-and-upload.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "sign-and-upload.sh"; sourceTree = "<group>"; };
+		B03DBA881B32AD1D009ECC4E /* update-bundle.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "update-bundle.sh"; sourceTree = "<group>"; };
 		B04E04971B272505009E6DA3 /* LevelTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LevelTimer.h; path = Source/LevelTimer.h; sourceTree = "<group>"; };
 		B04E04981B272505009E6DA3 /* LevelTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LevelTimer.m; path = Source/LevelTimer.m; sourceTree = "<group>"; };
 		B062DF0C1B29666F0014ADA5 /* Obstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Obstacle.h; path = Source/Obstacle.h; sourceTree = "<group>"; };
@@ -192,8 +216,6 @@
 		B0AE24981AE3F861001979A5 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = Source/Constants.h; sourceTree = "<group>"; };
 		B0D7858D1B2EDB1000162C9E /* PopupLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopupLayer.h; path = Source/PopupLayer.h; sourceTree = "<group>"; };
 		B0D7858E1B2EDB1000162C9E /* PopupLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopupLayer.m; path = Source/PopupLayer.m; sourceTree = "<group>"; };
-		B0D785901B2F504A00162C9E /* GameData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameData.h; sourceTree = "<group>"; };
-		B0D785911B2F504A00162C9E /* GameData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameData.m; sourceTree = "<group>"; };
 		B71F5907188484E7003F4D28 /* iPad-old.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad-old.png"; path = "Icons/iPad-old.png"; sourceTree = "<group>"; };
 		B71F5908188484E7003F4D28 /* iPad-old@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad-old@2x.png"; path = "Icons/iPad-old@2x.png"; sourceTree = "<group>"; };
 		B71F5909188484E7003F4D28 /* iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPad.png; path = Icons/iPad.png; sourceTree = "<group>"; };
@@ -463,9 +485,44 @@
 			name = libs;
 			sourceTree = "<group>";
 		};
+		B03DBA7C1B32AD1D009ECC4E /* scripts */ = {
+			isa = PBXGroup;
+			children = (
+				B03DBA7D1B32AD1D009ECC4E /* add-key.sh */,
+				B03DBA7E1B32AD1D009ECC4E /* certs */,
+				B03DBA841B32AD1D009ECC4E /* profile */,
+				B03DBA861B32AD1D009ECC4E /* remove-key.sh */,
+				B03DBA871B32AD1D009ECC4E /* sign-and-upload.sh */,
+				B03DBA881B32AD1D009ECC4E /* update-bundle.sh */,
+			);
+			path = scripts;
+			sourceTree = "<group>";
+		};
+		B03DBA7E1B32AD1D009ECC4E /* certs */ = {
+			isa = PBXGroup;
+			children = (
+				B03DBA7F1B32AD1D009ECC4E /* apple.cer */,
+				B03DBA801B32AD1D009ECC4E /* dev.cer */,
+				B03DBA811B32AD1D009ECC4E /* dev.p12 */,
+				B03DBA821B32AD1D009ECC4E /* dist.cer */,
+				B03DBA831B32AD1D009ECC4E /* dist.p12 */,
+			);
+			path = certs;
+			sourceTree = "<group>";
+		};
+		B03DBA841B32AD1D009ECC4E /* profile */ = {
+			isa = PBXGroup;
+			children = (
+				B03DBA851B32AD1D009ECC4E /* XC_Ad_Hoc_comfezzeeLigger.mobileprovision */,
+			);
+			path = profile;
+			sourceTree = "<group>";
+		};
 		B737893C1807616C0076A88C /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				B03DBA771B32AB29009ECC4E /* GameData.h */,
+				B03DBA781B32AB29009ECC4E /* GameData.m */,
 				B04E04971B272505009E6DA3 /* LevelTimer.h */,
 				B04E04981B272505009E6DA3 /* LevelTimer.m */,
 				7A40362019DDEF0D007B6E8F /* Platforms */,
@@ -474,12 +531,11 @@
 				B0AE24951AE3A746001979A5 /* GameScene.h */,
 				B0AE24961AE3A746001979A5 /* GameScene.m */,
 				B0AE24981AE3F861001979A5 /* Constants.h */,
+				B03DBA7A1B32AC66009ECC4E /* Constants.m */,
 				B062DF0C1B29666F0014ADA5 /* Obstacle.h */,
 				B062DF0D1B29666F0014ADA5 /* Obstacle.m */,
 				B0D7858D1B2EDB1000162C9E /* PopupLayer.h */,
 				B0D7858E1B2EDB1000162C9E /* PopupLayer.m */,
-				B0D785901B2F504A00162C9E /* GameData.h */,
-				B0D785911B2F504A00162C9E /* GameData.m */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -506,6 +562,7 @@
 		B77F1B2517B978D7009739AE = {
 			isa = PBXGroup;
 			children = (
+				B03DBA7C1B32AD1D009ECC4E /* scripts */,
 				B03DBA4F1B329D86009ECC4E /* hustle.caf */,
 				B03DBA501B329D86009ECC4E /* hustle2.caf */,
 				B066F7C81AF1BAB100F9BC19 /* README.md */,
@@ -770,21 +827,31 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B03DBA8B1B32AD1E009ECC4E /* dev.cer in Resources */,
 				B03DBA511B329D86009ECC4E /* hustle.caf in Resources */,
 				B03DBA521B329D86009ECC4E /* hustle2.caf in Resources */,
+				B03DBA891B32AD1D009ECC4E /* add-key.sh in Resources */,
 				B71F5919188484E7003F4D28 /* Settings.png in Resources */,
+				B03DBA8F1B32AD1E009ECC4E /* XC_Ad_Hoc_comfezzeeLigger.mobileprovision in Resources */,
 				B7378978180762440076A88C /* Default@2x.png in Resources */,
+				B03DBA8E1B32AD1E009ECC4E /* dist.p12 in Resources */,
 				B71F5914188484E7003F4D28 /* iPad@2x.png in Resources */,
 				B71F5913188484E7003F4D28 /* iPad.png in Resources */,
+				B03DBA8D1B32AD1E009ECC4E /* dist.cer in Resources */,
 				B71F5912188484E7003F4D28 /* iPad-old@2x.png in Resources */,
 				B737893B180761570076A88C /* Published-iOS in Resources */,
+				B03DBA901B32AD1E009ECC4E /* remove-key.sh in Resources */,
 				B71F591A188484E7003F4D28 /* Settings@2x.png in Resources */,
 				B7378976180762440076A88C /* Default-Landscape~ipad.png in Resources */,
 				B71F5917188484E7003F4D28 /* iPhone.png in Resources */,
 				B7378975180762440076A88C /* Default-568h@2x.png in Resources */,
 				B71F5918188484E7003F4D28 /* iPhone@2x.png in Resources */,
+				B03DBA8C1B32AD1E009ECC4E /* dev.p12 in Resources */,
+				B03DBA921B32AD1E009ECC4E /* update-bundle.sh in Resources */,
 				B7378977180762440076A88C /* Default.png in Resources */,
 				B71F5911188484E7003F4D28 /* iPad-old.png in Resources */,
+				B03DBA911B32AD1E009ECC4E /* sign-and-upload.sh in Resources */,
+				B03DBA8A1B32AD1E009ECC4E /* apple.cer in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -873,13 +940,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0D7858F1B2EDB1000162C9E /* PopupLayer.m in Sources */,
-				B0D785921B2F504A00162C9E /* GameData.m in Sources */,
+				B03DBA791B32AB29009ECC4E /* GameData.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
 				B04E04991B272505009E6DA3 /* LevelTimer.m in Sources */,
 				7A046D8C19E8A20E004C4763 /* MainScene.m in Sources */,
 				B0AE24971AE3A746001979A5 /* GameScene.m in Sources */,
 				B062DF0E1B29666F0014ADA5 /* Obstacle.m in Sources */,
 				5B121038197487F2004C1E1D /* AppDelegate.m in Sources */,
+				B03DBA7B1B32AC66009ECC4E /* Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
