@@ -1,4 +1,8 @@
 # Ligger  
+----------
+
+[![Build Status](https://travis-ci.org/fezzee/Ligger.svg?branch=master)](https://travis-ci.org/fezzee/Ligger)
+
   
 Built with Spritebuilder/Cocos2d  
   
@@ -40,33 +44,34 @@ Sunflowers that bring you much joy and more points. But on other days, you'll be
 to appear from nowhere and will haunt your dreams and rob your bank.  
   
   
-TODO  
-----  
+TODO & Bugs
+----------- 
 P1  
-* Slide out the backstage entrance  
-* instead of walking left to promotor, and then back to the right, have the promotor meet the ligger? or only allow the ligger  
-to return to the spot by the promotor?  
-* don't allow Ligger to enter inside the promotors area'  
-* create a level controller  
-* add all obstacles incl new female streaker  
-  
-P2  
-* Bartender should show only a single drink if player.state = OneBeer  
-* Add particle effect for getting drink  
-* add timeline for walking Ligger (2Beers and 1Beer)  
-* if the Bartender comes to Ligger, the ligger isn't flipped to face forward as it does when the Ligger goes to the Bartender  
+* All obstacles working  
+* Show scoring
+* Options page
+* HUD & Nav
+* Trigger point sounds 
+* Leaderboard
+* Text Pages- Instructions and Credits
+
+
+P2 
+* Should say Backstage or VIP
+* Button Presses- visual or sounds
+* Splash Page- delay it
+* Font throughout
+* After 2 Beer crash, the obstacle dont reset, and the next crash is unavoidable
+* instead of walking left to promotor, and then back to the right, have the promotor meet the ligger? or only allow the ligger    
 * Mask the obstacles so collisions are more accurate  
+* Transitions for Popups??
   
-P3 (Optional)  
-* Ligger movement too blocky (Jack)  
-* ((CCNode*)self.promotors[0])  -- used a collection generic <CCNode*> to eliminate the casts  
-* In startGame and pauseGame, loop through obstacle collection  
+P3   
+* * Bartender should show only a single drink if player.state = OneBeer  
 * The particle effect for a NoBeer Ligger shouldn't be a splash  
-* FIx the obstacles that disappear before fully existing screen  
+* Obstacles that disappear before fully existing screen  
   
-OTHER  
-Add Crashlytics  
-Add to Travis  
+
 
   
 Game Over- Looser- Scoring....with buttins to play again or menu  

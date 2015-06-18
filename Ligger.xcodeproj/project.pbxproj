@@ -562,7 +562,6 @@
 		B77F1B2517B978D7009739AE = {
 			isa = PBXGroup;
 			children = (
-				B03DBA7C1B32AD1D009ECC4E /* scripts */,
 				B03DBA4F1B329D86009ECC4E /* hustle.caf */,
 				B03DBA501B329D86009ECC4E /* hustle2.caf */,
 				B066F7C81AF1BAB100F9BC19 /* README.md */,
@@ -572,6 +571,7 @@
 				B77F1CCF17B978D8009739AE /* Supporting Files */,
 				B77F1B3017B978D7009739AE /* Frameworks */,
 				B77F1B2F17B978D7009739AE /* Products */,
+				B03DBA7C1B32AD1D009ECC4E /* scripts */,
 				5E30E6EB62B6529E6EFBD876 /* Pods */,
 			);
 			sourceTree = "<group>";

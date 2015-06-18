@@ -159,7 +159,7 @@
 				<key>displayName</key>
 				<string>btnGunter</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>_btnGunter</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -179,8 +179,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>171.99998474121094</real>
-							<real>97.999969482421875</real>
+							<real>122.69361114501953</real>
+							<real>191.84317016601562</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -204,8 +204,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
+							<real>0.69078004360198975</real>
+							<real>0.73118627071380615</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -228,8 +228,8 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>40</real>
-							<real>40</real>
+							<real>100</real>
+							<real>150</real>
 							<integer>0</integer>
 							<integer>0</integer>
 						</array>
@@ -262,9 +262,25 @@
 						<string>String</string>
 						<key>value</key>
 						<array>
-							<string>Geordie Gunter</string>
+							<string></string>
 							<false/>
 						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>zoomWhenHighlighted</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>togglesSelectedState</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -274,7 +290,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonNormal.png</string>
+							<string>SpriteSheets/Global/Ligger-Male-Full.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -285,7 +301,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonHighlighted.png</string>
+							<string></string>
 						</array>
 					</dict>
 					<dict>
@@ -309,7 +325,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonNormal.png</string>
+							<string></string>
 						</array>
 					</dict>
 					<dict>
@@ -328,7 +344,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonNormal.png</string>
+							<string>SpriteSheets/Global/Ligger-Male-Full-SELECTED.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -472,6 +488,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -485,7 +503,7 @@
 				<key>displayName</key>
 				<string>btnSparklePony</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>_btnSparkle</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -505,8 +523,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>375</real>
-							<real>97.999969482421875</real>
+							<real>152.43501281738281</real>
+							<real>384</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -519,8 +537,8 @@
 						<string>Point</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
-							<real>0.5</real>
+							<real>-0.21057139337062836</real>
+							<real>2.2810037136077881</real>
 						</array>
 					</dict>
 					<dict>
@@ -530,8 +548,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
+							<real>0.69099998474121094</real>
+							<real>0.73100000619888306</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -554,8 +572,8 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>40</real>
-							<real>40</real>
+							<real>100</real>
+							<real>150</real>
 							<integer>0</integer>
 							<integer>0</integer>
 						</array>
@@ -588,9 +606,25 @@
 						<string>String</string>
 						<key>value</key>
 						<array>
-							<string>Sparkle Pony</string>
+							<string></string>
 							<false/>
 						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>zoomWhenHighlighted</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>togglesSelectedState</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -600,7 +634,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonNormal.png</string>
+							<string>SpriteSheets/Global/Ligger-Female-Full.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -611,7 +645,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonHighlighted.png</string>
+							<string></string>
 						</array>
 					</dict>
 					<dict>
@@ -635,7 +669,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonNormal.png</string>
+							<string></string>
 						</array>
 					</dict>
 					<dict>
@@ -654,7 +688,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonNormal.png</string>
+							<string>SpriteSheets/Global/Ligger-Female-Full-SELECTED.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1132,8 +1166,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

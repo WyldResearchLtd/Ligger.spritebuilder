@@ -9,11 +9,16 @@
 //#ifndef Ligger_Constants_h
 //#define Ligger_Constants_h
 
+#define CASE(str)                       if ([__s__ isEqualToString:(str)])
+#define SWITCH(s)                       for (NSString *__s__ = (s); ; )
+#define DEFAULT
+
 
 typedef enum PlayerMoveState {PlayerUp, PlayerDown, PlayerLeft, PlayerRight} PlayerMoveState;
 typedef enum PlayerState {NoBeers, TwoBeers, OneBeer} PlayerState;
 typedef enum LevelState {GameSetup, PlayGame, CompleteLevel, LevelUp} LevelState;
 typedef enum ObstacleDirection {MoveLeft,MoveRight} ObstacleDirection;
+typedef enum Ligger {GeordieGunter,SparklePony} Ligger;
 
 extern const bool EASYPASS;
 extern const int kPROMOTORS;

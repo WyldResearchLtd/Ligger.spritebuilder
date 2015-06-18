@@ -11,11 +11,15 @@
 
 @interface PopupLayer : CCNode
 
-@property (weak) GameScene* gameScene;
+
+//@property (nonatomic) CCNode* parent; //we let the superclass handle this
+@property (nonatomic) CCButton *_btnGunter;
+@property (nonatomic) CCButton *_btnSparkle;
 
 -(void) btnGunterPressed;
 -(void) btnSparklePonyPressed;
 -(void) btnBack;
 -(void) btnContinue;
+-(void) initCharacter:(Ligger)character;
 
 @end

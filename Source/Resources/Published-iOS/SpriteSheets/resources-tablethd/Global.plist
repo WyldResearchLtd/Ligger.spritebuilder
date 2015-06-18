@@ -4,10 +4,62 @@
 <dict>
 	<key>frames</key>
 	<dict>
+		<key>SpriteSheets/Global/Ligger-Female-Full-SELECTED.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{591, 1268}, {370, 607}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {370, 607}}</string>
+			<key>sourceSize</key>
+			<string>{370, 607}</string>
+		</dict>
+		<key>SpriteSheets/Global/Ligger-Female-Full.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{401, 659}, {370, 607}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {370, 607}}</string>
+			<key>sourceSize</key>
+			<string>{370, 607}</string>
+		</dict>
+		<key>SpriteSheets/Global/Ligger-Male-Full-SELECTED.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{1, 1}, {398, 663}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {398, 663}}</string>
+			<key>sourceSize</key>
+			<string>{398, 663}</string>
+		</dict>
+		<key>SpriteSheets/Global/Ligger-Male-Full.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{1, 666}, {398, 663}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {398, 663}}</string>
+			<key>sourceSize</key>
+			<string>{398, 663}</string>
+		</dict>
 		<key>SpriteSheets/Global/backstage-back.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{591, 1}, {588, 656}}</string>
+			<string>{{401, 1}, {588, 656}}</string>
 			<key>offset</key>
 			<string>{0, 0}</string>
 			<key>rotated</key>
@@ -20,7 +72,7 @@
 		<key>SpriteSheets/Global/backstage-front.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{1, 1}, {588, 656}}</string>
+			<string>{{1, 1331}, {588, 656}}</string>
 			<key>offset</key>
 			<string>{0, 0}</string>
 			<key>rotated</key>
@@ -36,7 +88,7 @@
 		<key>format</key>
 		<integer>2</integer>
 		<key>size</key>
-		<string>{2048, 1024}</string>
+		<string>{2048, 2048}</string>
 		<key>textureFileName</key>
 		<string>Global.png</string>
 	</dict>

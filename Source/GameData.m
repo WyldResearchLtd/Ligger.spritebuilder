@@ -9,6 +9,19 @@
 #import "GameData.h"
 
 @implementation GameData
+
+static Ligger ligger = GeordieGunter;//default
+//a static implemntation of Halt
++ (Ligger) ligger { return ligger; }
++ (void) setLigger:(Ligger)value
+{
+    if(value==SparklePony)
+        NSLog(@"SparklePont Choosen");
+    else
+        NSLog(@"GeordieGunter Choosen");
+    ligger = value;
+}
+
 /*
  
  Pass obstacle (forward only or back with 1 Beer): 10 points.

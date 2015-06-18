@@ -112,10 +112,23 @@ bool isCollisionInProgress = false;
     return self;
 }
 
+//called from two places
+-(void) setPlayerAtStart:(CCNode*)player
+{
+    player.position = ccp(280.268311,48.001999);
+}
+
 -(void) loadLevel
 {
     // get the current level's player in the scene by searching for it recursively
-    _playerNode = [self getChildByName:@"player1m" recursively:TRUE];
+    
+    if (GameData.ligger==SparklePony)
+        _playerNode = [self getChildByName:@"player2f" recursively:TRUE];
+    else
+        _playerNode = [self getChildByName:@"player1m" recursively:TRUE];
+    
+    [self setPlayerAtStart:_playerNode];
+    
     self.playerState = NoBeers;
     NSAssert(_playerNode, @"player node not found in loadLevel");
     
@@ -550,14 +563,14 @@ bool isCollisionInProgress = false;
     self.bkstage_b.position = CGPointMake(645.5f, 92.5f);
     
     [((CCNode*)self.promotors[0]) removeFromParent];
-    [self.promotors removeObjectAtIndex:0];
-    self.playerState=NoBeers;
-    //just face the Ligger Up
+    if (self.promotors.count>0)
+        [self.promotors removeObjectAtIndex:0];
     [self performSelector:@selector(faceHustleLeft) withObject:nil];
     //put the Ligger back at the start position
-    _playerNode.position = ccp(280.268311,48.001999);
+    [self setPlayerAtStart:_playerNode];
+
+    self.playerState=NoBeers;
     self.levelState = GameSetup;
-    
 }
 
 
@@ -926,7 +939,7 @@ bool isCollisionInProgress = false;
         NSAssert(newMenuLayer!=nil, @"PopupLayer in showPopoverNamed is Nil");
         [self addChild:newMenuLayer];
         _popoverMenuLayer = newMenuLayer;
-        _popoverMenuLayer.gameScene = self;
+        _popoverMenuLayer.parent = self;
         GameScene.halt=true;
         _levelNode.paused = YES;
     }

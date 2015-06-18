@@ -7,11 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Constants.h"
 
 @interface GameData : NSObject
 
 @property int GameScore;
 @property (nonatomic) NSMutableArray* Gamelog;
+
++ (Ligger) ligger;
++ (void) setLigger:(Ligger)character;
 
 -(void) moveForward:(CGPoint) position atSecs:(int) secs; //
 -(void) moveBack:(CGPoint) position atSecs:(int) secs; //

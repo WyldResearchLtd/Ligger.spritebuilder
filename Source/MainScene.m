@@ -1,10 +1,11 @@
 #import "MainScene.h"
 #import "GameScene.h"
-
+#import "PopupLayer.h"
 
 @implementation MainScene
 {
-    CCButton* _btnPlay;
+    __weak PopupLayer* _popoverMenuLayer;
+    bool isFirstPass;
 }
 
 -(void) didLoadFromCCB
@@ -14,13 +15,14 @@
     // play background sound
     [audio playBg:@"hustle.caf" loop:YES];
     NSLog(@"MainScene created");
+    isFirstPass = true;
+    
 }
 
 -(void) startButtonPressed
 {
 
     NSLog(@"startbuttonPressed");
-
     
     CCScene* scene = [CCBReader loadAsScene:@"GameScene"];
     GameScene.halt = false;
@@ -33,6 +35,60 @@
     [audio playBg:@"hustle2.caf" loop:YES];
 
     
+}
+
+-(void) showPopoverNamed:(NSString*)name
+{
+    if (_popoverMenuLayer == nil)
+    {
+        PopupLayer* newMenuLayer = (PopupLayer*)[CCBReader load:name];
+        NSAssert(newMenuLayer!=nil, @"PopupLayer in showPopoverNamed is Nil");
+        [self addChild:newMenuLayer];
+        _popoverMenuLayer = newMenuLayer;
+        _popoverMenuLayer.parent = self;
+        //GameScene.halt=true;
+        //_levelNode.paused = YES;
+    }
+}
+
+-(void) removePopover
+{
+    if (_popoverMenuLayer)
+    {
+        NSLog(@"Popup removed");
+        _popoverMenuLayer.visible = YES;
+        [_popoverMenuLayer removeFromParent];
+        _popoverMenuLayer = nil;
+        //_levelNode.paused = NO;
+        //GameScene.halt = false;
+        NSLog(@"Completed Popup removal");
+    }
+    else
+    {
+        NSLog(@"Unable to remove Popup");
+    }
+}
+
+
+
+-(void) startOptions
+{
+    if (_popoverMenuLayer == nil)
+    {
+        [self showPopoverNamed:@"Popups/OptionsPopup"];
+        NSLog(@"+++++++Options++++++: ");
+        
+        if (isFirstPass)
+        {
+            isFirstPass = false;
+            [_popoverMenuLayer initCharacter:GeordieGunter];
+        }
+        else
+        {
+            //get saved value!
+        }
+        
+    }
 }
 
 @end
