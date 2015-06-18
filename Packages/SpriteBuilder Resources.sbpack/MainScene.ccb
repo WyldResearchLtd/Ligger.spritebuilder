@@ -163,7 +163,7 @@
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
-				<integer>1</integer>
+				<integer>2</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -297,24 +297,11 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>backgroundColor|Normal</string>
-						<key>type</key>
-						<string>Color3</string>
-						<key>value</key>
-						<array>
-							<real>0.95373773574829102</real>
-							<real>0.97144854068756104</real>
-							<real>0.99607843160629272</real>
-							<real>1</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
 						<string>labelOpacity|Normal</string>
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>100</real>
+						<real>50</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -346,7 +333,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.0</real>
+						<real>20</real>
 					</dict>
 					<dict>
 						<key>name</key>

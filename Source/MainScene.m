@@ -3,7 +3,9 @@
 
 
 @implementation MainScene
-
+{
+    CCButton* _btnPlay;
+}
 
 -(void) didLoadFromCCB
 {
@@ -18,12 +20,6 @@
 {
 
     NSLog(@"startbuttonPressed");
-
-//    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-//    spinner.center = CGPointMake(160, 240);
-//    spinner.tag = 12;
-//    [self addChild:spinner];
-//    [spinner startAnimating];
 
     
     CCScene* scene = [CCBReader loadAsScene:@"GameScene"];
