@@ -61,6 +61,8 @@
 		927F61BB196C771E000F43EF /* iPad-old.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5907188484E7003F4D28 /* iPad-old.png */; };
 		B03DBA511B329D86009ECC4E /* hustle.caf in Resources */ = {isa = PBXBuildFile; fileRef = B03DBA4F1B329D86009ECC4E /* hustle.caf */; };
 		B03DBA521B329D86009ECC4E /* hustle2.caf in Resources */ = {isa = PBXBuildFile; fileRef = B03DBA501B329D86009ECC4E /* hustle2.caf */; };
+		B03DBA6D1B32A693009ECC4E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03DBA6B1B32A693009ECC4E /* Fabric.framework */; };
+		B03DBA6E1B32A693009ECC4E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03DBA6C1B32A693009ECC4E /* Crashlytics.framework */; };
 		B04E04991B272505009E6DA3 /* LevelTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = B04E04981B272505009E6DA3 /* LevelTimer.m */; };
 		B062DF0E1B29666F0014ADA5 /* Obstacle.m in Sources */ = {isa = PBXBuildFile; fileRef = B062DF0D1B29666F0014ADA5 /* Obstacle.m */; };
 		B0AE24971AE3A746001979A5 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B0AE24961AE3A746001979A5 /* GameScene.m */; };
@@ -178,6 +180,8 @@
 		9534242F9355FECD6304D9F9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B03DBA4F1B329D86009ECC4E /* hustle.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = hustle.caf; path = "Source/Resources/Published-iOS/Audio/hustle.caf"; sourceTree = "<group>"; };
 		B03DBA501B329D86009ECC4E /* hustle2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = hustle2.caf; path = "Source/Resources/Published-iOS/Audio/hustle2.caf"; sourceTree = "<group>"; };
+		B03DBA6B1B32A693009ECC4E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		B03DBA6C1B32A693009ECC4E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		B04E04971B272505009E6DA3 /* LevelTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LevelTimer.h; path = Source/LevelTimer.h; sourceTree = "<group>"; };
 		B04E04981B272505009E6DA3 /* LevelTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LevelTimer.m; path = Source/LevelTimer.m; sourceTree = "<group>"; };
 		B062DF0C1B29666F0014ADA5 /* Obstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Obstacle.h; path = Source/Obstacle.h; sourceTree = "<group>"; };
@@ -273,6 +277,7 @@
 			files = (
 				7A97911819E631CD001FFC4D /* libcocos2d.a in Frameworks */,
 				8392007A18EE8E3300B6C429 /* GLKit.framework in Frameworks */,
+				B03DBA6E1B32A693009ECC4E /* Crashlytics.framework in Frameworks */,
 				B77F1B3217B978D7009739AE /* QuartzCore.framework in Frameworks */,
 				B77F1B3417B978D7009739AE /* OpenGLES.framework in Frameworks */,
 				B77F1B3617B978D7009739AE /* OpenAL.framework in Frameworks */,
@@ -282,6 +287,7 @@
 				B77F1B3E17B978D7009739AE /* Foundation.framework in Frameworks */,
 				B77F1B4017B978D7009739AE /* CoreGraphics.framework in Frameworks */,
 				B77F1B4217B978D7009739AE /* CoreText.framework in Frameworks */,
+				B03DBA6D1B32A693009ECC4E /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,6 +532,8 @@
 		B77F1B3017B978D7009739AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B03DBA6B1B32A693009ECC4E /* Fabric.framework */,
+				B03DBA6C1B32A693009ECC4E /* Crashlytics.framework */,
 				BC5399D31A44DCC90063F482 /* AndroidKit.framework */,
 				BC5399D41A44DCC90063F482 /* CoreJava.framework */,
 				BC5399D51A44DCC90063F482 /* GLActivityKit.framework */,
@@ -625,6 +633,7 @@
 				B77F1B2B17B978D7009739AE /* Frameworks */,
 				D352B47A19EC5D8A00829775 /* Compile Metal Shaders */,
 				B77F1B2C17B978D7009739AE /* Resources */,
+				B03DBA6A1B32A663009ECC4E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -795,6 +804,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "osascript -e 'tell application \"System Events\"' -e 'set ProcessList to name of every process' -e 'if \"SpriteBuilder\" is in ProcessList then' -e 'tell application \"SpriteBuilder\" to publish' -e 'end if' -e 'end tell'";
+		};
+		B03DBA6A1B32A663009ECC4E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 916ca320e4327b0f5bdb17e64886867e0fec2d92 9d76d55f6993f7825640bc0a9fb2c9d5c7fa9ea212962e031df8d3b2a5ff9570";
 		};
 		D2E0167A18D782EC00927430 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1151,6 +1173,11 @@
 				CODE_SIGN_RESOURCE_RULES_PATH = "";
 				"CODE_SIGN_RESOURCE_RULES_PATH[sdk=*]" = "";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/gene/Documents/FezzeeCorp/SpriteBuilderTest/Ligger.spritebuilder,
+					"$(PROJECT_DIR)",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Source/Prefix.pch;
@@ -1188,6 +1215,11 @@
 				CODE_SIGN_RESOURCE_RULES_PATH = "";
 				"CODE_SIGN_RESOURCE_RULES_PATH[sdk=*]" = "";
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/gene/Documents/FezzeeCorp/SpriteBuilderTest/Ligger.spritebuilder,
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Source/Prefix.pch;
 				HEADER_SEARCH_PATHS = (
