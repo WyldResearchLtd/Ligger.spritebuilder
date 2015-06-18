@@ -8,7 +8,7 @@
     // access audio object
     OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
     // play background sound
-    [audio playBg:@"hustle.m4a" loop:YES];
+    [audio playBg:@"hustle.caf" loop:YES];
     NSLog(@"MainScene created");
 }
 
@@ -26,7 +26,7 @@
     // access audio object
     OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
     // play background sound
-    [audio playBg:@"hustle2.m4a" loop:YES];
+    [audio playBg:@"hustle2.caf" loop:YES];
 
     
 }
