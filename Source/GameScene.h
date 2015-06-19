@@ -34,7 +34,7 @@
 @property int screenWidth;
 @property int screenHeight;
 
-@property (nonatomic) CCLabelBMFont *lblHUDscore;
+@property (nonatomic) CCLabelBMFont *_lblHUDscore;
 
 + (Boolean) halt;
 + (void) setHalt:(Boolean)value;

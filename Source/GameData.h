@@ -17,17 +17,16 @@
 + (Ligger) ligger;
 + (void) setLigger:(Ligger)character;
 
-//-(void) moveForward:(CGPoint) position atSecs:(int) secs; //
 -(void) moveForward:(CGPoint) position atSecs:(int) secs hud:(CCLabelBMFont*)label; //
--(void) moveBack:(CGPoint) position atSecs:(int) secs; //
--(void) moveBack2:(CGPoint) position atSecs:(int) secs; //
--(void) reachBartender:(int) secs;
--(void) finishOneBeer:(int) secs;
--(void) finishTwoBeers:(int) secs;
--(void) calcBonus:(int)secsRemaining forPromotor:(int)index;
--(void) MushroomMan:(CGPoint) position atSecs:(int) secs;
--(void) goodTrip:(CGPoint) position atSecs:(int) secs;
--(void) badTrip:(CGPoint) position atSecs:(int) secs;
+-(void) moveBack:(CGPoint) position atSecs:(int)secs hud:(CCLabelBMFont*)label; //
+-(void) moveBack2:(CGPoint) position atSecs:(int)secs hud:(CCLabelBMFont*)label; //
+-(void) reachBartender:(int)secs hud:(CCLabelBMFont*)label;
+-(void) finishOneBeer:(int)secs hud:(CCLabelBMFont*)label;
+-(void) finishTwoBeers:(int)secs hud:(CCLabelBMFont*)label;
+-(void) calcBonus:(int)secsRemaining forPromotor:(int)index hud:(CCLabelBMFont*)label;
+-(void) MushroomMan:(CGPoint) position atSecs:(int)secs hud:(CCLabelBMFont*)label;
+-(void) goodTrip:(CGPoint) position atSecs:(int)secs hud:(CCLabelBMFont*)label;
+-(void) badTrip:(CGPoint) position atSecs:(int)secs hud:(CCLabelBMFont*)label;
 
 -(void) reset;
 -(void) printLog;

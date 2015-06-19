@@ -87,28 +87,30 @@ bool isCollisionInProgress = false;
     }
 }
 
+-(void) calcBonus
+{
+   
+     NSLog(@"Calc Bonus");
+    if (self.playerState==TwoBeers)
+        [self.gameData finishTwoBeers:((LevelTimer*)self.timer).seconds hud:self._lblHUDscore];
+    else if (self.playerState==OneBeer)
+        [self.gameData finishTwoBeers:((LevelTimer*)self.timer).seconds hud:self._lblHUDscore];
+    [self.gameData calcBonus:kTOTALTIMER-((LevelTimer*)self.timer).seconds forPromotor:kPROMOTORS+1-(int)self.promotors.count hud:self._lblHUDscore];
+    NSLog(@"Game Duration: %d",((LevelTimer*)_timer).seconds);
+     NSLog(@"+++++++GAME SCORE++++++: %d", _gameData.GameScore);
+}
+
 -(void) gameOver
 {
-    NSLog(@"Game Over*****************");
-    
-    NSLog(@"Game Duration: %d",((LevelTimer*)_timer).seconds);
-   
-    if (self.playerState==TwoBeers)
-        [self.gameData finishTwoBeers:((LevelTimer*)self.timer).seconds];
-    else if (self.playerState==OneBeer)
-        [self.gameData finishTwoBeers:((LevelTimer*)self.timer).seconds];
-    [self.gameData calcBonus:kTOTALTIMER-((LevelTimer*)self.timer).seconds forPromotor:kPROMOTORS+1-(int)self.promotors.count];
     
     if (_popoverMenuLayer == nil)
     {
         [self showPopoverNamed:@"Popups/GameOver"];
          [_popoverMenuLayer initCompletedScore:[NSString stringWithFormat:@"Score: %d Time: %d secs", _gameData.GameScore,((LevelTimer*)_timer).seconds]];
-         NSLog(@"+++++++GAME SCORE++++++: %d", _gameData.GameScore);
+        
          [_gameData printLog];
-        
-        
-        
     }
+     NSLog(@"Game Over*****************");
 }
 
 - (CCNode*) getScreen
@@ -353,18 +355,18 @@ bool isCollisionInProgress = false;
     //Calculte scoring, because if this reached, there hasn't been a collision
     if (self.playerMoveState==PlayerUp && self.swiped)
     {
-        [self.gameData moveForward:_playerNode.position atSecs:((LevelTimer*)self.timer).seconds hud:self.lblHUDscore];
+        [self.gameData moveForward:_playerNode.position atSecs:((LevelTimer*)self.timer).seconds hud:self._lblHUDscore];
         //[self.lblHUDscore setString:[NSString stringWithFormat:@"Score: %d", _gameData.GameScore]];
         self.swiped=false;
     }
     else if (self.playerMoveState==PlayerDown && self.playerState==OneBeer && self.swiped)
     {
-        [self.gameData moveBack:_playerNode.position atSecs:((LevelTimer*)self.timer).seconds];
+        [self.gameData moveBack:_playerNode.position atSecs:((LevelTimer*)self.timer).seconds hud:self._lblHUDscore];
         self.swiped=false;
     }
     else if (self.playerMoveState==PlayerDown && self.playerState==TwoBeers && self.swiped)
     {
-        [self.gameData moveBack2:_playerNode.position atSecs:((LevelTimer*)self.timer).seconds];
+        [self.gameData moveBack2:_playerNode.position atSecs:((LevelTimer*)self.timer).seconds hud:self._lblHUDscore];
         self.swiped=false;
 
     }
@@ -404,7 +406,7 @@ bool isCollisionInProgress = false;
         {
             NSLog(@"BARTENDER %d SERVING(1)", idxBartender);
             //calc score
-            [self.gameData reachBartender:((LevelTimer*)self.timer).seconds];
+            [self.gameData reachBartender:((LevelTimer*)self.timer).seconds hud:self._lblHUDscore];
             //set state
             [self performSelector:@selector(serve2Beers) withObject:nil];
             bBartenderServing = true;
@@ -430,7 +432,7 @@ bool isCollisionInProgress = false;
             bBartenderServing = true;
             NSLog(@"BARTENDER %d SERVING(2)", idxBartender);
             //calc score
-            [self.gameData reachBartender:((LevelTimer*)self.timer).seconds];
+            [self.gameData reachBartender:((LevelTimer*)self.timer).seconds hud:self._lblHUDscore];
             //set state
             [self performSelector:@selector(serve2Beers) withObject:nil];
             
@@ -453,6 +455,7 @@ bool isCollisionInProgress = false;
 
 -(void) advancePromotor
 {
+    
     if (self.promotors.count==0)
     {
         NSLog(@"No more promotors******");
@@ -465,6 +468,7 @@ bool isCollisionInProgress = false;
     
     if (!isPromotorSetupStarted)
     {
+        
         [self performSelector:@selector(startAnimation:forSequence:) withObject:((CCNode*)self.promotors[0]) withObject:@"walk"];
         isPromotorSetupStarted = true;
     }
@@ -511,10 +515,13 @@ bool isCollisionInProgress = false;
     {
         [((LevelTimer*)_timer) pauseTimer];
         NSLog(@"GAME LEVELTIMER PAUSED");
+        
+        //this is the perfect plave to calc the Bonus, at the start of the level up 
+        [self calcBonus];
     }
     
+    //MOVE THE PROMOTOR AND PLAYER
     _playerNode.position = ccpSub(_playerNode.position, ccp(-1.0,0));
-
     ((CCNode*)self.promotors[0]).position = ccpSub(((CCNode*)self.promotors[0]).position, ccp(-1.0,0));
 
 
@@ -530,15 +537,7 @@ bool isCollisionInProgress = false;
     if (((CCNode*)self.promotors[0]).position.x > _levelNode.contentSizeInPoints.width+45)
     {
         NSLog(@"PROMOTOR Offscreen");
-        
-        //now add the Completion score
-        if (self.playerState==TwoBeers)
-            [self.gameData finishTwoBeers:((LevelTimer*)self.timer).seconds];
-        else if (self.playerState==OneBeer)
-            [self.gameData finishTwoBeers:((LevelTimer*)self.timer).seconds];
-        //TODO- The Magic Numbers need to be kConstants
-         [self.gameData calcBonus:kTOTALTIMER-((LevelTimer*)self.timer).seconds forPromotor:kPROMOTORS+1-(int)self.promotors.count];
-        
+                
         [self restartSetup];
 
         if (_popoverMenuLayer == nil)

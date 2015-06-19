@@ -11,15 +11,17 @@
 
 -(void) didLoadFromCCB
 {
-    // access audio object
+    // access audio object- play music while loading sprites below
     OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
     // play background sound
     [audio playBg:@"hustle.caf" loop:YES];
     NSLog(@"MainScene created");
-    isFirstPass = true;
+    isFirstPass = true;//used for:
+    
     //preload it
     scene = [CCBReader loadAsScene:@"GameScene"];
     GameScene.halt = false;
+    
 }
 
 -(void) startButtonPressed

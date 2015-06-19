@@ -48,23 +48,26 @@ TODO & Bugs
 ----------- 
 P1  
 * All obstacles working  
-* Show scoring
-* Options page
-* HUD & Nav
-* Trigger point sounds 
+* Options page- (x)Character, Nav, Name, Volume & Song selection
+* (x)HUD & Nav
 * Leaderboard
+'---------------
+* Trip & Frog
+'---------------
+* Trigger point sounds- collisions, start, bartender, button clicks 
 * Text Pages- Instructions and Credits
+* Splash Screen graphics
+* save local data
+
 
 
 P2 
 * Should say Backstage or VIP
-* Button Presses- visual or sounds
-* Splash Page- delay it
-* Font throughout
+* Loop Promotors back
 * After 2 Beer crash, the obstacle dont reset, and the next crash is unavoidable
 * instead of walking left to promotor, and then back to the right, have the promotor meet the ligger? or only allow the ligger    
 * Mask the obstacles so collisions are more accurate  
-* Transitions for Popups??
+* Transitions for Popups
   
 P3   
 * * Bartender should show only a single drink if player.state = OneBeer  

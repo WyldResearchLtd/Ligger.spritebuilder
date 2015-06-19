@@ -44,62 +44,77 @@ static Ligger ligger = GeordieGunter;//default
  
 */
 
--(void) moveForward:(CGPoint)position atSecs:(int) secs hud:(CCLabelBMFont*)label
+// All of thee method also update the HUD
+
+-(void) moveForward:(CGPoint)position atSecs:(int)secs hud:(CCLabelBMFont*)label
 {
     _GameScore += 10;
     [self addToGameLog:@"moveForward" atSecs:secs forPosition:position];
-    [label setString:[NSString stringWithFormat:@"Score: %d", _GameScore]];
+    [label setString:[NSString stringWithFormat:@"%d", _GameScore]];
     
 }
--(void) moveBack:(CGPoint) position atSecs:(int) secs
+-(void) moveBack:(CGPoint) position atSecs:(int)secs hud:(CCLabelBMFont*)label
 {
     _GameScore += 10;
     [self addToGameLog:@"moveBack" atSecs:secs forPosition:position];
+    [label setString:[NSString stringWithFormat:@"%d", _GameScore]];
 }
--(void) moveBack2:(CGPoint) position atSecs:(int) secs
+-(void) moveBack2:(CGPoint) position atSecs:(int)secs hud:(CCLabelBMFont*)label
 {
     _GameScore += 20;
     [self addToGameLog:@"moveBack2" atSecs:secs forPosition:position];
+    [label setString:[NSString stringWithFormat:@"%d", _GameScore]];
 }
--(void) reachBartender:(int) secs
+-(void) reachBartender:(int)secs hud:(CCLabelBMFont*)label
 {
     _GameScore += 100;
     [self addToGameLog:@"reachBartender" atSecs:secs forPosition:CGPointMake(0,0)];
+    [label setString:[NSString stringWithFormat:@"%d", _GameScore]];
 }
--(void) finishOneBeer:(int) secs
+-(void) finishOneBeer:(int)secs hud:(CCLabelBMFont*)label
 {
     _GameScore += 500;
     [self addToGameLog:@"finishOneBeer" atSecs:secs forPosition:CGPointMake(0,0)];
+    [label setString:[NSString stringWithFormat:@"%d", _GameScore]];
 }
--(void) finishTwoBeers:(int) secs
+-(void) finishTwoBeers:(int)secs hud:(CCLabelBMFont*)label
 {
     _GameScore += 1000;
     [self addToGameLog:@"finishTwoBeers" atSecs:secs forPosition:CGPointMake(0,0)];
+    [label setString:[NSString stringWithFormat:@"%d", _GameScore]];
 }
--(void) calcBonus:(int)secsRemaining forPromotor:(int)index
+-(void) calcBonus:(int)secsRemaining forPromotor:(int)index hud:(CCLabelBMFont*)label
 {
      _GameScore += (10*secsRemaining*index);
     //don't log the secsRemaing as secs
     NSMutableString *bonusMsg = [NSMutableString string];
     [bonusMsg appendFormat:@"Bonus SecsRemaing: %d Index: %d",secsRemaining, index];
     [self addToGameLog:bonusMsg atSecs:0 forPosition:CGPointMake(0,0)];
+    [label setString:[NSString stringWithFormat:@"%d", _GameScore]];
 }
--(void) MushroomMan:(CGPoint) position atSecs:(int) secs
+-(void) MushroomMan:(CGPoint) position atSecs:(int)secs hud:(CCLabelBMFont*)label
 {
     _GameScore += 500;
     [self addToGameLog:@"MushroomMan" atSecs:secs forPosition:position];
+    [label setString:[NSString stringWithFormat:@"%d", _GameScore]];
 
 }
--(void) goodTrip:(CGPoint) position  atSecs:(int) secs
+-(void) goodTrip:(CGPoint) position  atSecs:(int)secs hud:(CCLabelBMFont*)label
 {
      _GameScore += 200;
     [self addToGameLog:@"goodTrip" atSecs:secs forPosition:position];
+    [label setString:[NSString stringWithFormat:@"%d", _GameScore]];
 }
--(void) badTrip:(CGPoint) position atSecs:(int) secs
+-(void) badTrip:(CGPoint) position atSecs:(int)secs hud:(CCLabelBMFont*)label
 {
      _GameScore -= 400;
     [self addToGameLog:@"badTrip" atSecs:secs forPosition:position];
+    [label setString:[NSString stringWithFormat:@"%d", _GameScore]];
 }
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+
 -(void) addToGameLog:(NSString*)msg atSecs:(int) seconds forPosition:(CGPoint) position
 {
     NSMutableString *entry = [NSMutableString string];

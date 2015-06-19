@@ -547,7 +547,7 @@
 				<key>displayName</key>
 				<string>CCLabelBMFont</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>_lblHUDscore</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -567,8 +567,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>182.99998474121094</real>
-							<real>296.3341064453125</real>
+							<real>176.99998474121094</real>
+							<real>297</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -592,9 +592,9 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.37844055891036987</real>
-							<real>0.48074886202812195</real>
-							<false/>
+							<real>0.551616370677948</real>
+							<real>0.551616370677948</real>
+							<true/>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -626,7 +626,8 @@
 						<string>Text</string>
 						<key>value</key>
 						<array>
-							<string>Score</string>
+							<string>0
+</string>
 							<false/>
 						</array>
 					</dict>
