@@ -102,6 +102,7 @@ bool isCollisionInProgress = false;
     if (_popoverMenuLayer == nil)
     {
         [self showPopoverNamed:@"Popups/GameOver"];
+         [_popoverMenuLayer initCompletedScore:[NSString stringWithFormat:@"Score: %d Time: %d secs", _gameData.GameScore,((LevelTimer*)_timer).seconds]];
          NSLog(@"+++++++GAME SCORE++++++: %d", _gameData.GameScore);
          [_gameData printLog];
     }
@@ -539,6 +540,8 @@ bool isCollisionInProgress = false;
         if (_popoverMenuLayer == nil)
         {
             [self showPopoverNamed:@"Popups/LevelScore"];
+            //[NSString stringWithFormat:@"%d", intValue]
+            [_popoverMenuLayer initLevelUpScore:[NSString stringWithFormat:@"Score: %d", _gameData.GameScore]];
             NSLog(@"+++++++LEVEL SCORE++++++: %d", _gameData.GameScore);
             
             [_gameData printLog];
@@ -669,6 +672,8 @@ bool isCollisionInProgress = false;
             break;
         case OneBeer:
             [animationManager runAnimationsForSequenceNamed:@"WalkRight-1Beer"];
+            break;
+        case NoBeers://should never get here
             break;
     }
     
@@ -935,10 +940,11 @@ bool isCollisionInProgress = false;
 {
     if (_popoverMenuLayer == nil)
     {
-        PopupLayer* newMenuLayer = (PopupLayer*)[CCBReader load:name];
-        NSAssert(newMenuLayer!=nil, @"PopupLayer in showPopoverNamed is Nil");
-        [self addChild:newMenuLayer];
-        _popoverMenuLayer = newMenuLayer;
+        //PopupLayer* newMenuLayer
+        _popoverMenuLayer = (PopupLayer*)[CCBReader load:name];
+        NSAssert(_popoverMenuLayer!=nil, @"PopupLayer in showPopoverNamed is Nil");
+        [self addChild:_popoverMenuLayer];
+        //_popoverMenuLayer = newMenuLayer;
         _popoverMenuLayer.parent = self;
         GameScene.halt=true;
         _levelNode.paused = YES;

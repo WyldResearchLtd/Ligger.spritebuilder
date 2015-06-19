@@ -16,10 +16,15 @@
 @property (nonatomic) CCButton *_btnGunter;
 @property (nonatomic) CCButton *_btnSparkle;
 
+@property (nonatomic) CCLabelTTF *_lblLevel;
+@property (nonatomic) CCLabelTTF *_lblCompleted;
+
 -(void) btnGunterPressed;
 -(void) btnSparklePonyPressed;
 -(void) btnBack;
 -(void) btnContinue;
 -(void) initCharacter:(Ligger)character;
+-(void) initLevelUpScore:(NSString*)score;
+-(void) initCompletedScore:(NSString*)score;
 
 @end

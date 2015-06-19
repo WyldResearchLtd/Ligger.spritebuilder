@@ -65,6 +65,16 @@
     }
 }
 
+-(void) initLevelUpScore:(NSString*)score
+{
+    [self._lblLevel setString:score];
+}
+
+-(void) initCompletedScore:(NSString*)score
+{
+    [self._lblCompleted setString:score];
+}
+
 
 -(void) btnBack
 {

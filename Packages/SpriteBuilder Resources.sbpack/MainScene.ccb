@@ -73,8 +73,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>283.5</real>
-							<real>157.11428833007812</real>
+							<real>280.5</real>
+							<real>157.25816345214844</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -100,7 +100,7 @@
 						<array>
 							<real>1</real>
 							<real>1</real>
-							<false/>
+							<true/>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -148,6 +148,8 @@
 						<array/>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -182,7 +184,7 @@
 						<key>value</key>
 						<array>
 							<real>196.15533447265625</real>
-							<real>288.47900390625</real>
+							<real>289.11148071289062</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -278,13 +280,21 @@
 					</dict>
 					<dict>
 						<key>name</key>
+						<string>zoomWhenHighlighted</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>backgroundSpriteFrame|Normal</string>
 						<key>type</key>
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonNormal.png</string>
+							<string></string>
 						</array>
 					</dict>
 					<dict>
@@ -311,7 +321,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>0.50196081399917603</real>
 							<real>1</real>
 							<real>1</real>
 						</array>
@@ -377,7 +387,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonNormal.png</string>
+							<string></string>
 						</array>
 					</dict>
 					<dict>
@@ -417,7 +427,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonNormal.png</string>
+							<string></string>
 						</array>
 					</dict>
 					<dict>
@@ -434,7 +444,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>100</real>
+						<real>50</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -455,7 +465,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Helvetica</string>
+						<string>Fonts/Cookies.ttf</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -513,8 +523,8 @@
 						<string>Color4</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
-							<real>0.0</real>
+							<real>0.40000000596046448</real>
+							<real>0.80000001192092896</real>
 							<real>1</real>
 							<real>1</real>
 						</array>
@@ -529,7 +539,7 @@
 							<real>0.0</real>
 							<real>0.0</real>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>1</real>
 						</array>
 					</dict>
 					<dict>
@@ -540,7 +550,7 @@
 						<key>value</key>
 						<array>
 							<real>1</real>
-							<integer>0</integer>
+							<integer>1</integer>
 						</array>
 					</dict>
 					<dict>
@@ -552,8 +562,8 @@
 						<array>
 							<real>0.0</real>
 							<real>0.0</real>
-							<real>0.0</real>
-							<real>127</real>
+							<real>1</real>
+							<real>1</real>
 						</array>
 					</dict>
 					<dict>
@@ -563,7 +573,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>2</real>
+							<real>0.0</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -575,7 +585,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>-2</real>
+							<real>0.0</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -652,7 +662,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>171.83866882324219</real>
+						<real>173.05082702636719</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -876,7 +886,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Helvetica</string>
+						<string>Fonts/Cookies.ttf</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -934,8 +944,8 @@
 						<string>Color4</string>
 						<key>value</key>
 						<array>
-							<real>0.094184629619121552</real>
-							<real>0.11595851182937622</real>
+							<real>0.40000000596046448</real>
+							<real>0.80000001192092896</real>
 							<real>1</real>
 							<real>1</real>
 						</array>
@@ -950,7 +960,7 @@
 							<real>0.0</real>
 							<real>0.0</real>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>1</real>
 						</array>
 					</dict>
 					<dict>
@@ -974,7 +984,7 @@
 							<real>0.0</real>
 							<real>0.0</real>
 							<real>0.0</real>
-							<real>127</real>
+							<real>0.0</real>
 						</array>
 					</dict>
 					<dict>
@@ -1036,8 +1046,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>120.13530731201172</real>
-							<real>243.34565734863281</real>
+							<real>112.09999847412109</real>
+							<real>243.69999694824219</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -1173,19 +1183,6 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>labelColor|Normal</string>
-						<key>type</key>
-						<string>Color3</string>
-						<key>value</key>
-						<array>
-							<real>0.22352941334247589</real>
-							<real>0.20392157137393951</real>
-							<real>0.99607843160629272</real>
-							<real>1</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
 						<string>backgroundSpriteFrame|Highlighted</string>
 						<key>type</key>
 						<string>SpriteFrame</string>
@@ -1276,7 +1273,20 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>100</real>
+						<real>50</real>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>labelColor|Selected</string>
+						<key>type</key>
+						<string>Color3</string>
+						<key>value</key>
+						<array>
+							<real>0.0</real>
+							<real>0.0</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1284,7 +1294,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Helvetica</string>
+						<string>Fonts/Cookies.ttf</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1342,8 +1352,8 @@
 						<string>Color4</string>
 						<key>value</key>
 						<array>
-							<real>0.094184629619121552</real>
-							<real>0.11595851182937622</real>
+							<real>0.40000000596046448</real>
+							<real>0.80000001192092896</real>
 							<real>1</real>
 							<real>1</real>
 						</array>
@@ -1358,7 +1368,7 @@
 							<real>0.0</real>
 							<real>0.0</real>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>1</real>
 						</array>
 					</dict>
 					<dict>
@@ -1382,7 +1392,7 @@
 							<real>0.0</real>
 							<real>0.0</real>
 							<real>0.0</real>
-							<real>127</real>
+							<real>0.0</real>
 						</array>
 					</dict>
 					<dict>
@@ -1392,7 +1402,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>2</real>
+							<real>0.0</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1411,8 +1421,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -1446,7 +1454,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>120.13530731201172</real>
+							<real>112.09999847412109</real>
 							<real>183.88180541992188</real>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -1537,9 +1545,17 @@
 						<string>String</string>
 						<key>value</key>
 						<array>
-							<string>Oprtions</string>
+							<string>Options</string>
 							<true/>
 						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>zoomWhenHighlighted</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1549,7 +1565,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonNormal.png</string>
+							<string></string>
 						</array>
 					</dict>
 					<dict>
@@ -1588,9 +1604,9 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<real>0.22352941334247589</real>
-							<real>0.20392157137393951</real>
-							<real>0.99607843160629272</real>
+							<real>0.40000000596046448</real>
+							<real>0.80000001192092896</real>
+							<real>1</real>
 							<real>1</real>
 						</array>
 					</dict>
@@ -1602,7 +1618,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonHighlighted.png</string>
+							<string></string>
 						</array>
 					</dict>
 					<dict>
@@ -1619,7 +1635,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>100</real>
+						<real>0.0</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1628,8 +1644,8 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
-							<real>0.0</real>
+							<real>1</real>
+							<real>1</real>
 							<real>1</real>
 							<real>1</real>
 						</array>
@@ -1642,7 +1658,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonNormal.png</string>
+							<string></string>
 						</array>
 					</dict>
 					<dict>
@@ -1659,7 +1675,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>100</real>
+						<real>0.0</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1669,7 +1685,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonNormal.png</string>
+							<string></string>
 						</array>
 					</dict>
 					<dict>
@@ -1686,7 +1702,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>100</real>
+						<real>50</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1695,8 +1711,8 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
-							<real>0.0</real>
+							<real>0.094184629619121552</real>
+							<real>0.11595851182937622</real>
 							<real>1</real>
 							<real>1</real>
 						</array>
@@ -1707,7 +1723,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Helvetica</string>
+						<string>Fonts/Cookies.ttf</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1765,8 +1781,8 @@
 						<string>Color4</string>
 						<key>value</key>
 						<array>
-							<real>0.094184629619121552</real>
-							<real>0.11595851182937622</real>
+							<real>0.40000000596046448</real>
+							<real>0.80000001192092896</real>
 							<real>1</real>
 							<real>1</real>
 						</array>
@@ -1781,7 +1797,7 @@
 							<real>0.0</real>
 							<real>0.0</real>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>1</real>
 						</array>
 					</dict>
 					<dict>
@@ -1805,7 +1821,7 @@
 							<real>0.0</real>
 							<real>0.0</real>
 							<real>0.0</real>
-							<real>127</real>
+							<real>0.0</real>
 						</array>
 					</dict>
 					<dict>
@@ -1815,7 +1831,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>2</real>
+							<real>0.0</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1881,8 +1897,8 @@
 						<string>Point</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
-							<real>0.5</real>
+							<real>0.49641752243041992</real>
+							<real>0.45531892776489258</real>
 						</array>
 					</dict>
 					<dict>
@@ -1958,7 +1974,7 @@
 						<string>String</string>
 						<key>value</key>
 						<array>
-							<string>Leaderboard</string>
+							<string>LiggerBoard</string>
 							<true/>
 						</array>
 					</dict>
@@ -2128,7 +2144,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Helvetica</string>
+						<string>Fonts/Cookies.ttf</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -2186,8 +2202,8 @@
 						<string>Color4</string>
 						<key>value</key>
 						<array>
-							<real>0.094184629619121552</real>
-							<real>0.11595851182937622</real>
+							<real>0.40000000596046448</real>
+							<real>0.80000001192092896</real>
 							<real>1</real>
 							<real>1</real>
 						</array>
@@ -2202,7 +2218,7 @@
 							<real>0.0</real>
 							<real>0.0</real>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>1</real>
 						</array>
 					</dict>
 					<dict>
@@ -2226,7 +2242,7 @@
 							<real>0.0</real>
 							<real>0.0</real>
 							<real>0.0</real>
-							<real>127</real>
+							<real>0.0</real>
 						</array>
 					</dict>
 					<dict>
