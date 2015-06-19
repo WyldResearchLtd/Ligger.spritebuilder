@@ -105,6 +105,9 @@ bool isCollisionInProgress = false;
          [_popoverMenuLayer initCompletedScore:[NSString stringWithFormat:@"Score: %d Time: %d secs", _gameData.GameScore,((LevelTimer*)_timer).seconds]];
          NSLog(@"+++++++GAME SCORE++++++: %d", _gameData.GameScore);
          [_gameData printLog];
+        
+        
+        
     }
 }
 
@@ -350,7 +353,8 @@ bool isCollisionInProgress = false;
     //Calculte scoring, because if this reached, there hasn't been a collision
     if (self.playerMoveState==PlayerUp && self.swiped)
     {
-        [self.gameData moveForward:_playerNode.position atSecs:((LevelTimer*)self.timer).seconds];
+        [self.gameData moveForward:_playerNode.position atSecs:((LevelTimer*)self.timer).seconds hud:self.lblHUDscore];
+        //[self.lblHUDscore setString:[NSString stringWithFormat:@"Score: %d", _gameData.GameScore]];
         self.swiped=false;
     }
     else if (self.playerMoveState==PlayerDown && self.playerState==OneBeer && self.swiped)

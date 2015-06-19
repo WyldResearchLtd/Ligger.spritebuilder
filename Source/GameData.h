@@ -17,7 +17,8 @@
 + (Ligger) ligger;
 + (void) setLigger:(Ligger)character;
 
--(void) moveForward:(CGPoint) position atSecs:(int) secs; //
+//-(void) moveForward:(CGPoint) position atSecs:(int) secs; //
+-(void) moveForward:(CGPoint) position atSecs:(int) secs hud:(CCLabelBMFont*)label; //
 -(void) moveBack:(CGPoint) position atSecs:(int) secs; //
 -(void) moveBack2:(CGPoint) position atSecs:(int) secs; //
 -(void) reachBartender:(int) secs;

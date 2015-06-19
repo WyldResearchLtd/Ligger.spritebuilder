@@ -6,6 +6,7 @@
 {
     __weak PopupLayer* _popoverMenuLayer;
     bool isFirstPass;
+    CCScene* scene;
 }
 
 -(void) didLoadFromCCB
@@ -16,7 +17,9 @@
     [audio playBg:@"hustle.caf" loop:YES];
     NSLog(@"MainScene created");
     isFirstPass = true;
-    
+    //preload it
+    scene = [CCBReader loadAsScene:@"GameScene"];
+    GameScene.halt = false;
 }
 
 -(void) startButtonPressed
@@ -24,8 +27,7 @@
 
     NSLog(@"startbuttonPressed");
     
-    CCScene* scene = [CCBReader loadAsScene:@"GameScene"];
-    GameScene.halt = false;
+    //we play the preloaded scene
     CCTransition* transition = [CCTransition transitionFadeWithDuration:1.5];
     [[CCDirector sharedDirector] presentScene:scene withTransition:transition];
     

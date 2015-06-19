@@ -44,10 +44,12 @@ static Ligger ligger = GeordieGunter;//default
  
 */
 
--(void) moveForward:(CGPoint)position atSecs:(int) secs
+-(void) moveForward:(CGPoint)position atSecs:(int) secs hud:(CCLabelBMFont*)label
 {
     _GameScore += 10;
     [self addToGameLog:@"moveForward" atSecs:secs forPosition:position];
+    [label setString:[NSString stringWithFormat:@"Score: %d", _GameScore]];
+    
 }
 -(void) moveBack:(CGPoint) position atSecs:(int) secs
 {
