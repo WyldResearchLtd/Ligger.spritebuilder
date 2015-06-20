@@ -16,6 +16,8 @@
 
 + (Ligger) ligger;
 + (void) setLigger:(Ligger)character;
++ (Navigation) navigation;
++ (void) setNavigation:(Navigation)character;
 
 -(void) moveForward:(CGPoint) position atSecs:(int) secs hud:(CCLabelBMFont*)label; //
 -(void) moveBack:(CGPoint) position atSecs:(int)secs hud:(CCLabelBMFont*)label; //

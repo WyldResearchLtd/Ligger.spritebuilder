@@ -33,7 +33,7 @@
 		<key>SpriteSheets/Global/Ligger-Male-Full-SELECTED.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{1, 1}, {199, 331}}</string>
+			<string>{{1, 334}, {199, 331}}</string>
 			<key>offset</key>
 			<string>{0, 0}</string>
 			<key>rotated</key>
@@ -46,7 +46,7 @@
 		<key>SpriteSheets/Global/Ligger-Male-Full.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{1, 334}, {199, 331}}</string>
+			<string>{{1, 1}, {199, 331}}</string>
 			<key>offset</key>
 			<string>{0, 0}</string>
 			<key>rotated</key>
@@ -81,6 +81,19 @@
 			<string>{{0, 0}, {294, 328}}</string>
 			<key>sourceSize</key>
 			<string>{294, 328}</string>
+		</dict>
+		<key>SpriteSheets/Global/beer.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{297, 941}, {45, 75}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {45, 75}}</string>
+			<key>sourceSize</key>
+			<string>{45, 75}</string>
 		</dict>
 	</dict>
 	<key>metadata</key>

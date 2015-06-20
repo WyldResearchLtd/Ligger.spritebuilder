@@ -22,6 +22,18 @@ static Ligger ligger = GeordieGunter;//default
     ligger = value;
 }
 
+
+static Navigation navigation = Swipe;//default
++ (Navigation) navigation { return navigation; }
++ (void) setNavigation:(Navigation)value
+{
+    if(value==Touch)
+        NSLog(@"Touch Choosen");
+    else
+        NSLog(@"Swipe Choosen");
+    navigation = value;
+}
+
 /*
  
  Pass obstacle (forward only or back with 1 Beer): 10 points.

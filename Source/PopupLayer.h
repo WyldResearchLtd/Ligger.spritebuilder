@@ -16,14 +16,20 @@
 @property (nonatomic) CCButton *_btnGunter;
 @property (nonatomic) CCButton *_btnSparkle;
 
+@property (nonatomic) CCButton *_btnNav;
+@property (nonatomic) CCButton *_btnSwipe;
+
 @property (nonatomic) CCLabelTTF *_lblLevel;
 @property (nonatomic) CCLabelTTF *_lblCompleted;
 
 -(void) btnGunterPressed;
 -(void) btnSparklePonyPressed;
+-(void) btnSwipeSelected;
+-(void) btnNavSelected;
 -(void) btnBack;
 -(void) btnContinue;
 -(void) initCharacter:(Ligger)character;
+-(void) initNavigation:(Navigation)nav;
 -(void) initLevelUpScore:(NSString*)score;
 -(void) initCompletedScore:(NSString*)score;
 

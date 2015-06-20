@@ -42,7 +42,6 @@ bool isCollisionInProgress = false;
     
     _gameData = [[GameData alloc]init];
     
-    
     // load the current level
     [self loadLevel];
     
@@ -126,12 +125,64 @@ bool isCollisionInProgress = false;
 
 -(void) loadLevel
 {
-    // get the current level's player in the scene by searching for it recursively
+    if (GameData.navigation==Touch)
+    {
+        self.arrowUp.visible =true;
+        self.arrowDown.visible =true;
+        self.arrowLeft.visible =true;
+        self.arrowRight.visible =true;
+        
+        self.arrowUp.enabled = true;
+        self.arrowDown.enabled = true;
+        self.arrowLeft.enabled = true;
+        self.arrowRight.enabled = true;
+    } else {
+        //load the HUD sprites
+        self._beerOne = [CCSprite spriteWithImageNamed:@"Published-iOS/Sprites/resources-phone/beer.png"];
+        self._beerTwo = [CCSprite spriteWithImageNamed:@"Published-iOS/Sprites/resources-phone/beer.png"];
+        [self._beerOne setAnchorPoint:ccp(0,0)];
+        [self._beerTwo setAnchorPoint:ccp(0,0)];
+        self._beerOne.position = CGPointMake(80.0f, 30.0f);
+        self._beerTwo.position = CGPointMake(105.0f, 30.0f);
+        [self._nodeHUD addChild:(CCNode*)self._beerOne];
+        [self._nodeHUD addChild:(CCNode*)self._beerTwo];
+        [self._beerOne setVisible:false];
+        [self._beerTwo setVisible:false];
+        
+        self.arrowUp.visible =false;
+        self.arrowDown.visible =false;
+        self.arrowLeft.visible =false;
+        self.arrowRight.visible =false;
+        
+        self.arrowUp.enabled = false;
+        self.arrowDown.enabled = false;
+        self.arrowLeft.enabled = false;
+        self.arrowRight.enabled = false;
+    }
+    
     
     if (GameData.ligger==SparklePony)
+    {
         _playerNode = [self getChildByName:@"player2f" recursively:TRUE];
+        if (GameData.navigation==Swipe)
+        {
+            self._hudLigger = [CCSprite spriteWithImageNamed:@"Published-iOS/Sprites/resources-phone/HUD-Ligger2.png"];
+            [self._hudLigger setAnchorPoint:ccp(0,0)];
+            self._hudLigger.position = CGPointMake(65.0f, 3.0f);
+            [self._nodeHUD addChild:(CCNode*)self._hudLigger];
+        }
+    }
     else
+    {
         _playerNode = [self getChildByName:@"player1m" recursively:TRUE];
+        if (GameData.navigation==Swipe)
+        {
+            self._hudLigger = [CCSprite spriteWithImageNamed:@"Published-iOS/Sprites/resources-phone/HUD-Ligger1.png"];
+            [self._hudLigger setAnchorPoint:ccp(0,0)];
+            self._hudLigger.position = CGPointMake(75.0f, 15.0f);
+            [self._nodeHUD addChild:(CCNode*)self._hudLigger];
+        }
+    }
     
     [self setPlayerAtStart:_playerNode];
     
@@ -211,6 +262,24 @@ bool isCollisionInProgress = false;
     NSAssert(self.bkstage_b, @"backstage-back node not found in  loadLevel");
     
     [self startGame];
+}
+
+-(void) updateHUD
+{
+    switch (self.playerState) {
+        case TwoBeers:
+            [self._hudLigger setVisible:false];
+            [self._beerOne setVisible:true];
+            [self._beerTwo setVisible:true];
+            break;
+        case OneBeer:
+            [self._beerTwo  setVisible:false];
+            break;
+        default: //NoBeers
+            [self._hudLigger  setVisible:true];
+            [self._beerOne  setVisible:false];
+            break;
+    }
 }
 
 
@@ -303,9 +372,11 @@ bool isCollisionInProgress = false;
                 //Partical SPLASH!
                 NSLog(@"++++ SPLASH 2Beers++++++");
                 
+                
                 [self particleEffect:_playerNode loadCCBName:@"Prefabs/Splash"];
 
                 self.playerState=OneBeer;
+                [self updateHUD];
                 [self performSelector:@selector(startHustleDown) withObject:nil];
                 
                 [self performSelector:@selector(pauseGame) withObject:nil];
@@ -316,12 +387,13 @@ bool isCollisionInProgress = false;
                 //this is set to false in method movePlayerToMedian
                 isCollisionInProgress = true;
                 
+                
                 //[NSThread sleepForTimeInterval:0.1f];
             }
             else //if NoBeers or OneBeer- Stop
             {
                 NSLog(@"++++ SPLASH ++++++");
-                
+
                 [self pauseGame];
                 [self particleEffect:_playerNode loadCCBName:@"Prefabs/Splash"];
                 [self performSelector:@selector(restartSetup) withObject:nil afterDelay:1.5f];
@@ -410,7 +482,7 @@ bool isCollisionInProgress = false;
             //set state
             [self performSelector:@selector(serve2Beers) withObject:nil];
             bBartenderServing = true;
-            
+            [self updateHUD];
             
         }
         
@@ -425,7 +497,6 @@ bool isCollisionInProgress = false;
     }
     else
     {
-        
         //if we know we're already serving, dont check again
         if ([self isServing:idxBartender withPlayer:_playerNode])
         {
@@ -435,22 +506,17 @@ bool isCollisionInProgress = false;
             [self.gameData reachBartender:((LevelTimer*)self.timer).seconds hud:self._lblHUDscore];
             //set state
             [self performSelector:@selector(serve2Beers) withObject:nil];
-            
+            [self updateHUD];
              //turn the ligger around
             [self performSelector:@selector(faceHustleDown) withObject:nil  afterDelay:0.5f];
             //reset the bartender- folder arms
             [self performSelector:@selector(nextCustomer) withObject:nil afterDelay:0.6f];
             //forces it restart timer
             cntBartender=0;
-            
         }
         else
-        {
-
-            cntBartender += 1;
-        }
+           cntBartender += 1;
     }
-
 }
 
 -(void) advancePromotor
@@ -576,6 +642,7 @@ bool isCollisionInProgress = false;
     [self setPlayerAtStart:_playerNode];
 
     self.playerState=NoBeers;
+    [self updateHUD];
     self.levelState = GameSetup;
 }
 
@@ -806,81 +873,106 @@ bool isCollisionInProgress = false;
     
     switch( sender.direction ) {
         case UISwipeGestureRecognizerDirectionUp:
-            NSLog(@"SwipeUp");
-            if (self.levelState==PlayGame)
-            {
-                if ((_playerNode.position.y) < kBOARDTOPBOUND) //keeps with top boundry
-                {
-                    _playerNode.position = CGPointMake(_playerNode.position.x,_playerNode.position.y+kVERTICALMOVE);
-                    [self performSelector:@selector(startHustleUp) withObject:nil];
-                }
-            }
+            [self goUp];
             break;
         case UISwipeGestureRecognizerDirectionDown:
-            NSLog(@"SwipeDown");
-            if (self.levelState==PlayGame)
-            {
-                if ((_playerNode.position.y) > kBOARDBOTTOMBOUND ) //keeps with bottom boundry
-                {
-                    NSLog(@"Player Row: %f Column: %f",_playerNode.position.y, _playerNode.position.x);
-                    //dont let the Ligger enter the Promotor area
-                    //TODO: make constants
-                    if (_playerNode.position.y < 113 && (_playerNode.position.x < 229|| _playerNode.position.x > 436)) break;
-                    
-                    _playerNode.position = CGPointMake(_playerNode.position.x,_playerNode.position.y-kVERTICALMOVE);
-                    [self performSelector:@selector(startHustleDown) withObject:nil];
-                    
-                    //if we move away from the bar, right, left or down, reset the bartender
-                    
-                    //if we get back to the promotors area with a beers or two, we're done
-                    if (_playerNode.position.y < 110 && self.playerState != NoBeers)
-                    {
-                       NSLog(@"+++++++LEVEL COMPLETED+++++++");
-                        self.levelState=CompleteLevel;
-  
-                        [self performSelector:@selector(startHustleLeft) withObject:nil];
-                       
-                    } else {
-                        NSLog(@"NOT COMPLETED LEVEL, Y: %f PlayerState: %d",_playerNode.position.y,self.playerState != NoBeers);
-                    }
-                }
-            }
+            [self goDown];
             break;
         case UISwipeGestureRecognizerDirectionLeft:
-            NSLog(@"SwipeLeft");
-            if (self.levelState==PlayGame)
-            {
-                if ((_playerNode.position.x) > kBOARDLEFTBOUND) //keeps with left boundry
-                {
-                    NSLog(@"Player Row: %f Column: %f",_playerNode.position.y, _playerNode.position.x);
-                    //dont let the Ligger enter the Promotor area
-                    //TODO- CONSTANTS!!
-                    if (_playerNode.position.y < 49 && _playerNode.position.x < 281) break;
-                    
-
-                    _playerNode.position = CGPointMake(_playerNode.position.x-kHORIZONTALMOVE,_playerNode.position.y);
-                    [self performSelector:@selector(startHustleLeft) withObject:nil];
-                }
-            }
+            [self goLeft];
             break;
         case UISwipeGestureRecognizerDirectionRight:
-            NSLog(@"SwipeRight");
-            if (self.levelState==PlayGame)
-            {
-                
-                if ((_playerNode.position.x) < kBOARDRIGHTBOUND) //keeps with right boundry
-                {
-                    if (_playerNode.position.y < 49 && _playerNode.position.x > 384) break;
-                    
-                    NSLog(@"Player Row: %f Column: %f",_playerNode.position.y, _playerNode.position.x);
-                    _playerNode.position = CGPointMake(_playerNode.position.x+kHORIZONTALMOVE,_playerNode.position.y);
-                    [self performSelector:@selector(startHustleRight) withObject:nil];
-                }
-            }
+            [self goRight];
             break;
     }
     
 }
+
+
+////////these methods are called by the arrow keys and by the swipe methods- depending upon which is used
+-(void) goUp
+{
+    NSLog(@"goUp");
+    if (self.levelState==PlayGame)
+    {
+        if ((_playerNode.position.y) < kBOARDTOPBOUND) //keeps with top boundry
+        {
+            _playerNode.position = CGPointMake(_playerNode.position.x,_playerNode.position.y+kVERTICALMOVE);
+            [self performSelector:@selector(startHustleUp) withObject:nil];
+        }
+    }
+}
+-(void) goDown
+{
+    NSLog(@"goDown");
+
+    if (self.levelState==PlayGame)
+    {
+        if ((_playerNode.position.y) > kBOARDBOTTOMBOUND ) //keeps with bottom boundry
+        {
+            NSLog(@"Player Row: %f Column: %f",_playerNode.position.y, _playerNode.position.x);
+            //dont let the Ligger enter the Promotor area
+            //TODO: make constants
+            if (_playerNode.position.y < 113 && (_playerNode.position.x < 229|| _playerNode.position.x > 436))
+                return;
+            
+            _playerNode.position = CGPointMake(_playerNode.position.x,_playerNode.position.y-kVERTICALMOVE);
+            [self performSelector:@selector(startHustleDown) withObject:nil];
+            
+            //if we move away from the bar, right, left or down, reset the bartender
+            
+            //if we get back to the promotors area with a beers or two, we're done
+            if (_playerNode.position.y < 110 && self.playerState != NoBeers)
+            {
+                NSLog(@"+++++++LEVEL COMPLETED+++++++");
+                self.levelState=CompleteLevel;
+                
+                [self performSelector:@selector(startHustleLeft) withObject:nil];
+                
+            } else {
+                NSLog(@"NOT COMPLETED LEVEL, Y: %f PlayerState: %d",_playerNode.position.y,self.playerState != NoBeers);
+            }
+        }
+    }
+
+}
+-(void) goLeft
+{
+    NSLog(@"goLeft");
+    if (self.levelState==PlayGame)
+    {
+        if ((_playerNode.position.x) > kBOARDLEFTBOUND) //keeps with left boundry
+        {
+            NSLog(@"Player Row: %f Column: %f",_playerNode.position.y, _playerNode.position.x);
+            //dont let the Ligger enter the Promotor area
+            //TODO- CONSTANTS!!
+            if (_playerNode.position.y < 49 && _playerNode.position.x < 281)
+                return;
+            
+            _playerNode.position = CGPointMake(_playerNode.position.x-kHORIZONTALMOVE,_playerNode.position.y);
+            [self performSelector:@selector(startHustleLeft) withObject:nil];
+        }
+    }
+}
+-(void) goRight
+{
+    NSLog(@"goRight");
+    if (self.levelState==PlayGame)
+    {
+        
+        if ((_playerNode.position.x) < kBOARDRIGHTBOUND) //keeps with right boundry
+        {
+            if (_playerNode.position.y < 49 && _playerNode.position.x > 384)
+                return;
+            
+            NSLog(@"Player Row: %f Column: %f",_playerNode.position.y, _playerNode.position.x);
+            _playerNode.position = CGPointMake(_playerNode.position.x+kHORIZONTALMOVE,_playerNode.position.y);
+            [self performSelector:@selector(startHustleRight) withObject:nil];
+        }
+    }
+}
+/////////////////////////////////////////////////////////////////////
+
 
 -(void) startGame
 {

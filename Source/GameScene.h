@@ -33,8 +33,16 @@
 @property int moveLength;
 @property int screenWidth;
 @property int screenHeight;
-
+//HUD Stuff
 @property (nonatomic) CCLabelBMFont *_lblHUDscore;
+@property (nonatomic) CCSprite * _beerOne;
+@property (nonatomic) CCSprite * _beerTwo;
+@property (nonatomic) CCSprite * _hudLigger;
+@property (nonatomic) CCNode * _nodeHUD;
+@property (nonatomic) CCButton * arrowUp;
+@property (nonatomic) CCButton * arrowDown;
+@property (nonatomic) CCButton * arrowLeft;
+@property (nonatomic) CCButton * arrowRight;
 
 + (Boolean) halt;
 + (void) setHalt:(Boolean)value;

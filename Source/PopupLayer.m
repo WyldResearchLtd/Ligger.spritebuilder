@@ -33,7 +33,7 @@
 
 -(void) btnGunterPressed
 {
-    
+     NSLog(@"GeordieGunter Choosen");
     if (self._btnSparkle.selected)
     {
         [self._btnSparkle setSelected:false];
@@ -43,6 +43,35 @@
         [self._btnSparkle setSelected:true];
         [self._btnGunter setSelected:false];
         [GameData setLigger:SparklePony];
+    }
+}
+
+-(void) btnNavSelected
+{
+    NSLog(@"Swipe Choosen");
+    if (self._btnSwipe.selected)
+    {
+        [self._btnSwipe setSelected:false];
+        [self._btnNav setSelected:true];
+        [GameData setNavigation:Swipe];
+    }else{
+        [self._btnSwipe setSelected:true];
+        [self._btnNav setSelected:false];
+        [GameData setNavigation:Touch];
+    }
+}
+-(void) btnSwipeSelected
+{
+    NSLog(@"Nav Choosen");
+    if (self._btnNav.selected)
+    {
+        [self._btnNav setSelected:false];
+        [self._btnSwipe setSelected:true];
+        [GameData setNavigation:Touch];
+    }else{
+        [self._btnNav setSelected:true];
+        [self._btnSwipe setSelected:false];
+        [GameData setNavigation:Swipe];
     }
 }
 
@@ -64,6 +93,26 @@
             break;
     }
 }
+
+
+-(void) initNavigation:(Navigation)nav
+{
+    switch (nav)
+    {
+        case Touch:
+            [self._btnNav setSelected:true];
+            [self._btnSwipe setSelected:false];
+            [GameData setNavigation:Touch];
+            break;
+        case Swipe:
+            [self._btnSwipe setSelected:true];
+            [self._btnNav setSelected:false];
+            [GameData setNavigation:Swipe];
+            break;
+    }
+}
+
+
 
 -(void) initLevelUpScore:(NSString*)score
 {

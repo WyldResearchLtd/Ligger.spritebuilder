@@ -60,7 +60,7 @@
             _timeBar.visible = NO;
             [_timer invalidate];
         } else {
-            NSLog(@"Timer-Interval");
+            //NSLog(@"Timer-Interval");
             _textureRectangle.size.width -= _timeDecrement;
             [_timeBar setTextureRect:_textureRectangle];
         }

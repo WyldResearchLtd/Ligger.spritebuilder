@@ -19,6 +19,7 @@ typedef enum PlayerState {NoBeers, TwoBeers, OneBeer} PlayerState;
 typedef enum LevelState {GameSetup, PlayGame, CompleteLevel, LevelUp} LevelState;
 typedef enum ObstacleDirection {MoveLeft,MoveRight} ObstacleDirection;
 typedef enum Ligger {GeordieGunter,SparklePony} Ligger;
+typedef enum Navigation {Swipe,Touch} Navigation;
 
 extern const bool EASYPASS;
 extern const int kPROMOTORS;

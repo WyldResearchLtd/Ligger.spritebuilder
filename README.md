@@ -46,11 +46,12 @@ to appear from nowhere and will haunt your dreams and rob your bank.
   
 TODO & Bugs
 ----------- 
-P1  
-* All obstacles working  
-* Options page- (x)Character, Nav, Name, Volume & Song selection
+P1   
 * (x)HUD & Nav
 * Leaderboard
+* Options page- (x)Character, Nav, Name, Volume & Song selection
+
+* All obstacles working 
 '---------------
 * Trip & Frog
 '---------------
@@ -63,6 +64,7 @@ P1
 
 P2 
 * Should say Backstage or VIP
+* create an interface for ShowPopover/RemovePopover
 * Loop Promotors back
 * After 2 Beer crash, the obstacle dont reset, and the next crash is unavoidable
 * instead of walking left to promotor, and then back to the right, have the promotor meet the ligger? or only allow the ligger    
@@ -76,8 +78,9 @@ P3
   
 
 
-  
-Game Over- Looser- Scoring....with buttins to play again or menu  
+Game Over- Looser- Scoring....with buttins to play again or menu 
+Welcome back notification
+
   
 Menu
 ===================
@@ -95,7 +98,7 @@ change character
 sound on/off  
 connect with facebook
   
-Welcome Back Notification like Frogger!  
+
 
 Rows  
 -------  

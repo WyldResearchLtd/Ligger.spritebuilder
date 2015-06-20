@@ -86,6 +86,8 @@
         {
             isFirstPass = false;
             [_popoverMenuLayer initCharacter:GeordieGunter];
+            [_popoverMenuLayer initNavigation:Swipe];
+
         }
         else
         {
