@@ -73,16 +73,22 @@ bool isCollisionInProgress = false;
     
 }
  
--(void) exitButtonPressed
+-(void) pauseButtonPressed
 {
+    
     //if a popup menu isn't hding this....
     if (_popoverMenuLayer == nil)
     {
-        NSLog(@"exitButtonPressed");
+        NSLog(@"pauseButtonPressed");
         
-        CCScene* scene = [CCBReader loadAsScene:@"MainScene"];
-        CCTransition* transition = [CCTransition transitionFadeWithDuration:1.5];
-        [[CCDirector sharedDirector] presentScene:scene withTransition:transition];
+        [self showPopoverNamed:@"Popups/PausePopup"];
+//        [_popoverMenuLayer initCompletedScore:[NSString stringWithFormat:@"Score: %d Time: %d secs", _gameData.GameScore,((LevelTimer*)_timer).seconds]];
+//        
+//        [_gameData printLog];
+
+//        CCScene* scene = [CCBReader loadAsScene:@"MainScene"];
+//        CCTransition* transition = [CCTransition transitionFadeWithDuration:1.5];
+//        [[CCDirector sharedDirector] presentScene:scene withTransition:transition];
     }
 }
 

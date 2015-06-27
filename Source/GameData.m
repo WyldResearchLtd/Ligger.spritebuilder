@@ -16,7 +16,7 @@ static Ligger ligger = GeordieGunter;//default
 + (void) setLigger:(Ligger)value
 {
     if(value==SparklePony)
-        NSLog(@"SparklePont Choosen");
+        NSLog(@"SparklePony Choosen");
     else
         NSLog(@"GeordieGunter Choosen");
     ligger = value;
@@ -154,6 +154,29 @@ static Navigation navigation = Swipe;//default
     {
         NSLog(@">> %@",self.Gamelog[i]);
     }
+}
+
+// see http://stackoverflow.com/questions/7628372/ios-how-to-write-a-data-in-plist
+-(void) saveGamedata
+{
+    NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    destPath = [destPath stringByAppendingPathComponent:@"ligger.plist"];
+    
+    // If the file doesn't exist in the Documents Folder, copy it.
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    if (![fileManager fileExistsAtPath:destPath]) {
+        NSString *sourcePath = [[NSBundle mainBundle] pathForResource:@"ligger" ofType:@"plist"];
+        [fileManager copyItemAtPath:sourcePath toPath:destPath error:nil];
+    }
+    
+    // Load the Property List.
+    NSArray *liggerArray = [[NSArray alloc] initWithContentsOfFile:destPath];
+    
+    //should we check if it is empty, and if empty, set it with defaults?
+    
+    
+    
 }
 
 

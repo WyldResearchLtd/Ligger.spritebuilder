@@ -140,6 +140,27 @@
     
 }
 
+//called
+-(void) resumePause
+{
+     NSLog(@"ResumePause");
+   [((GameScene*)self.parent) removePopover];
+}
+
+-(void) back2Menu
+{
+    NSLog(@"back2Menu");
+    
+    CCScene* scene = [CCBReader loadAsScene:@"MainScene"];
+    CCTransition* transition = [CCTransition transitionFadeWithDuration:1.5];
+    [[CCDirector sharedDirector] presentScene:scene withTransition:transition];
+}
+
+-(void) btnAudioOn
+{
+    NSLog(@"btnAudioOn Pressed");
+}
+
 
 /*
  * Game Over

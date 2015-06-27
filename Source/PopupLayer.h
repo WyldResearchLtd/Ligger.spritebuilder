@@ -28,6 +28,7 @@
 -(void) btnNavSelected;
 -(void) btnBack;
 -(void) btnContinue;
+-(void) btnAudioOn;
 -(void) initCharacter:(Ligger)character;
 -(void) initNavigation:(Navigation)nav;
 -(void) initLevelUpScore:(NSString*)score;

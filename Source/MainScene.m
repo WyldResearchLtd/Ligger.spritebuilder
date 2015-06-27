@@ -97,4 +97,24 @@
     }
 }
 
+-(void) startCredits
+{
+    if (_popoverMenuLayer == nil)
+    {
+        [self showPopoverNamed:@"Popups/Credits"];
+        NSLog(@"+++++++Show Credits++++++: ");
+        
+    }
+}
+
+-(void) startAbout
+{
+    if (_popoverMenuLayer == nil)
+    {
+        [self showPopoverNamed:@"Popups/Instructions"];
+        NSLog(@"+++++++Show Instructions++++++: ");
+        
+    }
+}
+
 @end

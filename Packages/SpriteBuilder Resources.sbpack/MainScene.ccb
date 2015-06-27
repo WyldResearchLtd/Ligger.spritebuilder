@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>24</integer>
+	<integer>25</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -43,7 +43,7 @@
 		<array>
 			<dict>
 				<key>UUID</key>
-				<integer>11</integer>
+				<integer>24</integer>
 				<key>baseClass</key>
 				<string>CCSprite</string>
 				<key>children</key>
@@ -51,7 +51,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>menu-bkgrnd</string>
+				<string>background-menu</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -73,8 +73,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>280.5</real>
-							<real>157.25816345214844</real>
+							<real>279.29644775390625</real>
+							<real>157.29513549804688</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -100,7 +100,7 @@
 						<array>
 							<real>1</real>
 							<real>1</real>
-							<true/>
+							<false/>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -112,7 +112,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>Sprites/menu-bkgrnd.png</string>
+							<string>Sprites/background-menu.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -148,8 +148,6 @@
 						<array/>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -274,7 +272,7 @@
 						<string>String</string>
 						<key>value</key>
 						<array>
-							<string>Play Game</string>
+							<string>Play!</string>
 							<true/>
 						</array>
 					</dict>
@@ -474,7 +472,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>17</real>
+							<real>28</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -625,8 +623,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>217.27200317382812</real>
-							<real>221.75030517578125</real>
+							<real>142.34220886230469</real>
+							<real>135.95960998535156</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -639,8 +637,8 @@
 						<string>Point</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
-							<real>0.5</real>
+							<real>0.32956886291503906</real>
+							<real>0.49365684390068054</real>
 						</array>
 					</dict>
 					<dict>
@@ -662,7 +660,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>173.05082702636719</real>
+						<real>165.12680053710938</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -671,7 +669,7 @@
 						<string>Block</string>
 						<key>value</key>
 						<array>
-							<string>startButtonPressed</string>
+							<string>startCredits</string>
 							<integer>1</integer>
 						</array>
 					</dict>
@@ -1046,7 +1044,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>112.09999847412109</real>
+							<real>109.92486572265625</real>
 							<real>243.69999694824219</real>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -1060,8 +1058,8 @@
 						<string>Point</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
-							<real>0.5</real>
+							<real>0.43734666705131531</real>
+							<real>0.44293513894081116</real>
 						</array>
 					</dict>
 					<dict>
@@ -1083,7 +1081,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>187.21134948730469</real>
+						<real>190.23344421386719</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1092,7 +1090,7 @@
 						<string>Block</string>
 						<key>value</key>
 						<array>
-							<string>startButtonPressed</string>
+							<string>startAbout</string>
 							<integer>1</integer>
 						</array>
 					</dict>
@@ -1137,7 +1135,7 @@
 						<string>String</string>
 						<key>value</key>
 						<array>
-							<string>Instructions</string>
+							<string>About</string>
 							<true/>
 						</array>
 					</dict>
@@ -1454,8 +1452,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>112.09999847412109</real>
-							<real>183.88180541992188</real>
+							<real>142.34220886230469</real>
+							<real>192.71113586425781</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -1468,8 +1466,8 @@
 						<string>Point</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
-							<real>0.5</real>
+							<real>0.89581108093261719</real>
+							<real>0.54469311237335205</real>
 						</array>
 					</dict>
 					<dict>
@@ -1479,8 +1477,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>-0.82627934217453003</real>
-							<real>-1.0304034948348999</real>
+							<real>-1.0385935306549072</real>
+							<real>-1.0385935306549072</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -1545,7 +1543,7 @@
 						<string>String</string>
 						<key>value</key>
 						<array>
-							<string>Options</string>
+							<string>Setup</string>
 							<true/>
 						</array>
 					</dict>
@@ -1883,8 +1881,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>155.61134338378906</real>
-							<real>138.12832641601562</real>
+							<real>223.14161682128906</real>
+							<real>212.24046325683594</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -1897,8 +1895,8 @@
 						<string>Point</string>
 						<key>value</key>
 						<array>
-							<real>0.49641752243041992</real>
-							<real>0.45531892776489258</real>
+							<real>0.499114990234375</real>
+							<real>0.29853737354278564</real>
 						</array>
 					</dict>
 					<dict>
@@ -1920,7 +1918,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>163.30233764648438</real>
+						<real>171.87025451660156</real>
 					</dict>
 					<dict>
 						<key>name</key>
