@@ -118,6 +118,11 @@ bool isCollisionInProgress = false;
      NSLog(@"Game Over*****************");
 }
 
+//- (void) refreshUI
+//{
+//    [self loadLevel];
+//}
+
 - (CCNode*) getScreen
 {
     return self;
@@ -131,6 +136,7 @@ bool isCollisionInProgress = false;
 
 -(void) loadLevel
 {
+    NSLog(@"±±±±±±±±±± LOAD LEVEL ±±±±±±±±±±±±±±±");
     if (GameData.navigation==Touch)
     {
         self.arrowUp.visible =true;
@@ -142,7 +148,7 @@ bool isCollisionInProgress = false;
         self.arrowDown.enabled = true;
         self.arrowLeft.enabled = true;
         self.arrowRight.enabled = true;
-    } else {
+    } else if (GameData.navigation==Swipe){
         //load the HUD sprites
         self._beerOne = [CCSprite spriteWithImageNamed:@"Published-iOS/Sprites/resources-phone/beer.png"];
         self._beerTwo = [CCSprite spriteWithImageNamed:@"Published-iOS/Sprites/resources-phone/beer.png"];
@@ -388,9 +394,10 @@ bool isCollisionInProgress = false;
                 [self performSelector:@selector(pauseGame) withObject:nil];
                 [self performSelector:@selector(resetGame) withObject:nil afterDelay:0.5f];
                 [self performSelector:@selector(startGame) withObject:nil afterDelay:0.6f];
-                //[self performSelector:@selector(movePlayerToMedian) withObject:nil afterDelay:1.5f];
                 
+                //[self performSelector:@selector(movePlayerToMedian) withObject:nil afterDelay:1.5f];
                 //this is set to false in method movePlayerToMedian
+                
                 isCollisionInProgress = true;
                 
                 
@@ -1006,27 +1013,40 @@ bool isCollisionInProgress = false;
     [_timer pauseTimer];
     
     //_levelNode.paused=true;
-    
-    [self performSelector:@selector(pauseAnimation:) withObject:self.bartender1];
-    
-    for (int i = 0; i < self.obstacles.count; i++)
-    {
-        [self performSelector:@selector(pauseAnimation:) withObject:(CCNode*)self.obstacles[i]];
-    }
+
+//
+//    [self performSelector:@selector(pauseAnimation:) withObject:self.bartender1];
+//    
+//    for (int i = 0; i < self.obstacles.count; i++)
+//    {
+//        [self performSelector:@selector(pauseAnimation:) withObject:(CCNode*)self.obstacles[i]];
+//    }
 
 }
 
+
+//TODO: Make ResetRow as an alternative?
 -(void) resetGame //:(CCNode*) obstacle
 {
+    //TODO: Change back
+   // GameScene.halt = false;
+    //isCollisionInProgress = false;
     NSLog(@"~~~~~~RESET GAME~~~~~~");
     for (int i = 0; i < self.obstacles.count; i++)
     {
+        CGPoint point = ((Obstacle*)self.obstacles[i]).sprite.position;
         if (((Obstacle*)self.obstacles[i]).direction == MoveLeft)//(i%2)
         {
-                ((CCNode*)self.obstacles[i]).position = ccp(_levelNode.contentSizeInPoints.width+((CCNode*)self.obstacles[i]).contentSize.width+45,((CCNode*)self.obstacles[i]).position.y);
+                //((CCNode*)self.obstacles[i]).position = ccp(_levelNode.contentSizeInPoints.width+((CCNode*)self.obstacles[i]).contentSize.width+45,((CCNode*)self.obstacles[i]).position.y);
+               ((Obstacle*)self.obstacles[i]).sprite.position =  CGPointMake(650.0f,point.y);
+                NSLog(@"set move left: %@", point);
+            
         } else {
 
-                ((CCNode*)self.obstacles[i]).position = ccp(0-((CCNode*)self.obstacles[i]).contentSize.width+45,((CCNode*)self.obstacles[i]).position.y);
+                //((CCNode*)self.obstacles[i]).position = ccp(0-((CCNode*)self.obstacles[i]).contentSize.width+45,((CCNode*)self.obstacles[i]).position.y);
+               ((Obstacle*)self.obstacles[i]).sprite.position =  CGPointMake(-100.0f,point.y);
+                NSLog(@"set move right: %@",point);
+
         }
         
     }

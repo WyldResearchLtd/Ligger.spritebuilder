@@ -4,7 +4,9 @@
 [![Build Status](https://travis-ci.org/fezzee/Ligger.svg?branch=master)](https://travis-ci.org/fezzee/Ligger)
 
   
-Built with Spritebuilder/Cocos2d  
+Built with Spritebuilder/Cocos2d 
+
+NOTE: Deleting the LiggerGamedata.plist in the applications /Documents directory resets the app to FirstPass
   
   
 Gameplay  

@@ -77,6 +77,7 @@
 		B03DBA921B32AD1E009ECC4E /* update-bundle.sh in Resources */ = {isa = PBXBuildFile; fileRef = B03DBA881B32AD1D009ECC4E /* update-bundle.sh */; };
 		B04E04991B272505009E6DA3 /* LevelTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = B04E04981B272505009E6DA3 /* LevelTimer.m */; };
 		B062DF0E1B29666F0014ADA5 /* Obstacle.m in Sources */ = {isa = PBXBuildFile; fileRef = B062DF0D1B29666F0014ADA5 /* Obstacle.m */; };
+		B067AF561B3EE4280067B325 /* LiggerGamedata.plist in Resources */ = {isa = PBXBuildFile; fileRef = B067AF551B3EE4280067B325 /* LiggerGamedata.plist */; };
 		B0AE24971AE3A746001979A5 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B0AE24961AE3A746001979A5 /* GameScene.m */; };
 		B0D7858F1B2EDB1000162C9E /* PopupLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D7858E1B2EDB1000162C9E /* PopupLayer.m */; };
 		B71F5911188484E7003F4D28 /* iPad-old.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5907188484E7003F4D28 /* iPad-old.png */; };
@@ -211,6 +212,7 @@
 		B062DF0C1B29666F0014ADA5 /* Obstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Obstacle.h; path = Source/Obstacle.h; sourceTree = "<group>"; };
 		B062DF0D1B29666F0014ADA5 /* Obstacle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Obstacle.m; path = Source/Obstacle.m; sourceTree = "<group>"; };
 		B066F7C81AF1BAB100F9BC19 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		B067AF551B3EE4280067B325 /* LiggerGamedata.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = LiggerGamedata.plist; path = Source/LiggerGamedata.plist; sourceTree = "<group>"; };
 		B0AE24951AE3A746001979A5 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = Source/GameScene.h; sourceTree = "<group>"; };
 		B0AE24961AE3A746001979A5 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameScene.m; path = Source/GameScene.m; sourceTree = "<group>"; };
 		B0AE24981AE3F861001979A5 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = Source/Constants.h; sourceTree = "<group>"; };
@@ -521,11 +523,12 @@
 		B737893C1807616C0076A88C /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				7A40362019DDEF0D007B6E8F /* Platforms */,
 				B03DBA771B32AB29009ECC4E /* GameData.h */,
 				B03DBA781B32AB29009ECC4E /* GameData.m */,
+				B067AF551B3EE4280067B325 /* LiggerGamedata.plist */,
 				B04E04971B272505009E6DA3 /* LevelTimer.h */,
 				B04E04981B272505009E6DA3 /* LevelTimer.m */,
-				7A40362019DDEF0D007B6E8F /* Platforms */,
 				B7378992180767190076A88C /* MainScene.h */,
 				B7378993180767190076A88C /* MainScene.m */,
 				B0AE24951AE3A746001979A5 /* GameScene.h */,
@@ -847,6 +850,7 @@
 				B7378975180762440076A88C /* Default-568h@2x.png in Resources */,
 				B71F5918188484E7003F4D28 /* iPhone@2x.png in Resources */,
 				B03DBA8C1B32AD1E009ECC4E /* dev.p12 in Resources */,
+				B067AF561B3EE4280067B325 /* LiggerGamedata.plist in Resources */,
 				B03DBA921B32AD1E009ECC4E /* update-bundle.sh in Resources */,
 				B7378977180762440076A88C /* Default.png in Resources */,
 				B71F5911188484E7003F4D28 /* iPad-old.png in Resources */,

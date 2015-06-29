@@ -44,12 +44,15 @@
 @property (nonatomic) CCButton * arrowLeft;
 @property (nonatomic) CCButton * arrowRight;
 
+
+- (void) refreshUI;
 + (Boolean) halt;
 + (void) setHalt:(Boolean)value;
 
 
 -(Boolean) doesCollide:(CCNode*)obstacle withPlayer:(CCNode*) player;
 -(Boolean) isServing:(int)idxBartender withPlayer:(CCNode*) player;
+-(void) loadLevel;
 
 - (void)startHustleLeft;
 - (void)startHustleRight;

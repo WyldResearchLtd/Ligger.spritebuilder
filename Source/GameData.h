@@ -14,11 +14,19 @@
 @property int GameScore;
 @property (nonatomic) NSMutableArray* Gamelog;
 
+//Game Settings
 + (Ligger) ligger;
 + (void) setLigger:(Ligger)character;
 + (Navigation) navigation;
 + (void) setNavigation:(Navigation)character;
++ (bool) audible;
++ (void) setAudible:(bool)setOn;
 
++(void) saveGameSettings;
++(NSMutableDictionary*) getGameSettings;
++(void) readAndInit;
+
+//log player actions
 -(void) moveForward:(CGPoint) position atSecs:(int) secs hud:(CCLabelBMFont*)label; //
 -(void) moveBack:(CGPoint) position atSecs:(int)secs hud:(CCLabelBMFont*)label; //
 -(void) moveBack2:(CGPoint) position atSecs:(int)secs hud:(CCLabelBMFont*)label; //

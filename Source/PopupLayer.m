@@ -12,6 +12,15 @@
 
 @implementation PopupLayer
 
+//Cocos2D methods
+-(id) init {
+    if((self=[super init]))
+    {
+        NSLog(@">>>>>>>>> POPOVER LAYER INIT >>>>>>>>>>>>>>>>>>>");
+    }
+    return self;
+}
+
 
 
 -(void) btnSparklePonyPressed
@@ -48,33 +57,50 @@
 
 -(void) btnNavSelected
 {
-    NSLog(@"Swipe Choosen");
+    NSLog(@"Touch Choosen");
     if (self._btnSwipe.selected)
     {
         [self._btnSwipe setSelected:false];
         [self._btnNav setSelected:true];
-        [GameData setNavigation:Swipe];
+        [GameData setNavigation:Touch];
     }else{
         [self._btnSwipe setSelected:true];
         [self._btnNav setSelected:false];
-        [GameData setNavigation:Touch];
+        [GameData setNavigation:Swipe];
     }
 }
 -(void) btnSwipeSelected
 {
-    NSLog(@"Nav Choosen");
+    NSLog(@"Swipe Choosen");
     if (self._btnNav.selected)
     {
         [self._btnNav setSelected:false];
         [self._btnSwipe setSelected:true];
-        [GameData setNavigation:Touch];
+        [GameData setNavigation:Swipe];
     }else{
         [self._btnNav setSelected:true];
         [self._btnSwipe setSelected:false];
-        [GameData setNavigation:Swipe];
+        [GameData setNavigation:Touch];
     }
 }
 
+-(void) btnToggleAudioState
+{
+    NSLog(@"btnAudioOn Pressed");
+    OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
+    
+    if (__btnAudio.selected)
+    {
+        NSLog(@"btnAudioOn Selected");
+        //[audio setBgPaused:true];
+    }
+    //inverts audio on/off
+    [audio setBgPaused:!(audio.bgPaused)];
+    NSLog(@"Setting Audible to: %@",!(audio.bgPaused)?@"YES":@"NO");
+    [GameData setAudible:!(audio.bgPaused)];
+
+    
+}
 
 
 -(void) initCharacter:(Ligger)character
@@ -112,6 +138,18 @@
     }
 }
 
+-(void) initAudible:(bool)isAudible
+{
+    if (isAudible)
+    {
+        //when the toggle button is selected it shows the OFF icon
+        //so these seems backwards
+        [self._btnAudio setSelected:false];
+    } else {
+        [self._btnAudio setSelected:true];
+    }
+}
+
 
 
 -(void) initLevelUpScore:(NSString*)score
@@ -129,7 +167,17 @@
 {
     NSLog(@"Back(btn) Choosen");
     [((MainScene*)self.parent) removePopover];
-  
+}
+
+
+// Only caleld when going back from Options
+-(void) btnBackSave
+{
+    NSLog(@"Back & Save Choosen");
+    [((MainScene*)self.parent) removePopover];
+    
+    [GameData saveGameSettings];
+    
 }
 
 
@@ -156,10 +204,7 @@
     [[CCDirector sharedDirector] presentScene:scene withTransition:transition];
 }
 
--(void) btnAudioOn
-{
-    NSLog(@"btnAudioOn Pressed");
-}
+
 
 
 /*
@@ -173,3 +218,4 @@
 }
 
 @end
+

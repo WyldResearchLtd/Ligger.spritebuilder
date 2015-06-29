@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>UserIdentifier</key>
+	<string>F6AB677C</string>
+	<key>DeviceIdentifier</key>
+	<string>F656A8BB67997E2C</string>
+	<key>Character</key>
+	<integer>0</integer>
+	<key>Movement</key>
+	<integer>0</integer>
+	<key>Audio</key>
+	<true/>
+	<key>Soundtrack</key>
+	<string>0</string>
+</dict>
+</plist>

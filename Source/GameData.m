@@ -24,7 +24,11 @@ static Ligger ligger = GeordieGunter;//default
 
 
 static Navigation navigation = Swipe;//default
-+ (Navigation) navigation { return navigation; }
++ (Navigation) navigation {
+    [instance sharedInstance];
+    return navigation;
+}
+
 + (void) setNavigation:(Navigation)value
 {
     if(value==Touch)
@@ -33,6 +37,27 @@ static Navigation navigation = Swipe;//default
         NSLog(@"Swipe Choosen");
     navigation = value;
 }
+
+static _Bool audible = YES;//default audio is ON
++ (bool) audible {
+    
+    return audible;
+}
++ (void) setAudible:(bool)isOn { audible = isOn; }
+
+
+
++(void) readAndInit
+{
+     NSLog(@"Read And Init ");
+    NSMutableDictionary* settings = [GameData getGameSettings];
+   
+    audible = [settings objectForKey:@"Audio"]?true:false; //sets the bool correctly
+    ligger = [settings objectForKey:@"Character"]?SparklePony:GeordieGunter; //0 = Male,1 = Female
+    navigation = [settings objectForKey:@"Movement"]?Swipe:Touch; //0 = ,1 =
+    
+}
+
 
 /*
  
@@ -55,6 +80,17 @@ static Navigation navigation = Swipe;//default
  Bad Trip: -400 points.
  
 */
+
+GameData* instance;
+-(id)  sharedInstance
+{
+    if (instance==nil)
+    {
+        instance = [[GameData alloc]init];
+        [GameData readAndInit];
+    }
+    return instance;
+}
 
 // All of thee method also update the HUD
 
@@ -157,26 +193,74 @@ static Navigation navigation = Swipe;//default
 }
 
 // see http://stackoverflow.com/questions/7628372/ios-how-to-write-a-data-in-plist
--(void) saveGamedata
+//should I user NSUserDefaults instead?
++(void) saveGameSettings
+{
+    //First get the already saved values
+    NSMutableDictionary *data = [GameData getGameSettings];
+    NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    destPath = [destPath stringByAppendingPathComponent:@"LiggerGamedata.plist"];
+    
+    //TODO: Compare new values to saved and note any differences- Log changes  & Alert user
+    
+    
+    //TODO: Implement unique IDing later
+    //[data setObject:@"F6AB677C" forKey:@"UserIdentifier"];
+    //[data setObject:@"F656A8BB67997E2C" forKey:@"DeviceIdentifier"];
+    //TODO: Populate these correctly
+    //[data setObject:[NSNumber numberWithInt:1] forKey:@"Character"];//0 = Male,1 = Female
+    [data setObject:[NSNumber numberWithInt:[data objectForKey:@"Character"]] forKey:@"Character"];
+    //[data setObject:[NSNumber numberWithInt:0] forKey:@"Movement"]; //0 = Swipe,1=Touch
+    [data setObject:[NSNumber numberWithInt:[data objectForKey:@"Movement"]] forKey:@"Movement"];
+    //[data setObject:[NSNumber numberWithBool:YES] forKey:@"Audio"];//there is a newer/better way to do this
+    [data setObject:[NSNumber numberWithBool:[data objectForKey:@"Audio"]] forKey:@"Audio"];
+    //[data setObject:[NSNumber numberWithInt:0] forKey:@"Soundtrack"]; //0 = SoulImmigrants
+    
+    [data writeToFile:destPath atomically:YES];
+    NSLog(@"PList Written at %@",destPath);
+    
+    //should we check if it is empty, and if empty,
+}
+
+// see http://stackoverflow.com/questions/7628372/ios-how-to-write-a-data-in-plist
+// should I use NSUserDefaults instead?
++(NSMutableDictionary*) getGameSettings
 {
     NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    destPath = [destPath stringByAppendingPathComponent:@"ligger.plist"];
+    destPath = [destPath stringByAppendingPathComponent:@"LiggerGamedata.plist"];
     
     // If the file doesn't exist in the Documents Folder, copy it.
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
+    NSError *error = nil;
+    
     if (![fileManager fileExistsAtPath:destPath]) {
-        NSString *sourcePath = [[NSBundle mainBundle] pathForResource:@"ligger" ofType:@"plist"];
-        [fileManager copyItemAtPath:sourcePath toPath:destPath error:nil];
+        NSString *sourcePath = [[NSBundle mainBundle] pathForResource:@"LiggerGamedata" ofType:@"plist"];
+        [fileManager copyItemAtPath:sourcePath toPath:destPath error:&error];
+        
+        if (error!=nil)
+        {
+            NSLog(@">> SaveGamesettings() ERROR: %@",[error localizedDescription]);
+        }
+        
+    } else {
+        NSLog(@"File Exists at path");
     }
     
     // Load the Property List.
-    NSArray *liggerArray = [[NSArray alloc] initWithContentsOfFile:destPath];
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:destPath];
     
-    //should we check if it is empty, and if empty, set it with defaults?
+    NSLog(@"========= Defaults =================");
+    NSLog(@"UserIdentifier: %@",[data objectForKey:@"UserIdentifier"]);
+    NSLog(@"DeviceIdentifier: %@",[data objectForKey:@"DeviceIdentifier"]);
+    NSLog(@"Character: %@",[data objectForKey:@"Character"]);
+    NSLog(@"Movement: %@",[data objectForKey:@"Movement"]);
+    NSLog(@"Audio: %@",[data objectForKey:@"Audio"]);
+    NSLog(@"Soundtrack: %@",[data objectForKey:@"Soundtrack"]);
+    NSLog(@"====================================");
     
-    
-    
+    return data;
+
 }
 
 

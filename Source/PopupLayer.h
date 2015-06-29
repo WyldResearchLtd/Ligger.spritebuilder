@@ -22,16 +22,23 @@
 @property (nonatomic) CCLabelTTF *_lblLevel;
 @property (nonatomic) CCLabelTTF *_lblCompleted;
 
+@property (nonatomic) CCButton *_btnAudio;
+@property (nonatomic) CCButton *_lblAudio;
+
 -(void) btnGunterPressed;
 -(void) btnSparklePonyPressed;
 -(void) btnSwipeSelected;
 -(void) btnNavSelected;
 -(void) btnBack;
 -(void) btnContinue;
--(void) btnAudioOn;
+-(void) btnToggleAudioState;
+
 -(void) initCharacter:(Ligger)character;
 -(void) initNavigation:(Navigation)nav;
+-(void) initAudible:(bool)isAudible;
+
 -(void) initLevelUpScore:(NSString*)score;
 -(void) initCompletedScore:(NSString*)score;
+
 
 @end
