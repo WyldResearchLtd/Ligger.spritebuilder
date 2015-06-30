@@ -45,7 +45,7 @@
 @property (nonatomic) CCButton * arrowRight;
 
 
-- (void) refreshUI;
+//- (void) refreshUI;
 + (Boolean) halt;
 + (void) setHalt:(Boolean)value;
 

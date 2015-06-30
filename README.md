@@ -36,27 +36,32 @@ Lookout for Phil O. Cybin, a new character in Level 3. On some days, once you me
 TODO & Bugs
 ----------- 
 P1   
-* (x)HUD & Nav  
-* Leaderboard  
-* Options page- (x)Character, Nav, Name, Volume & Song selection  
-*  Pause Page  
-  
-* All obstacles working  
-'---------------  
-* Trip & Frog  
+x Recycle Promotors
+* Leaderboard UI
+* First time start
+* Ode to Joy & new music
+
+
+* Multiple obstructions/row
+* Extra Players
+* Leaderboard Webservice
+
+
+Bugs
+-------
+Scoring- after loose one beer, score resets
+restart - settings persistance
+
+
 '---------------  
 * Trigger point sounds- collisions, start, bartender, button clicks  
-* Text Pages- Instructions and Credits  
-* Splash Screen graphics  
-* save local data  
+ 
   
   
   
 P2  
 * Should say Backstage or VIP  
-* create an interface for ShowPopover/RemovePopover  
-* Loop Promotors back  
-* After 2 Beer crash, the obstacle dont reset, and the next crash is unavoidable  
+* create an interface for ShowPopover/RemovePopover     
 * instead of walking left to promotor, and then back to the right, have the promotor meet the ligger? or only allow the ligger    
 * Mask the obstacles so collisions are more accurate- change anchor point for left to right movement?  
 * Transitions for Popups  
