@@ -13,51 +13,59 @@ Gameplay
 ---------  
 What is a Ligger?  
   
-Rumour has it that was coined in the 70's but popularised by NME Magazine in the nineties as a nickname for Liam Gallagher, and others who attend parties, concerts, and festivals with the sole intention of obtaining free food and drink and being seen with  celebrities. For the record, we don't believe this is true, we don't know who started this rumour, and as far we know, Liam has never needed to blag his way anywhere. He's a nice lad and we're sure if you asked nicely, he'd be happy to fetch you a drink.  
-  
+Rumour has it that was coined by the Big Hair Glam bands in the 70 and 80's but popularised by NME Magazine in the nineties as a nickname for persons who attend parties, concerts, and festivals with the sole intention of obtaining free food and drink. 
+
 Objective  
   
 Everyone knows that festival promotors are a gracious lot, and will happily walk you into the backstage area, if you run a simple errand for them. Get to the bar and return with at least one drink for Michael, John, Melvyn and Rob, and they'll escort you backstage. If you spill a drink, you can return to the bar to get yourself another, or just head back to the promotor with their drink. If you spill both, you'll loose your turn with that promotor, but don't worry, the others are queued up to take your bait. 
   
-Level 1  
   
-The field is a wonderful place, filled with a bevy of curtious girls and boys that will help you navigate your way. At the halfway point, you can take respite in the flower lined path. When you get to the bar area, a bartender  will be eagarly waiting to get your drinks. If you spill a drink  you'll be teleported to the flower lined path, to give you a bit of head space before you continue your trek.  
-  
-Level 2  
-  
-Things get a little faster here, and yes, you didn't imagine that, that is a giant frog on the flower lined path. Careful, your Ligger can be flattened by the Frogger. ;-)  
+The field is a wonderful place, filled with a bevy of curtious girls and boys that will help you navigate your way. At the halfway point, you can take respite in the flower lined path. When you get to the bar area, a bartender  will be eagarly waiting to get your drinks. If you spill a drink  you'll be teleported to the flower lined path, to give you a bit of head space before you continue your trek.  As you pass each level, things speed up, to a point. A level 2, beware fo the giant frog that can now flatten you in the flower lined path at the half way point.
+    Lookout for Phil O. Cybin, a new character in Level 3. On some days, once you meet Phil, life can be wonderful and full of Sunflowers that bring you much joy and 
+    more points. But on other days, you'll be confronted by Multi-eyed Monsters, that seem to appear from nowhere and will haunt your dreams and rob your bank.  
   
   
-Level 3  
-  
-Lookout for Phil O. Cybin, a new character in Level 3. On some days, once you meet Phil, life can be wonderful and full of Sunflowers that bring you much joy and more points. But on other days, you'll be confronted by Multi-eyed Monsters, that seem to appear from nowhere and will haunt your dreams and rob your bank.  
-  
-  
+==========================
+
+On app start , if this is the first pass, then we display the registration wizard.
+The first pass is determined if we have a LiggerGamedata.plist and there's a UniqueUserID in it.
+If this is a first pass, we create a unique UserID, and then gather the DeviceID and log these along with the Username entered, to the 'LiggerGamedata.plist' file.
+
+On game finish, we see if the game scored is > top3 saved personal best games, and if so, update 'LiggerGamedata.plist'
+
+On leaderboard opened, query the api for new data, and if so wite it to the LiggerGamedata.plist. Write the LiggerGamedata.plist data to the Popup UI. 
+
+
 TODO & Bugs
 ----------- 
 P1   
-x Recycle Promotors
-* Leaderboard UI
-* First time start
-* Ode to Joy & new music
+X Leaderboard UI
+X First time start wizard & name collection popup
+* Add new music to setup.* Ode to Joy at levels/game finish
+* Save Best Personal Score.
 
-
-* Multiple obstructions/row
-* Extra Players
-* Leaderboard Webservice
 
 
 Bugs
 -------
-Scoring- after loose one beer, score resets
-restart - settings persistance
+GameOver screen- needs F&F
+Scoring- after loosing one beer, score resets
+Restart - settings persistance
+Pause doesnt really pause- neither does Resume, resume then
+Exit Button
 
+UI Refresh
 
-'---------------  
+GamePlay Fit & Finish
+-----------------------------
+* Multiple obstructions/row
+* Increase level speed
+* Extra Players
+* Leaderboard Webservice
+
+-----------------------------
 * Trigger point sounds- collisions, start, bartender, button clicks  
- 
-  
-  
+
   
 P2  
 * Should say Backstage or VIP  
@@ -77,23 +85,6 @@ Game Over- Looser- Scoring....with buttins to play again or menu
 Welcome back notification  
   
   
-Menu  
-===================  
-*Play Ligger*  
-*Credits(The Garden)*  
-  
-*Options*  
-*Leaderboard*  
-*About, The Story, Rules, Instructions, Gameplay)...need a better word*  
-  
-Profile  
-==================  
-registration info  
-change character  
-sound on/off  
-connect with facebook  
-  
-  
   
 Rows  
 -------  
@@ -110,4 +101,7 @@ Rows
 2nd-Bongos-174.5   (+62.5)  
 1st-Streaker-112     (+ 64)  
 Ligger-           48  
-  s
+  
+
+
+

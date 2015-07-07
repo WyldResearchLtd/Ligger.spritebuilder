@@ -78,6 +78,20 @@
 			<key>previewFolderHidden</key>
 			<true/>
 		</dict>
+		<key>Audio/dustbowl.wav</key>
+		<dict>
+			<key>format_ios_sound</key>
+			<integer>1</integer>
+			<key>isDirty</key>
+			<true/>
+		</dict>
+		<key>Audio/glitchglitchflame.wav</key>
+		<dict>
+			<key>format_ios_sound</key>
+			<integer>1</integer>
+			<key>isDirty</key>
+			<true/>
+		</dict>
 		<key>Prefabs</key>
 		<dict>
 			<key>previewFolderHidden</key>

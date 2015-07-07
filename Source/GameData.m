@@ -10,87 +10,161 @@
 
 @implementation GameData
 
-static Ligger ligger = GeordieGunter;//default
-//a static implemntation of Halt
-+ (Ligger) ligger { return ligger; }
+static NSMutableDictionary* _settings;
+
+/*
+ *
+ */
+static Ligger _ligger = GeordieGunter;//default
++ (Ligger) ligger
+{
+    _settings = [self getGameSettings];
+    NSNumber *numVal = [_settings objectForKey:@"Character"];
+    _ligger = [numVal isEqualToNumber:[NSNumber numberWithInt:0]]?GeordieGunter:SparklePony; //Geordie = 0. Sparkle = 1
+    NSLog(@"GameData::getLigger %@",_ligger==GeordieGunter? @"GeordieGunter" : @"SparklePony"); //Geordie = 0. Sparkle = 1
+    return _ligger;
+}
 + (void) setLigger:(Ligger)value
 {
-    if(value==SparklePony)
-        NSLog(@"SparklePony Choosen");
-    else
-        NSLog(@"GeordieGunter Choosen");
-    ligger = value;
+//    if(value==SparklePony)
+//        NSLog(@"GameData::setLigger -> SparklePony Choosen");
+//    else
+//        NSLog(@"GameData::setLigger -> GeordieGunter Choosen");
+    _ligger = value;
+    
+    _settings = [self getGameSettings];
+    NSNumber * val = [NSNumber numberWithInt:_ligger];
+    [_settings  setObject:val forKey:@"Character"];
+    [self saveGameSettings:_settings];
+    NSLog(@"GameData::setNavigation:@Ligger=%@",_ligger==GeordieGunter? @"GeordieGunter" : @"SparklePony");
 }
 
 
-static Navigation navigation = Swipe;//default
-+ (Navigation) navigation {
-    [instance sharedInstance];
-    return navigation;
+
+/*
+ *
+ */
+static NSNumber *_soundtrack = 0;//default
++ ( NSNumber*) soundtrack
+{
+    _settings = [self getGameSettings];
+    _soundtrack = [_settings objectForKey:@"Soundtrack"];
+    NSLog(@"GameData::getSoundtrack %@",_soundtrack==0? @"The Soul Immigrants" : @"the other");
+    return _soundtrack;
+}
++ (void) setSoundtrack:(NSNumber*)value
+{
+    _soundtrack = value;
+    
+    _settings = [self getGameSettings];
+    [_settings  setObject:_soundtrack forKey:@"Soundtrack"];
+    [self saveGameSettings:_settings];
+    NSLog(@"GameData::setSoundtrack=%@",[_soundtrack isEqualToNumber:[NSNumber numberWithInt:0]]? @"The Soul Immigrants" : @"the other");
+    NSLog(@"UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU");
+   
+}
+
+
+/*
+ *
+ */
+static Navigation _navigation = Swipe;//default
++ (Navigation) navigation
+{
+    _settings = [self getGameSettings];
+    NSNumber *numVal = [_settings objectForKey:@"Movement"];
+    _navigation = [numVal isEqualToNumber:[NSNumber numberWithInt:0]]?Swipe:Touch; //swipe = 0. Touch = 1
+     NSLog(@"GameData::getNavigation %@",_navigation==Swipe? @"Swipe" : @"Touch"); //swipe = 0, touch = 1
+    return _navigation;
 }
 
 + (void) setNavigation:(Navigation)value
 {
-    if(value==Touch)
-        NSLog(@"Touch Choosen");
-    else
-        NSLog(@"Swipe Choosen");
-    navigation = value;
+//    if(value==Touch)
+//        NSLog(@"Setting Touch");
+//    else
+//        NSLog(@"Setting Swipe");
+    _navigation = value;
+    _settings = [self getGameSettings];
+    NSNumber * val = [NSNumber numberWithInt:_navigation];
+    [_settings  setObject:val forKey:@"Movement"];
+    [self saveGameSettings:_settings];
+    NSLog(@"GameData::setNavigation:@Movement=%@",_navigation==Swipe? @"Swipe" : @"Touch");
 }
 
-static _Bool audible = YES;//default audio is ON
+/*
+ *
+ */
+static bool _audible = YES;//default audio is ON
 + (bool) audible {
     
-    return audible;
+    _settings = [self getGameSettings];
+    //when reading a bool value back from plist, use boolValue (NSNumber)
+    _audible = [[_settings objectForKey:@"Audio"] boolValue];
+    NSLog(@"GameData::getAudible %@",_audible? @"TRUE" : @"FALSE");
+    return _audible;
 }
-+ (void) setAudible:(bool)isOn { audible = isOn; }
++ (void) setAudible:(bool)isOn
+{
+    _audible = isOn;
+    
+    _settings = [self getGameSettings];
+    //when setting a plist file with a bool, use numberWithBool
+    [_settings  setObject:[NSNumber numberWithBool:_audible] forKey:@"Audio"];
+    [self saveGameSettings:_settings];
+    NSLog(@"GameData::set objectForKey:@Audio=%@",_audible? @"TRUE" : @"FALSE");
+}
+
+
+/*
+ *
+ */
+static NSString* _userName;
++ (NSString*) userName {
+    
+    _settings = [self getGameSettings];
+    _userName = [_settings objectForKey:@"Username"];
+    return _userName;
+}
++ (void) setUserName:(NSString*)name {
+    _userName = name;
+    //write to the plist!!!!!
+    _settings = [self getGameSettings];
+    [_settings  setObject:_userName forKey:@"Username"];
+    [self saveGameSettings:_settings];
+    NSLog(@"GameData::set objectForKey:@Username=%@",_userName);
+}
 
 
 
 +(void) readAndInit
 {
-     NSLog(@"Read And Init ");
-    NSMutableDictionary* settings = [GameData getGameSettings];
+     NSLog(@"Read PList and init Instance Vars");
+    
+    if (_settings==nil)
+    {
+        [self getGameSettings];
+    }
    
-    audible = [settings objectForKey:@"Audio"]?true:false; //sets the bool correctly
-    ligger = [settings objectForKey:@"Character"]?SparklePony:GeordieGunter; //0 = Male,1 = Female
-    navigation = [settings objectForKey:@"Movement"]?Swipe:Touch; //0 = ,1 =
+    _audible = [[_settings objectForKey:@"Audio"] boolValue]; //sets the bool correctly
+    _ligger = [_settings objectForKey:@"Character"]?SparklePony:GeordieGunter; //0 = Male,1 = Female
+    _navigation = [_settings objectForKey:@"Movement"]?Swipe:Touch; //0 = ,1 =
+    _userName =  [_settings objectForKey:@"Username"];
     
 }
 
 
-/*
- 
- Pass obstacle (forward only or back with 1 Beer): 10 points.
- 
- Pass obstacle (forward only or back with 2 Beer): 20 points.
- 
- Getting to Bartender: 100 points. (either for 2 or 1 beer)
- 
- Returning with Two Beers: 1,000 points.
- 
- Returning with One Beer: 500 points.
- 
- Bonus score: 10 points x each second remaining on timer x Promotor Index (eg-1=Michael, 4=Rob).
- 
- Mushroom Man: 500 points bonus.
- 
- Good Trip: 200 points.
- 
- Bad Trip: -400 points.
- 
-*/
-
-GameData* instance;
--(id)  sharedInstance
-{
-    if (instance==nil)
-    {
-        instance = [[GameData alloc]init];
-        [GameData readAndInit];
-    }
-    return instance;
-}
+////IS THIS BEING USED???????
+//GameData* instance;
+//-(id)  sharedInstance
+//{
+//    if (instance==nil)
+//    {
+//        instance = [[GameData alloc]init];
+//        [GameData readAndInit];
+//    }
+//    return instance;
+//}
 
 // All of thee method also update the HUD
 
@@ -192,35 +266,22 @@ GameData* instance;
     }
 }
 
-// see http://stackoverflow.com/questions/7628372/ios-how-to-write-a-data-in-plist
-//should I user NSUserDefaults instead?
-+(void) saveGameSettings
+
+
+
++(void) saveGameSettings:(NSMutableDictionary*)gameData
 {
-    //First get the already saved values
-    NSMutableDictionary *data = [GameData getGameSettings];
+
     NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     destPath = [destPath stringByAppendingPathComponent:@"LiggerGamedata.plist"];
     
-    //TODO: Compare new values to saved and note any differences- Log changes  & Alert user
-    
-    
-    //TODO: Implement unique IDing later
-    //[data setObject:@"F6AB677C" forKey:@"UserIdentifier"];
-    //[data setObject:@"F656A8BB67997E2C" forKey:@"DeviceIdentifier"];
-    //TODO: Populate these correctly
-    //[data setObject:[NSNumber numberWithInt:1] forKey:@"Character"];//0 = Male,1 = Female
-    [data setObject:[NSNumber numberWithInt:[data objectForKey:@"Character"]] forKey:@"Character"];
-    //[data setObject:[NSNumber numberWithInt:0] forKey:@"Movement"]; //0 = Swipe,1=Touch
-    [data setObject:[NSNumber numberWithInt:[data objectForKey:@"Movement"]] forKey:@"Movement"];
-    //[data setObject:[NSNumber numberWithBool:YES] forKey:@"Audio"];//there is a newer/better way to do this
-    [data setObject:[NSNumber numberWithBool:[data objectForKey:@"Audio"]] forKey:@"Audio"];
-    //[data setObject:[NSNumber numberWithInt:0] forKey:@"Soundtrack"]; //0 = SoulImmigrants
-    
-    [data writeToFile:destPath atomically:YES];
+    [gameData writeToFile:destPath atomically:YES];
     NSLog(@"PList Written at %@",destPath);
     
     //should we check if it is empty, and if empty,
 }
+
+
 
 // see http://stackoverflow.com/questions/7628372/ios-how-to-write-a-data-in-plist
 // should I use NSUserDefaults instead?
@@ -250,14 +311,15 @@ GameData* instance;
     // Load the Property List.
     NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:destPath];
     
-    NSLog(@"========= Defaults =================");
+    NSLog(@"========= GameData::getGameSettings =================");
     NSLog(@"UserIdentifier: %@",[data objectForKey:@"UserIdentifier"]);
     NSLog(@"DeviceIdentifier: %@",[data objectForKey:@"DeviceIdentifier"]);
-    NSLog(@"Character: %@",[data objectForKey:@"Character"]);
-    NSLog(@"Movement: %@",[data objectForKey:@"Movement"]);
-    NSLog(@"Audio: %@",[data objectForKey:@"Audio"]);
-    NSLog(@"Soundtrack: %@",[data objectForKey:@"Soundtrack"]);
-    NSLog(@"====================================");
+    NSLog(@"Username: %@",[data objectForKey:@"Username"]);
+    NSLog(@"Character: %@",[[data objectForKey:@"Character"] integerValue]==0?@"GeordieGunter":@"SparklePony");
+    NSLog(@"Movement: %@",[[data objectForKey:@"Movement"] integerValue]==1?@"Touch":@"Swipe");
+    NSLog(@"Audio: %@",[[data objectForKey:@"Audio"] boolValue]? @"True" : @"False");
+    NSLog(@"Soundtrack: %@",[[data objectForKey:@"Soundtrack"] integerValue]==0?@"The Soul Immigrants":@"The Caufield Beats");
+    NSLog(@"=====================================================");
     
     return data;
 

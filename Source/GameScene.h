@@ -13,7 +13,7 @@
 #import "CCDirector.h"
 #import "Constants.h"
 #import "GameData.h"
-
+#import "GameManager.h"
 
 @interface GameScene : CCNode
 
@@ -29,7 +29,9 @@
 @property (nonatomic) PlayerState playerState;
 @property (nonatomic) LevelState levelState;
 @property (nonatomic) PlayerMoveState playerMoveState;
+
 @property (nonatomic) GameData* gameData;
+//@property (nonatomic) GameManager* gameManager;
 @property int moveLength;
 @property int screenWidth;
 @property int screenHeight;

@@ -59,6 +59,8 @@
 		927F61B9196C771E000F43EF /* iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F590E188484E7003F4D28 /* iPhone@2x.png */; };
 		927F61BA196C771E000F43EF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B737896D180762440076A88C /* Default.png */; };
 		927F61BB196C771E000F43EF /* iPad-old.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5907188484E7003F4D28 /* iPad-old.png */; };
+		B01C97271B4C792F00925DC4 /* dustbowl.m4a in Resources */ = {isa = PBXBuildFile; fileRef = B01C97251B4C792E00925DC4 /* dustbowl.m4a */; };
+		B01C97281B4C792F00925DC4 /* glitchglitchflame.m4a in Resources */ = {isa = PBXBuildFile; fileRef = B01C97261B4C792E00925DC4 /* glitchglitchflame.m4a */; };
 		B03DBA511B329D86009ECC4E /* hustle.caf in Resources */ = {isa = PBXBuildFile; fileRef = B03DBA4F1B329D86009ECC4E /* hustle.caf */; };
 		B03DBA521B329D86009ECC4E /* hustle2.caf in Resources */ = {isa = PBXBuildFile; fileRef = B03DBA501B329D86009ECC4E /* hustle2.caf */; };
 		B03DBA6D1B32A693009ECC4E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03DBA6B1B32A693009ECC4E /* Fabric.framework */; };
@@ -78,8 +80,13 @@
 		B04E04991B272505009E6DA3 /* LevelTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = B04E04981B272505009E6DA3 /* LevelTimer.m */; };
 		B062DF0E1B29666F0014ADA5 /* Obstacle.m in Sources */ = {isa = PBXBuildFile; fileRef = B062DF0D1B29666F0014ADA5 /* Obstacle.m */; };
 		B067AF561B3EE4280067B325 /* LiggerGamedata.plist in Resources */ = {isa = PBXBuildFile; fileRef = B067AF551B3EE4280067B325 /* LiggerGamedata.plist */; };
+		B0777BDD1B49EB3C00D30E42 /* OptionsLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B0777BDC1B49EB3C00D30E42 /* OptionsLayer.m */; };
+		B0777BE21B49EB5500D30E42 /* FirstPassLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B0777BE11B49EB5500D30E42 /* FirstPassLayer.m */; };
+		B08F4EF61B435D7C0024FB66 /* LeaderboardLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B08F4EF51B435D7C0024FB66 /* LeaderboardLayer.m */; };
+		B08F4F011B4423ED0024FB66 /* ScoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = B08F4F001B4423ED0024FB66 /* ScoreData.m */; };
 		B0AE24971AE3A746001979A5 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B0AE24961AE3A746001979A5 /* GameScene.m */; };
 		B0D7858F1B2EDB1000162C9E /* PopupLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D7858E1B2EDB1000162C9E /* PopupLayer.m */; };
+		B0DE6DAD1B44810700CDBA08 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DE6DAC1B44810700CDBA08 /* GameManager.m */; };
 		B71F5911188484E7003F4D28 /* iPad-old.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5907188484E7003F4D28 /* iPad-old.png */; };
 		B71F5912188484E7003F4D28 /* iPad-old@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5908188484E7003F4D28 /* iPad-old@2x.png */; };
 		B71F5913188484E7003F4D28 /* iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5909188484E7003F4D28 /* iPad.png */; };
@@ -190,6 +197,8 @@
 		8392007918EE8E3300B6C429 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		927F61BF196C771E000F43EF /* Ligger Android.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ligger Android.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9534242F9355FECD6304D9F9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		B01C97251B4C792E00925DC4 /* dustbowl.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = dustbowl.m4a; path = "Source/Resources/Published-iOS/Audio/dustbowl.m4a"; sourceTree = "<group>"; };
+		B01C97261B4C792E00925DC4 /* glitchglitchflame.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = glitchglitchflame.m4a; path = "Source/Resources/Published-iOS/Audio/glitchglitchflame.m4a"; sourceTree = "<group>"; };
 		B03DBA4F1B329D86009ECC4E /* hustle.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = hustle.caf; path = "Source/Resources/Published-iOS/Audio/hustle.caf"; sourceTree = "<group>"; };
 		B03DBA501B329D86009ECC4E /* hustle2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = hustle2.caf; path = "Source/Resources/Published-iOS/Audio/hustle2.caf"; sourceTree = "<group>"; };
 		B03DBA6B1B32A693009ECC4E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
@@ -213,11 +222,21 @@
 		B062DF0D1B29666F0014ADA5 /* Obstacle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Obstacle.m; path = Source/Obstacle.m; sourceTree = "<group>"; };
 		B066F7C81AF1BAB100F9BC19 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B067AF551B3EE4280067B325 /* LiggerGamedata.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = LiggerGamedata.plist; path = Source/LiggerGamedata.plist; sourceTree = "<group>"; };
+		B0777BDB1B49EB3C00D30E42 /* OptionsLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OptionsLayer.h; path = Source/OptionsLayer.h; sourceTree = "<group>"; };
+		B0777BDC1B49EB3C00D30E42 /* OptionsLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OptionsLayer.m; path = Source/OptionsLayer.m; sourceTree = "<group>"; };
+		B0777BE01B49EB5500D30E42 /* FirstPassLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FirstPassLayer.h; path = Source/FirstPassLayer.h; sourceTree = "<group>"; };
+		B0777BE11B49EB5500D30E42 /* FirstPassLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FirstPassLayer.m; path = Source/FirstPassLayer.m; sourceTree = "<group>"; };
+		B08F4EF41B435D7C0024FB66 /* LeaderboardLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeaderboardLayer.h; path = Source/LeaderboardLayer.h; sourceTree = "<group>"; };
+		B08F4EF51B435D7C0024FB66 /* LeaderboardLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeaderboardLayer.m; path = Source/LeaderboardLayer.m; sourceTree = "<group>"; };
+		B08F4EFF1B4423ED0024FB66 /* ScoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScoreData.h; path = Source/ScoreData.h; sourceTree = "<group>"; };
+		B08F4F001B4423ED0024FB66 /* ScoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScoreData.m; path = Source/ScoreData.m; sourceTree = "<group>"; };
 		B0AE24951AE3A746001979A5 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = Source/GameScene.h; sourceTree = "<group>"; };
 		B0AE24961AE3A746001979A5 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameScene.m; path = Source/GameScene.m; sourceTree = "<group>"; };
 		B0AE24981AE3F861001979A5 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = Source/Constants.h; sourceTree = "<group>"; };
 		B0D7858D1B2EDB1000162C9E /* PopupLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopupLayer.h; path = Source/PopupLayer.h; sourceTree = "<group>"; };
 		B0D7858E1B2EDB1000162C9E /* PopupLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopupLayer.m; path = Source/PopupLayer.m; sourceTree = "<group>"; };
+		B0DE6DAB1B44810700CDBA08 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameManager.h; path = Source/GameManager.h; sourceTree = "<group>"; };
+		B0DE6DAC1B44810700CDBA08 /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameManager.m; path = Source/GameManager.m; sourceTree = "<group>"; };
 		B71F5907188484E7003F4D28 /* iPad-old.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad-old.png"; path = "Icons/iPad-old.png"; sourceTree = "<group>"; };
 		B71F5908188484E7003F4D28 /* iPad-old@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad-old@2x.png"; path = "Icons/iPad-old@2x.png"; sourceTree = "<group>"; };
 		B71F5909188484E7003F4D28 /* iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPad.png; path = Icons/iPad.png; sourceTree = "<group>"; };
@@ -529,6 +548,8 @@
 				B067AF551B3EE4280067B325 /* LiggerGamedata.plist */,
 				B04E04971B272505009E6DA3 /* LevelTimer.h */,
 				B04E04981B272505009E6DA3 /* LevelTimer.m */,
+				B0DE6DAB1B44810700CDBA08 /* GameManager.h */,
+				B0DE6DAC1B44810700CDBA08 /* GameManager.m */,
 				B7378992180767190076A88C /* MainScene.h */,
 				B7378993180767190076A88C /* MainScene.m */,
 				B0AE24951AE3A746001979A5 /* GameScene.h */,
@@ -539,6 +560,14 @@
 				B062DF0D1B29666F0014ADA5 /* Obstacle.m */,
 				B0D7858D1B2EDB1000162C9E /* PopupLayer.h */,
 				B0D7858E1B2EDB1000162C9E /* PopupLayer.m */,
+				B08F4EF41B435D7C0024FB66 /* LeaderboardLayer.h */,
+				B08F4EF51B435D7C0024FB66 /* LeaderboardLayer.m */,
+				B08F4EFF1B4423ED0024FB66 /* ScoreData.h */,
+				B08F4F001B4423ED0024FB66 /* ScoreData.m */,
+				B0777BDB1B49EB3C00D30E42 /* OptionsLayer.h */,
+				B0777BDC1B49EB3C00D30E42 /* OptionsLayer.m */,
+				B0777BE01B49EB5500D30E42 /* FirstPassLayer.h */,
+				B0777BE11B49EB5500D30E42 /* FirstPassLayer.m */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -565,6 +594,8 @@
 		B77F1B2517B978D7009739AE = {
 			isa = PBXGroup;
 			children = (
+				B01C97251B4C792E00925DC4 /* dustbowl.m4a */,
+				B01C97261B4C792E00925DC4 /* glitchglitchflame.m4a */,
 				B066F7C81AF1BAB100F9BC19 /* README.md */,
 				B03DBA4F1B329D86009ECC4E /* hustle.caf */,
 				B03DBA501B329D86009ECC4E /* hustle2.caf */,
@@ -830,6 +861,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B01C97271B4C792F00925DC4 /* dustbowl.m4a in Resources */,
+				B01C97281B4C792F00925DC4 /* glitchglitchflame.m4a in Resources */,
 				B03DBA8B1B32AD1E009ECC4E /* dev.cer in Resources */,
 				B03DBA511B329D86009ECC4E /* hustle.caf in Resources */,
 				B03DBA521B329D86009ECC4E /* hustle2.caf in Resources */,
@@ -944,14 +977,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0D7858F1B2EDB1000162C9E /* PopupLayer.m in Sources */,
+				B0DE6DAD1B44810700CDBA08 /* GameManager.m in Sources */,
 				B03DBA791B32AB29009ECC4E /* GameData.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
 				B04E04991B272505009E6DA3 /* LevelTimer.m in Sources */,
 				7A046D8C19E8A20E004C4763 /* MainScene.m in Sources */,
 				B0AE24971AE3A746001979A5 /* GameScene.m in Sources */,
 				B062DF0E1B29666F0014ADA5 /* Obstacle.m in Sources */,
+				B0777BDD1B49EB3C00D30E42 /* OptionsLayer.m in Sources */,
 				5B121038197487F2004C1E1D /* AppDelegate.m in Sources */,
 				B03DBA7B1B32AC66009ECC4E /* Constants.m in Sources */,
+				B0777BE21B49EB5500D30E42 /* FirstPassLayer.m in Sources */,
+				B08F4F011B4423ED0024FB66 /* ScoreData.m in Sources */,
+				B08F4EF61B435D7C0024FB66 /* LeaderboardLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

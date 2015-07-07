@@ -1031,8 +1031,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>99</real>
-							<real>42.501998901367188</real>
+							<real>95</real>
+							<real>43</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -1155,8 +1155,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>131</real>
-							<real>42.501998901367188</real>
+							<real>125</real>
+							<real>43</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -1217,8 +1217,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>67</real>
-							<real>42.501998901367188</real>
+							<real>65</real>
+							<real>43</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -1246,6 +1246,8 @@
 						<string>Prefabs/Melvyn.ccb</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>

@@ -4,6 +4,10 @@
 <dict>
 	<key>filenames</key>
 	<dict>
+		<key>Audio/dustbowl.wav</key>
+		<string>Audio/dustbowl.m4a</string>
+		<key>Audio/glitchglitchflame.wav</key>
+		<string>Audio/glitchglitchflame.m4a</string>
 		<key>Audio/hustle.wav</key>
 		<string>Audio/hustle.caf</string>
 		<key>Audio/hustle2.wav</key>

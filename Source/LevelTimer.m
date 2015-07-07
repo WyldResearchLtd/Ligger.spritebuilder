@@ -7,7 +7,6 @@
 //
 
 #import "LevelTimer.h"
-//#import "GameScene.h"
 
 
 @implementation LevelTimer
@@ -33,10 +32,10 @@
         NSAssert(_timeBar!=nil, @"timebar.png is Nil");
         //_timeBar = [_game.imageCache getSkin:@"time_bar.png"];
         [_timeBar setAnchorPoint:ccp(0,0)];
-        _timeBar.position = CGPointMake(posx + _game.screenWidth * 0.08, posy - _timeBar.textureRect.size.height * 0.5);
+        _timeBar.position = CGPointMake(posx + ((GameScene*)_game).screenWidth * 0.08, posy - _timeBar.textureRect.size.height * 0.5);
      
         //[[game getScreen] addSubview:(UIView*)_timeLabel];
-        [[_game getScreen] addChild:(CCNode*)_timeBar];
+        [[((GameScene*)_game) getScreen] addChild:(CCNode*)_timeBar];
         // [[_game getScreen] addSprite:_timeBar];
         
         _textureRectangleFull = _textureRectangle = _timeBar.textureRect;
@@ -51,12 +50,12 @@
 -(void) tickTock {
 
     //return;
-    if (_game.levelState == PlayGame) {
+    if (((GameScene*)_game).levelState == PlayGame) {
         _seconds++;
         //reduce time bar width
         if (_textureRectangle.size.width - _timeDecrement <= 0) {
             NSLog(@"Timer-Complete");
-            [_game gameOver];
+            [((GameScene*)_game) gameOver];
             _timeBar.visible = NO;
             [_timer invalidate];
         } else {

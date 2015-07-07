@@ -12,7 +12,8 @@
 @interface GameData : NSObject
 
 @property int GameScore;
-@property (nonatomic) NSMutableArray* Gamelog;
+@property (nonatomic) NSMutableArray* Gamelog; //this is the scoring moves
+//@property (nonatomic) NSMutableArray* settings; //this are the app settings
 
 //Game Settings
 + (Ligger) ligger;
@@ -21,8 +22,13 @@
 + (void) setNavigation:(Navigation)character;
 + (bool) audible;
 + (void) setAudible:(bool)setOn;
++ (NSString*) userName;
++ (void) setUserName:(NSString*)name;
++ (NSNumber*) soundtrack;
++ (void) setSoundtrack:(NSNumber*)value;
 
-+(void) saveGameSettings;
+//+(void) saveGameSettings;
++(void) saveGameSettings:(NSMutableDictionary*)gameData;
 +(NSMutableDictionary*) getGameSettings;
 +(void) readAndInit;
 
@@ -42,3 +48,25 @@
 -(void) printLog;
 
 @end
+
+/*
+ 
+ Pass obstacle (forward only or back with 1 Beer): 10 points.
+ 
+ Pass obstacle (forward only or back with 2 Beer): 20 points.
+ 
+ Getting to Bartender: 100 points. (either for 2 or 1 beer)
+ 
+ Returning with Two Beers: 1,000 points.
+ 
+ Returning with One Beer: 500 points.
+ 
+ Bonus score: 10 points x each second remaining on timer x Promotor Index (eg-1=Michael, 4=Rob).
+ 
+ Mushroom Man: 500 points bonus.
+ 
+ Good Trip: 200 points.
+ 
+ Bad Trip: -400 points.
+ 
+ */

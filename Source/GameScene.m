@@ -37,14 +37,28 @@ bool isCollisionInProgress = false;
 -(void) didLoadFromCCB
 {
     
-    NSLog(@"GameScene created, Level: %@", _levelNode);
+    
     self.levelState = GameSetup;
+    NSLog(@"GameScene: didLoadFromCCB created, Level: %d", self.levelState);
     
-    _gameData = [[GameData alloc]init];
+    NSLog(@"GameScene: GameData created");
+    //GameData* gameData = [[GameData alloc]init];
     
-    // load the current level
+    //TODO: Put the Manager in here.....
+    GameManager* _gameManager = [[GameManager alloc] initWithGamedata:[[GameData alloc]init]];
+    
+    //screen coords for displaying the timer
+    CGSize winSize = [[CCDirector sharedDirector] viewSize];
+    self.screenWidth = winSize.width;
+    self.screenHeight = winSize.height;
+    NSLog(@"GameScene: LevelTimer created");
+    _timer = [[LevelTimer alloc] initWithGame:self x:-46 y:self.screenHeight-6];
+    
+    NSLog(@"GameScene: Level Loaded");
+    // load the current level- this takes time
     [self loadLevel];
     
+    NSLog(@"GameScene: Setup Swipe Recognisers");
     UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeGesture:)];
     swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
     [[[CCDirector sharedDirector] view] addGestureRecognizer:swipeLeft];
@@ -64,13 +78,9 @@ bool isCollisionInProgress = false;
     
     // enable receiving input events
     self.userInteractionEnabled = YES;
+
     
-    CGSize winSize = [[CCDirector sharedDirector] viewSize];
-    self.screenWidth = winSize.width;
-    self.screenHeight = winSize.height;
-    
-    _timer = [[LevelTimer alloc] initWithGame:self x:-46 y:self.screenHeight-6];
-    
+    NSLog(@"GameScene: didLoadFromCCB completed, Level: %@", _levelNode);
 }
  
 -(void) pauseButtonPressed
