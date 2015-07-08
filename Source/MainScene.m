@@ -15,7 +15,7 @@
 
 -(void) didLoadFromCCB
 {
-    // play background sound
+    // MENU AUDIO
     if ([GameData audible])
     {
         // access audio object- play music while loading sprites below
@@ -150,15 +150,20 @@
     CCTransition* transition = [CCTransition transitionFadeWithDuration:1.5];
     [[CCDirector sharedDirector] presentScene:(CCScene*)scene withTransition:transition];
 
-    // access audio object
-    OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
+
     // play background sound only if audio was already playing (from options)
     NSLog(@"Audible??: %@",[GameData audible]?@"YES":@"NO");
+    
+    //GAMEPLAY AUDIO
+    // play background sound
     if ([GameData audible])
     {
-        NSLog(@"Audible=True- Play new Bg tune");
-        //[audio playBg:@"hustle2.caf" loop:YES];
-        [audio playBg:@"glitchglitchflame.m4a" loop:YES];
+        // access audio object- play music while loading sprites below
+        OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
+        if ([[GameData soundtrack] integerValue]==0)
+            [audio playBg:@"hustle2.caf" loop:YES];
+        else if ([[GameData soundtrack] integerValue]==1)
+            [audio playBg:@"glitchglitchflame.m4a" loop:YES];
     }
   
 }

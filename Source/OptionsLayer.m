@@ -125,6 +125,17 @@
         [GameData setSoundtrack:[NSNumber numberWithInt:1]];
     }
     
+    // play background sound
+    if ([GameData audible])
+    {
+        // access audio object- play music while loading sprites below
+        OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
+        if ([[GameData soundtrack] integerValue]==0)
+            [audio playBg:@"hustle.caf" loop:YES];
+        else if ([[GameData soundtrack] integerValue]==1)
+            [audio playBg:@"dustbowl.m4a" loop:YES];
+    }
+
 }
 
 
@@ -140,6 +151,18 @@
         [self._btnSoulImmigrants setSelected:true];
         [self._btnOther setSelected:false];
         [GameData setSoundtrack:[NSNumber numberWithInt:0]];
+    }
+    
+    
+    // play background sound
+    if ([GameData audible])
+    {
+        // access audio object- play music while loading sprites below
+        OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
+        if ([[GameData soundtrack] integerValue]==0)
+            [audio playBg:@"hustle.caf" loop:YES];
+        else if ([[GameData soundtrack] integerValue]==1)
+            [audio playBg:@"dustbowl.m4a" loop:YES];
     }
 }
 
