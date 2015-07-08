@@ -41,18 +41,27 @@ TODO & Bugs
 P1   
 X Leaderboard UI
 X First time start wizard & name collection popup
-* Add new music to setup.* Ode to Joy at levels/game finish
-* Save Best Personal Score.
+X Add new music to setup
 
+
+* The Game Manager Object- Save Settings, Gameplay, and Tally Best Personal Score- 
+    Increase level speed
+    Extra Players
+* Finish Wizard
+* Finish Leaderboard (stub webservice)
+
+* Ode to Joy at levels/game finish
+* Exit sign on menu
+* Pause doesnt really pause- neither does Resume, resume then
+* GameOver screen- needs F&F
 
 
 Bugs
 -------
-GameOver screen- needs F&F
+
 Scoring- after loosing one beer, score resets
-Restart - settings persistance
-Pause doesnt really pause- neither does Resume, resume then
-Exit Button
+
+
 
 UI Refresh
 
@@ -62,6 +71,7 @@ GamePlay Fit & Finish
 * Increase level speed
 * Extra Players
 * Leaderboard Webservice
+* Add Non-Scoring milestones- Collision1, Collision2, Levelup, Game Over to GameData
 
 -----------------------------
 * Trigger point sounds- collisions, start, bartender, button clicks  

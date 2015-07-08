@@ -15,7 +15,7 @@
 
 
 
--(id) initWithScore:(int)score MaxLevel:(int)level Name:(NSString*)name Date:(NSString*)date GUID:(NSString*)guid
+-(id) initWithScore:(int)score MaxLevel:(int)level Name:(NSString*)name Date:(NSString*)date GUID:(NSString*)guid Device:(NSString*)device Remaing:(NSString*)time
 {
     if (self = [super init]) {
         //
@@ -23,7 +23,9 @@
         _scoreLevel = [NSNumber numberWithInt:level];
         _scoreName = name;
         _scoreDate = date;
-        _GUID = guid;
+        _UserGUID = guid;
+        _DeviceGUID = device;
+        _timeRemaining = time;
     }
     return self;
 }

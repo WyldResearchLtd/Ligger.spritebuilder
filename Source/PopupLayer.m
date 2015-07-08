@@ -182,9 +182,19 @@
     [self._lblLevel setString:score];
 }
 
--(void) initCompletedScore:(NSString*)score
+//-(void) initCompletedScore:(NSString*)score
+//{
+//    
+//    [self._lblCompleted setString:score];
+//}
+
+
+-(void) initWithScoreData:(ScoreData *)value
 {
-    [self._lblCompleted setString:score];
+    //format the string?
+    [self._lblCompleted setString:value.scoreValue.stringValue];
+    [self._lblTime setString:value.timeRemaining];
+    //((LevelTimer*)_timer).seconds
 }
 
 

@@ -78,7 +78,7 @@
 
 -(void) startTimer {
     if (self.timerPaused) {
-        NSLog(@"Timer started");
+        NSLog(@"Game LevelTimer starting...");
         _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(tickTock) userInfo:nil repeats:YES];
     }
 }

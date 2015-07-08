@@ -44,6 +44,8 @@
 -(void) goodTrip:(CGPoint) position atSecs:(int)secs hud:(CCLabelBMFont*)label;
 -(void) badTrip:(CGPoint) position atSecs:(int)secs hud:(CCLabelBMFont*)label;
 
+//TODO: Add Non-Scoring milestones- Collision1, Collision2, Levelup, Game Over to GameData
+
 -(void) reset;
 -(void) printLog;
 

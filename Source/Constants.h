@@ -9,6 +9,8 @@
 //#ifndef Ligger_Constants_h
 //#define Ligger_Constants_h
 
+
+//TODO: This needs a comment
 #define CASE(str)                       if ([__s__ isEqualToString:(str)])
 #define SWITCH(s)                       for (NSString *__s__ = (s); ; )
 #define DEFAULT

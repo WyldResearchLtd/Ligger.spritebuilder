@@ -11,13 +11,16 @@
 #import "ScoreData.h"
 #import "LevelTimer.h"
 
-@interface GameManager : NSObject
+@class LevelTimer;
+@interface GameManager : CCNode //: NSObject
 
 @property (nonatomic) NSNumber* _level;
 @property (nonatomic) GameData* _gameData;
 @property (nonatomic) ScoreData* _scores;
-//@property (nonatomic) LevelTimer* _timer;
+@property (nonatomic) LevelTimer* _timer;
 
--(id) initWithGamedata:(GameData*)gameData;
+//-(id) initWithGamedata:(GameData*)gameData;
+-(id) initWithTimer:(LevelTimer*)timer;
+-(void) gameOver;
 
 @end

@@ -12,9 +12,9 @@
 //#import "UITouch+CC.h"
 #import "CCDirector.h"
 #import "Constants.h"
-#import "GameData.h"
 #import "GameManager.h"
 
+@class GameManager;
 @interface GameScene : CCNode
 
 @property (nonatomic) NSMutableArray* obstacles;
@@ -26,12 +26,14 @@
 @property bool swiped;
 
 @property (nonatomic) id timer;
+@property (nonatomic) GameData* gameData;
+//@property (nonatomic) GameManager* gameManager;
+//this is now an instance variable
+
 @property (nonatomic) PlayerState playerState;
 @property (nonatomic) LevelState levelState;
 @property (nonatomic) PlayerMoveState playerMoveState;
 
-@property (nonatomic) GameData* gameData;
-//@property (nonatomic) GameManager* gameManager;
 @property int moveLength;
 @property int screenWidth;
 @property int screenHeight;
@@ -46,11 +48,9 @@
 @property (nonatomic) CCButton * arrowLeft;
 @property (nonatomic) CCButton * arrowRight;
 
-
 //- (void) refreshUI;
 + (Boolean) halt;
 + (void) setHalt:(Boolean)value;
-
 
 -(Boolean) doesCollide:(CCNode*)obstacle withPlayer:(CCNode*) player;
 -(Boolean) isServing:(int)idxBartender withPlayer:(CCNode*) player;

@@ -22,12 +22,12 @@
 {
     [super onEnter];
     NSLog(@"Leaderboard onEnter");
-    __ScoresDatum = [NSArray arrayWithObjects:  [[ScoreData alloc]initWithScore:10020 MaxLevel:11 Name:@"Test Name"  Date:@"23 Jun 2015 13:23" GUID:@"KJ67GFD"],
-                                                [[ScoreData alloc]initWithScore: 6090 MaxLevel:10 Name:@"Test Name2" Date:@"24 Jun 2015 11:53" GUID:@"YJ67GFD"],
-                                                [[ScoreData alloc]initWithScore:10320 MaxLevel:11 Name:@"Test Name3" Date:@"24 Jun 2015 13:23" GUID:@"HJ67GFD"],
-                                                [[ScoreData alloc]initWithScore: 9090 MaxLevel:10 Name:@"Test Name4" Date:@"24 Jun 2015 16:53" GUID:@"6J67GFD"],
-                                                [[ScoreData alloc]initWithScore:10720 MaxLevel:11 Name:@"Test Name5" Date:@"25 Jun 2015 13:23" GUID:@"KJ67GFD"],
-                                                [[ScoreData alloc]initWithScore: 7390 MaxLevel:10 Name:@"Test Name6" Date:@"26 Jun 2015 11:53" GUID:@"0J67GFD"],
+    __ScoresDatum = [NSArray arrayWithObjects:  [[ScoreData alloc]initWithScore:10020 MaxLevel:11 Name:@"Test Name"  Date:@"23 Jun 2015 13:23" GUID:@"KJ67GFD"      Device:@"ABC" Remaing:@"5 secs"],
+                                                [[ScoreData alloc]initWithScore: 6090 MaxLevel:10 Name:@"Test Name2" Date:@"24 Jun 2015 11:53" GUID:@"YJ67GFD" Device:@"ABC" Remaing:@"5 secs"],
+                                                [[ScoreData alloc]initWithScore:10320 MaxLevel:11 Name:@"Test Name3" Date:@"24 Jun 2015 13:23" GUID:@"HJ67GFD" Device:@"ABC" Remaing:@"5 secs"],
+                                                [[ScoreData alloc]initWithScore: 9090 MaxLevel:10 Name:@"Test Name4" Date:@"24 Jun 2015 16:53" GUID:@"6J67GFD" Device:@"ABC" Remaing:@"5 secs"],
+                                                [[ScoreData alloc]initWithScore:10720 MaxLevel:11 Name:@"Test Name5" Date:@"25 Jun 2015 13:23" GUID:@"KJ67GFD" Device:@"ABC" Remaing:@"5 secs"],
+                                                [[ScoreData alloc]initWithScore: 7390 MaxLevel:10 Name:@"Test Name6" Date:@"26 Jun 2015 11:53" GUID:@"0J67GFD" Device:@"ABC" Remaing:@"5 secs"],
                                                 nil];
     NSLog(@"Demo data init: num objects: %lul", (unsigned long)__ScoresDatum.count);
     [self refreshBoard];

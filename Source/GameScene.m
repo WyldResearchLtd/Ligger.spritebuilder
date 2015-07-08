@@ -10,6 +10,7 @@
 #import "LevelTimer.h"
 #import "Obstacle.h"
 #import "PopupLayer.h"
+#import "ScoreData.h"
 
 
 @implementation GameScene
@@ -19,6 +20,7 @@
     __weak PopupLayer* _popoverMenuLayer;
     //__weak CCPhysicsNode* _physicsNode;
     //__weak CCNode* _backgroundNode;
+   GameManager* _gameManager;
 }
 
 static Boolean halt = false;
@@ -41,11 +43,7 @@ bool isCollisionInProgress = false;
     self.levelState = GameSetup;
     NSLog(@"GameScene: didLoadFromCCB created, Level: %d", self.levelState);
     
-    NSLog(@"GameScene: GameData created");
-    //GameData* gameData = [[GameData alloc]init];
     
-    //TODO: Put the Manager in here.....
-    GameManager* _gameManager = [[GameManager alloc] initWithGamedata:[[GameData alloc]init]];
     
     //screen coords for displaying the timer
     CGSize winSize = [[CCDirector sharedDirector] viewSize];
@@ -54,9 +52,17 @@ bool isCollisionInProgress = false;
     NSLog(@"GameScene: LevelTimer created");
     _timer = [[LevelTimer alloc] initWithGame:self x:-46 y:self.screenHeight-6];
     
-    NSLog(@"GameScene: Level Loaded");
+
+    _gameManager = [[GameManager alloc] initWithTimer:_timer];
+    //TODO: Replace all of the calls to self.gameData with calls to _gameManager._gameData, and integrate the LevelTimer more too
+    self.gameData = _gameManager._gameData;
+    NSLog(@"GameScene: GameManager (GameData) created");
+    
+
     // load the current level- this takes time
     [self loadLevel];
+    NSLog(@"GameScene: Level Loaded");
+    
     
     NSLog(@"GameScene: Setup Swipe Recognisers");
     UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeGesture:)];
@@ -120,8 +126,17 @@ bool isCollisionInProgress = false;
     
     if (_popoverMenuLayer == nil)
     {
+        //TODO: NOT FINISHED  --Lets init this with a ScoreData Object!
+        ScoreData* scoreData = [[ScoreData alloc] initWithScore:_gameData.GameScore MaxLevel:1 Name:[GameData userName] Date:@"Date" GUID:@"GUID" Device:@"Device" Remaing:@"2 secs"];
+        
+        //[self showPopoverNamed:@"Popups/GameOver"];
+        // [_popoverMenuLayer initCompletedScore:[NSString stringWithFormat:@"Score: %d Time: %d secs", _gameData.GameScore,((LevelTimer*)_timer).seconds]];
         [self showPopoverNamed:@"Popups/GameOver"];
-         [_popoverMenuLayer initCompletedScore:[NSString stringWithFormat:@"Score: %d Time: %d secs", _gameData.GameScore,((LevelTimer*)_timer).seconds]];
+        [_popoverMenuLayer initWithScoreData:scoreData];
+        
+         //Call the GameManager here= GameOver!
+        //lets pass this a ScoreData object too.
+         [_gameManager gameOver];
         
          [_gameData printLog];
     }
@@ -583,7 +598,7 @@ bool isCollisionInProgress = false;
         isPromotorSetupStarted = false;
         self.levelState = PlayGame;
         [((LevelTimer*)_timer) startTimer];
-        NSLog(@"GAME LEVELTIMER STARTED");
+        NSLog(@"Game LevelTimer Started");
     }
 }
 

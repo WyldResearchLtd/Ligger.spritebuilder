@@ -2,8 +2,11 @@
 //  GameData.m
 //  Ligger
 //
+//  This is hugely important class- the container for the gameplay log that is sent to the webservice.
+//  Its built from LiggerGamedata.plist, and that is effectively what is sent by webservice and then reset.
+//
 //  Created by Gene Myers on 15/06/2015.
-//  Copyright (c) 2015 Apportable. All rights reserved.
+//  Copyright (c) 2015 Fezzee. All rights reserved.
 //
 
 #import "GameData.h"
@@ -12,9 +15,6 @@
 
 static NSMutableDictionary* _settings;
 
-/*
- *
- */
 static Ligger _ligger = GeordieGunter;//default
 + (Ligger) ligger
 {
@@ -49,7 +49,7 @@ static NSNumber *_soundtrack = 0;//default
 {
     _settings = [self getGameSettings];
     _soundtrack = [_settings objectForKey:@"Soundtrack"];
-    NSLog(@"GameData::getSoundtrack %@",_soundtrack==0? @"The Soul Immigrants" : @"the other");
+    NSLog(@"GameData::getSoundtrack %@",_soundtrack==0? @"The Soul Immigrants" : @"The Caulfield Beats");
     return _soundtrack;
 }
 + (void) setSoundtrack:(NSNumber*)value
@@ -59,7 +59,7 @@ static NSNumber *_soundtrack = 0;//default
     _settings = [self getGameSettings];
     [_settings  setObject:_soundtrack forKey:@"Soundtrack"];
     [self saveGameSettings:_settings];
-    NSLog(@"GameData::setSoundtrack=%@",[_soundtrack isEqualToNumber:[NSNumber numberWithInt:0]]? @"The Soul Immigrants" : @"the other");
+    NSLog(@"GameData::setSoundtrack=%@",[_soundtrack isEqualToNumber:[NSNumber numberWithInt:0]]? @"The Soul Immigrants" : @"The Caulfield Beats");
     NSLog(@"UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU");
    
 }
