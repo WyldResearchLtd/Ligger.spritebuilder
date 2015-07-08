@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+@class GameData;
 @interface ScoreData : NSObject
 {
     //int scoreValue;
@@ -17,12 +18,14 @@
 @property (nonatomic) NSString* UserGUID;
 @property (nonatomic) NSString* DeviceGUID;
 @property (nonatomic) NSString* scoreName;
-@property (nonatomic) NSString* timeRemaining;
-@property (nonatomic) NSString* scoreDate;
-@property (nonatomic) NSNumber* scoreValue;
-@property (nonatomic) NSNumber* scoreLevel;
-@property (nonatomic)bool isHighScore; //flag this if this score is added to the Best- keywords
+@property (nonatomic) NSString* timeRemaining; 
+@property (nonatomic) NSString* scoreDate;   //DateTime
+@property (nonatomic) NSNumber* scoreValue;  //THE score
+@property (nonatomic) NSNumber* scoreLevel; //max level
+@property (nonatomic) bool isHighScore; //flag this if this score is added to the Best- keywords
 
 -(id) initWithScore:(int)score MaxLevel:(int)level Name:(NSString*)name Date:(NSString*)date GUID:(NSString*)guid Device:(NSString*)device Remaing:(NSString*)time;
+-(NSDictionary*) getScoreObjects:(GameData*)data;
+
 
 @end

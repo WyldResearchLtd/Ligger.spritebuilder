@@ -127,12 +127,17 @@ bool isCollisionInProgress = false;
     if (_popoverMenuLayer == nil)
     {
         //TODO: NOT FINISHED  --Lets init this with a ScoreData Object!
+        #warning In Progress
         ScoreData* scoreData = [[ScoreData alloc] initWithScore:_gameData.GameScore MaxLevel:1 Name:[GameData userName] Date:@"Date" GUID:@"GUID" Device:@"Device" Remaing:@"2 secs"];
+        scoreData.isHighScore = [_gameManager._gameData isScoreHigh:scoreData];
+        
+        
+        //Next get the personalBest Scores from GameData
         
         //[self showPopoverNamed:@"Popups/GameOver"];
         // [_popoverMenuLayer initCompletedScore:[NSString stringWithFormat:@"Score: %d Time: %d secs", _gameData.GameScore,((LevelTimer*)_timer).seconds]];
         [self showPopoverNamed:@"Popups/GameOver"];
-        [_popoverMenuLayer initWithScoreData:scoreData];
+        [_popoverMenuLayer initWithScoreData:scoreData]; //we also need to pass this a collection of the 3 scores for personalBest
         
          //Call the GameManager here= GameOver!
         //lets pass this a ScoreData object too.

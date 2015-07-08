@@ -189,12 +189,13 @@
 //}
 
 
--(void) initWithScoreData:(ScoreData *)value
+-(void) initWithScoreData:(ScoreData *)value //andGameData:(GameData*)game
 {
-    //format the string?
+    //TODO: format the string
     [self._lblCompleted setString:value.scoreValue.stringValue];
     [self._lblTime setString:value.timeRemaining];
-    //((LevelTimer*)_timer).seconds
+    [self._lblLevels setString:value.scoreLevel.stringValue];
+    [self._lblHighScore setString:value.isHighScore?@"High Score":@"Keep on Hustlin'"];
 }
 
 

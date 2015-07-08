@@ -7,6 +7,7 @@
 //
 
 #import "ScoreData.h"
+#import "GameData.h"
 
 /*
  * These scores can be your scores from a Game (GameData/Best Personal Score) or other people scores from the leader board
@@ -28,6 +29,35 @@
         _timeRemaining = time;
     }
     return self;
+}
+
+
+-(id) initWithDictionary:(NSDictionary*) dict
+{
+    if (self = [super init]) {
+        //TODO: NOT IMPLIMENTED
+        
+    }
+    return self;
+}
+
+
+//returns this object as a Dictionary of values
+-(NSDictionary*) getScoreObjects:(GameData*)data
+{
+    # warning NEEDS TESTING
+    NSArray* objects = [NSArray arrayWithObjects: _scoreValue, _timeRemaining, _scoreLevel, _scoreName, _scoreDate,
+     _UserGUID, _DeviceGUID,
+     nil];
+    
+    NSArray* keys = [NSArray arrayWithObjects: @"scoreValue", @"timeRemaining", @"scoreLevel", @"scoreName", @"scoreDate",
+                        @"UserGUID", @"DeviceGUID",
+                        nil];
+
+    
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc]initWithObjects:objects forKeys:keys];
+
+     return dict;
 }
 
 @end

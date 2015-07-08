@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>LeaderC</key>
-	<string></string>
+	<dict/>
 	<key>LeaderA</key>
-	<string></string>
+	<dict/>
 	<key>LeaderB</key>
-	<string></string>
+	<dict/>
 	<key>Best-3</key>
-	<string></string>
+	<dict/>
 	<key>Best-2</key>
-	<string></string>
+	<dict/>
 	<key>Best-1</key>
-	<string></string>
+	<dict/>
 	<key>Username</key>
 	<string>Gilligan</string>
 	<key>UserIdentifier</key>

@@ -10,6 +10,7 @@
 //
 
 #import "GameData.h"
+#import "ScoreData.h"
 
 @implementation GameData
 
@@ -266,7 +267,26 @@ static NSString* _userName;
     }
 }
 
-
+-(bool) isScoreHigh:(ScoreData*)scoreData
+{
+    #warning In Progress
+    
+    NSDictionary* score = [scoreData getScoreObjects:self];
+    
+    NSDictionary* best1 = [_settings objectForKey:@"Best-1"];
+    NSDictionary* best2 = [_settings objectForKey:@"Best-2"];
+    NSDictionary* best3 = [_settings objectForKey:@"Best-3"];
+    //NSNumber* gameScore = [scoreData scoreValue];
+    if (best3==nil || best2==nil || best1==nil) return true;
+        
+    if ( _GameScore <= (int)[best3 objectForKey:@"Best-3"] ||
+         _GameScore <= (int)[best3 objectForKey:@"Best-2"] ||
+         _GameScore <= (int)[best3 objectForKey:@"Best-1"] )
+    {
+        return true;
+    }
+    return false;
+}
 
 
 +(void) saveGameSettings:(NSMutableDictionary*)gameData
@@ -319,10 +339,19 @@ static NSString* _userName;
     NSLog(@"Movement: %@",[[data objectForKey:@"Movement"] integerValue]==1?@"Touch":@"Swipe");
     NSLog(@"Audio: %@",[[data objectForKey:@"Audio"] boolValue]? @"True" : @"False");
     NSLog(@"Soundtrack: %@",[[data objectForKey:@"Soundtrack"] integerValue]==0?@"The Soul Immigrants":@"The Caufield Beats");
+    
+    NSLog(@"Best-1: %@",[data objectForKey:@"Best-1"]);
+    NSLog(@"Best-2: %@",[data objectForKey:@"Best-2"]);
+    NSLog(@"Best-3: %@",[data objectForKey:@"Best-3"]);
     NSLog(@"=====================================================");
     
     return data;
 
+}
+
++(NSMutableDictionary*) getPersonalBest
+{
+    
 }
 
 

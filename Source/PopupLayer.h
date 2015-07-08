@@ -34,7 +34,7 @@
 @property (nonatomic) CCLabelTTF *_lblLevels;//used by GameOver popup
 @property (nonatomic) CCLabelTTF *_lblCompleted;
 @property (nonatomic) CCLabelTTF *_lblTime;
-
+@property (nonatomic) CCLabelTTF *_lblHighScore;
 
 
 
@@ -59,7 +59,7 @@
 //Popup Layers
 -(void) initLevelUpScore:(NSString*)score;
 //-(void) initCompletedScore:(NSString*)score;
--(void) initWithScoreData:(ScoreData*)value;
+-(void) initWithScoreData:(ScoreData*)value;// andGameData:(GameData*)game;
 
 // COMMON
 -(void) btnBack;

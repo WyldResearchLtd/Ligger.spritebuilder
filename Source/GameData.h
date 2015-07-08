@@ -9,11 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "Constants.h"
 
+@class ScoreData;
 @interface GameData : NSObject
 
 @property int GameScore;
 @property (nonatomic) NSMutableArray* Gamelog; //this is the scoring moves
-//@property (nonatomic) NSMutableArray* settings; //this are the app settings
+//@property (nonatomic) NSMutableArray* settings; //this are the app settings- see instance variable instead
+//static NSMutableDictionary* _settings;
 
 //Game Settings
 + (Ligger) ligger;
@@ -31,6 +33,8 @@
 +(void) saveGameSettings:(NSMutableDictionary*)gameData;
 +(NSMutableDictionary*) getGameSettings;
 +(void) readAndInit;
+
+-(bool) isScoreHigh:(ScoreData*)scoreData;
 
 //log player actions
 -(void) moveForward:(CGPoint) position atSecs:(int) secs hud:(CCLabelBMFont*)label; //
