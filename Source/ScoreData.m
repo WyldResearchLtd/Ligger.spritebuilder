@@ -43,7 +43,7 @@
 
 
 //returns this object as a Dictionary of values
--(NSDictionary*) getScoreObjects:(GameData*)data
+-(NSDictionary*) getScoreObjects
 {
     # warning NEEDS TESTING
     NSArray* objects = [NSArray arrayWithObjects: _scoreValue, _timeRemaining, _scoreLevel, _scoreName, _scoreDate,

@@ -25,7 +25,7 @@
 @property (nonatomic) bool isHighScore; //flag this if this score is added to the Best- keywords
 
 -(id) initWithScore:(int)score MaxLevel:(int)level Name:(NSString*)name Date:(NSString*)date GUID:(NSString*)guid Device:(NSString*)device Remaing:(NSString*)time;
--(NSDictionary*) getScoreObjects:(GameData*)data;
+-(NSDictionary*) getScoreObjects;//:(GameData*)data;
 
 
 @end

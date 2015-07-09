@@ -126,16 +126,16 @@ bool isCollisionInProgress = false;
     
     if (_popoverMenuLayer == nil)
     {
-        //TODO: NOT FINISHED  --Lets init this with a ScoreData Object!
+        
         #warning In Progress
+        //TODO: NOT FINISHED  -- properly initialise the ScoreData Object!
         ScoreData* scoreData = [[ScoreData alloc] initWithScore:_gameData.GameScore MaxLevel:1 Name:[GameData userName] Date:@"Date" GUID:@"GUID" Device:@"Device" Remaing:@"2 secs"];
+        //this is a quick check 
         scoreData.isHighScore = [_gameManager._gameData isScoreHigh:scoreData];
-        
-        
         //Next get the personalBest Scores from GameData
+        //maybe causing crash
+        //NSMutableDictionary* best = [GameData getPersonalBest];
         
-        //[self showPopoverNamed:@"Popups/GameOver"];
-        // [_popoverMenuLayer initCompletedScore:[NSString stringWithFormat:@"Score: %d Time: %d secs", _gameData.GameScore,((LevelTimer*)_timer).seconds]];
         [self showPopoverNamed:@"Popups/GameOver"];
         [_popoverMenuLayer initWithScoreData:scoreData]; //we also need to pass this a collection of the 3 scores for personalBest
         
@@ -167,6 +167,7 @@ bool isCollisionInProgress = false;
 -(void) loadLevel
 {
     NSLog(@"±±±±±±±±±± LOAD LEVEL ±±±±±±±±±±±±±±±");
+    [_gameData reset];
     if (GameData.navigation==Touch)
     {
         self.arrowUp.visible =true;
@@ -1054,7 +1055,7 @@ bool isCollisionInProgress = false;
     
     GameScene.halt = false;
     
-    [_gameData reset];
+    //[_gameData reset];
 
     NSLog(@"ANIMATION STARTED");
     

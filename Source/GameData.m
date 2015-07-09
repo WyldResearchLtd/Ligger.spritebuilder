@@ -267,27 +267,6 @@ static NSString* _userName;
     }
 }
 
--(bool) isScoreHigh:(ScoreData*)scoreData
-{
-    #warning In Progress
-    
-    NSDictionary* score = [scoreData getScoreObjects:self];
-    
-    NSDictionary* best1 = [_settings objectForKey:@"Best-1"];
-    NSDictionary* best2 = [_settings objectForKey:@"Best-2"];
-    NSDictionary* best3 = [_settings objectForKey:@"Best-3"];
-    //NSNumber* gameScore = [scoreData scoreValue];
-    if (best3==nil || best2==nil || best1==nil) return true;
-        
-    if ( _GameScore <= (int)[best3 objectForKey:@"Best-3"] ||
-         _GameScore <= (int)[best3 objectForKey:@"Best-2"] ||
-         _GameScore <= (int)[best3 objectForKey:@"Best-1"] )
-    {
-        return true;
-    }
-    return false;
-}
-
 
 +(void) saveGameSettings:(NSMutableDictionary*)gameData
 {
@@ -349,9 +328,123 @@ static NSString* _userName;
 
 }
 
+#warning In Progress
+/*
+ * Not only returns True is High Score, but saves the scoreData tested
+ * in the appropriate PersonalBest field in settings (FezzeeGameData.plist)
+ */
+-(bool) isScoreHigh:(ScoreData*)scoreData
+{
+
+    
+    //NSDictionary* score = [[scoreData getScoreObjects:self] copy];
+    
+    NSDictionary* best1 = [_settings objectForKey:@"Best-1"];
+    NSDictionary* best2 = [_settings objectForKey:@"Best-2"];
+    NSDictionary* best3 = [_settings objectForKey:@"Best-3"];
+    //NSNumber* gameScore = [scoreData scoreValue];
+    //the logic is:
+    //if best1==nil, no entries have been made- this is the first
+    if (best1==nil)
+    {
+        //save scoreData in Best-1
+        [_settings setObject:[scoreData getScoreObjects]  forKey:@"Best-1"];
+        [GameData saveGameSettings:_settings];
+        return true;
+    }
+    //now check the val of best1- if scoreData
+    long lScore1 = [[best1 objectForKey:@"scoreValue"] longValue];
+    long lScore2 = [[best2 objectForKey:@"scoreValue"] longValue];
+    long lScore3 = [[best3 objectForKey:@"scoreValue"] longValue];
+    long lScoreCurr = [scoreData.scoreValue longValue];
+    if (lScoreCurr >= lScore1)
+    {
+        //TODO: Cascade
+        //if greater, replace best1 with scoreData, and move 1 to 2 and 2 to 3
+        [_settings setObject:[scoreData getScoreObjects]  forKey:@"Best-1"];
+        [_settings setObject:best1  forKey:@"Best-2"];
+        [_settings setObject:best2  forKey:@"Best-3"];
+        [GameData saveGameSettings:_settings];
+        return true;
+    }
+    else
+    {
+        //if not greater or equal, check best2 then best 3
+        if (best2==nil)
+        {
+            //just place it here
+            [_settings setObject:[scoreData getScoreObjects]  forKey:@"Best-2"];
+            [GameData saveGameSettings:_settings];
+            return true;
+        }
+        else
+        {
+            if (lScoreCurr >= lScore2)
+            {
+                //TODO: Cascade
+                //if greater, replace best2 with scoreData, and move 2 to 3
+                [_settings setObject:[scoreData getScoreObjects]  forKey:@"Best-2"];
+                [_settings setObject:best2  forKey:@"Best-3"];
+                [GameData saveGameSettings:_settings];
+                return true;
+            }
+            else
+            {
+                if (best3==nil)
+                {
+                    //just place it here
+                    [_settings setObject:[scoreData getScoreObjects]  forKey:@"Best-3"];
+                    [GameData saveGameSettings:_settings];
+                    return true;
+                }
+                else
+                {
+                    if (lScoreCurr >= lScore3)
+                    {
+                        [_settings setObject:[scoreData getScoreObjects]  forKey:@"Best-3"];
+                        [GameData saveGameSettings:_settings];
+                    }
+                }
+            }
+        }
+    }
+    
+//    if (scoreCurrent>=score1) //insert new score here and move others down
+//    {
+//        //write the score
+//        return true;
+//    }
+//    else //check best2 then best 3
+//    {
+//        
+//    }
+    
+//    if (best3==nil || best2==nil || best1==nil) return true;
+//    //THIS IS THE PART I'm NOT SURE ABOUT
+//    if ( _GameScore <= (int)[best3 objectForKey:@"Best-3"] ||
+//        _GameScore <= (int)[best3 objectForKey:@"Best-2"] ||
+//        _GameScore <= (int)[best3 objectForKey:@"Best-1"] )
+//    {
+//        return true;
+//    }
+    return false;
+}
+
 +(NSMutableDictionary*) getPersonalBest
 {
+    NSDictionary* best1 = [_settings objectForKey:@"Best-1"];
+    NSDictionary* best2 = [_settings objectForKey:@"Best-2"];
+    NSDictionary* best3 = [_settings objectForKey:@"Best-3"];
     
+    NSArray* objects = [NSArray arrayWithObjects: best1, best2, best3,
+                        nil];
+    
+    NSArray* keys = [NSArray arrayWithObjects: @"Best-1", @"Best-2", @"Best-3",
+                     nil];
+    
+    
+   return [[NSMutableDictionary alloc]initWithObjects:objects forKeys:keys];
+   
 }
 
 

@@ -33,6 +33,7 @@
 +(void) saveGameSettings:(NSMutableDictionary*)gameData;
 +(NSMutableDictionary*) getGameSettings;
 +(void) readAndInit;
++(NSMutableDictionary*) getPersonalBest;
 
 -(bool) isScoreHigh:(ScoreData*)scoreData;
 

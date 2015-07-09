@@ -42,11 +42,17 @@ P1
 X Leaderboard UI
 X First time start wizard & name collection popup
 X Add new music to setup
+X The Game Manager Object- Save Settings, Gameplay, and Tally Best Personal Score- 
 
+Bugs
+-------
+Scoring- after loosing one beer, score resets
 
-* The Game Manager Object- Save Settings, Gameplay, and Tally Best Personal Score- 
-    Increase level speed
-    Extra Players
+*Finish Game Manager
+
+    * Increase level speed
+    * Extra Players
+
 * Finish Wizard
 * Finish Leaderboard (stub webservice)
 
@@ -56,10 +62,7 @@ X Add new music to setup
 * GameOver screen- needs F&F
 
 
-Bugs
--------
 
-Scoring- after loosing one beer, score resets
 
 
 
