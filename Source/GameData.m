@@ -403,30 +403,13 @@ static NSString* _userName;
                     {
                         [_settings setObject:[scoreData getScoreObjects]  forKey:@"Best-3"];
                         [GameData saveGameSettings:_settings];
+                        return true;
                     }
                 }
             }
         }
     }
-    
-//    if (scoreCurrent>=score1) //insert new score here and move others down
-//    {
-//        //write the score
-//        return true;
-//    }
-//    else //check best2 then best 3
-//    {
-//        
-//    }
-    
-//    if (best3==nil || best2==nil || best1==nil) return true;
-//    //THIS IS THE PART I'm NOT SURE ABOUT
-//    if ( _GameScore <= (int)[best3 objectForKey:@"Best-3"] ||
-//        _GameScore <= (int)[best3 objectForKey:@"Best-2"] ||
-//        _GameScore <= (int)[best3 objectForKey:@"Best-1"] )
-//    {
-//        return true;
-//    }
+
     return false;
 }
 
