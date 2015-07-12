@@ -64,8 +64,14 @@
 }
 
 
+// like i++;
+-(void) incrementLevelCount
+{
+    __level = [NSNumber numberWithInt:[__level intValue] + 1];
+}
+
 /*
- * This is the workhorse of this class. It writes the GameData, tallies it, displays it on the personal best board, and then sends it to the web service
+ * This SHOULD BE the workhorse of this class. It writes the GameData, tallies it, displays it on the personal best board, and then sends it to the web service
  */
 -(void) gameOver
 {

@@ -43,46 +43,59 @@ X Leaderboard UI
 X First time start wizard & name collection popup
 X Add new music to setup
 X The Game Manager Object- Save Settings, Gameplay, and Tally Best Personal Score- 
+X Scoring Bug- after loosing one beer, score resets
+X GameOver screen- needs F&F
 
-Bugs
--------
-Scoring- after loosing one beer, score resets
+X Game Manager
+    X Level Increment, Datestamp
+    X Update Leaderboard 
 
-*Finish Game Manager
-
-    * Increase level speed
-    * Extra Players
-
-* Finish Wizard
-* Finish Leaderboard (stub webservice)
-
-* Ode to Joy at levels/game finish
-* Exit sign on menu
+x Ode to Joy at GameOver
 * Pause doesnt really pause- neither does Resume, resume then
-* GameOver screen- needs F&F
+-checkin-
+* Log GUIDs,  Add GameLog- Package/Stub for WebService
+* Finish Wizard
+* Flesh out Level UI
+* Exit sign on menu
 
+===================
+TESTABLE
+===================
 
+* OUT OF CHEAT MODE
+    * Game Manager    
+        * Increase level speed - need level number
+        * Extra Players - need level number
 
+UI Refresh- NEED FULL LIST
+    * Should say Backstage or VIP 
+    * HUD higer res images
+    * All text reviewed
+    * ...
 
+===================
+SUN NIGHT
+===================
 
+Monday- Release prep
 
-UI Refresh
+-------------------
+
+KNOWN ISSUES
 
 GamePlay Fit & Finish
 -----------------------------
-* Multiple obstructions/row
-* Increase level speed
-* Extra Players
 * Leaderboard Webservice
-* Add Non-Scoring milestones- Collision1, Collision2, Levelup, Game Over to GameData
+* Upgrade GameLog
+    * Add Non-Scoring milestones- Collision1, Collision2, Levelup, Game Over to GameData
+    * Trigger additional point sounds- collisions, start, bartender, button clicks  
 
------------------------------
-* Trigger point sounds- collisions, start, bartender, button clicks  
 
   
 P2  
-* Should say Backstage or VIP  
-* create an interface for ShowPopover/RemovePopover     
+* Add 'No. 'Beers' to Level/Game totals
+* create an interface for ShowPopover/RemovePopover    
+* base class -- PopoverLayout
 * instead of walking left to promotor, and then back to the right, have the promotor meet the ligger? or only allow the ligger    
 * Mask the obstacles so collisions are more accurate- change anchor point for left to right movement?  
 * Transitions for Popups  
@@ -92,8 +105,7 @@ P3
 * The particle effect for a NoBeer Ligger shouldn't be a splash  
 * Obstacles that disappear before fully existing screen  
   
-  
-  
+
 Game Over- Looser- Scoring....with buttins to play again or menu  
 Welcome back notification  
   

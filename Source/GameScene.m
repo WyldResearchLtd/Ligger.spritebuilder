@@ -128,20 +128,31 @@ bool isCollisionInProgress = false;
     {
         
         #warning In Progress
-        //TODO: NOT FINISHED  -- properly initialise the ScoreData Object!
-        ScoreData* scoreData = [[ScoreData alloc] initWithScore:_gameData.GameScore MaxLevel:1 Name:[GameData userName] Date:@"Date" GUID:@"GUID" Device:@"Device" Remaing:@"2 secs"];
-        //this is a quick check 
-        scoreData.isHighScore = [_gameManager._gameData isScoreHigh:scoreData];
-        //Next get the personalBest Scores from GameData
-        //maybe causing crash
-        //NSMutableDictionary* best = [GameData getPersonalBest];
+        //get time formatting-NOW for gametimestamp
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+        //Optionally for time zone conversions
+        [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
+        //NOW
+        NSString *stringFromDate = [formatter stringFromDate:[NSDate date]];
+        
+        [_gameManager incrementLevelCount];
+        //Call the GameManager here= GameOver!
+        //lets pass this a ScoreData object too.
+        [_gameManager gameOver];
+        
+        //Update the "Best" scores in LiggerGamedata.plist
+        ScoreData* scoreData = [[ScoreData alloc] initWithScore:_gameData.GameScore MaxLevel:[_gameManager _level] Name:[GameData userName] Date:stringFromDate   GUID:@"GUID" Device:@"Device" Remaing:kTOTALTIMER-((LevelTimer*)self.timer).seconds];
+        //this is an important and powerful line
+        //GameData::isScoreHigh sets the 'Best-' fields in LiggerGamedata.plist if needed, and returns true if done
+        scoreData.isHighScore = [_gameManager._gameData updateHighScore:scoreData];
+        
         
         [self showPopoverNamed:@"Popups/GameOver"];
-        [_popoverMenuLayer initWithScoreData:scoreData]; //we also need to pass this a collection of the 3 scores for personalBest
+        [_popoverMenuLayer initWithScoreData:scoreData];
         
-         //Call the GameManager here= GameOver!
-        //lets pass this a ScoreData object too.
-         [_gameManager gameOver];
+        
+        
         
          [_gameData printLog];
     }
@@ -635,8 +646,11 @@ bool isCollisionInProgress = false;
         [((LevelTimer*)_timer) pauseTimer];
         NSLog(@"GAME LEVELTIMER PAUSED");
         
+        [_gameManager incrementLevelCount];
+        
         //this is the perfect plave to calc the Bonus, at the start of the level up 
         [self calcBonus];
+        
     }
     
     //MOVE THE PROMOTOR AND PLAYER

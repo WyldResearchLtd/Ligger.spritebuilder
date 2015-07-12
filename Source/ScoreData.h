@@ -18,13 +18,13 @@
 @property (nonatomic) NSString* UserGUID;
 @property (nonatomic) NSString* DeviceGUID;
 @property (nonatomic) NSString* scoreName;
-@property (nonatomic) NSString* timeRemaining; 
+@property (nonatomic) NSNumber* timeRemaining;
 @property (nonatomic) NSString* scoreDate;   //DateTime
 @property (nonatomic) NSNumber* scoreValue;  //THE score
 @property (nonatomic) NSNumber* scoreLevel; //max level
 @property (nonatomic) bool isHighScore; //flag this if this score is added to the Best- keywords
 
--(id) initWithScore:(int)score MaxLevel:(int)level Name:(NSString*)name Date:(NSString*)date GUID:(NSString*)guid Device:(NSString*)device Remaing:(NSString*)time;
+-(id) initWithScore:(int)score MaxLevel:(NSNumber*)level Name:(NSString*)name Date:(NSString*)date GUID:(NSString*)guid Device:(NSString*)device Remaing:(int)time;
 -(NSDictionary*) getScoreObjects;//:(GameData*)data;
 
 

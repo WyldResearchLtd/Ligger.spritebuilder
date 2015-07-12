@@ -3,7 +3,7 @@
 //  Ligger
 //
 //  Created by Gene Myers on 01/07/2015.
-//  Copyright (c) 2015 Apportable. All rights reserved.
+//  Copyright (c) 2015 Fezzee. All rights reserved.
 //
 
 #import "ScoreData.h"
@@ -16,17 +16,17 @@
 
 
 
--(id) initWithScore:(int)score MaxLevel:(int)level Name:(NSString*)name Date:(NSString*)date GUID:(NSString*)guid Device:(NSString*)device Remaing:(NSString*)time
+-(id) initWithScore:(int)score MaxLevel:(NSNumber*)level Name:(NSString*)name Date:(NSString*)date GUID:(NSString*)guid Device:(NSString*)device Remaing:(int)secs
 {
     if (self = [super init]) {
         //
         _scoreValue = [NSNumber numberWithInt:score];
-        _scoreLevel = [NSNumber numberWithInt:level];
+        _scoreLevel = level;
         _scoreName = name;
         _scoreDate = date;
         _UserGUID = guid;
         _DeviceGUID = device;
-        _timeRemaining = time;
+        _timeRemaining = [NSNumber numberWithInt:secs];
     }
     return self;
 }
@@ -36,16 +36,17 @@
 {
     if (self = [super init]) {
         //TODO: NOT IMPLIMENTED
-        
+        NSAssert(true, @"TODO: NOT IMPLIMENTED");
     }
     return self;
 }
 
 
+# warning In Testing
 //returns this object as a Dictionary of values
 -(NSDictionary*) getScoreObjects
 {
-    # warning NEEDS TESTING
+    
     NSArray* objects = [NSArray arrayWithObjects: _scoreValue, _timeRemaining, _scoreLevel, _scoreName, _scoreDate,
      _UserGUID, _DeviceGUID,
      nil];

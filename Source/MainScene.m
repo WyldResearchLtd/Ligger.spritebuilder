@@ -3,11 +3,13 @@
 #import "PopupLayer.h"
 #import "OptionsLayer.h"
 #import "GameData.h"
+#import "LeaderboardLayer.h"
 
 @implementation MainScene
 {
     __weak PopupLayer* _popoverMenuLayer;
     __weak OptionsLayer* _popoverOptionsLayer;
+    __weak LeaderboardLayer* _popoverLeaderboardLayer;
     bool isFirstPass;
     //CCScene *scene;
     GameScene *scene;
@@ -86,12 +88,29 @@
         CCNode* newMenuLayer = [CCBReader load:name];
         NSAssert(newMenuLayer!=nil, @"PopupLayer in showPopoverNamed is Nil");
         [self addChild:newMenuLayer];
+        
         //TODO Ugly!!
-        if ( ! [name isEqualToString:@"Popups/OptionsPopup"] )
-            _popoverMenuLayer = (PopupLayer*)newMenuLayer;
-        else
+        if ( [name isEqualToString:@"Popups/OptionsPopup"] )
+        {
             _popoverOptionsLayer = (OptionsLayer*)newMenuLayer;
-        _popoverMenuLayer.parent = self;
+            _popoverOptionsLayer.parent = self;
+
+        }
+        else if ([name isEqualToString:@"Popups/Leaderboard"] )
+        {
+            _popoverLeaderboardLayer = (LeaderboardLayer*)newMenuLayer;
+            _popoverLeaderboardLayer.parent = self;
+        }
+        else
+        {
+            _popoverMenuLayer = (PopupLayer*)newMenuLayer;
+            _popoverMenuLayer.parent = self;
+        }
+        
+        
+        
+        
+        
         //GameScene.halt=true;
         //_levelNode.paused = YES;
     }
@@ -128,6 +147,13 @@
         [_popoverOptionsLayer removeFromParent];
         _popoverOptionsLayer = nil;
         NSLog(@"Completed OptionsPopup removal");
+    }
+    else if (_popoverLeaderboardLayer)
+    {
+        _popoverLeaderboardLayer.visible = YES;
+        [_popoverLeaderboardLayer removeFromParent];
+        _popoverLeaderboardLayer = nil;
+        NSLog(@"Completed LeaderboardPopup removal");
     }
     else
     {
@@ -192,12 +218,19 @@
     }
 }
 
+#warning In Progress
 -(void) startLeaderboard
 {
     if (_popoverMenuLayer == nil)
     {
-        [self showPopoverNamed:@"Popups/Leaderboard"];
+        //LeaderboardLayer* test = (LeaderboardLayer*)
+        NSDictionary* dict = [GameData getPersonalBest];
         NSLog(@"+++++++Show LEADERBOARD++++++: ");
+        [self showPopoverNamed:@"Popups/Leaderboard"];
+        id rtn = [_popoverLeaderboardLayer setPersonalBest:dict];
+
+        [_popoverLeaderboardLayer refreshBoard];
+       
         
     }
 }

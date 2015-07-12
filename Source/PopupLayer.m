@@ -177,6 +177,7 @@
 //}
 
 
+//This is for the LevelLayer
 -(void) initLevelUpScore:(NSString*)score
 {
     [self._lblLevel setString:score];
@@ -189,13 +190,17 @@
 //}
 
 
+//This is for the GameOverLayer
 -(void) initWithScoreData:(ScoreData *)value //andGameData:(GameData*)game
 {
     //TODO: format the string
-    [self._lblCompleted setString:value.scoreValue.stringValue];
-    [self._lblTime setString:value.timeRemaining];
-    [self._lblLevels setString:value.scoreLevel.stringValue];
-    [self._lblHighScore setString:value.isHighScore?@"High Score":@"Keep on Hustlin'"];
+    [self._lblCompleted setString:[NSString stringWithFormat:@"Score: %@", value.scoreValue.stringValue]];
+    [self._lblTime setString:[NSString stringWithFormat:@"%@ secs left", value.timeRemaining.stringValue]];
+    [self._lblLevels setString:[NSString stringWithFormat:@"Level: %@", value.scoreLevel.stringValue]];
+    [self._lblHighScore setString:value.isHighScore?@"High Score":@"The Hustle Is On"];
+    
+    OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
+    [audio playBg:@"Beethoven-Symp9-4th_mvmnt-Ode_to_Joy-Except.m4a" loop:YES];
 }
 
 

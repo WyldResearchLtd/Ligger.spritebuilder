@@ -328,22 +328,25 @@ static NSString* _userName;
 
 }
 
-#warning In Progress
+#warning In Testing
 /*
  * Not only returns True is High Score, but saves the scoreData tested
  * in the appropriate PersonalBest field in settings (FezzeeGameData.plist)
  */
--(bool) isScoreHigh:(ScoreData*)scoreData
+-(bool) updateHighScore:(ScoreData*)scoreData
 {
 
     
-    //NSDictionary* score = [[scoreData getScoreObjects:self] copy];
+    //a recursive style method, thats been expanded
     
     NSDictionary* best1 = [_settings objectForKey:@"Best-1"];
     NSDictionary* best2 = [_settings objectForKey:@"Best-2"];
     NSDictionary* best3 = [_settings objectForKey:@"Best-3"];
-    //NSNumber* gameScore = [scoreData scoreValue];
+
     //the logic is:
+    // The first 3 games are all high scores, and get saved
+    // from then on, others are inserted as appropriate
+    
     //if best1==nil, no entries have been made- this is the first
     if (best1==nil)
     {
@@ -359,7 +362,6 @@ static NSString* _userName;
     long lScoreCurr = [scoreData.scoreValue longValue];
     if (lScoreCurr >= lScore1)
     {
-        //TODO: Cascade
         //if greater, replace best1 with scoreData, and move 1 to 2 and 2 to 3
         [_settings setObject:[scoreData getScoreObjects]  forKey:@"Best-1"];
         [_settings setObject:best1  forKey:@"Best-2"];
@@ -381,7 +383,6 @@ static NSString* _userName;
         {
             if (lScoreCurr >= lScore2)
             {
-                //TODO: Cascade
                 //if greater, replace best2 with scoreData, and move 2 to 3
                 [_settings setObject:[scoreData getScoreObjects]  forKey:@"Best-2"];
                 [_settings setObject:best2  forKey:@"Best-3"];
@@ -413,6 +414,9 @@ static NSString* _userName;
     return false;
 }
 
+///*
+// * Not currently used- could use for leaderboard!!
+// */
 +(NSMutableDictionary*) getPersonalBest
 {
     NSDictionary* best1 = [_settings objectForKey:@"Best-1"];
@@ -424,7 +428,6 @@ static NSString* _userName;
     
     NSArray* keys = [NSArray arrayWithObjects: @"Best-1", @"Best-2", @"Best-3",
                      nil];
-    
     
    return [[NSMutableDictionary alloc]initWithObjects:objects forKeys:keys];
    

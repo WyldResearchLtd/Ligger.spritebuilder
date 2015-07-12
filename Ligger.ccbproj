@@ -78,19 +78,22 @@
 			<key>previewFolderHidden</key>
 			<true/>
 		</dict>
-		<key>Audio/dustbowl.wav</key>
+		<key>Audio/Beethoven-Symp9-4th_mvmnt-Ode_to_Joy-Except.wav</key>
 		<dict>
 			<key>format_ios_sound</key>
 			<integer>1</integer>
 			<key>isDirty</key>
 			<true/>
 		</dict>
+		<key>Audio/dustbowl.wav</key>
+		<dict>
+			<key>format_ios_sound</key>
+			<integer>1</integer>
+		</dict>
 		<key>Audio/glitchglitchflame.wav</key>
 		<dict>
 			<key>format_ios_sound</key>
 			<integer>1</integer>
-			<key>isDirty</key>
-			<true/>
 		</dict>
 		<key>Prefabs</key>
 		<dict>
@@ -116,6 +119,13 @@
 		<dict>
 			<key>previewFolderHidden</key>
 			<false/>
+		</dict>
+		<key>Sprites/Background-neutral-NEW-23-Jun-15-.png</key>
+		<dict>
+			<key>isDirty</key>
+			<true/>
+			<key>scaleFrom</key>
+			<integer>2</integer>
 		</dict>
 		<key>animation-player1m/back/state2</key>
 		<dict>

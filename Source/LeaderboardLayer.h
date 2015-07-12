@@ -84,7 +84,10 @@
 @property (nonatomic) CCLabelTTF * _row6date;
 
 @property (nonatomic) NSArray * _ScoresDatum;
+@property (nonatomic) NSDictionary* bestPersonal;
 
+//-(id) initWithPersonalBest:(NSDictionary*) best;
+-(id) setPersonalBest:(NSDictionary*) best;
 -(void) refreshBoard;
 
 @end

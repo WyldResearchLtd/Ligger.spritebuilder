@@ -14,13 +14,15 @@
 @class LevelTimer;
 @interface GameManager : CCNode //: NSObject
 
-@property (nonatomic) NSNumber* _level;
+
 @property (nonatomic) GameData* _gameData;
 @property (nonatomic) ScoreData* _scores;
 @property (nonatomic) LevelTimer* _timer;
+@property (nonatomic) NSNumber* _level;
 
 //-(id) initWithGamedata:(GameData*)gameData;
 -(id) initWithTimer:(LevelTimer*)timer;
+-(void) incrementLevelCount;
 -(void) gameOver;
 
 @end

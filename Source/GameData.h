@@ -35,7 +35,8 @@
 +(void) readAndInit;
 +(NSMutableDictionary*) getPersonalBest;
 
--(bool) isScoreHigh:(ScoreData*)scoreData;
+-(bool) updateHighScore:(ScoreData*)scoreData;
+
 
 //log player actions
 -(void) moveForward:(CGPoint) position atSecs:(int) secs hud:(CCLabelBMFont*)label; //
