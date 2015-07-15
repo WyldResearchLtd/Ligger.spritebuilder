@@ -51,6 +51,8 @@
 //This is for the GameOverLayer
 -(void) initWithScoreData:(ScoreData *)value //andGameData:(GameData*)game
 {
+    NSLog(@"PopupLayer::initWithScoreData   self.parent:%@",self.parent);
+    
     //TODO: format the string
     [self._lblCompleted setString:[NSString stringWithFormat:@"Score: %@", value.scoreValue.stringValue]];
     [self._lblTime setString:[NSString stringWithFormat:@"%@ secs left", value.timeRemaining.stringValue]];

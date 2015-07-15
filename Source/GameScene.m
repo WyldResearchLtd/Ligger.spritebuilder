@@ -262,7 +262,7 @@ bool isCollisionInProgress = false;
     }
     else
     {
-        Obstacle* ob11 = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[_levelNode getChildByName:@"obstacle11" recursively:NO]];
+        
         //
         Obstacle* ob1a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[CCBReader load:@"Prefabs/CongaLine"] atPosition:
             CGPointMake(-350.0f,112.0f)];
@@ -284,6 +284,9 @@ bool isCollisionInProgress = false;
             CGPointMake(-350.0f,690.2f)];
         Obstacle* ob10a = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[CCBReader load:@"Prefabs/Streaker-r"] atPosition:
             CGPointMake(950.0f,751.2f)];
+        
+        //doesn't need to be added as a child, because its on the scene Level1
+        Obstacle* ob11 = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[_levelNode getChildByName:@"obstacle11" recursively:NO]];
 
         [self addChild:ob1a.sprite];
         [self addChild:ob2a.sprite];
@@ -297,7 +300,8 @@ bool isCollisionInProgress = false;
         [self addChild:ob10a.sprite];
         //[self addChild:ob11.sprite];
         
-        self.obstacles = [NSMutableArray arrayWithObjects:ob1,ob1a,ob2,ob2a,ob3,ob3a,ob4,ob4a,ob5,ob5a,ob6,ob6a,ob7,ob7a,ob8,ob8a,ob9,ob9a,ob10,ob10a,ob11, nil];
+        //self.obstacles = [NSMutableArray arrayWithObjects:ob1,ob1a,ob2,ob2a,ob3,ob3a,ob4,ob4a,ob5,ob5a,ob6,ob6a,ob7,ob7a,ob8,ob8a,ob9,ob9a,ob10,ob10a,ob11, nil];
+        self.obstacles = [NSMutableArray arrayWithObjects:ob1,ob1a,ob2,ob3,ob4,ob5,ob6,ob7,ob8,ob9,ob10, nil];
 
         
     }

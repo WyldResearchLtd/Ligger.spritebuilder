@@ -64,9 +64,9 @@ X cannot return from leaderboard
 x New Splashscreen
 
 Bugs
-* on first level..sometimes Level is Null on LevelUp popover
+* on first level..sometimes 'Level: (null)' is displayed on LevelUp popover (only on first pass)
 * 1 beer doesn't appear to be credited at finish
-* Pause doesnt really pause- neither does Resume, resume then
+* Pause screen doesnt pause- so therefor nothing to Resume
 
 
 UI Refresh- NEED FULL LIST
