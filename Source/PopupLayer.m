@@ -12,12 +12,10 @@
 #import "MainScene.h"
 #import "GameScene.h"
 
+
 @implementation PopupLayer
 {
-    //__weak PopupLayer* _popoverMenuLayer;
-    //PopupLayer* _popover;
     PopupLayer* _popoverMenuLayer;
-    //bool isFirstPass;
 }
 
 - (BOOL) popoverMenuLayer
@@ -39,155 +37,15 @@
 }
 
 
-
-//-(void) btnSparklePonyPressed
-//{
-//    NSLog(@"OptionsLayer::btnSparklePony -> SparklePony set");
-//    if (self._btnGunter.selected)
-//    {
-//        [self._btnGunter setSelected:false];
-//        [self._btnSparkle setSelected:true];
-//        [GameData setLigger:SparklePony];
-//    }else{
-//        [self._btnGunter setSelected:true];
-//        [self._btnSparkle setSelected:false];
-//        [GameData setLigger:GeordieGunter];
-//    }
-//    
-//}
-//
-//
-//-(void) btnGunterPressed
-//{
-//     NSLog(@"OptionsLayer::btnGunterPressed -> GeordieGunter set");
-//    if (self._btnSparkle.selected)
-//    {
-//        [self._btnSparkle setSelected:false];
-//        [self._btnGunter setSelected:true];
-//        [GameData setLigger:GeordieGunter];
-//    } else {
-//        [self._btnSparkle setSelected:true];
-//        [self._btnGunter setSelected:false];
-//        [GameData setLigger:SparklePony];
-//    }
-//}
-//
-//-(void) btnNavSelected
-//{
-//    NSLog(@"OptionsLayer::btnNavSelected -> Touch set");
-//    if (self._btnSwipe.selected)
-//    {
-//        [self._btnSwipe setSelected:false];
-//        [self._btnNav setSelected:true];
-//        [GameData setNavigation:Touch];
-//    }else{
-//        [self._btnSwipe setSelected:true];
-//        [self._btnNav setSelected:false];
-//        [GameData setNavigation:Swipe];
-//    }
-//}
-//-(void) btnSwipeSelected
-//{
-//    NSLog(@"OptionsLayer::btnSwipeSelected -> Swipe set");
-//    if (self._btnNav.selected)
-//    {
-//        [self._btnNav setSelected:false];
-//        [self._btnSwipe setSelected:true];
-//        [GameData setNavigation:Swipe];
-//    }else{
-//        [self._btnNav setSelected:true];
-//        [self._btnSwipe setSelected:false];
-//        [GameData setNavigation:Touch];
-//    }
-//}
-//
-//-(void) btnToggleAudioState
-//{
-//    NSLog(@"OptionsLayer::btnAudioOn Pressed");
-//    OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
-//    
-//    if (__btnAudio.selected)
-//    {
-//        NSLog(@"OptionsLayer::btnAudioOn Selected");
-//        //[audio setBgPaused:true];
-//    }
-//    //inverts audio on/off
-//    [audio setBgPaused:!(audio.bgPaused)];
-//    NSLog(@"Setting Audible (AudioOn) to: %@",!(audio.bgPaused)?@"YES":@"NO");
-//    [GameData setAudible:!(audio.bgPaused)];
-//
-//    
-//}
-//
-//
-//-(void) initCharacter:(Ligger)character
-//{
-//    switch (character)
-//    {
-//        case GeordieGunter:
-//            [self._btnGunter setSelected:true];
-//            [self._btnSparkle setSelected:false];
-//            [GameData setLigger:GeordieGunter];
-//            break;
-//        case SparklePony:
-//            [self._btnSparkle setSelected:true];
-//            [self._btnGunter setSelected:false];
-//            [GameData setLigger:SparklePony];
-//            break;
-//    }
-//}
-//
-//
-//-(void) initNavigation:(Navigation)nav
-//{
-//    switch (nav)
-//    {
-//        case Touch:
-//            [self._btnNav setSelected:true];
-//            [self._btnSwipe setSelected:false];
-//            [GameData setNavigation:Touch];
-//            break;
-//        case Swipe:
-//            [self._btnSwipe setSelected:true];
-//            [self._btnNav setSelected:false];
-//            [GameData setNavigation:Swipe];
-//            break;
-//    }
-//}
-//
-//-(void) initAudible:(bool)isAudible
-//{
-//    if (isAudible)
-//    {
-//        //when the toggle button is selected it shows the OFF icon
-//        //so these seems backwards
-//        [self._btnAudio setSelected:false];
-//    } else {
-//        [self._btnAudio setSelected:true];
-//    }
-//}
-//
-////[data setObject:self._txtUsername.string forKey:@"Username"];
-//
-//-(void) initUsername:(NSString*) name
-//{
-//    [GameData setUserName:name];
-//    self._txtUsername.string = [GameData userName];
-//
-//}
-
-
 //This is for the LevelLayer
 -(void) initLevelUpScore:(NSString*)score
 {
-    [self._lblLevel setString:score];
+    //TODO: is init called??
+    //[self init];
+    [self._lblCompleted setString:score];
 }
 
-//-(void) initCompletedScore:(NSString*)score
-//{
-//    
-//    [self._lblCompleted setString:score];
-//}
+
 
 
 //This is for the GameOverLayer
@@ -199,31 +57,50 @@
     [self._lblLevels setString:[NSString stringWithFormat:@"Level: %@", value.scoreLevel.stringValue]];
     [self._lblHighScore setString:value.isHighScore?@"High Score":@"The Hustle Is On"];
     
-    OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
-    [audio playBg:@"Beethoven-Symp9-4th_mvmnt-Ode_to_Joy-Except.m4a" loop:YES];
+     OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
+     [audio setBgPaused:true];
+    
+//    OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
+//    [audio playBg:@"Beethoven-Symp9-4th_mvmnt-Ode_to_Joy-Except.m4a" loop:YES];
+//    [audio.backgroundTrack fadeTo:3.0 duration:10 target:self selector:@selector(doVolumeFade)];//fadeTo:2.0 duration: target:self selector:@selector(doVolumeFade)];
+    
+//    soundPath = [[NSBundle mainBundle] pathForResource:@"soundtrack" ofType:@"m4a"];
+//    soundtrack = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:soundPath] error:nil];
+//    [soundtrack setVolume: 0.0];
+//    [soundtrack prepareToPlay];
+    
+    //play background sound
+    NSError *error;
+    NSURL * backgroundMusicURL = [[NSBundle mainBundle] URLForResource:@"Beethoven-Symp9-4th_mvmnt-Ode_to_Joy-Except" withExtension:@"m4a"];
+    self.backgroundMusicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:backgroundMusicURL error:&error];
+    self.backgroundMusicPlayer.numberOfLoops = -1;
+    float fadeTo = self.backgroundMusicPlayer.volume;
+    NSLog(@"Volume Setting: %.2f", fadeTo);
+    self.backgroundMusicPlayer.volume = 0.01;
+    [self.backgroundMusicPlayer prepareToPlay];
+    [self.backgroundMusicPlayer play];
+    [self doVolumeFadeIn:[NSNumber numberWithFloat:fadeTo]];
+    
 }
 
+
+-(void)doVolumeFadeIn:(NSNumber*)fadeTo {
+    if (self.backgroundMusicPlayer.volume < [fadeTo floatValue]) {
+        self.backgroundMusicPlayer.volume = self.backgroundMusicPlayer.volume + 0.01;
+        [self performSelector:@selector(doVolumeFadeIn:) withObject:fadeTo afterDelay:0.1];
+    }
+}
+
+//-(void) doVolumeFade
+//{
+//    NSLog(@"~~~~~~~~~~~~~~~~ Volume Fade ~~~~~~~~~~~~~~~~~~~~~");
+//}
 
 -(void) btnBack
 {
     NSLog(@"Back(btn) Choosen");
     [((MainScene*)self.parent) removePopover];
 }
-
-
-
-////OPTIONS
-//// Only called when going back from Options
-//-(void) btnBackSave
-//{
-//    NSLog(@"Back & Save Choosen");
-//    [((MainScene*)self.parent) removePopover];
-//    NSMutableDictionary* settings = [GameData getGameSettings];
-//    //so, savefields here????
-//    [settings setObject:self._txtUsername.string forKey:@"Username"];
-//    [GameData saveGameSettings:settings];
-//    
-//}
 
 
 // Only called when completing the FirstPass page
@@ -246,7 +123,7 @@
         NSLog(@"ERROR: EMPTY ENTRY");
         //not sucessful
         //this returns you to Menu- it should exit?
-        self._lblWarning.string = @"Required field.";
+        self._lblWarning.string = @"*** Required field";
         return; 
     }
         
@@ -257,24 +134,37 @@
     
 }
 
-
+//This gets pressed on the Levelup Popup
 -(void) btnContinue
 {
-    NSLog(@"Continue(btn) Choosen");
+    NSLog(@"PopupLayer::btnContinue");
     [((GameScene*)self.parent) removePopover];
+    
+    [self.backgroundMusicPlayer stop];
+    
+    if ([GameData audible])
+    {
+        // access audio object- play music while loading sprites below
+        OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
+        if ([[GameData soundtrack] integerValue]==0)
+            [audio playBg:@"hustle2.caf" loop:YES];
+        else if ([[GameData soundtrack] integerValue]==1)
+            [audio playBg:@"glitchglitchflame.m4a" loop:YES];
+    }
+
     
 }
 
 //called
 -(void) resumePause
 {
-     NSLog(@"ResumePause");
+     NSLog(@"PopupLayer::ResumePause");
    [((GameScene*)self.parent) removePopover];
 }
 
 -(void) back2Menu
 {
-    NSLog(@"back2Menu");
+    NSLog(@"PopupLayer::back2Menu");
     
     CCScene* scene = [CCBReader loadAsScene:@"MainScene"];
     CCTransition* transition = [CCTransition transitionFadeWithDuration:1.5];
@@ -286,8 +176,11 @@
  */
 -(void) btnOK
 {
-    NSLog(@"OK(btn) Choosen");
+    NSLog(@"PopupLayer::btnOK");
+    //NSLog(@"OK(btn) Choosen");
     [((GameScene*)self.parent) backToMenu];
+    
+    [self.backgroundMusicPlayer stop];
 }
 
 /*
@@ -295,16 +188,19 @@
  */
 -(void) btnTandCs
 {
-    NSLog(@"T And C's (btn) Choosen");
+    NSLog(@"PopupLayer::btnTandCs");
+    //NSLog(@"T And C's (btn) Choosen");
     //Popup FirstPass UIs ???
+    [self setVisible:false];
    [self showPopoverNamed:@"Popups/TandCs"];
 }
 
 //ERROR: This causes an exception when you try to go back from the T&C pages off of the FirstPass layer
 -(void) btnOKTandCs
 {
-    NSLog(@"btnOKTandCs");
-    //_popoverMenuLayer =
+    NSLog(@"PopupLayer::btnOKTandCs");
+    _popoverMenuLayer = self;
+    [self setVisible:true];
     [self removePopover];  //DO NOT REMOVE BREAKPOINT UNTIL RESOLVED
 }
 
@@ -316,61 +212,6 @@
 
 
 
-//-(void) initCharacter:(Ligger)character
-//{
-//    switch (character)
-//    {
-//        case GeordieGunter:
-//            [self._btnGunter setSelected:true];
-//            [self._btnSparkle setSelected:false];
-//            [GameData setLigger:GeordieGunter];
-//            break;
-//        case SparklePony:
-//            [self._btnSparkle setSelected:true];
-//            [self._btnGunter setSelected:false];
-//            [GameData setLigger:SparklePony];
-//            break;
-//    }
-//}
-//
-//
-//-(void) initNavigation:(Navigation)nav
-//{
-//    switch (nav)
-//    {
-//        case Touch:
-//            [self._btnNav setSelected:true];
-//            [self._btnSwipe setSelected:false];
-//            [GameData setNavigation:Touch];
-//            break;
-//        case Swipe:
-//            [self._btnSwipe setSelected:true];
-//            [self._btnNav setSelected:false];
-//            [GameData setNavigation:Swipe];
-//            break;
-//    }
-//}
-//
-//-(void) initAudible:(bool)isAudible
-//{
-//    if (isAudible)
-//    {
-//        //when the toggle button is selected it shows the OFF icon
-//        //so these seems backwards
-//        [self._btnAudio setSelected:false];
-//    } else {
-//        [self._btnAudio setSelected:true];
-//    }
-//}
-//
-////[data setObject:self._txtUsername.string forKey:@"Username"];
-//
-//-(void) initUsername:(NSString*) name
-//{
-//    [GameData setUserName:name];
-//    self._txtUsername.string = [GameData userName];
-//    
-//}
 
 -(void) showPopoverNamed:(NSString*)name
 {
@@ -404,6 +245,74 @@
         NSLog(@"Unable to remove Popup");
     }
 }
+
+-(void) initWizard
+{
+    
+    NSLog(@">>>>>>>>>>>>>>>>>>>>Initalizing Wizard");
+    [self._btnSoulImmigrants setSelected:true];
+    [self._btnOther setSelected:false];
+    
+
+}
+
+
+-(void) btnSoulImmigrants
+{
+    NSLog(@"OptionsLayer::btnSoulImmigrants -> Caufield Beats set");
+    if (self._btnOther.selected)
+    {
+        [self._btnOther setSelected:false];
+        [self._btnSoulImmigrants setSelected:true];
+        [GameData setSoundtrack:[NSNumber numberWithInt:0]]; //0== Soul Immigrants
+    }else{
+        [self._btnOther setSelected:true];
+        [self._btnSoulImmigrants setSelected:false];
+        [GameData setSoundtrack:[NSNumber numberWithInt:1]];
+    }
+    
+    // play background sound
+    if ([GameData audible])
+    {
+        // access audio object- play music while loading sprites below
+        OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
+        if ([[GameData soundtrack] integerValue]==0)
+            [audio playBg:@"hustle.caf" loop:YES];
+        else if ([[GameData soundtrack] integerValue]==1)
+            [audio playBg:@"dustbowl.m4a" loop:YES];
+    }
+    
+}
+
+
+-(void) btnOther
+{
+    NSLog(@"OptionsLayer::btnOther -> Soul Immigrants set");
+    if (self._btnSoulImmigrants.selected)
+    {
+        [self._btnSoulImmigrants setSelected:false];
+        [self._btnOther setSelected:true];
+        [GameData setSoundtrack:[NSNumber numberWithInt:1]];
+    } else {
+        [self._btnSoulImmigrants setSelected:true];
+        [self._btnOther setSelected:false];
+        [GameData setSoundtrack:[NSNumber numberWithInt:0]];
+    }
+    
+    
+    // play background sound
+    if ([GameData audible])
+    {
+        // access audio object- play music while loading sprites below
+        OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
+        if ([[GameData soundtrack] integerValue]==0)
+            [audio playBg:@"hustle.caf" loop:YES];
+        else if ([[GameData soundtrack] integerValue]==1)
+            [audio playBg:@"dustbowl.m4a" loop:YES];
+    }
+}
+
+
 
 @end
 

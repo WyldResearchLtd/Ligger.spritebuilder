@@ -22,6 +22,9 @@
 @property(nonatomic) CCTextField *_txtUsername;
 @property (nonatomic) CCLabelTTF *_lblWarning; //displays under txtField- Username
 
+@property (nonatomic) CCButton *_btnDeletePlist;
+@property (nonatomic) CCButton *_btnClearHistory;
+
 
 
 -(void) btnGunterPressed;

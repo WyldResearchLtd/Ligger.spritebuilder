@@ -30,13 +30,13 @@
 
 
 // Popup Layers
-@property (nonatomic) CCLabelTTF *_lblLevel;//used by ??
+//@property (nonatomic) CCLabelTTF *_lblLevel;//used by ??
 @property (nonatomic) CCLabelTTF *_lblLevels;//used by GameOver popup
 @property (nonatomic) CCLabelTTF *_lblCompleted;
 @property (nonatomic) CCLabelTTF *_lblTime;
 @property (nonatomic) CCLabelTTF *_lblHighScore;
 
-
+@property (nonatomic) AVAudioPlayer *backgroundMusicPlayer;
 
 //@property (nonatomic)  PopupLayer* popover;
 
@@ -56,7 +56,11 @@
 //-(void) initAudible:(bool)isAudible;
 //-(void) initUsername:(NSString*) name;
 
+@property (nonatomic) CCButton *_btnSoulImmigrants;
+@property (nonatomic) CCButton *_btnOther;
+
 //Popup Layers
+-(void) initWizard;
 -(void) initLevelUpScore:(NSString*)score;
 //-(void) initCompletedScore:(NSString*)score;
 -(void) initWithScoreData:(ScoreData*)value;// andGameData:(GameData*)game;

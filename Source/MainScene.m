@@ -38,7 +38,9 @@
         //Popup FirstPass UIs ???
         if (_popoverMenuLayer == nil)
         {
+            //TODO: I dont really like how showing the popover populates _popoverMenuLayer
             [self showPopoverNamed:@"Popups/FirstPass"];
+            [_popoverMenuLayer initWizard];
             NSLog(@"+++showPopoverNamed:@Popups/FirstPass+++");
         }
     }
@@ -69,13 +71,38 @@
 {
     NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     destPath = [destPath stringByAppendingPathComponent:@"LiggerGamedata.plist"];
-    
-    // If the file doesn't exist in the Documents Folder, its a first pass.
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
-    if (![fileManager fileExistsAtPath:destPath]) {
+    //if the file does not exist, its a first pass
+    //TODO: FIX: URGENT: why is this always true?
+    /*
+     * http://stackoverflow.com/questions/2455735/why-does-nsfilemanager-return-true-on-fileexistsatpath-when-there-is-no-such-fil
+     * I initially ran into the above issue.
+     *
+     */
+//    if (![fileManager fileExistsAtPath:destPath]) {
+//        return true;
+//    } else {
+//        //if it exists check if the the UserID exists
+//        //int a = 9;
+//    }
+    
+    NSError *error;
+    NSStringEncoding encoding;
+    NSString *fileContents = [NSString stringWithContentsOfFile:destPath
+                                                   usedEncoding:&encoding
+                                                          error:&error];
+    
+    if (fileContents == nil)
+    {
+        NSLog (@"MainScene::isFirstPass (==nil) - %@", error);
         return true;
     }
+    else
+    {
+        NSLog (@"MainScene::isFirstPass - %@", fileContents);
+    }
+    
     return false;
 }
 
@@ -106,29 +133,9 @@
             _popoverMenuLayer = (PopupLayer*)newMenuLayer;
             _popoverMenuLayer.parent = self;
         }
-        
-        
-        
-        
-        
-        //GameScene.halt=true;
-        //_levelNode.paused = YES;
     }
 }
 
-//-(void) showPopoverNamed2:(NSString*)name
-//{
-//    if (_popoverMenuLayer == nil)
-//    {
-//        PopupLayer* newMenuLayer = (PopupLayer*)[CCBReader load:name];
-//        NSAssert(newMenuLayer!=nil, @"PopupLayer in showPopoverNamed is Nil");
-//        [self addChild:newMenuLayer];
-//        _popoverMenuLayer = newMenuLayer;
-//        _popoverMenuLayer.parent = self;
-//        //GameScene.halt=true;
-//        //_levelNode.paused = YES;
-//    }
-//}
 
 -(void) removePopover
 {
@@ -218,7 +225,7 @@
     }
 }
 
-#warning In Progress
+#warning In Testing
 -(void) startLeaderboard
 {
     if (_popoverMenuLayer == nil)
@@ -228,7 +235,6 @@
         NSLog(@"+++++++Show LEADERBOARD++++++: ");
         [self showPopoverNamed:@"Popups/Leaderboard"];
         id rtn = [_popoverLeaderboardLayer setPersonalBest:dict];
-
         [_popoverLeaderboardLayer refreshBoard];
        
         
@@ -271,6 +277,12 @@
 //        }
         
     }
+}
+
+-(void) btnExit
+{
+    NSLog(@"btnExit");
+    exit(0);
 }
 
 

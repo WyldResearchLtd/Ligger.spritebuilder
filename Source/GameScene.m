@@ -691,7 +691,18 @@ bool isCollisionInProgress = false;
         {
             [self showPopoverNamed:@"Popups/LevelScore"];
             //[NSString stringWithFormat:@"%d", intValue]
-            [_popoverMenuLayer initLevelUpScore:[NSString stringWithFormat:@"Score: %d", _gameData.GameScore]];
+            //[_popoverMenuLayer initLevelUpScore:[NSString stringWithFormat:@"Score: %d", _gameData.GameScore]];
+    
+            //get time formatting-NOW for gametimestamp
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+            //Optionally for time zone conversions
+            [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
+            //NOW
+            NSString *stringFromDate = [formatter stringFromDate:[NSDate date]];
+            ScoreData* scoreData = [[ScoreData alloc] initWithScore:_gameData.GameScore MaxLevel:[_gameManager _level] Name:[GameData userName] Date:stringFromDate   GUID:@"GUID" Device:@"Device" Remaing:kTOTALTIMER-((LevelTimer*)self.timer).seconds];
+            [self showPopoverNamed:@"Popups/GameOver"];
+            [_popoverMenuLayer initWithScoreData:scoreData];
             NSLog(@"+++++++LEVEL SCORE++++++: %d", _gameData.GameScore);
             
             [_gameData printLog];

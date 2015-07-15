@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>13</integer>
+	<integer>14</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -146,6 +146,8 @@
 						<array/>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -180,7 +182,7 @@
 						<key>value</key>
 						<array>
 							<real>279.1898193359375</real>
-							<real>97.053314208984375</real>
+							<real>123.05331420898438</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -217,7 +219,7 @@
 						<string>Text</string>
 						<key>value</key>
 						<array>
-							<string>XXXX</string>
+							<string>Message</string>
 							<false/>
 						</array>
 					</dict>
@@ -236,7 +238,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>28</real>
+							<real>20</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -366,8 +368,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -938,6 +938,14 @@
 				<array>
 					<dict>
 						<key>name</key>
+						<string>visible</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>name</string>
 						<key>type</key>
 						<string>StringSimple</string>
@@ -952,7 +960,7 @@
 						<key>value</key>
 						<array>
 							<real>279.1898193359375</real>
-							<real>121.05331420898438</real>
+							<real>101.05331420898438</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -989,7 +997,7 @@
 						<string>Text</string>
 						<key>value</key>
 						<array>
-							<string>XXXX</string>
+							<string>Remaining</string>
 							<false/>
 						</array>
 					</dict>
@@ -1209,7 +1217,8 @@
 						<string>Text</string>
 						<key>value</key>
 						<array>
-							<string>XXXX</string>
+							<string>Level
+</string>
 							<false/>
 						</array>
 					</dict>
@@ -1369,7 +1378,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCLabelTTF</string>
+				<string>Score</string>
 				<key>memberVarAssignmentName</key>
 				<string>_lblCompleted</string>
 				<key>memberVarAssignmentType</key>
@@ -1429,7 +1438,7 @@
 						<string>Text</string>
 						<key>value</key>
 						<array>
-							<string>XXXX</string>
+							<string>Score</string>
 							<false/>
 						</array>
 					</dict>

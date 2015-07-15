@@ -51,27 +51,48 @@ X Game Manager
     X Update Leaderboard 
 
 x Ode to Joy at GameOver
-* Pause doesnt really pause- neither does Resume, resume then
+
 -checkin-
-* Log GUIDs,  Add GameLog- Package/Stub for WebService
-* Finish Wizard
-* Flesh out Level UI
-* Exit sign on menu
+X Exit sign on menu & quit on t&cs
+X Flesh out Level UI 
+X Finish Wizard UI
+
+X Music doesn't resume after level
+X Level audio starts too abrupt
+
+X cannot return from leaderboard
+* on first level..sometimes Level is Null on LevelUp popover
+* Crash!
+
+* 1 beer doesn't appear to be credited at finish
+* Pause doesnt really pause- neither does Resume, resume then
+
+UI Refresh- NEED FULL LIST
+* New Splashscreen
+* flowers as bullet points
+* Should say Backstage or VIP 
+* HUD higer res images
+* All text reviewed
+* T&Cs
+* Gameplay
+* Credits
+* Fonts for Gameplay, Credits and T&C's'
+* ...
+
 
 ===================
 TESTABLE
 ===================
+
+
+* Log GUIDs,  Add GameLog- Package/Stub for WebService
 
 * OUT OF CHEAT MODE
     * Game Manager    
         * Increase level speed - need level number
         * Extra Players - need level number
 
-UI Refresh- NEED FULL LIST
-    * Should say Backstage or VIP 
-    * HUD higer res images
-    * All text reviewed
-    * ...
+
 
 ===================
 SUN NIGHT

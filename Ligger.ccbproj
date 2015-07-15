@@ -82,8 +82,6 @@
 		<dict>
 			<key>format_ios_sound</key>
 			<integer>1</integer>
-			<key>isDirty</key>
-			<true/>
 		</dict>
 		<key>Audio/dustbowl.wav</key>
 		<dict>
@@ -120,10 +118,20 @@
 			<key>previewFolderHidden</key>
 			<false/>
 		</dict>
+		<key>Sprites/Background-Leaderboard.png</key>
+		<dict>
+			<key>scaleFrom</key>
+			<integer>2</integer>
+		</dict>
 		<key>Sprites/Background-neutral-NEW-23-Jun-15-.png</key>
 		<dict>
-			<key>isDirty</key>
-			<true/>
+			<key>scaleFrom</key>
+			<integer>2</integer>
+		</dict>
+		<key>Sprites/Background-neutral.png</key>
+		<dict/>
+		<key>Sprites/background-pause-signpost-2.png</key>
+		<dict>
 			<key>scaleFrom</key>
 			<integer>2</integer>
 		</dict>

@@ -265,7 +265,29 @@
 
 }
 
+-(void) DeletePlistPressed
+{
+   
+    
+        //this deletes the plist on start
+        NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+        destPath = [destPath stringByAppendingPathComponent:@"LiggerGamedata.plist"];
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSError *error = nil;
+        [fileManager removeItemAtPath:destPath error:&error];
+        if (error)
+            NSLog(@"File Delete Error: %@", error);
+        NSLog(@"PopupLayer::DeleteLlistPressed is Complete");
+    
+        //if you remove this, then if you press done, a new PList is created
+        //if this were an end user facing UI I would warn the user first 
+        exit(0);
+}
 
+-(void) ClearHistoryPressed
+{
+    NSLog(@"PopupLayer::ClearHistoryPressed");
+}
 
 
 @end
