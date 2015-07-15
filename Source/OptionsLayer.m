@@ -169,6 +169,7 @@
 //////////////////
 
 
+// ALSO HAS SETUP FOR TEST UTILS
 -(void) initCharacter:(Ligger)character
 {
     switch (character)
@@ -184,6 +185,10 @@
             [GameData setLigger:SparklePony];
             break;
     }
+    
+
+    [self._btnDeletePlist setVisible:TESTUTILS];
+
 }
 
 

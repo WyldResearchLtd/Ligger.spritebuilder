@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 const bool EASYPASS = true; //used to make it easy to level up
+const bool TESTUTILS = true; //used to make it test options available- delete plist
 
 const int kPROMOTORS = 4; //number of promotors
 const int kTOTALTIMER = 122; //Total Timer Seconds

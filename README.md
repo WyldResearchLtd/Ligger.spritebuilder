@@ -61,17 +61,21 @@ X Music doesn't resume after level
 X Level audio starts too abrupt
 
 X cannot return from leaderboard
-* on first level..sometimes Level is Null on LevelUp popover
-* Crash!
+x New Splashscreen
 
+Bugs
+* on first level..sometimes Level is Null on LevelUp popover
 * 1 beer doesn't appear to be credited at finish
 * Pause doesnt really pause- neither does Resume, resume then
 
+
 UI Refresh- NEED FULL LIST
-* New Splashscreen
+* HUD higer res images
 * flowers as bullet points
 * Should say Backstage or VIP 
-* HUD higer res images
+* check all menu items for Enlarge on Touch , and selected colours
+* New txt colour in Leaderboard
+* New Icons for swipe, thouch, audio on/off
 * All text reviewed
 * T&Cs
 * Gameplay
@@ -84,13 +88,15 @@ UI Refresh- NEED FULL LIST
 TESTABLE
 ===================
 
+* OUT OF CHEAT MODE
+* Game Manager    
+* Increase level speed - need level number
+* Extra Players - need level number
+
 
 * Log GUIDs,  Add GameLog- Package/Stub for WebService
 
-* OUT OF CHEAT MODE
-    * Game Manager    
-        * Increase level speed - need level number
-        * Extra Players - need level number
+
 
 
 

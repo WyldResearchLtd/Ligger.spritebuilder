@@ -264,7 +264,8 @@ bool isCollisionInProgress = false;
     {
         Obstacle* ob11 = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[_levelNode getChildByName:@"obstacle11" recursively:NO]];
         //
-        Obstacle* ob1a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[CCBReader load:@"Prefabs/CongaLine"] atPosition:CGPointMake(-350.0f,112.0f)];
+        Obstacle* ob1a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[CCBReader load:@"Prefabs/CongaLine"] atPosition:
+            CGPointMake(-350.0f,112.0f)];
         Obstacle* ob2a = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[CCBReader load:@"Prefabs/GolfCart"] atPosition:
             CGPointMake(950.0f,174.5f)];
         Obstacle* ob3a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[CCBReader load:@"Prefabs/Streaker-r"] atPosition:
@@ -294,6 +295,7 @@ bool isCollisionInProgress = false;
         [self addChild:ob8a.sprite];
         [self addChild:ob9a.sprite];
         [self addChild:ob10a.sprite];
+        //[self addChild:ob11.sprite];
         
         self.obstacles = [NSMutableArray arrayWithObjects:ob1,ob1a,ob2,ob2a,ob3,ob3a,ob4,ob4a,ob5,ob5a,ob6,ob6a,ob7,ob7a,ob8,ob8a,ob9,ob9a,ob10,ob10a,ob11, nil];
 

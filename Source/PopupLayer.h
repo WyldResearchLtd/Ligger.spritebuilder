@@ -12,17 +12,6 @@
 @interface PopupLayer : CCNode
 
 
-//@property (nonatomic) CCNode* parent; //we let the superclass handle this
-//OPTIONS LAYER
-//@property (nonatomic) CCButton *_btnGunter;
-//@property (nonatomic) CCButton *_btnSparkle;
-//
-//@property (nonatomic) CCButton *_btnNav;
-//@property (nonatomic) CCButton *_btnSwipe;
-//
-//@property (nonatomic) CCButton *_btnAudio;
-//@property (nonatomic) CCButton *_lblAudio;
-
 //FIRST PASS LAYER & OPTIONS
 @property(nonatomic) CCTextField *_txtUsername;
 //FIRST PASS LAYER
@@ -36,28 +25,12 @@
 @property (nonatomic) CCLabelTTF *_lblTime;
 @property (nonatomic) CCLabelTTF *_lblHighScore;
 
-@property (nonatomic) AVAudioPlayer *backgroundMusicPlayer;
-
-//@property (nonatomic)  PopupLayer* popover;
 
 
-
-
-////OPTIONS LAYER
-//-(void) btnGunterPressed;
-//-(void) btnSparklePonyPressed;
-//-(void) btnSwipeSelected;
-//-(void) btnNavSelected;
-//-(void) btnToggleAudioState;
-//
-//SETTINGS INIT OPTION LAYER
-//-(void) initCharacter:(Ligger)character;
-//-(void) initNavigation:(Navigation)nav;
-//-(void) initAudible:(bool)isAudible;
-//-(void) initUsername:(NSString*) name;
-
+//FirstPass
 @property (nonatomic) CCButton *_btnSoulImmigrants;
 @property (nonatomic) CCButton *_btnOther;
+@property (nonatomic) AVAudioPlayer *backgroundMusicPlayer;
 
 //Popup Layers
 -(void) initWizard;
@@ -68,9 +41,8 @@
 // COMMON
 -(void) btnBack;
 //called from ....
-//-(void) btnContinue;
-//// Only called when going back from Options
-//-(void) btnBackSave;
+-(void) btnContinue;
+
 // Only called when completing the FirstPass page
 // Sets the txtField to the Username field in Liggergamedata.plist
 -(void) btnBackInit;
@@ -83,6 +55,7 @@
 //Game Over
 -(void) btnOK;
 
+//First Pass
 //Display the T&Cs (Off of FirstPass)
 -(void) btnTandCs;
 

@@ -185,14 +185,13 @@
 
 /*
  * Display the T&Cs
+ * TODO: FIX: Only works the first time
  */
 -(void) btnTandCs
 {
     NSLog(@"PopupLayer::btnTandCs");
     //NSLog(@"T And C's (btn) Choosen");
-    //Popup FirstPass UIs ???
-    [self setVisible:false];
-   [self showPopoverNamed:@"Popups/TandCs"];
+    [self showPopoverNamed:@"Popups/TandCs"];
 }
 
 //ERROR: This causes an exception when you try to go back from the T&C pages off of the FirstPass layer
@@ -200,7 +199,6 @@
 {
     NSLog(@"PopupLayer::btnOKTandCs");
     _popoverMenuLayer = self;
-    [self setVisible:true];
     [self removePopover];  //DO NOT REMOVE BREAKPOINT UNTIL RESOLVED
 }
 

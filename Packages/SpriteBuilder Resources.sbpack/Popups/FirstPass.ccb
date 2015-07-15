@@ -146,8 +146,6 @@
 						<array/>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -1645,7 +1643,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>100</real>
+						<real>0.75</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -2012,6 +2010,14 @@
 					</dict>
 					<dict>
 						<key>name</key>
+						<string>backgroundOpacity|Normal</string>
+						<key>type</key>
+						<string>Float</string>
+						<key>value</key>
+						<real>0.75</real>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>backgroundSpriteFrame|Highlighted</string>
 						<key>type</key>
 						<string>SpriteFrame</string>
@@ -2226,6 +2232,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
