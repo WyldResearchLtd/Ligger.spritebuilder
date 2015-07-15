@@ -88,7 +88,8 @@ bool isCollisionInProgress = false;
     
     NSLog(@"GameScene: didLoadFromCCB completed, Level: %@", _levelNode);
 }
- 
+
+// This is the Pause button
 -(void) pauseButtonPressed
 {
     
@@ -97,14 +98,10 @@ bool isCollisionInProgress = false;
     {
         NSLog(@"pauseButtonPressed");
         
+        [self.timer pauseTimer];
+        
         [self showPopoverNamed:@"Popups/PausePopup"];
-//        [_popoverMenuLayer initCompletedScore:[NSString stringWithFormat:@"Score: %d Time: %d secs", _gameData.GameScore,((LevelTimer*)_timer).seconds]];
-//        
-//        [_gameData printLog];
 
-//        CCScene* scene = [CCBReader loadAsScene:@"MainScene"];
-//        CCTransition* transition = [CCTransition transitionFadeWithDuration:1.5];
-//        [[CCDirector sharedDirector] presentScene:scene withTransition:transition];
     }
 }
 
@@ -115,7 +112,7 @@ bool isCollisionInProgress = false;
     if (self.playerState==TwoBeers)
         [self.gameData finishTwoBeers:((LevelTimer*)self.timer).seconds hud:self._lblHUDscore];
     else if (self.playerState==OneBeer)
-        [self.gameData finishTwoBeers:((LevelTimer*)self.timer).seconds hud:self._lblHUDscore];
+        [self.gameData finishOneBeer:((LevelTimer*)self.timer).seconds hud:self._lblHUDscore];
     [self.gameData calcBonus:kTOTALTIMER-((LevelTimer*)self.timer).seconds forPromotor:kPROMOTORS+1-(int)self.promotors.count hud:self._lblHUDscore];
     NSLog(@"Game Duration: %d",((LevelTimer*)_timer).seconds);
      NSLog(@"+++++++GAME SCORE++++++: %d", _gameData.GameScore);
@@ -146,13 +143,11 @@ bool isCollisionInProgress = false;
         //this is an important and powerful line
         //GameData::isScoreHigh sets the 'Best-' fields in LiggerGamedata.plist if needed, and returns true if done
         scoreData.isHighScore = [_gameManager._gameData updateHighScore:scoreData];
-        
-        
+        scoreData.isGameOver = true;
+
         [self showPopoverNamed:@"Popups/GameOver"];
         [_popoverMenuLayer initWithScoreData:scoreData];
-        
-        
-        
+
         
          [_gameData printLog];
     }
@@ -459,14 +454,17 @@ bool isCollisionInProgress = false;
             else //if NoBeers or OneBeer- Stop
             {
                 NSLog(@"++++ SPLASH ++++++");
-
-                [self pauseGame];
+                
                 [self particleEffect:_playerNode loadCCBName:@"Prefabs/Splash"];
+                //changed from above
+                [self performSelector:@selector(pauseGame) withObject:nil];
                 [self performSelector:@selector(restartSetup) withObject:nil afterDelay:1.5f];
                 //removed the promotor from the collection
                 [((CCNode*)self.promotors[0]) removeFromParent];
                 if (self.promotors.count>0)
                     [self.promotors removeObjectAtIndex:0];
+       
+                
                 [self performSelector:@selector(startGame) withObject:nil afterDelay:1.6f];
             }
             return;
@@ -634,13 +632,15 @@ bool isCollisionInProgress = false;
     }
     else
     {
-        //particle explosion
+        //particle explosion?
         //walk the ligger to right
         [self performSelector:@selector(walkRight) withObject:nil];
         //start promotor animation
         [self performSelector:@selector(startAnimation:forSequence:) withObject:((CCNode*)self.promotors[0]) withObject:@"walk"];
         (self.levelState=LevelUp);
         NSLog(@"+++++++START LEVELUP SEQUENCE+++++++");
+        //HACK: this is requiref playerState=OneBeer
+        [((LevelTimer*)_timer) startTimer];
     }
     
 }
@@ -654,7 +654,7 @@ bool isCollisionInProgress = false;
         
         [_gameManager incrementLevelCount];
         
-        //this is the perfect plave to calc the Bonus, at the start of the level up 
+        //this is the perfect plave to calc the Bonus, at the start of the level up
         [self calcBonus];
         
     }
@@ -693,9 +693,10 @@ bool isCollisionInProgress = false;
         }
         //end of code to reuse promotors
         
+        
         if (_popoverMenuLayer == nil)
         {
-            [self showPopoverNamed:@"Popups/LevelScore"];
+            
             //[NSString stringWithFormat:@"%d", intValue]
             //[_popoverMenuLayer initLevelUpScore:[NSString stringWithFormat:@"Score: %d", _gameData.GameScore]];
     
@@ -706,10 +707,17 @@ bool isCollisionInProgress = false;
             [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
             //NOW
             NSString *stringFromDate = [formatter stringFromDate:[NSDate date]];
+            //quick hack
+            NSAssert(_gameManager!= NULL, @"gameManager is NULL");
+            
             ScoreData* scoreData = [[ScoreData alloc] initWithScore:_gameData.GameScore MaxLevel:[_gameManager _level] Name:[GameData userName] Date:stringFromDate   GUID:@"GUID" Device:@"Device" Remaing:kTOTALTIMER-((LevelTimer*)self.timer).seconds];
-            [self showPopoverNamed:@"Popups/GameOver"];
+//            //isGameOver?
+//            [self showPopoverNamed:@"Popups/GameOver"];
+            [self showPopoverNamed:@"Popups/LevelScore"];
             [_popoverMenuLayer initWithScoreData:scoreData];
-            NSLog(@"+++++++LEVEL SCORE++++++: %d", _gameData.GameScore);
+
+
+            NSLog(@"+++++++LEVEL SCORE++++++?????: %d", _gameData.GameScore);
             
             [_gameData printLog];
         }
@@ -1103,7 +1111,7 @@ bool isCollisionInProgress = false;
 {
     GameScene.halt = true;
     
-    [_timer pauseTimer];
+    [self.timer pauseTimer];
     
     //_levelNode.paused=true;
 

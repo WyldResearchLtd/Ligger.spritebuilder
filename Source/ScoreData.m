@@ -27,6 +27,9 @@
         _UserGUID = guid;
         _DeviceGUID = device;
         _timeRemaining = [NSNumber numberWithInt:secs];
+        //
+        _isGameOver = false;
+        _isHighScore = false;
     }
     return self;
 }

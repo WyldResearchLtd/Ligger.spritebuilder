@@ -64,9 +64,9 @@ X cannot return from leaderboard
 x New Splashscreen
 
 Bugs
-* on first level..sometimes 'Level: (null)' is displayed on LevelUp popover (only on first pass)
-* 1 beer doesn't appear to be credited at finish
-* Pause screen doesnt pause- so therefor nothing to Resume
+X on first level..sometimes 'Level: (null)' is displayed on LevelUp popover (only on first pass)
+X 1 beer doesn't appear to be credited at finish
+X Pause screen doesnt pause- so therefor nothing to Resume
 
 
 UI Refresh- NEED FULL LIST
@@ -75,7 +75,7 @@ UI Refresh- NEED FULL LIST
 * Should say Backstage or VIP 
 * check all menu items for Enlarge on Touch , and selected colours
 * New txt colour in Leaderboard
-* New Icons for swipe, thouch, audio on/off
+* New Icons for swipe, touch, audio on/off
 * All text reviewed
 * T&Cs
 * Gameplay
@@ -90,10 +90,8 @@ TESTABLE
 
 * OUT OF CHEAT MODE
 * Game Manager    
-* Increase level speed - need level number
-* Extra Players - need level number
-
-
+    * Increase level speed - need level number
+    * Extra Players - need level number
 * Log GUIDs,  Add GameLog- Package/Stub for WebService
 
 

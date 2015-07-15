@@ -36,22 +36,21 @@
     return self;
 }
 
-
-//This is for the LevelLayer
--(void) initLevelUpScore:(NSString*)score
-{
-    //TODO: is init called??
-    //[self init];
-    [self._lblCompleted setString:score];
-}
-
-
-
+////This is for the LevelLayer
+//-(void) initLevelUpScore:(NSString*)score
+//{
+//    //TODO: is init called??
+//    //[self init];
+//    [self._lblCompleted setString:score];
+//}
 
 //This is for the GameOverLayer
 -(void) initWithScoreData:(ScoreData *)value //andGameData:(GameData*)game
 {
     NSLog(@"PopupLayer::initWithScoreData   self.parent:%@",self.parent);
+    
+    //save the scoreData
+    self.scoreData = value;
     
     //TODO: format the string
     [self._lblCompleted setString:[NSString stringWithFormat:@"Score: %@", value.scoreValue.stringValue]];
@@ -59,29 +58,22 @@
     [self._lblLevels setString:[NSString stringWithFormat:@"Level: %@", value.scoreLevel.stringValue]];
     [self._lblHighScore setString:value.isHighScore?@"High Score":@"The Hustle Is On"];
     
-     OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
-     [audio setBgPaused:true];
-    
-//    OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
-//    [audio playBg:@"Beethoven-Symp9-4th_mvmnt-Ode_to_Joy-Except.m4a" loop:YES];
-//    [audio.backgroundTrack fadeTo:3.0 duration:10 target:self selector:@selector(doVolumeFade)];//fadeTo:2.0 duration: target:self selector:@selector(doVolumeFade)];
-    
-//    soundPath = [[NSBundle mainBundle] pathForResource:@"soundtrack" ofType:@"m4a"];
-//    soundtrack = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:soundPath] error:nil];
-//    [soundtrack setVolume: 0.0];
-//    [soundtrack prepareToPlay];
-    
-    //play background sound
-    NSError *error;
-    NSURL * backgroundMusicURL = [[NSBundle mainBundle] URLForResource:@"Beethoven-Symp9-4th_mvmnt-Ode_to_Joy-Except" withExtension:@"m4a"];
-    self.backgroundMusicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:backgroundMusicURL error:&error];
-    self.backgroundMusicPlayer.numberOfLoops = -1;
-    float fadeTo = self.backgroundMusicPlayer.volume;
-    NSLog(@"Volume Setting: %.2f", fadeTo);
-    self.backgroundMusicPlayer.volume = 0.01;
-    [self.backgroundMusicPlayer prepareToPlay];
-    [self.backgroundMusicPlayer play];
-    [self doVolumeFadeIn:[NSNumber numberWithFloat:fadeTo]];
+    if (value.isGameOver)
+    {
+        OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
+        [audio setBgPaused:true];
+        
+        NSError *error;
+        NSURL * backgroundMusicURL = [[NSBundle mainBundle] URLForResource:@"Beethoven-Symp9-4th_mvmnt-Ode_to_Joy-Except" withExtension:@"m4a"];
+        self.backgroundMusicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:backgroundMusicURL error:&error];
+        self.backgroundMusicPlayer.numberOfLoops = -1;
+        float fadeTo = self.backgroundMusicPlayer.volume;
+        NSLog(@"Volume Setting: %.2f", fadeTo);
+        self.backgroundMusicPlayer.volume = 0.01;
+        [self.backgroundMusicPlayer prepareToPlay];
+        [self.backgroundMusicPlayer play];
+        [self doVolumeFadeIn:[NSNumber numberWithFloat:fadeTo]];
+    }
     
 }
 
@@ -93,10 +85,6 @@
     }
 }
 
-//-(void) doVolumeFade
-//{
-//    NSLog(@"~~~~~~~~~~~~~~~~ Volume Fade ~~~~~~~~~~~~~~~~~~~~~");
-//}
 
 -(void) btnBack
 {
@@ -141,25 +129,30 @@
 {
     NSLog(@"PopupLayer::btnContinue");
     [((GameScene*)self.parent) removePopover];
-    
-    [self.backgroundMusicPlayer stop];
-    
-    if ([GameData audible])
-    {
-        // access audio object- play music while loading sprites below
-        OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
-        if ([[GameData soundtrack] integerValue]==0)
-            [audio playBg:@"hustle2.caf" loop:YES];
-        else if ([[GameData soundtrack] integerValue]==1)
-            [audio playBg:@"glitchglitchflame.m4a" loop:YES];
-    }
 
+ 
+    if (self.scoreData.isGameOver)
+    {
     
+        [self.backgroundMusicPlayer stop];
+        
+        if ([GameData audible])
+        {
+            // access audio object- play music while loading sprites below
+            OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
+            if ([[GameData soundtrack] integerValue]==0)
+                [audio playBg:@"hustle2.caf" loop:YES];
+            else if ([[GameData soundtrack] integerValue]==1)
+                [audio playBg:@"glitchglitchflame.m4a" loop:YES];
+        }
+    }
 }
 
 //called
 -(void) resumePause
 {
+    [((GameScene*)self.parent).timer startTimer];
+    
      NSLog(@"PopupLayer::ResumePause");
    [((GameScene*)self.parent) removePopover];
 }

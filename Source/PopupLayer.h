@@ -25,6 +25,7 @@
 @property (nonatomic) CCLabelTTF *_lblTime;
 @property (nonatomic) CCLabelTTF *_lblHighScore;
 
+@property (nonatomic) ScoreData *scoreData;
 
 
 //FirstPass
@@ -34,7 +35,7 @@
 
 //Popup Layers
 -(void) initWizard;
--(void) initLevelUpScore:(NSString*)score;
+//-(void) initLevelUpScore:(NSString*)score;
 //-(void) initCompletedScore:(NSString*)score;
 -(void) initWithScoreData:(ScoreData*)value;// andGameData:(GameData*)game;
 
@@ -60,11 +61,5 @@
 -(void) btnTandCs;
 
 -(void) btnOKTandCs;
-
-
-
-
-
-
 
 @end
