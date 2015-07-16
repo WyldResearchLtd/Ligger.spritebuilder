@@ -6,14 +6,15 @@
   
 Built with Spritebuilder/Cocos2d 
 
-NOTE: Deleting the LiggerGamedata.plist in the applications /Documents directory resets the app to FirstPass
-  
+
+For iOS 6 and above (TBC)
+
   
 Gameplay  
 ---------  
 What is a Ligger?  
   
-Rumour has it that was coined by the Big Hair Glam bands in the 70 and 80's but popularised by NME Magazine in the nineties as a nickname for persons who attend parties, concerts, and festivals with the sole intention of obtaining free food and drink. 
+Rumour has it that the term Ligger was coined by the Big Hair Glam bands in the 70 and 80's and popularised by NME Magazine in the nineties as a nickname for persons who attend parties, concerts, and festivals with the sole intention of obtaining free food and drink. 
 
 Objective  
   
@@ -27,13 +28,21 @@ The field is a wonderful place, filled with a bevy of curtious girls and boys th
   
 ==========================
 
-On app start , if this is the first pass, then we display the registration wizard.
+App Notes
+
+
+On app start, if this is the first pass, we display the simple setup (firstpass) wizard.
 The first pass is determined if we have a LiggerGamedata.plist and there's a UniqueUserID in it.
+
 If this is a first pass, we create a unique UserID, and then gather the DeviceID and log these along with the Username entered, to the 'LiggerGamedata.plist' file.
 
 On game finish, we see if the game scored is > top3 saved personal best games, and if so, update 'LiggerGamedata.plist'
 
 On leaderboard opened, query the api for new data, and if so wite it to the LiggerGamedata.plist. Write the LiggerGamedata.plist data to the Popup UI. 
+
+
+
+==========================
 
 
 TODO & Bugs
@@ -52,7 +61,7 @@ X Game Manager
 
 x Ode to Joy at GameOver
 
--checkin-
+X -Checkin-
 X Exit sign on menu & quit on t&cs
 X Flesh out Level UI 
 X Finish Wizard UI
@@ -60,7 +69,7 @@ X Finish Wizard UI
 X Music doesn't resume after level
 X Level audio starts too abrupt
 
-X cannot return from leaderboard
+X Cannot return from leaderboard
 x New Splashscreen
 
 Bugs
@@ -83,39 +92,22 @@ UI Refresh- NEED FULL LIST
 * Fonts for Gameplay, Credits and T&C's'
 * ...
 
-
-===================
-TESTABLE
-===================
-
-* OUT OF CHEAT MODE
+X OUT OF CHEAT MODE
 * Game Manager    
-    * Increase level speed - need level number
+    x Increase level speed - need level number
     * Extra Players - need level number
 * Log GUIDs,  Add GameLog- Package/Stub for WebService
+* Leaderboard Webservice
 
-
-
-
-
-===================
-SUN NIGHT
-===================
-
-Monday- Release prep
-
--------------------
 
 KNOWN ISSUES
 
 GamePlay Fit & Finish
 -----------------------------
-* Leaderboard Webservice
+
 * Upgrade GameLog
     * Add Non-Scoring milestones- Collision1, Collision2, Levelup, Game Over to GameData
     * Trigger additional point sounds- collisions, start, bartender, button clicks  
-
-
   
 P2  
 * Add 'No. 'Beers' to Level/Game totals
@@ -126,31 +118,23 @@ P2
 * Transitions for Popups  
   
 P3   
-* * Bartender should show only a single drink if player.state = OneBeer   
+* Bartender should show only a single drink if player.state = OneBeer   
 * The particle effect for a NoBeer Ligger shouldn't be a splash  
 * Obstacles that disappear before fully existing screen  
   
 
-Game Over- Looser- Scoring....with buttins to play again or menu  
-Welcome back notification  
+extra nav to add
+----------------------------------
+Game Over- Leaderboard
+Game Over- play again 
+Main Menu- exit
+Pause- Setup
+
+Welcome back 'User' notification  
   
   
   
-Rows  
--------  
-11th-FStreakers-814.7 (63.5)  
-10th-Bongo-751.2 (61)  
-9th-Spinner- 690.2  (63)  
-8th-Hula-627.2 (133)  
-7th-Conga-563.2 (69)  
-6th-Cart 494.2  
-----  
-5th-Spinners 372    (+66)  
-4th-Fork Lift  306.5  (+66)  
-3rd-Hugger-  238.5  (+64)  
-2nd-Bongos-174.5   (+62.5)  
-1st-Streaker-112     (+ 64)  
-Ligger-           48  
+
   
 
 

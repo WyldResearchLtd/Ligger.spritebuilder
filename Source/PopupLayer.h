@@ -3,7 +3,7 @@
 //  Ligger
 //
 //  Created by Gene Myers on 15/06/2015.
-//  Copyright (c) 2015 Apportable. All rights reserved.
+//  Copyright (c) 2015 Fezzee. All rights reserved.
 //
 
 #import "CCNode.h"
@@ -35,8 +35,6 @@
 
 //Popup Layers
 -(void) initWizard;
-//-(void) initLevelUpScore:(NSString*)score;
-//-(void) initCompletedScore:(NSString*)score;
 -(void) initWithScoreData:(ScoreData*)value;// andGameData:(GameData*)game;
 
 // COMMON
@@ -59,7 +57,7 @@
 //First Pass
 //Display the T&Cs (Off of FirstPass)
 -(void) btnTandCs;
-
+//return to previous popup
 -(void) btnOKTandCs;
 
 @end

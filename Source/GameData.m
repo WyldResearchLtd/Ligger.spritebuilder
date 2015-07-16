@@ -247,7 +247,7 @@ static NSString* _userName;
         [entry appendFormat:@" Position: %f.2,%f.2",position.x,position.y];
     [entry appendFormat:@" Msg: %@",msg];
     [_Gamelog addObject:entry];
-    NSLog(@"%@",entry);
+    //NSLog(@"%@",entry);
 }
 
 -(void) reset
@@ -304,25 +304,25 @@ static NSString* _userName;
         }
         
     } else {
-        NSLog(@"File Exists at path");
+        NSLog(@"Settings File Exists at path: %@", destPath);
     }
     
     // Load the Property List.
     NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:destPath];
     
     NSLog(@"========= GameData::getGameSettings =================");
-    NSLog(@"UserIdentifier: %@",[data objectForKey:@"UserIdentifier"]);
-    NSLog(@"DeviceIdentifier: %@",[data objectForKey:@"DeviceIdentifier"]);
-    NSLog(@"Username: %@",[data objectForKey:@"Username"]);
-    NSLog(@"Character: %@",[[data objectForKey:@"Character"] integerValue]==0?@"GeordieGunter":@"SparklePony");
-    NSLog(@"Movement: %@",[[data objectForKey:@"Movement"] integerValue]==1?@"Touch":@"Swipe");
-    NSLog(@"Audio: %@",[[data objectForKey:@"Audio"] boolValue]? @"True" : @"False");
-    NSLog(@"Soundtrack: %@",[[data objectForKey:@"Soundtrack"] integerValue]==0?@"The Soul Immigrants":@"The Caufield Beats");
-    
-    NSLog(@"Best-1: %@",[data objectForKey:@"Best-1"]);
-    NSLog(@"Best-2: %@",[data objectForKey:@"Best-2"]);
-    NSLog(@"Best-3: %@",[data objectForKey:@"Best-3"]);
-    NSLog(@"=====================================================");
+//    NSLog(@"UserIdentifier: %@",[data objectForKey:@"UserIdentifier"]);
+//    NSLog(@"DeviceIdentifier: %@",[data objectForKey:@"DeviceIdentifier"]);
+//    NSLog(@"Username: %@",[data objectForKey:@"Username"]);
+//    NSLog(@"Character: %@",[[data objectForKey:@"Character"] integerValue]==0?@"GeordieGunter":@"SparklePony");
+//    NSLog(@"Movement: %@",[[data objectForKey:@"Movement"] integerValue]==1?@"Touch":@"Swipe");
+//    NSLog(@"Audio: %@",[[data objectForKey:@"Audio"] boolValue]? @"True" : @"False");
+//    NSLog(@"Soundtrack: %@",[[data objectForKey:@"Soundtrack"] integerValue]==0?@"The Soul Immigrants":@"The Caufield Beats");
+//    
+//    NSLog(@"Best-1: %@",[data objectForKey:@"Best-1"]);
+//    NSLog(@"Best-2: %@",[data objectForKey:@"Best-2"]);
+//    NSLog(@"Best-3: %@",[data objectForKey:@"Best-3"]);
+//    NSLog(@"=====================================================");
     
     return data;
 

@@ -36,13 +36,6 @@
     return self;
 }
 
-////This is for the LevelLayer
-//-(void) initLevelUpScore:(NSString*)score
-//{
-//    //TODO: is init called??
-//    //[self init];
-//    [self._lblCompleted setString:score];
-//}
 
 //This is for the GameOverLayer
 -(void) initWithScoreData:(ScoreData *)value //andGameData:(GameData*)game
@@ -86,10 +79,52 @@
 }
 
 
+/*
+ *
+ */
 -(void) btnBack
 {
     NSLog(@"Back(btn) Choosen");
     [((MainScene*)self.parent) removePopover];
+}
+
+/*
+ * Called by the GameOver Popover
+ */
+-(void) btnOK
+{
+    NSLog(@"PopupLayer::btnOK");
+    //NSLog(@"OK(btn) Choosen");
+    [((GameScene*)self.parent) backToMenu];
+    
+    [self.backgroundMusicPlayer stop];
+}
+
+/*
+ * Called by the Levelup Popover
+ */
+-(void) btnContinue
+{
+    NSLog(@"PopupLayer::btnContinue");
+    [((GameScene*)self.parent) removePopover];
+    
+    
+    
+    if (self.scoreData.isGameOver)
+    {
+        
+        [self.backgroundMusicPlayer stop];
+        
+        if ([GameData audible])
+        {
+            // access audio object- play music while loading sprites below
+            OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
+            if ([[GameData soundtrack] integerValue]==0)
+                [audio playBg:@"hustle2.caf" loop:YES];
+            else if ([[GameData soundtrack] integerValue]==1)
+                [audio playBg:@"glitchglitchflame.m4a" loop:YES];
+        }
+    }
 }
 
 
@@ -124,29 +159,7 @@
     
 }
 
-//This gets pressed on the Levelup Popup
--(void) btnContinue
-{
-    NSLog(@"PopupLayer::btnContinue");
-    [((GameScene*)self.parent) removePopover];
 
- 
-    if (self.scoreData.isGameOver)
-    {
-    
-        [self.backgroundMusicPlayer stop];
-        
-        if ([GameData audible])
-        {
-            // access audio object- play music while loading sprites below
-            OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
-            if ([[GameData soundtrack] integerValue]==0)
-                [audio playBg:@"hustle2.caf" loop:YES];
-            else if ([[GameData soundtrack] integerValue]==1)
-                [audio playBg:@"glitchglitchflame.m4a" loop:YES];
-        }
-    }
-}
 
 //called
 -(void) resumePause
@@ -166,17 +179,7 @@
     [[CCDirector sharedDirector] presentScene:scene withTransition:transition];
 }
 
-/*
- * Game Over- Back to Menu
- */
--(void) btnOK
-{
-    NSLog(@"PopupLayer::btnOK");
-    //NSLog(@"OK(btn) Choosen");
-    [((GameScene*)self.parent) backToMenu];
-    
-    [self.backgroundMusicPlayer stop];
-}
+
 
 /*
  * Display the T&Cs

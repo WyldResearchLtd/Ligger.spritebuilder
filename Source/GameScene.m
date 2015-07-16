@@ -239,16 +239,16 @@ bool isCollisionInProgress = false;
     NSAssert(_playerNode, @"player node not found in loadLevel");
     
     //Can use self and recursively:YES, or use _levelNode and NO to recursive
-    Obstacle* ob1 = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[_levelNode getChildByName:@"obstacle1" recursively:NO]];
-    Obstacle* ob2 = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[_levelNode getChildByName:@"obstacle2" recursively:NO]];
-    Obstacle* ob3 = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[_levelNode getChildByName:@"obstacle3" recursively:NO]];
-    Obstacle* ob4 = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[_levelNode getChildByName:@"obstacle4" recursively:NO]];
-    Obstacle* ob5 = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[_levelNode getChildByName:@"obstacle5" recursively:NO]];
-    Obstacle* ob6 = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[_levelNode getChildByName:@"obstacle6" recursively:NO]];
-    Obstacle* ob7 = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[_levelNode getChildByName:@"obstacle7" recursively:NO]];
-    Obstacle* ob8 = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[_levelNode getChildByName:@"obstacle8" recursively:NO]];
-    Obstacle* ob9 = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[_levelNode getChildByName:@"obstacle9" recursively:NO]];
-    Obstacle* ob10 = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[_levelNode getChildByName:@"obstacle10" recursively:NO]];
+    Obstacle* ob1 = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[_levelNode getChildByName:@"obstacle1" recursively:NO] atStartPosition:CGPointMake(-70.0f,112.0f)];
+    Obstacle* ob2 = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[_levelNode getChildByName:@"obstacle2" recursively:NO] atStartPosition:CGPointMake(634.5f,174.5f)];
+    Obstacle* ob3 = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[_levelNode getChildByName:@"obstacle3" recursively:NO] atStartPosition:CGPointMake(-101.0f,238.5f)];
+    Obstacle* ob4 = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[_levelNode getChildByName:@"obstacle4" recursively:NO] atStartPosition:CGPointMake(634.5f,306.5)];
+    Obstacle* ob5 = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[_levelNode getChildByName:@"obstacle5" recursively:NO] atStartPosition:CGPointMake(-101.0f,372.0f)];
+    Obstacle* ob6 = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[_levelNode getChildByName:@"obstacle6" recursively:NO] atStartPosition:CGPointMake(631.5f,494.6f)];
+    Obstacle* ob7 = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[_levelNode getChildByName:@"obstacle7" recursively:NO] atStartPosition:CGPointMake(-90.5f,563.2f)];
+    Obstacle* ob8 = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[_levelNode getChildByName:@"obstacle8" recursively:NO] atStartPosition:CGPointMake(674.0f,627.2f)];
+    Obstacle* ob9 = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[_levelNode getChildByName:@"obstacle9" recursively:NO] atStartPosition:CGPointMake(-101.0f,690.2f)];
+    Obstacle* ob10 = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[_levelNode getChildByName:@"obstacle10" recursively:NO] atStartPosition:CGPointMake(634.5f,751.2f)];
 
 
     if (EASYPASS)
@@ -259,44 +259,60 @@ bool isCollisionInProgress = false;
     {
         
         //
-        Obstacle* ob1a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[CCBReader load:@"Prefabs/CongaLine"] atPosition:
-            CGPointMake(-350.0f,112.0f)];
-        Obstacle* ob2a = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[CCBReader load:@"Prefabs/GolfCart"] atPosition:
-            CGPointMake(950.0f,174.5f)];
-        Obstacle* ob3a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[CCBReader load:@"Prefabs/Streaker-r"] atPosition:
-            CGPointMake(-350.0f,238.5f)];
-        Obstacle* ob4a = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[CCBReader load:@"Prefabs/HulaHoops"] atPosition:
-            CGPointMake(950.0f,306.5f)];
-        Obstacle* ob5a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[CCBReader load:@"Prefabs/HulaHoops"] atPosition:
-            CGPointMake(-350.0f,372.0f)];
-        Obstacle* ob6a = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[CCBReader load:@"Prefabs/Streaker-r"] atPosition:
-            CGPointMake(950.0f,494.2f)];
-        Obstacle* ob7a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[CCBReader load:@"Prefabs/Streaker-r"] atPosition:
-            CGPointMake(-350.0f,563.2f)];
-        Obstacle* ob8a = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[CCBReader load:@"Prefabs/Streaker-r"] atPosition:
-            CGPointMake(950.0f,627.2f)];
-        Obstacle* ob9a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[CCBReader load:@"Prefabs/Streaker-r"] atPosition:
-            CGPointMake(-350.0f,690.2f)];
-        Obstacle* ob10a = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[CCBReader load:@"Prefabs/Streaker-r"] atPosition:
-            CGPointMake(950.0f,751.2f)];
+        
+//        Obstacle *ob1a = [ob7 copy];
+//        ob1a.position = CGPointMake(-350.0f,112.0f);
+
+        
+        Obstacle* ob1a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[_levelNode getChildByName:@"congaline-r" recursively:NO] atStartPosition:CGPointMake(-350.0f,112.0f)];
+        Obstacle* ob2a = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[_levelNode getChildByName:@"golfcart-l" recursively:NO] atStartPosition:CGPointMake(950.0f,174.5f)];
+        Obstacle* ob3a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[_levelNode getChildByName:@"fstreaker-r" recursively:NO] atStartPosition:CGPointMake(-350.0f,238.5f)];
+        Obstacle* ob4a = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[_levelNode getChildByName:@"hulahoop-l" recursively:NO] atStartPosition:CGPointMake(950.0f,306.5f)];
+        Obstacle* ob5a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[_levelNode getChildByName:@"hulahoop-2-r" recursively:NO] atStartPosition:CGPointMake(-450.0f,372.0f)];
+        Obstacle* ob6a = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[_levelNode getChildByName:@"bongos-2-l" recursively:NO] atStartPosition:CGPointMake(950.0f,494.6f)];
+        Obstacle* ob7a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[_levelNode getChildByName:@"huggers-r" recursively:NO] atStartPosition:CGPointMake(-440.5f,563.2f)];
+        Obstacle* ob8a = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[_levelNode getChildByName:@"bongos-3-l" recursively:NO] atStartPosition:CGPointMake(957.5f,627.2f)];
+        Obstacle* ob9a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[_levelNode getChildByName:@"fstreaker-2-r" recursively:NO] atStartPosition:CGPointMake(-450.0f,690.2f)];
+        Obstacle* ob10a = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[_levelNode getChildByName:@"forklift-l" recursively:NO] atStartPosition:CGPointMake(964.0f,751.2f)];
+
+//        Obstacle* ob1a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[CCBReader load:@"Prefabs/CongaLine"] atPosition:
+//            CGPointMake(-350.0f,112.0f)];
+//        Obstacle* ob2a = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[CCBReader load:@"Prefabs/GolfCart"] atPosition:
+//            CGPointMake(950.0f,174.5f)];
+//        Obstacle* ob3a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[CCBReader load:@"Prefabs/Streaker-r"] atPosition:
+//            CGPointMake(-350.0f,238.5f)];
+//        Obstacle* ob4a = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[CCBReader load:@"Prefabs/HulaHoops"] atPosition:
+//            CGPointMake(950.0f,306.5f)];
+//        Obstacle* ob5a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[CCBReader load:@"Prefabs/HulaHoops"] atPosition:
+//            CGPointMake(-350.0f,372.0f)];
+//        Obstacle* ob6a = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[CCBReader load:@"Prefabs/Streaker-r"] atPosition:
+//            CGPointMake(950.0f,494.2f)];
+//        Obstacle* ob7a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[CCBReader load:@"Prefabs/Streaker-r"] atPosition:
+//            CGPointMake(-350.0f,563.2f)];
+//        Obstacle* ob8a = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[CCBReader load:@"Prefabs/Streaker-r"] atPosition:
+//            CGPointMake(950.0f,627.2f)];
+//        Obstacle* ob9a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[CCBReader load:@"Prefabs/Streaker-r"] atPosition:
+//            CGPointMake(-350.0f,690.2f)];
+//        Obstacle* ob10a = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[CCBReader load:@"Prefabs/Streaker-r"] atPosition:
+//            CGPointMake(950.0f,751.2f)];
         
         //doesn't need to be added as a child, because its on the scene Level1
-        Obstacle* ob11 = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[_levelNode getChildByName:@"obstacle11" recursively:NO]];
+        Obstacle* ob11 = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[_levelNode getChildByName:@"obstacle11" recursively:NO] atStartPosition:CGPointMake(-75.0f,814.7f)];
 
-        [self addChild:ob1a.sprite];
-        [self addChild:ob2a.sprite];
-        [self addChild:ob3a.sprite];
-        [self addChild:ob4a.sprite];
-        [self addChild:ob5a.sprite];
-        [self addChild:ob6a.sprite];
-        [self addChild:ob7a.sprite];
-        [self addChild:ob8a.sprite];
-        [self addChild:ob9a.sprite];
-        [self addChild:ob10a.sprite];
+        //[self addChild:ob1a.sprite];
+        //[self addChild:ob2a.sprite];
+        //[self addChild:ob3a.sprite];
+        //[self addChild:ob4a.sprite];
+        //[self addChild:ob5a.sprite];
+        //[self addChild:ob6a.sprite];
+        //[self addChild:ob7a.sprite];
+        //[self addChild:ob8a.sprite];
+        //[self addChild:ob9a.sprite];
+        //[self addChild:ob10a.sprite];
         //[self addChild:ob11.sprite];
         
-        //self.obstacles = [NSMutableArray arrayWithObjects:ob1,ob1a,ob2,ob2a,ob3,ob3a,ob4,ob4a,ob5,ob5a,ob6,ob6a,ob7,ob7a,ob8,ob8a,ob9,ob9a,ob10,ob10a,ob11, nil];
-        self.obstacles = [NSMutableArray arrayWithObjects:ob1,ob1a,ob2,ob3,ob4,ob5,ob6,ob7,ob8,ob9,ob10, nil];
+        self.obstacles = [NSMutableArray arrayWithObjects:ob1,ob1a,ob2,ob2a,ob3,ob3a,ob4,ob4a,ob5,ob5a,ob6,ob6a,ob7,ob7a,ob8,ob8a,ob9,ob9a,ob10,ob10a,ob11, nil];
+        //self.obstacles = [NSMutableArray arrayWithObjects:ob1,ob1a,ob2,ob2a,ob3,ob4,ob5,ob6,ob7,ob8,ob9,ob10, nil];
 
         
     }
@@ -413,13 +429,19 @@ bool isCollisionInProgress = false;
 
 -(void) moveObstacles
 {
+   // NSLog(@">>>>>>>>>>>>>>>>>>>>>>>>>> Move obsticles>>>>>>>>>>>>>>>>>>>");
     //Move the OBSTACLES across the screen
     for (int i = 0; i < self.obstacles.count; i++)
     {
         CCNode *obstacle = nil;
         obstacle = ((Obstacle*)self.obstacles[i]).sprite;
-        obstacle.position = ccpSub(obstacle.position, ccp( (!((Obstacle*)self.obstacles[i]).direction==MoveRight)?kSPEED:-kSPEED,0));
-
+        NSAssert(_gameManager!=nil,@"GameManager is NIL");
+        float speed = [_gameManager gameSpeed];
+        obstacle.position = ccpSub(obstacle.position, ccp( (!((Obstacle*)self.obstacles[i]).direction==MoveRight)?speed:-speed,0));
+   
+        //ERROR- this doesn't work- only makes one iteration
+//        Obstacle *obstacle = ((Obstacle*)self.obstacles[i]);//.sprite;
+//        obstacle.sprite.position = ccpSub(obstacle.sprite.position, ccp( (!obstacle.direction==MoveRight)?kSPEED:-kSPEED,0));
 
         
         //check for collisions first
@@ -478,16 +500,22 @@ bool isCollisionInProgress = false;
             //Check if they have gone off screen, if they have reposition them
             if (obstacle.position.x < -obstacle.contentSize.width )
             {
-                obstacle.position = ccp(_levelNode.contentSizeInPoints.width+obstacle.contentSize.width+45,obstacle.position.y);
-                //NSLog(@"Offscreen");
+                //NSLog(@"Offscreen switch- Move Left-----------------");
+                //NSLog(@"Position start: %.2f,%.2f", obstacle.position.x,obstacle.position.y);
+                //obstacle.position = ccp(_levelNode.contentSizeInPoints.width+obstacle.contentSize.width+45,obstacle.position.y);
+                obstacle.position = ccp(800-obstacle.contentSize.width,obstacle.position.y);
+                //NSLog(@"Position start: %.2f,%.2f", obstacle.position.x,obstacle.position.y);
             }
             
         } else {
             //Check if they have gone off screen to the right, if they have reposition them
             if (obstacle.position.x > _levelNode.contentSizeInPoints.width+45 )
             {
-                obstacle.position = ccp(0-obstacle.contentSize.width+45,obstacle.position.y);
-                //NSLog(@"Offscreen");
+                //NSLog(@"Offscreen switch- Move Right-----------------");
+                //NSLog(@"Position start: %.2f,%.2f", obstacle.position.x,obstacle.position.y);
+                //obstacle.position = ccp(0-obstacle.contentSize.width+45,obstacle.position.y);
+                obstacle.position = ccp(-45,obstacle.position.y);
+                //NSLog(@"Position start: %.2f,%.2f", obstacle.position.x,obstacle.position.y);
             }
         }
     }
@@ -1136,22 +1164,27 @@ bool isCollisionInProgress = false;
     NSLog(@"~~~~~~RESET GAME~~~~~~");
     for (int i = 0; i < self.obstacles.count; i++)
     {
-        CGPoint point = ((Obstacle*)self.obstacles[i]).sprite.position;
-        if (((Obstacle*)self.obstacles[i]).direction == MoveLeft)//(i%2)
-        {
-                //((CCNode*)self.obstacles[i]).position = ccp(_levelNode.contentSizeInPoints.width+((CCNode*)self.obstacles[i]).contentSize.width+45,((CCNode*)self.obstacles[i]).position.y);
-            if (nil!=self.obstacles[i])
-                ((Obstacle*)self.obstacles[i]).sprite.position =  CGPointMake(650.0f,point.y);
-                //NSLog(@"set move left: %@", point);
-            
-        } else {
-
-                //((CCNode*)self.obstacles[i]).position = ccp(0-((CCNode*)self.obstacles[i]).contentSize.width+45,((CCNode*)self.obstacles[i]).position.y);
-            if (nil!=self.obstacles[i])
-               ((Obstacle*)self.obstacles[i]).sprite.position =  CGPointMake(-100.0f,point.y);
-                //NSLog(@"set move right: %@",point);
-
-        }
+        //CGPoint point = ((Obstacle*)self.obstacles[i]).sprite.position;
+        //((Obstacle*)self.obstacles[i]).sprite.position =  CGPointMake(650.0f,point.y);
+        [((Obstacle*)self.obstacles[i]) resetToStart];
+        
+//        if (((Obstacle*)self.obstacles[i]).direction == MoveLeft)//(i%2)
+//        {
+//                //((CCNode*)self.obstacles[i]).position = ccp(_levelNode.contentSizeInPoints.width+((CCNode*)self.obstacles[i]).contentSize.width+45,((CCNode*)self.obstacles[i]).position.y);
+//            if (nil!=self.obstacles[i])
+//                [((Obstacle*)self.obstacles[i]) resetToStart];
+//                //((Obstacle*)self.obstacles[i]).sprite.position =  CGPointMake(650.0f,point.y);
+//                //NSLog(@"set move left: %@", point);
+//            
+//        } else {
+//
+//                //((CCNode*)self.obstacles[i]).position = ccp(0-((CCNode*)self.obstacles[i]).contentSize.width+45,((CCNode*)self.obstacles[i]).position.y);
+//            if (nil!=self.obstacles[i])
+//                [((Obstacle*)self.obstacles[i]) resetToStart];
+//               //((Obstacle*)self.obstacles[i]).sprite.position =  CGPointMake(-100.0f,point.y);
+//                //NSLog(@"set move right: %@",point);
+//
+//        }
         
     }
     

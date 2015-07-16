@@ -3,7 +3,7 @@
 //  Ligger
 //
 //  Created by Gene Myers on 01/07/2015.
-//  Copyright (c) 2015 Apportable. All rights reserved.
+//  Copyright (c) 2015 Fezzee. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -19,6 +19,8 @@
 @property (nonatomic) ScoreData* _scores;
 @property (nonatomic) LevelTimer* _timer;
 @property (nonatomic) NSNumber* _level;
+
+@property (nonatomic) float gameSpeed;
 
 //-(id) initWithGamedata:(GameData*)gameData;
 -(id) initWithTimer:(LevelTimer*)timer;

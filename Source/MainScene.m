@@ -1,3 +1,10 @@
+//
+//  MainScene.m
+//  Ligger
+//
+//  Created by Gene Myers on 01/07/2015.
+//  Copyright (c) 2015 Fezzee. All rights reserved.
+//
 #import "MainScene.h"
 #import "GameScene.h"
 #import "PopupLayer.h"
@@ -95,12 +102,12 @@
     
     if (fileContents == nil)
     {
-        NSLog (@"MainScene::isFirstPass (==nil) - %@", error);
+        NSLog (@"MainScene::isFirstPass==nil - %@", error);
         return true;
     }
     else
     {
-        NSLog (@"MainScene::isFirstPass - %@", fileContents);
+        NSLog (@"MainScene::isFirstPass");// - %@", fileContents);
     }
     
     return false;

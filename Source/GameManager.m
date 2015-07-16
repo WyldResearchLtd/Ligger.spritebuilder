@@ -3,7 +3,7 @@
 //  Ligger
 //
 //  Created by Gene Myers on 01/07/2015.
-//  Copyright (c) 2015 Apportable. All rights reserved.
+//  Copyright (c) 2015 Fezzee. All rights reserved.
 //
 
 #import "GameManager.h"
@@ -12,29 +12,6 @@
 @implementation GameManager
 
 
-//-(id) initWithGamedata:(GameData*)gameData
-//{
-//    if (self = [super init])
-//    {
-//        //this is doing the first pass intialisation- getting a unique userID and a a deviceID
-//        NSLog(@"GameManager initialised");
-//        self._gameData = gameData;
-//        double timestamp = [[NSDate date] timeIntervalSince1970];
-//        NSString* hexID = [[NSString stringWithFormat:@"%02x", (unsigned int) timestamp] uppercaseString];
-//
-//        int rndValue = 1 + arc4random() % (65536 - 1);
-//         NSString* hexRandom = [[NSString stringWithFormat:@"%04x", (unsigned int) rndValue] uppercaseString];
-//        NSLog(@"Unique ID: %@-%@", hexID,hexRandom);
-//        
-//        NSUUID* uuid = [[UIDevice currentDevice] identifierForVendor];
-//        NSLog(@"DeviceID: %@", [uuid UUIDString]);
-//        
-//        //NOW LETS WRITE THE UNIQUE ID's to the File (Or use thos if they are already there)
-//        
-//
-//    }
-//    return self;
-//}
 
 -(id) initWithTimer:(LevelTimer*)timer
 {
@@ -56,6 +33,8 @@
         NSUUID* uuid = [[UIDevice currentDevice] identifierForVendor];
         NSLog(@"DeviceID: %@", [uuid UUIDString]);
         
+        self.gameSpeed = 1.5f;//this is the start speed
+        
         //NOW LETS WRITE THE UNIQUE ID's to the File (Or use thos if they are already there)
         
         
@@ -65,13 +44,25 @@
 
 
 // like i++;
+//Increments the Level and the game speed accordingly
 -(void) incrementLevelCount
 {
     __level = [NSNumber numberWithInt:[__level intValue] + 1];
+    
+    //5 diff speeds- 5 levels
+    //moves the game speed between 1.5 and 2.7 in .2 increments
+    if (self.gameSpeed < 2.4)
+    {
+        self.gameSpeed += 0.3f;
+        NSLog(@"Game Speed set to: %.2f", self.gameSpeed);
+    }
+    //lets set the speed?
+    
 }
 
+
 /*
- * This SHOULD BE the workhorse of this class. It writes the GameData, tallies it, displays it on the personal best board, and then sends it to the web service
+ * Sends GameData to the web service
  */
 -(void) gameOver
 {

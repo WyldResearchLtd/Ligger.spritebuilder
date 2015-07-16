@@ -41,6 +41,6 @@ extern const int kVERTICALMOVE;
 extern const int kStartOffset;
 extern const int kStopOffset;
 
-extern const float kSPEED;
+//extern const float kSPEED;
 
 //#endif
