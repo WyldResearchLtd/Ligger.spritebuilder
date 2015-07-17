@@ -18,7 +18,7 @@
     PopupLayer* _popoverMenuLayer;
 }
 
-- (BOOL) popoverMenuLayer
+- (PopupLayer*) popoverMenuLayer
 {
     return _popoverMenuLayer;
 }

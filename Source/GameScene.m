@@ -15,12 +15,12 @@
 
 @implementation GameScene
 {
+    //__weak CCPhysicsNode* _physicsNode;
+    //__weak CCNode* _backgroundNode;
     __weak CCNode* _levelNode;
     __weak CCNode* _playerNode;
     __weak PopupLayer* _popoverMenuLayer;
-    //__weak CCPhysicsNode* _physicsNode;
-    //__weak CCNode* _backgroundNode;
-   GameManager* _gameManager;
+    GameManager* _gameManager;
 }
 
 static Boolean halt = false;
@@ -139,7 +139,7 @@ bool isCollisionInProgress = false;
         [_gameManager gameOver];
         
         //Update the "Best" scores in LiggerGamedata.plist
-        ScoreData* scoreData = [[ScoreData alloc] initWithScore:_gameData.GameScore MaxLevel:[_gameManager _level] Name:[GameData userName] Date:stringFromDate   GUID:@"GUID" Device:@"Device" Remaing:kTOTALTIMER-((LevelTimer*)self.timer).seconds];
+        ScoreData* scoreData = [[ScoreData alloc] initWithScore:_gameData.GameScore MaxLevel:[_gameManager level] Name:[GameData userName] Date:stringFromDate   GUID:@"GUID" Device:@"Device" Remaing:kTOTALTIMER-((LevelTimer*)self.timer).seconds];
         //this is an important and powerful line
         //GameData::isScoreHigh sets the 'Best-' fields in LiggerGamedata.plist if needed, and returns true if done
         scoreData.isHighScore = [_gameManager._gameData updateHighScore:scoreData];
@@ -738,7 +738,7 @@ bool isCollisionInProgress = false;
             //quick hack
             NSAssert(_gameManager!= NULL, @"gameManager is NULL");
             
-            ScoreData* scoreData = [[ScoreData alloc] initWithScore:_gameData.GameScore MaxLevel:[_gameManager _level] Name:[GameData userName] Date:stringFromDate   GUID:@"GUID" Device:@"Device" Remaing:kTOTALTIMER-((LevelTimer*)self.timer).seconds];
+            ScoreData* scoreData = [[ScoreData alloc] initWithScore:_gameData.GameScore MaxLevel:[_gameManager level] Name:[GameData userName] Date:stringFromDate   GUID:@"GUID" Device:@"Device" Remaing:kTOTALTIMER-((LevelTimer*)self.timer).seconds];
 //            //isGameOver?
 //            [self showPopoverNamed:@"Popups/GameOver"];
             [self showPopoverNamed:@"Popups/LevelScore"];
@@ -1161,30 +1161,10 @@ bool isCollisionInProgress = false;
 -(void) resetGame //:(CCNode*) obstacle
 {
 
-    NSLog(@"~~~~~~RESET GAME~~~~~~");
+    NSLog(@"GameScene::resetGame");
     for (int i = 0; i < self.obstacles.count; i++)
     {
-        //CGPoint point = ((Obstacle*)self.obstacles[i]).sprite.position;
-        //((Obstacle*)self.obstacles[i]).sprite.position =  CGPointMake(650.0f,point.y);
         [((Obstacle*)self.obstacles[i]) resetToStart];
-        
-//        if (((Obstacle*)self.obstacles[i]).direction == MoveLeft)//(i%2)
-//        {
-//                //((CCNode*)self.obstacles[i]).position = ccp(_levelNode.contentSizeInPoints.width+((CCNode*)self.obstacles[i]).contentSize.width+45,((CCNode*)self.obstacles[i]).position.y);
-//            if (nil!=self.obstacles[i])
-//                [((Obstacle*)self.obstacles[i]) resetToStart];
-//                //((Obstacle*)self.obstacles[i]).sprite.position =  CGPointMake(650.0f,point.y);
-//                //NSLog(@"set move left: %@", point);
-//            
-//        } else {
-//
-//                //((CCNode*)self.obstacles[i]).position = ccp(0-((CCNode*)self.obstacles[i]).contentSize.width+45,((CCNode*)self.obstacles[i]).position.y);
-//            if (nil!=self.obstacles[i])
-//                [((Obstacle*)self.obstacles[i]) resetToStart];
-//               //((Obstacle*)self.obstacles[i]).sprite.position =  CGPointMake(-100.0f,point.y);
-//                //NSLog(@"set move right: %@",point);
-//
-//        }
         
     }
     
@@ -1196,6 +1176,7 @@ bool isCollisionInProgress = false;
 
 -(void) showPopoverNamed:(NSString*)name
 {
+    NSLog(@"GameScene::showPopoverNamed: %@", name);
     if (_popoverMenuLayer == nil)
     {
         //PopupLayer* newMenuLayer
@@ -1213,7 +1194,7 @@ bool isCollisionInProgress = false;
 {
     if (_popoverMenuLayer)
     {
-        NSLog(@"Popup removed");
+        NSLog(@"GameScene::removePopover");
         _popoverMenuLayer.visible = YES;
         [_popoverMenuLayer removeFromParent];
         _popoverMenuLayer = nil;

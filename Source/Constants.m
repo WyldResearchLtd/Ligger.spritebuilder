@@ -27,4 +27,4 @@ const int kVERTICALMOVE = 64;
 const int kStartOffset = 4;
 const int kStopOffset = 3;
 
-const float kSPEED = 1.5 ;//3.5;3.0;2.5;
+//const float kSPEED = 1.5 ;//3.5;3.0;2.5;

@@ -18,7 +18,7 @@
 @property (nonatomic) GameData* _gameData;
 @property (nonatomic) ScoreData* _scores;
 @property (nonatomic) LevelTimer* _timer;
-@property (nonatomic) NSNumber* _level;
+@property (nonatomic) NSNumber* level;
 
 @property (nonatomic) float gameSpeed;
 

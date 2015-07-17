@@ -78,7 +78,7 @@
 {
     NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     destPath = [destPath stringByAppendingPathComponent:@"LiggerGamedata.plist"];
-    NSFileManager *fileManager = [NSFileManager defaultManager];
+    //NSFileManager *fileManager = [NSFileManager defaultManager];
     
     //if the file does not exist, its a first pass
     //TODO: FIX: URGENT: why is this always true?

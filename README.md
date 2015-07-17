@@ -25,6 +25,8 @@ The field is a wonderful place, filled with a bevy of curtious girls and boys th
     Lookout for Phil O. Cybin, a new character in Level 3. On some days, once you meet Phil, life can be wonderful and full of Sunflowers that bring you much joy and 
     more points. But on other days, you'll be confronted by Multi-eyed Monsters, that seem to appear from nowhere and will haunt your dreams and rob your bank.  
   
+The Heads Up Display
+
   
 ==========================
 
@@ -47,38 +49,8 @@ On leaderboard opened, query the api for new data, and if so wite it to the Ligg
 
 TODO & Bugs
 ----------- 
-P1   
-X Leaderboard UI
-X First time start wizard & name collection popup
-X Add new music to setup
-X The Game Manager Object- Save Settings, Gameplay, and Tally Best Personal Score- 
-X Scoring Bug- after loosing one beer, score resets
-X GameOver screen- needs F&F
 
-X Game Manager
-    X Level Increment, Datestamp
-    X Update Leaderboard 
-
-x Ode to Joy at GameOver
-
-X -Checkin-
-X Exit sign on menu & quit on t&cs
-X Flesh out Level UI 
-X Finish Wizard UI
-
-X Music doesn't resume after level
-X Level audio starts too abrupt
-
-X Cannot return from leaderboard
-x New Splashscreen
-
-Bugs
-X on first level..sometimes 'Level: (null)' is displayed on LevelUp popover (only on first pass)
-X 1 beer doesn't appear to be credited at finish
-X Pause screen doesnt pause- so therefor nothing to Resume
-
-
-UI Refresh- NEED FULL LIST
+UI Refresh-
 * HUD higer res images
 * flowers as bullet points
 * Should say Backstage or VIP 
@@ -89,15 +61,20 @@ UI Refresh- NEED FULL LIST
 * T&Cs
 * Gameplay
 * Credits
+* Update leaderboard
 * Fonts for Gameplay, Credits and T&C's'
 * ...
+* Log GUIDs,  Add GameLog
 
-X OUT OF CHEAT MODE
+
+
+
+* Stub out webservice
 * Game Manager    
-    x Increase level speed - need level number
     * Extra Players - need level number
-* Log GUIDs,  Add GameLog- Package/Stub for WebService
+
 * Leaderboard Webservice
+* 4s Sizing- Also check 6/6+
 
 
 KNOWN ISSUES

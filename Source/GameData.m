@@ -81,10 +81,7 @@ static Navigation _navigation = Swipe;//default
 
 + (void) setNavigation:(Navigation)value
 {
-//    if(value==Touch)
-//        NSLog(@"Setting Touch");
-//    else
-//        NSLog(@"Setting Swipe");
+
     _navigation = value;
     _settings = [self getGameSettings];
     NSNumber * val = [NSNumber numberWithInt:_navigation];
@@ -117,6 +114,7 @@ static bool _audible = YES;//default audio is ON
 }
 
 
+
 /*
  *
  */
@@ -138,6 +136,47 @@ static NSString* _userName;
 
 
 
+/*
+ *
+ */
+static NSString* _userID;
++ (NSString*) userID {
+    
+    _settings = [self getGameSettings];
+    _userID = [_settings objectForKey:@"UserIdentifier"];
+    return _userID;
+}
++ (void) setUserID:(NSString*)id_string {
+    _userID = id_string;
+    //write to the plist!!!!!
+    _settings = [self getGameSettings];
+    [_settings  setObject:_userID forKey:@"UserIdentifier"];
+    [self saveGameSettings:_settings];
+    NSLog(@"GameData::set objectForKey:@UserID=%@",_userID);
+}
+
+
+/*
+ *
+ */
+static NSString* _deviceID;
++ (NSString*) deviceID {
+    
+    _settings = [self getGameSettings];
+    _deviceID = [_settings objectForKey:@"DeviceIdentifier"];
+    return _deviceID;
+}
++ (void) setDeviceID:(NSString*)id_string {
+    _deviceID = id_string;
+    //write to the plist!!!!!
+    _settings = [self getGameSettings];
+    [_settings  setObject:_deviceID forKey:@"DeviceIdentifier"];
+    [self saveGameSettings:_settings];
+    NSLog(@"GameData::set objectForKey:@DeviceID=%@",_deviceID);
+}
+
+
+
 +(void) readAndInit
 {
      NSLog(@"Read PList and init Instance Vars");
@@ -151,21 +190,11 @@ static NSString* _userName;
     _ligger = [_settings objectForKey:@"Character"]?SparklePony:GeordieGunter; //0 = Male,1 = Female
     _navigation = [_settings objectForKey:@"Movement"]?Swipe:Touch; //0 = ,1 =
     _userName =  [_settings objectForKey:@"Username"];
+    _userID =  [_settings objectForKey:@"UserIdentity"];
+    _deviceID =  [_settings objectForKey:@"DeviceIdentity"];
     
 }
 
-
-////IS THIS BEING USED???????
-//GameData* instance;
-//-(id)  sharedInstance
-//{
-//    if (instance==nil)
-//    {
-//        instance = [[GameData alloc]init];
-//        [GameData readAndInit];
-//    }
-//    return instance;
-//}
 
 // All of thee method also update the HUD
 
@@ -234,6 +263,17 @@ static NSString* _userName;
     [self addToGameLog:@"badTrip" atSecs:secs forPosition:position];
     [label setString:[NSString stringWithFormat:@"%d", _GameScore]];
 }
+//////////////////////////////////
+//non score logging
+-(void) collisionFinal:(CGPoint) position atSecs:(int)secs
+{
+    [self addToGameLog:@"Collision: Final" atSecs:secs forPosition:position];
+}
+-(void) collisionInterim:(CGPoint) position atSecs:(int)secs
+{
+    [self addToGameLog:@"Collision: Interim" atSecs:secs forPosition:position];
+}
+
 
 /////////////////////////////////////////////////////////////////////////////////////////
 
@@ -309,26 +349,28 @@ static NSString* _userName;
     
     // Load the Property List.
     NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:destPath];
+  
     
     NSLog(@"========= GameData::getGameSettings =================");
-//    NSLog(@"UserIdentifier: %@",[data objectForKey:@"UserIdentifier"]);
-//    NSLog(@"DeviceIdentifier: %@",[data objectForKey:@"DeviceIdentifier"]);
-//    NSLog(@"Username: %@",[data objectForKey:@"Username"]);
-//    NSLog(@"Character: %@",[[data objectForKey:@"Character"] integerValue]==0?@"GeordieGunter":@"SparklePony");
-//    NSLog(@"Movement: %@",[[data objectForKey:@"Movement"] integerValue]==1?@"Touch":@"Swipe");
-//    NSLog(@"Audio: %@",[[data objectForKey:@"Audio"] boolValue]? @"True" : @"False");
-//    NSLog(@"Soundtrack: %@",[[data objectForKey:@"Soundtrack"] integerValue]==0?@"The Soul Immigrants":@"The Caufield Beats");
-//    
-//    NSLog(@"Best-1: %@",[data objectForKey:@"Best-1"]);
-//    NSLog(@"Best-2: %@",[data objectForKey:@"Best-2"]);
-//    NSLog(@"Best-3: %@",[data objectForKey:@"Best-3"]);
-//    NSLog(@"=====================================================");
+    NSLog(@"UserIdentifier: %@",[data objectForKey:@"UserIdentifier"]);
+    NSLog(@"DeviceIdentifier: %@",[data objectForKey:@"DeviceIdentifier"]);
+    NSLog(@"Username: %@",[data objectForKey:@"Username"]);
+    NSLog(@"Character: %@",[[data objectForKey:@"Character"] integerValue]==0?@"GeordieGunter":@"SparklePony");
+    NSLog(@"Movement: %@",[[data objectForKey:@"Movement"] integerValue]==1?@"Touch":@"Swipe");
+    NSLog(@"Audio: %@",[[data objectForKey:@"Audio"] boolValue]? @"True" : @"False");
+    NSLog(@"Soundtrack: %@",[[data objectForKey:@"Soundtrack"] integerValue]==0?@"The Soul Immigrants":@"The Caufield Beats");
+    
+    NSLog(@"log: %@",[data objectForKey:@"log"]);
+    NSLog(@"Best-1: %@",[data objectForKey:@"Best-1"]);
+    NSLog(@"Best-2: %@",[data objectForKey:@"Best-2"]);
+    NSLog(@"Best-3: %@",[data objectForKey:@"Best-3"]);
+    NSLog(@"=====================================================");
     
     return data;
 
 }
 
-#warning In Testing
+
 /*
  * Not only returns True is High Score, but saves the scoreData tested
  * in the appropriate PersonalBest field in settings (FezzeeGameData.plist)
@@ -423,15 +465,14 @@ static NSString* _userName;
     NSDictionary* best2 = [_settings objectForKey:@"Best-2"];
     NSDictionary* best3 = [_settings objectForKey:@"Best-3"];
     
-    NSArray* objects = [NSArray arrayWithObjects: best1, best2, best3,
-                        nil];
+    NSArray* objs = [NSArray arrayWithObjects: best1==nil?[[NSDictionary alloc]init]:best1, best2==nil?[[NSDictionary alloc]init]:best2,  best3==nil?[[NSDictionary alloc]init]:best3, nil];
     
     NSArray* keys = [NSArray arrayWithObjects: @"Best-1", @"Best-2", @"Best-3",
                      nil];
     
-   return [[NSMutableDictionary alloc]initWithObjects:objects forKeys:keys];
-   
+    NSMutableDictionary *rtn = [[NSMutableDictionary alloc]initWithObjects:objs forKeys:keys];
+    return rtn;
+    
 }
-
 
 @end

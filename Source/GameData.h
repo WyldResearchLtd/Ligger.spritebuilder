@@ -2,6 +2,9 @@
 //  GameData.h
 //  Ligger
 //
+//  GameData contains both static settings attributes and methods to tally the score and create a GameLog. The tallied score is stored in a ScoreData object and
+//  saved to the GameData, along with the GameLog
+//
 //  Created by Gene Myers on 15/06/2015.
 //  Copyright (c) 2015 Fezzee. All rights reserved.
 //
@@ -26,6 +29,10 @@
 + (void) setAudible:(bool)setOn;
 + (NSString*) userName;
 + (void) setUserName:(NSString*)name;
++ (NSString*) userID;
++ (void) setUserID:(NSString*)id_string;
++ (NSString*) deviceID;
++ (void) setDeviceID:(NSString*)id_string;
 + (NSNumber*) soundtrack;
 + (void) setSoundtrack:(NSNumber*)value;
 
@@ -50,10 +57,16 @@
 -(void) goodTrip:(CGPoint) position atSecs:(int)secs hud:(CCLabelBMFont*)label;
 -(void) badTrip:(CGPoint) position atSecs:(int)secs hud:(CCLabelBMFont*)label;
 
-//TODO: Add Non-Scoring milestones- Collision1, Collision2, Levelup, Game Over to GameData
+//Add Non-Scoring milestones- Collision1, Collision2, Levelup, Game Over to GameData
+//TODO: Implement
+-(void) collisionFinal:(CGPoint) position atSecs:(int)secs;
+-(void) collisionInterim:(CGPoint) position atSecs:(int)secs;
+
+//////
 
 -(void) reset;
 -(void) printLog;
+
 
 @end
 

@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>log</key>
+	<array/>
 	<key>LeaderC</key>
 	<dict/>
 	<key>LeaderA</key>
@@ -15,11 +17,11 @@
 	<key>Best-1</key>
 	<dict/>
 	<key>Username</key>
-	<string>Gilligan</string>
+	<string></string>
 	<key>UserIdentifier</key>
-	<string>F6AB677C</string>
+	<string></string>
 	<key>DeviceIdentifier</key>
-	<string>F656A8BB67997E2C</string>
+	<string></string>
 	<key>Character</key>
 	<integer>0</integer>
 	<key>Movement</key>
