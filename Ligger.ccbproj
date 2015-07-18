@@ -103,16 +103,6 @@
 			<key>isSmartSpriteSheet</key>
 			<true/>
 		</dict>
-		<key>SpriteSheets/Global/backstage-back.png</key>
-		<dict>
-			<key>scaleFrom</key>
-			<integer>1</integer>
-		</dict>
-		<key>SpriteSheets/Global/backstage-front.png</key>
-		<dict>
-			<key>scaleFrom</key>
-			<integer>1</integer>
-		</dict>
 		<key>Sprites</key>
 		<dict>
 			<key>previewFolderHidden</key>

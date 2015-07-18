@@ -51,30 +51,32 @@ TODO & Bugs
 ----------- 
 
 UI Refresh-
-* HUD higer res images
+X Backstage HiRes Images
+X HUD higer res images
+* New Icons for swipe, touch, audio on/off
+x Should say Backstage or VIP
+* Name from Options appears on T&C
+
 * flowers as bullet points
-* Should say Backstage or VIP 
+
 * check all menu items for Enlarge on Touch , and selected colours
 * New txt colour in Leaderboard
-* New Icons for swipe, touch, audio on/off
-* All text reviewed
-* T&Cs
-* Gameplay
-* Credits
-* Update leaderboard
 * Fonts for Gameplay, Credits and T&C's'
-* ...
-* Log GUIDs,  Add GameLog
 
+* All text reviewed
+    * T&Cs
+    * Gameplay
+    * Credits
 
-
-
-* Stub out webservice
+---------------
+* 4s Sizing- Also check 6/6+
 * Game Manager    
     * Extra Players - need level number
 
+
+* Stub out webservice
 * Leaderboard Webservice
-* 4s Sizing- Also check 6/6+
+
 
 
 KNOWN ISSUES

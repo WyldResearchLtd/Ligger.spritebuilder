@@ -890,8 +890,6 @@
 						<string>Prefabs/CongaLine.ccb</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -1620,6 +1618,8 @@
 						<array/>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -2026,7 +2026,7 @@
 						<key>value</key>
 						<array>
 							<real>645.5</real>
-							<real>82</real>
+							<real>92.501998901367188</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>

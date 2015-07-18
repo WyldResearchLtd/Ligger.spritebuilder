@@ -215,10 +215,9 @@ bool isCollisionInProgress = false;
         _playerNode = [self getChildByName:@"player2f" recursively:TRUE];
         if (GameData.navigation==Swipe)
         {
-            self._hudLigger = [CCSprite spriteWithImageNamed:@"Published-iOS/Sprites/resources-phone/HUD-Ligger2.png"];
-            [self._hudLigger setAnchorPoint:ccp(0,0)];
-            self._hudLigger.position = CGPointMake(65.0f, 3.0f);
-            [self._nodeHUD addChild:(CCNode*)self._hudLigger];
+            self._hudLigger2.visible = true;
+            self._hudLigger1.visible = false;
+            self._hudLigger = self._hudLigger2;
         }
     }
     else
@@ -226,10 +225,9 @@ bool isCollisionInProgress = false;
         _playerNode = [self getChildByName:@"player1m" recursively:TRUE];
         if (GameData.navigation==Swipe)
         {
-            self._hudLigger = [CCSprite spriteWithImageNamed:@"Published-iOS/Sprites/resources-phone/HUD-Ligger1.png"];
-            [self._hudLigger setAnchorPoint:ccp(0,0)];
-            self._hudLigger.position = CGPointMake(75.0f, 15.0f);
-            [self._nodeHUD addChild:(CCNode*)self._hudLigger];
+            self._hudLigger1.visible = true;
+            self._hudLigger2.visible = false;
+            self._hudLigger = self._hudLigger1;
         }
     }
     
@@ -277,39 +275,11 @@ bool isCollisionInProgress = false;
 
 //        Obstacle* ob1a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[CCBReader load:@"Prefabs/CongaLine"] atPosition:
 //            CGPointMake(-350.0f,112.0f)];
-//        Obstacle* ob2a = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[CCBReader load:@"Prefabs/GolfCart"] atPosition:
-//            CGPointMake(950.0f,174.5f)];
-//        Obstacle* ob3a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[CCBReader load:@"Prefabs/Streaker-r"] atPosition:
-//            CGPointMake(-350.0f,238.5f)];
-//        Obstacle* ob4a = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[CCBReader load:@"Prefabs/HulaHoops"] atPosition:
-//            CGPointMake(950.0f,306.5f)];
-//        Obstacle* ob5a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[CCBReader load:@"Prefabs/HulaHoops"] atPosition:
-//            CGPointMake(-350.0f,372.0f)];
-//        Obstacle* ob6a = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[CCBReader load:@"Prefabs/Streaker-r"] atPosition:
-//            CGPointMake(950.0f,494.2f)];
-//        Obstacle* ob7a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[CCBReader load:@"Prefabs/Streaker-r"] atPosition:
-//            CGPointMake(-350.0f,563.2f)];
-//        Obstacle* ob8a = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[CCBReader load:@"Prefabs/Streaker-r"] atPosition:
-//            CGPointMake(950.0f,627.2f)];
-//        Obstacle* ob9a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[CCBReader load:@"Prefabs/Streaker-r"] atPosition:
-//            CGPointMake(-350.0f,690.2f)];
-//        Obstacle* ob10a = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[CCBReader load:@"Prefabs/Streaker-r"] atPosition:
-//            CGPointMake(950.0f,751.2f)];
         
         //doesn't need to be added as a child, because its on the scene Level1
         Obstacle* ob11 = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[_levelNode getChildByName:@"obstacle11" recursively:NO] atStartPosition:CGPointMake(-75.0f,814.7f)];
 
         //[self addChild:ob1a.sprite];
-        //[self addChild:ob2a.sprite];
-        //[self addChild:ob3a.sprite];
-        //[self addChild:ob4a.sprite];
-        //[self addChild:ob5a.sprite];
-        //[self addChild:ob6a.sprite];
-        //[self addChild:ob7a.sprite];
-        //[self addChild:ob8a.sprite];
-        //[self addChild:ob9a.sprite];
-        //[self addChild:ob10a.sprite];
-        //[self addChild:ob11.sprite];
         
         self.obstacles = [NSMutableArray arrayWithObjects:ob1,ob1a,ob2,ob2a,ob3,ob3a,ob4,ob4a,ob5,ob5a,ob6,ob6a,ob7,ob7a,ob8,ob8a,ob9,ob9a,ob10,ob10a,ob11, nil];
         //self.obstacles = [NSMutableArray arrayWithObjects:ob1,ob1a,ob2,ob2a,ob3,ob4,ob5,ob6,ob7,ob8,ob9,ob10, nil];

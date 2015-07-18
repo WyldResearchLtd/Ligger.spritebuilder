@@ -73,18 +73,18 @@
         NSDictionary* best2 = [self.bestPersonal objectForKey:@"Best-2"];
         NSDictionary* best3 = [self.bestPersonal objectForKey:@"Best-3"];
         
-    __row4name.string =  [((NSDictionary*)best1) objectForKey:@"scoreName"]==nil?@"":[[((NSDictionary*)best1) objectForKey:@"scoreName"] stringValue];
-    __row4date.string =  [((NSDictionary*)best1) objectForKey:@"scoreDate"]==nil?@"":[[((NSDictionary*)best1) objectForKey:@"scoreDate"] stringValue];
+    __row4name.string =  [((NSDictionary*)best1) objectForKey:@"scoreName"]==nil?@"":[((NSDictionary*)best1) objectForKey:@"scoreName"];
+    __row4date.string =  [((NSDictionary*)best1) objectForKey:@"scoreDate"]==nil?@"":[((NSDictionary*)best1) objectForKey:@"scoreDate"];
     __row4score.string = [((NSDictionary*)best1) objectForKey:@"scoreValue"]==nil?@"":[[((NSDictionary*)best1) objectForKey:@"scoreValue"] stringValue];
     __row4levels.string =[((NSDictionary*)best1) objectForKey:@"scoreLevel"]==nil?@"":[[((NSDictionary*)best1) objectForKey:@"scoreLevel"] stringValue];
         
-    __row5name.string =  [((NSDictionary*)best2) objectForKey:@"scoreName"]==nil?@"":[[((NSDictionary*)best2) objectForKey:@"scoreName"] stringValue];
-    __row5date.string =  [((NSDictionary*)best2) objectForKey:@"scoreDate"]==nil?@"":[[((NSDictionary*)best2) objectForKey:@"scoreDate"] stringValue];
+    __row5name.string =  [((NSDictionary*)best2) objectForKey:@"scoreName"]==nil?@"":[((NSDictionary*)best2) objectForKey:@"scoreName"];
+    __row5date.string =  [((NSDictionary*)best2) objectForKey:@"scoreDate"]==nil?@"":[((NSDictionary*)best2) objectForKey:@"scoreDate"];
     __row5score.string = [((NSDictionary*)best2) objectForKey:@"scoreValue"]==nil?@"":[[((NSDictionary*)best2) objectForKey:@"scoreValue"] stringValue];
     __row5levels.string =[((NSDictionary*)best2) objectForKey:@"scoreLevel"]==nil?@"":[[((NSDictionary*)best2) objectForKey:@"scoreLevel"] stringValue];
     
-    __row6name.string =  [((NSDictionary*)best3) objectForKey:@"scoreName"]==nil?@"":[[((NSDictionary*)best3) objectForKey:@"scoreName"] stringValue];
-    __row6date.string =  [((NSDictionary*)best3) objectForKey:@"scoreDate"]==nil?@"":[[((NSDictionary*)best3) objectForKey:@"scoreDate"] stringValue];
+    __row6name.string =  [((NSDictionary*)best3) objectForKey:@"scoreName"]==nil?@"":[((NSDictionary*)best3) objectForKey:@"scoreName"];
+    __row6date.string =  [((NSDictionary*)best3) objectForKey:@"scoreDate"]==nil?@"":[((NSDictionary*)best3) objectForKey:@"scoreDate"];
     __row6score.string = [((NSDictionary*)best3) objectForKey:@"scoreValue"]==nil?@"":[[((NSDictionary*)best3) objectForKey:@"scoreValue"] stringValue];
     __row6levels.string =[((NSDictionary*)best3) objectForKey:@"scoreLevel"]==nil?@"":[[((NSDictionary*)best3) objectForKey:@"scoreLevel"] stringValue];
    

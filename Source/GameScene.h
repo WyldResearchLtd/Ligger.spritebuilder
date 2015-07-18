@@ -22,6 +22,8 @@
 @property (nonatomic) CCNode *bartender1;
 @property (nonatomic) CCNode *bkstage_f;
 @property (nonatomic) CCNode *bkstage_b;
+@property (nonatomic) CCSprite *_hudLigger1;
+@property (nonatomic) CCSprite *_hudLigger2;
 
 @property bool swiped;
 
