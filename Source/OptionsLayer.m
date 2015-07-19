@@ -186,9 +186,9 @@
             break;
     }
     
-
+    //Other Options setup
     [self._btnDeletePlist setVisible:TESTUTILS];
-
+   
 }
 
 
@@ -293,6 +293,7 @@
 {
     NSLog(@"PopupLayer::ClearHistoryPressed");
 }
+
 
 
 @end

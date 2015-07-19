@@ -9,7 +9,7 @@
 #import "CCNode.h"
 #import "GameScene.h"
 
-@interface OptionsLayer : CCNode
+@interface OptionsLayer : CCNode 
 
 @property (nonatomic) CCButton *_btnGunter;
 @property (nonatomic) CCButton *_btnSparkle;

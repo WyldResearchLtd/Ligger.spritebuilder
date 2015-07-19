@@ -308,6 +308,11 @@
     }
 }
 
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
+    NSLog(@"::::::::::::::::PopupLayer::textViewShouldBeginEditing::::::::::::::::::");
+    return YES; // NO tells the textfield not to start its own editing process (ie show the keyboard)
+}
+
 
 
 @end

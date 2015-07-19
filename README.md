@@ -55,7 +55,6 @@ X Backstage HiRes Images
 X HUD higer res images
 * New Icons for swipe, touch, audio on/off
 x Should say Backstage or VIP
-* Name from Options appears on T&C
 
 * flowers as bullet points
 
@@ -76,6 +75,16 @@ x Should say Backstage or VIP
 
 * Stub out webservice
 * Leaderboard Webservice
+
+
+Raheels issues
+---------
+1. Text from FirstPass textfield shows on T&Cs
+2. Mute audio and change selction- new selection not played - KNOWN ISSUE?
+3. cannot restore app by tapping on Desktop icon - CANNOT REPRO
+4. can not access 'notification area - KNOWN ISSUE?
+5. game does not resume playing when maximised 
+6. leaderboard not working- RESOLVED
 
 
 
