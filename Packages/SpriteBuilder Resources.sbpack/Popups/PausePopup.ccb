@@ -254,8 +254,6 @@
 						<array/>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -383,6 +381,14 @@
 							<string>Resume</string>
 							<false/>
 						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>zoomWhenHighlighted</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -720,6 +726,14 @@
 					</dict>
 					<dict>
 						<key>name</key>
+						<string>zoomWhenHighlighted</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>backgroundSpriteFrame|Normal</string>
 						<key>type</key>
 						<string>SpriteFrame</string>
@@ -924,6 +938,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

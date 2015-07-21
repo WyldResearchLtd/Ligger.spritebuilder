@@ -25,6 +25,7 @@
 //-(id) initWithGamedata:(GameData*)gameData;
 -(id) initWithTimer:(LevelTimer*)timer;
 -(void) incrementLevelCount;
--(void) gameOver;
+-(void) gameOver:(ScoreData*) scoreData;
+- (void)sendLog:(NSString*) log;
 
 @end

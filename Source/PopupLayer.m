@@ -23,6 +23,7 @@
     return _popoverMenuLayer;
 }
 
+
 - (void)setPopoverMenuLayer:(PopupLayer*)newValue {
     _popoverMenuLayer = newValue;
 }
@@ -188,16 +189,29 @@
 -(void) btnTandCs
 {
     NSLog(@"PopupLayer::btnTandCs");
-    //NSLog(@"T And C's (btn) Choosen");
     [self showPopoverNamed:@"Popups/TandCs"];
+    //this hides the text entered in the textfield that shows through onto T&C
+    self._txtUsername.visible = false;
 }
 
-//ERROR: This causes an exception when you try to go back from the T&C pages off of the FirstPass layer
+//
 -(void) btnOKTandCs
 {
-    NSLog(@"PopupLayer::btnOKTandCs");
+    
+     NSLog(@"PopupLayer::btnOKTandCs");
+    
+    //this line required to respore the parent view
     _popoverMenuLayer = self;
-    [self removePopover];  //DO NOT REMOVE BREAKPOINT UNTIL RESOLVED
+    //this restores the text entered in the textfield that shows through onto T&C
+    //must come after the line above
+    ((PopupLayer*)_popoverMenuLayer.parent)._txtUsername.visible = true;
+
+    
+    [self removePopover];
+    
+    
+    
+
 }
 
 -(void) btnExit
@@ -307,13 +321,6 @@
             [audio playBg:@"dustbowl.m4a" loop:YES];
     }
 }
-
-- (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
-    NSLog(@"::::::::::::::::PopupLayer::textViewShouldBeginEditing::::::::::::::::::");
-    return YES; // NO tells the textfield not to start its own editing process (ie show the keyboard)
-}
-
-
 
 @end
 

@@ -50,57 +50,53 @@ On leaderboard opened, query the api for new data, and if so wite it to the Ligg
 TODO & Bugs
 ----------- 
 
-UI Refresh-
-X Backstage HiRes Images
-X HUD higer res images
-* New Icons for swipe, touch, audio on/off
-x Should say Backstage or VIP
+X check all menu items for Enlarge on Touch , and selected colours  
 
-* flowers as bullet points
+* Fonts for Gameplay, Credits and T&C's'  
+  
+* All text reviewed  
+    * T&Cs  
+    * Gameplay  * Advise users in First pass wizard to read about gameplay  
+    * Credits  
 
-* check all menu items for Enlarge on Touch , and selected colours
-* New txt colour in Leaderboard
-* Fonts for Gameplay, Credits and T&C's'
+  
+Louies Issues  
+-----------  
+* Timeout Message  
+* Ipad HUD issue and Splash screen  
 
-* All text reviewed
-    * T&Cs
-    * Gameplay
-    * Credits
+  
+Raheels issues  
+---------  
+X. Text from FirstPass textfield shows on T&Cs  
+x. game does not resume playing when maximised (Not reproducable? A 4 issue?)  
 
----------------
-* 4s Sizing- Also check 6/6+
-* Game Manager    
-    * Extra Players - need level number
+7. 4s Sizing- Also check 6/6+ (6/6+ OK but iPad not) 
 
+NI Mute audio and change selection- new selection not played - KNOWN ISSUE  
+NI can not access 'notification area - KNOWN ISSUE  (Not reproducable? A 4 issue?) 
+  
+ 
+  
+KNOWN ISSUES  & TODO
+--------------------
+* New Icons for swipe, touch, audio on/off, touchpad arrows
+* flowers as bullet points 
+* Beers in HUD are lowres
 
-* Stub out webservice
-* Leaderboard Webservice
+NI Mute audio and change selection- new selection not played - KNOWN ISSUE  
+NI can not access 'notification area - KNOWN ISSUE 
 
-
-Raheels issues
----------
-1. Text from FirstPass textfield shows on T&Cs
-2. Mute audio and change selction- new selection not played - KNOWN ISSUE?
-3. cannot restore app by tapping on Desktop icon - CANNOT REPRO
-4. can not access 'notification area - KNOWN ISSUE?
-5. game does not resume playing when maximised 
-6. leaderboard not working- RESOLVED
-
-
-
-KNOWN ISSUES
-
-GamePlay Fit & Finish
------------------------------
-
-* Upgrade GameLog
-    * Add Non-Scoring milestones- Collision1, Collision2, Levelup, Game Over to GameData
-    * Trigger additional point sounds- collisions, start, bartender, button clicks  
+* Game Manager-Extra Players - need level number 
+  
+* Upgrade GameLog  
+    * Add Non-Scoring milestones- Collision1, Collision2, Levelup, Game Over to GameData  
+    * Trigger additional point sounds- collisions, start, bartender, button clicks   
   
 P2  
-* Add 'No. 'Beers' to Level/Game totals
+* Add 'No. 'Beers' to Level/Game totals  
 * create an interface for ShowPopover/RemovePopover    
-* base class -- PopoverLayout
+* base class -- PopoverLayout  
 * instead of walking left to promotor, and then back to the right, have the promotor meet the ligger? or only allow the ligger    
 * Mask the obstacles so collisions are more accurate- change anchor point for left to right movement?  
 * Transitions for Popups  
@@ -110,14 +106,14 @@ P3
 * The particle effect for a NoBeer Ligger shouldn't be a splash  
 * Obstacles that disappear before fully existing screen  
   
-
-extra nav to add
-----------------------------------
-Game Over- Leaderboard
+ 
+extra nav to add  
+----------------------------------  
+Game Over- Leaderboard  
 Game Over- play again 
-Main Menu- exit
-Pause- Setup
-
+Main Menu- exit  
+Pause- Setup  
+  
 Welcome back 'User' notification  
   
   

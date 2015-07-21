@@ -124,7 +124,6 @@ bool isCollisionInProgress = false;
     if (_popoverMenuLayer == nil)
     {
         
-        #warning In Progress
         //get time formatting-NOW for gametimestamp
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
@@ -133,23 +132,27 @@ bool isCollisionInProgress = false;
         //NOW
         NSString *stringFromDate = [formatter stringFromDate:[NSDate date]];
         
-        [_gameManager incrementLevelCount];
-        //Call the GameManager here= GameOver!
-        //lets pass this a ScoreData object too.
-        [_gameManager gameOver];
+        //[_gameManager incrementLevelCount];
+        
         
         //Update the "Best" scores in LiggerGamedata.plist
-        ScoreData* scoreData = [[ScoreData alloc] initWithScore:_gameData.GameScore MaxLevel:[_gameManager level] Name:[GameData userName] Date:stringFromDate   GUID:@"GUID" Device:@"Device" Remaing:kTOTALTIMER-((LevelTimer*)self.timer).seconds];
+        ScoreData* scoreData = [[ScoreData alloc] initWithScore:_gameData.GameScore MaxLevel:[_gameManager level] Name:[GameData userName] Date:stringFromDate   GUID:[GameData userID] Device:[GameData deviceID]  Remaing:kTOTALTIMER-((LevelTimer*)self.timer).seconds];
         //this is an important and powerful line
         //GameData::isScoreHigh sets the 'Best-' fields in LiggerGamedata.plist if needed, and returns true if done
         scoreData.isHighScore = [_gameManager._gameData updateHighScore:scoreData];
+        //this is used to in PopupLayer to distinguish between a LevelUp and GameOver
+        //could replace this by checking for a scoreObj!!
         scoreData.isGameOver = true;
+        
+        //Call the GameManager here= GameOver!
+        //lets pass this a ScoreData object too.
+        [_gameManager gameOver:scoreData];
+        
 
         [self showPopoverNamed:@"Popups/GameOver"];
         [_popoverMenuLayer initWithScoreData:scoreData];
-
-        
-         [_gameData printLog];
+        //for debuging
+        [_gameData printLog];
     }
      NSLog(@"Game Over*****************");
 }
@@ -708,7 +711,7 @@ bool isCollisionInProgress = false;
             //quick hack
             NSAssert(_gameManager!= NULL, @"gameManager is NULL");
             
-            ScoreData* scoreData = [[ScoreData alloc] initWithScore:_gameData.GameScore MaxLevel:[_gameManager level] Name:[GameData userName] Date:stringFromDate   GUID:@"GUID" Device:@"Device" Remaing:kTOTALTIMER-((LevelTimer*)self.timer).seconds];
+            ScoreData* scoreData = [[ScoreData alloc] initWithScore:_gameData.GameScore MaxLevel:[_gameManager level] Name:[GameData userName] Date:stringFromDate   GUID:[GameData userID] Device:[GameData deviceID] Remaing:kTOTALTIMER-((LevelTimer*)self.timer).seconds];
 //            //isGameOver?
 //            [self showPopoverNamed:@"Popups/GameOver"];
             [self showPopoverNamed:@"Popups/LevelScore"];

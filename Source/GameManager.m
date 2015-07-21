@@ -95,19 +95,59 @@
 /*
  * Sends GameData to the web service
  */
--(void) gameOver
+-(void) gameOver:(ScoreData*) scoreData;
 {
     NSMutableDictionary* _settings = [GameData getGameSettings];
     [_settings setObject:self._gameData.Gamelog forKey:@"log"];
+    [_settings setObject:[scoreData getScoreObjects] forKey:@"scoreObj"];
     [GameData saveGameSettings:_settings];
     NSLog(@"GameManager::gameOver saved Log to Plist");
     
-    NSLog(@"GameManager::gameOver completed");
+    NSError* err;
+    NSData* aData = [NSJSONSerialization dataWithJSONObject:[GameData getGameSettings] options:NSJSONWritingPrettyPrinted error:&err];
+    NSString* strLog = [[NSString alloc] initWithData:aData encoding:NSUTF8StringEncoding];
+    //NSString* strLog = [[GameData getGameSettings] description];
+    //TODO: TEST!!
+    [self sendLog:strLog];
+    NSLog(@"GameManager::gameOver sent Plist to Web Service");
+    
+    
+    //NSLog(@"GameManager::gameOver completed");
 }
 
 
-//it should take your score totals/ and add them to the gamedata, along with your Settings and Scoring gamedata, and upload to the webservice
+//using NSURLConnection for compatability with iOS6
 
+- (void)sendLog:(NSString*) log
+{
+    @try {
+    NSURL *url = [NSURL URLWithString:@"http://ligger.fezzee.net:5433"];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"POST"];
+    NSData* dataIn = [log dataUsingEncoding:NSUTF8StringEncoding];
+    [request setHTTPBody:dataIn];
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response,
+                                               NSData *data, NSError *connectionError)
+     {
+           if (connectionError != nil)
+           {
+               NSLog(@"Log upload error: %@", connectionError);
+           }
+     }];
+    }
+    @catch (NSException * e) {
+        NSLog(@"Exception: %@", e);
+        NSLog(@"%@",[NSThread callStackSymbols]);
+    }
+    @finally {
+        //
+    }
+
+
+//it should take your score totals/ and add them to the gamedata, along with your Settings and Scoring gamedata, and upload to the webservice
+}
 
 
 @end

@@ -9,6 +9,7 @@
 #import "LeaderboardLayer.h"
 #import "MainScene.h"
 #import "ScoreData.h"
+#import "GameData.h"
 
 @implementation LeaderboardLayer
 
@@ -18,14 +19,10 @@
     [((MainScene*)self.parent) removePopover];
 }
 
-#warning In Progress
 -(id) setPersonalBest:(NSDictionary*) best
 {
-//    if((self=[super init]))
-//    {
-        NSLog(@">>>>>> LeaderboardLayer::initWithPersonalBest: %lu >>>>>>",(unsigned long)best.count);
-        self.bestPersonal=best;
-//    }
+    NSLog(@">>>>>> LeaderboardLayer::initWithPersonalBest: %lu >>>>>>",(unsigned long)best.count);
+    self.bestPersonal=best;
     return self;
 }
 
@@ -33,69 +30,126 @@
 {
     [super onEnter];
     NSLog(@"Leaderboard onEnter");
-    __ScoresDatum = [NSArray arrayWithObjects:  [[ScoreData alloc]initWithScore:10320 MaxLevel:[NSNumber numberWithInt:6] Name:@"MajesticPotato"  Date:@"23 Jun 2015 13:23" GUID:@"KJ67GFD" Device:@"ABC"
-                                                    Remaing:5],
-                                                [[ScoreData alloc]initWithScore: 10070 MaxLevel:[NSNumber numberWithInt:4] Name:@"SarahN" Date:@"24 Jun 2015 11:53" GUID:@"YJ67GFD" Device:@"ABC" Remaing:5],
-                                                [[ScoreData alloc]initWithScore: 9910 MaxLevel:[NSNumber numberWithInt:5] Name:@"GinjaNinga" Date:@"24 Jun 2015 13:23" GUID:@"HJ67GFD" Device:@"ABC" Remaing:5],
-//                                                [[ScoreData alloc]initWithScore: 9090 MaxLevel:[NSNumber numberWithInt:10] Name:@"Test Name4" Date:@"24 Jun 2015 16:53" GUID:@"6J67GFD" Device:@"ABC" Remaing:5],
-//                                                [[ScoreData alloc]initWithScore:10720 MaxLevel:[NSNumber numberWithInt:11] Name:@"Test Name5" Date:@"25 Jun 2015 13:23" GUID:@"KJ67GFD" Device:@"ABC" Remaing:5],
-//                                                [[ScoreData alloc]initWithScore: 7390 MaxLevel:[NSNumber numberWithInt:10] Name:@"Test Name6" Date:@"26 Jun 2015 11:53" GUID:@"0J67GFD" Device:@"ABC" Remaing:5],
-                                                nil];
-    NSLog(@"Demo data init: num objects: %lu", (unsigned long)__ScoresDatum.count);
+    //[self fetchLeaders];
     
 }
+
+- (void)fetchLeaders;
+{
+    @try {
+        
+  
+        NSURL *url = [NSURL URLWithString:@"http://ligger.fezzee.net:5433"];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+//        [NSURLConnection sendAsynchronousRequest:request
+//                                           queue:[NSOperationQueue mainQueue]
+//                               completionHandler:^(NSURLResponse *response,
+//                                                   NSData *data, NSError *connectionError)
+        NSURLResponse * response = nil;
+        NSError * connectionError = nil;
+        NSData * data = [NSURLConnection sendSynchronousRequest:request
+                                              returningResponse:&response
+                                                          error:&connectionError];
+        {
+             if (data.length > 0 && connectionError == nil)
+             {
+                 NSArray *leaders = [NSJSONSerialization JSONObjectWithData:data
+                                                                          options:0
+                                                                            error:NULL];
+                  NSLog(@"Polulate plist here!");
+                 NSMutableDictionary* _settings = [GameData getGameSettings];
+                 //write to plist
+                 for (int i = 0; i < 3; i++) //hardcoded 3 because each of the three state behaviors are hardcoded
+                 {
+                     
+                     NSDictionary* dict = leaders[i];
+                     switch(i)
+                     {
+                         case 0:
+                             [_settings setObject:dict forKey:@"LeaderA"];
+                             break;
+                         case 1:
+                             [_settings setObject:dict forKey:@"LeaderB"];
+                             break;
+                         case 2:
+                             [_settings setObject:dict forKey:@"LeaderC"];
+                             break;
+                         default:
+                             break;
+                     }
+                 }
+                 [GameData saveGameSettings:_settings];
+                 NSLog(@"LeaderBoard::fetchLeaders updated Plist with Leaders");
+             }
+         }//];
+    }
+    @catch (NSException * e) {
+            NSLog(@"Exception: %@", e);
+            NSLog(@"%@",[NSThread callStackSymbols]);
+    }
+    @finally {
+          //[self refreshBoard];
+    }
+    
+}
+
+
 
 
 -(void) refreshBoard
 {
 
-    @try {
+    @try
+    {
+        [self fetchLeaders];
         
         NSLog(@"refreshBoard");
-   
-    __row1name.string = ((ScoreData*)__ScoresDatum[0]).scoreName;
-    __row1date.string = ((ScoreData*)__ScoresDatum[0]).scoreDate;
-    __row1score.string = [((ScoreData*)__ScoresDatum[0]).scoreValue stringValue];
-    __row1levels.string = [((ScoreData*)__ScoresDatum[0]).scoreLevel stringValue];
-    
-    __row2name.string = ((ScoreData*)__ScoresDatum[1]).scoreName;
-    __row2date.string = ((ScoreData*)__ScoresDatum[1]).scoreDate;
-    __row2score.string = [((ScoreData*)__ScoresDatum[1]).scoreValue stringValue];
-    __row2levels.string = [((ScoreData*)__ScoresDatum[1]).scoreLevel stringValue];
-    
-    __row3name.string = ((ScoreData*)__ScoresDatum[2]).scoreName;
-    __row3date.string = ((ScoreData*)__ScoresDatum[2]).scoreDate;
-    __row3score.string = [((ScoreData*)__ScoresDatum[2]).scoreValue stringValue];
-    __row3levels.string = [((ScoreData*)__ScoresDatum[2]).scoreLevel stringValue];
-    
-    ///////////////////////////////////////////////////////////////////////////////
+            
+        NSMutableDictionary* _settings = [GameData getGameSettings];
+        NSDictionary* leaderA = [_settings objectForKey:@"LeaderA"];
+        NSDictionary* leaderB = [_settings objectForKey:@"LeaderB"];
+        NSDictionary* leaderC = [_settings objectForKey:@"LeaderC"];
+       
+        __row1name.string = [((NSDictionary*)leaderA) objectForKey:@"name"]==nil?@"":[((NSDictionary*)leaderA) objectForKey:@"name"];
+        __row1date.string = [((NSDictionary*)leaderA) objectForKey:@"datetime"]==nil?@"":[((NSDictionary*)leaderA) objectForKey:@"datetime"];
+        __row1score.string = [[((NSDictionary*)leaderA) objectForKey:@"score"]==nil?@"":[((NSDictionary*)leaderA) objectForKey:@"score"] stringValue];
+        __row1levels.string = [[((NSDictionary*)leaderA) objectForKey:@"level"]==nil?@"":[((NSDictionary*)leaderA) objectForKey:@"level"] stringValue];
+        
+        __row2name.string = [((NSDictionary*)leaderB) objectForKey:@"name"]==nil?@"":[((NSDictionary*)leaderB) objectForKey:@"name"];
+        __row2date.string = [((NSDictionary*)leaderB) objectForKey:@"datetime"]==nil?@"":[((NSDictionary*)leaderB) objectForKey:@"datetime"];
+        __row2score.string = [[((NSDictionary*)leaderB) objectForKey:@"score"]==nil?@"":[((NSDictionary*)leaderB) objectForKey:@"score"] stringValue];
+        __row2levels.string = [[((NSDictionary*)leaderB) objectForKey:@"level"]==nil?@"":[((NSDictionary*)leaderB) objectForKey:@"level"] stringValue];
+        
+        __row3name.string = [((NSDictionary*)leaderC) objectForKey:@"name"]==nil?@"":[((NSDictionary*)leaderC) objectForKey:@"name"];
+        __row3date.string = [((NSDictionary*)leaderC) objectForKey:@"datetime"]==nil?@"":[((NSDictionary*)leaderC) objectForKey:@"datetime"];
+        __row3score.string = [[((NSDictionary*)leaderC) objectForKey:@"score"]==nil?@"":[((NSDictionary*)leaderC) objectForKey:@"score"] stringValue];
+        __row3levels.string = [[((NSDictionary*)leaderC) objectForKey:@"level"]==nil?@"":[((NSDictionary*)leaderC) objectForKey:@"level"] stringValue];
+        
+        ///////////////////////////////////////////////////////////////////////////////
         NSDictionary* best1 = [self.bestPersonal objectForKey:@"Best-1"];
         NSDictionary* best2 = [self.bestPersonal objectForKey:@"Best-2"];
         NSDictionary* best3 = [self.bestPersonal objectForKey:@"Best-3"];
+            
+        __row4name.string =  [((NSDictionary*)best1) objectForKey:@"scoreName"]==nil?@"":[((NSDictionary*)best1) objectForKey:@"scoreName"];
+        __row4date.string =  [((NSDictionary*)best1) objectForKey:@"scoreDate"]==nil?@"":[((NSDictionary*)best1) objectForKey:@"scoreDate"];
+        __row4score.string = [((NSDictionary*)best1) objectForKey:@"scoreValue"]==nil?@"":[[((NSDictionary*)best1) objectForKey:@"scoreValue"] stringValue];
+        __row4levels.string =[((NSDictionary*)best1) objectForKey:@"scoreLevel"]==nil?@"":[[((NSDictionary*)best1) objectForKey:@"scoreLevel"] stringValue];
+            
+        __row5name.string =  [((NSDictionary*)best2) objectForKey:@"scoreName"]==nil?@"":[((NSDictionary*)best2) objectForKey:@"scoreName"];
+        __row5date.string =  [((NSDictionary*)best2) objectForKey:@"scoreDate"]==nil?@"":[((NSDictionary*)best2) objectForKey:@"scoreDate"];
+        __row5score.string = [((NSDictionary*)best2) objectForKey:@"scoreValue"]==nil?@"":[[((NSDictionary*)best2) objectForKey:@"scoreValue"] stringValue];
+        __row5levels.string =[((NSDictionary*)best2) objectForKey:@"scoreLevel"]==nil?@"":[[((NSDictionary*)best2) objectForKey:@"scoreLevel"] stringValue];
         
-    __row4name.string =  [((NSDictionary*)best1) objectForKey:@"scoreName"]==nil?@"":[((NSDictionary*)best1) objectForKey:@"scoreName"];
-    __row4date.string =  [((NSDictionary*)best1) objectForKey:@"scoreDate"]==nil?@"":[((NSDictionary*)best1) objectForKey:@"scoreDate"];
-    __row4score.string = [((NSDictionary*)best1) objectForKey:@"scoreValue"]==nil?@"":[[((NSDictionary*)best1) objectForKey:@"scoreValue"] stringValue];
-    __row4levels.string =[((NSDictionary*)best1) objectForKey:@"scoreLevel"]==nil?@"":[[((NSDictionary*)best1) objectForKey:@"scoreLevel"] stringValue];
-        
-    __row5name.string =  [((NSDictionary*)best2) objectForKey:@"scoreName"]==nil?@"":[((NSDictionary*)best2) objectForKey:@"scoreName"];
-    __row5date.string =  [((NSDictionary*)best2) objectForKey:@"scoreDate"]==nil?@"":[((NSDictionary*)best2) objectForKey:@"scoreDate"];
-    __row5score.string = [((NSDictionary*)best2) objectForKey:@"scoreValue"]==nil?@"":[[((NSDictionary*)best2) objectForKey:@"scoreValue"] stringValue];
-    __row5levels.string =[((NSDictionary*)best2) objectForKey:@"scoreLevel"]==nil?@"":[[((NSDictionary*)best2) objectForKey:@"scoreLevel"] stringValue];
-    
-    __row6name.string =  [((NSDictionary*)best3) objectForKey:@"scoreName"]==nil?@"":[((NSDictionary*)best3) objectForKey:@"scoreName"];
-    __row6date.string =  [((NSDictionary*)best3) objectForKey:@"scoreDate"]==nil?@"":[((NSDictionary*)best3) objectForKey:@"scoreDate"];
-    __row6score.string = [((NSDictionary*)best3) objectForKey:@"scoreValue"]==nil?@"":[[((NSDictionary*)best3) objectForKey:@"scoreValue"] stringValue];
-    __row6levels.string =[((NSDictionary*)best3) objectForKey:@"scoreLevel"]==nil?@"":[[((NSDictionary*)best3) objectForKey:@"scoreLevel"] stringValue];
-   
-
-        
+        __row6name.string =  [((NSDictionary*)best3) objectForKey:@"scoreName"]==nil?@"":[((NSDictionary*)best3) objectForKey:@"scoreName"];
+        __row6date.string =  [((NSDictionary*)best3) objectForKey:@"scoreDate"]==nil?@"":[((NSDictionary*)best3) objectForKey:@"scoreDate"];
+        __row6score.string = [((NSDictionary*)best3) objectForKey:@"scoreValue"]==nil?@"":[[((NSDictionary*)best3) objectForKey:@"scoreValue"] stringValue];
+        __row6levels.string =[((NSDictionary*)best3) objectForKey:@"scoreLevel"]==nil?@"":[[((NSDictionary*)best3) objectForKey:@"scoreLevel"] stringValue];
+  
     }
     @catch (NSException * e) {
-        NSLog(@"Exception: %@", e);
+        NSLog(@">> Exception: %@", e);
         NSLog(@"%@",[NSThread callStackSymbols]);
     }
-
 }
 
 @end

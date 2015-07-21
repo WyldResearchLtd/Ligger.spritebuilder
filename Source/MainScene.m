@@ -232,7 +232,7 @@
     }
 }
 
-#warning In Testing
+
 -(void) startLeaderboard
 {
     if (_popoverMenuLayer == nil)
@@ -241,7 +241,7 @@
         NSDictionary* dict = [GameData getPersonalBest];
         NSLog(@"+++++++Show LEADERBOARD++++++: ");
         [self showPopoverNamed:@"Popups/Leaderboard"];
-        id rtn = [_popoverLeaderboardLayer setPersonalBest:dict];
+        [_popoverLeaderboardLayer setPersonalBest:dict];
         [_popoverLeaderboardLayer refreshBoard];
        
         
