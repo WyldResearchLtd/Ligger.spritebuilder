@@ -121,7 +121,7 @@
 - (void)sendLog:(NSString*) log
 {
     @try {
-    NSURL *url = [NSURL URLWithString:@"http://ligger.fezzee.net:5433"];
+    NSURL *url = [NSURL URLWithString:@"http://localhost:5433"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"POST"];
     NSData* dataIn = [log dataUsingEncoding:NSUTF8StringEncoding];

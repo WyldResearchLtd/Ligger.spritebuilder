@@ -39,12 +39,14 @@
     @try {
         
   
-        NSURL *url = [NSURL URLWithString:@"http://ligger.fezzee.net:5433"];
+        NSURL *url = [NSURL URLWithString:@"http://localhost:5433"];
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        
 //        [NSURLConnection sendAsynchronousRequest:request
 //                                           queue:[NSOperationQueue mainQueue]
 //                               completionHandler:^(NSURLResponse *response,
 //                                                   NSData *data, NSError *connectionError)
+        
         NSURLResponse * response = nil;
         NSError * connectionError = nil;
         NSData * data = [NSURLConnection sendSynchronousRequest:request
@@ -58,11 +60,11 @@
                                                                             error:NULL];
                   NSLog(@"Polulate plist here!");
                  NSMutableDictionary* _settings = [GameData getGameSettings];
-                 //write to plist
+                 //write to plist if
                  for (int i = 0; i < 3; i++) //hardcoded 3 because each of the three state behaviors are hardcoded
                  {
                      
-                     NSDictionary* dict = leaders[i];
+                     NSDictionary* dict = leaders.count>i?leaders[i]:[[NSDictionary alloc]init];
                      switch(i)
                      {
                          case 0:
@@ -81,7 +83,8 @@
                  [GameData saveGameSettings:_settings];
                  NSLog(@"LeaderBoard::fetchLeaders updated Plist with Leaders");
              }
-         }//];
+         }
+         //];//comment this out for Synchronise
     }
     @catch (NSException * e) {
             NSLog(@"Exception: %@", e);
@@ -110,20 +113,29 @@
         NSDictionary* leaderB = [_settings objectForKey:@"LeaderB"];
         NSDictionary* leaderC = [_settings objectForKey:@"LeaderC"];
        
+        if (leaderA.count>0)
+        {
         __row1name.string = [((NSDictionary*)leaderA) objectForKey:@"name"]==nil?@"":[((NSDictionary*)leaderA) objectForKey:@"name"];
         __row1date.string = [((NSDictionary*)leaderA) objectForKey:@"datetime"]==nil?@"":[((NSDictionary*)leaderA) objectForKey:@"datetime"];
         __row1score.string = [[((NSDictionary*)leaderA) objectForKey:@"score"]==nil?@"":[((NSDictionary*)leaderA) objectForKey:@"score"] stringValue];
         __row1levels.string = [[((NSDictionary*)leaderA) objectForKey:@"level"]==nil?@"":[((NSDictionary*)leaderA) objectForKey:@"level"] stringValue];
+        }
         
+        if (leaderB.count>0)
+        {
         __row2name.string = [((NSDictionary*)leaderB) objectForKey:@"name"]==nil?@"":[((NSDictionary*)leaderB) objectForKey:@"name"];
         __row2date.string = [((NSDictionary*)leaderB) objectForKey:@"datetime"]==nil?@"":[((NSDictionary*)leaderB) objectForKey:@"datetime"];
         __row2score.string = [[((NSDictionary*)leaderB) objectForKey:@"score"]==nil?@"":[((NSDictionary*)leaderB) objectForKey:@"score"] stringValue];
         __row2levels.string = [[((NSDictionary*)leaderB) objectForKey:@"level"]==nil?@"":[((NSDictionary*)leaderB) objectForKey:@"level"] stringValue];
+        }
         
+        if (leaderC.count>0)
+        {
         __row3name.string = [((NSDictionary*)leaderC) objectForKey:@"name"]==nil?@"":[((NSDictionary*)leaderC) objectForKey:@"name"];
         __row3date.string = [((NSDictionary*)leaderC) objectForKey:@"datetime"]==nil?@"":[((NSDictionary*)leaderC) objectForKey:@"datetime"];
         __row3score.string = [[((NSDictionary*)leaderC) objectForKey:@"score"]==nil?@"":[((NSDictionary*)leaderC) objectForKey:@"score"] stringValue];
         __row3levels.string = [[((NSDictionary*)leaderC) objectForKey:@"level"]==nil?@"":[((NSDictionary*)leaderC) objectForKey:@"level"] stringValue];
+        }
         
         ///////////////////////////////////////////////////////////////////////////////
         NSDictionary* best1 = [self.bestPersonal objectForKey:@"Best-1"];
