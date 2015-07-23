@@ -39,7 +39,7 @@
     @try {
         
   
-        NSURL *url = [NSURL URLWithString:@"http://localhost:5433"];
+        NSURL *url = [NSURL URLWithString:@"http://ligger-api.fezzee.net"];
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
         
 //        [NSURLConnection sendAsynchronousRequest:request

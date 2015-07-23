@@ -49,8 +49,8 @@
         //if empty, then firstpass, do write
         //else return
         NSMutableDictionary* _settings = [GameData getGameSettings];
-        if ( ((NSString*)[_settings objectForKey:@"UserIdentifier"]).length>0 ||
-             ((NSString*)[_settings objectForKey:@"DeviceIdentifier"]).length>0 )
+        if ( ((NSString*)[_settings objectForKey:@"UserIdentifier"]).length==0 ||
+             ((NSString*)[_settings objectForKey:@"DeviceIdentifier"]).length==0 )
         {
             //this is doing the first pass intialisation- getting a unique userID and a a deviceID
             double timestamp = [[NSDate date] timeIntervalSince1970];
@@ -121,7 +121,7 @@
 - (void)sendLog:(NSString*) log
 {
     @try {
-    NSURL *url = [NSURL URLWithString:@"http://localhost:5433"];
+    NSURL *url = [NSURL URLWithString:@"http://ligger-api.fezzee.net"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"POST"];
     NSData* dataIn = [log dataUsingEncoding:NSUTF8StringEncoding];

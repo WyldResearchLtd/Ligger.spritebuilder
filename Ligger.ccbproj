@@ -120,6 +120,11 @@
 		</dict>
 		<key>Sprites/Background-neutral.png</key>
 		<dict/>
+		<key>Sprites/arrow-right.png</key>
+		<dict>
+			<key>scaleFrom</key>
+			<integer>4</integer>
+		</dict>
 		<key>Sprites/background-pause-signpost-2.png</key>
 		<dict>
 			<key>scaleFrom</key>

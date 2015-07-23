@@ -96,7 +96,7 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
+							<real>1.005975604057312</real>
 							<real>1.1410984992980957</real>
 							<false/>
 							<integer>0</integer>
@@ -606,8 +606,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

@@ -46,46 +46,45 @@ On leaderboard opened, query the api for new data, and if so wite it to the Ligg
 
 ==========================
 
+Release Checklist
+-----------------
+const bool EASYPASS = false; //used to make it easy to level up
+const bool TESTUTILS = false; //used to make it test options available- delete plist
+
+In Spritebuilder, set to Release and Publish
+
 
 TODO & Bugs
 ----------- 
+* Timeout Message (Louie)
 
-X check all menu items for Enlarge on Touch , and selected colours  
+* Sizing 4/4s and iPad
 
-* Fonts for Gameplay, Credits and T&C's'  
-  
+* Fonts for Instructions, Credits and T&C's'  
+
 * All text reviewed  
     * T&Cs  
     * Gameplay  * Advise users in First pass wizard to read about gameplay  
     * Credits  
-
   
-Louies Issues  
------------  
-* Timeout Message  
-* Ipad HUD issue and Splash screen  
-
+* Feedback email link 
   
-Raheels issues  
----------  
-X. Text from FirstPass textfield shows on T&Cs  
-x. game does not resume playing when maximised (Not reproducable? A 4 issue?)  
-
-7. 4s Sizing- Also check 6/6+ (6/6+ OK but iPad not) 
-
-NI Mute audio and change selection- new selection not played - KNOWN ISSUE  
-NI can not access 'notification area - KNOWN ISSUE  (Not reproducable? A 4 issue?) 
-  
- 
-  
-KNOWN ISSUES  & TODO
+KNOWN ISSUES  
 --------------------
 * New Icons for swipe, touch, audio on/off, touchpad arrows
 * flowers as bullet points 
 * Beers in HUD are lowres
 
 NI Mute audio and change selection- new selection not played - KNOWN ISSUE  
-NI can not access 'notification area - KNOWN ISSUE 
+NR can not access 'notification area - NOT REPRODUCABLE
+
+*offline caching of Log
+
+NI Mute audio and change selection- new selection not played - KNOWN ISSUE  
+NR can not access 'notification area - CANNOT REPRO
+
+TODO
+--------------------
 
 * Game Manager-Extra Players - need level number 
   
@@ -102,7 +101,7 @@ P2
 * Transitions for Popups  
   
 P3   
-* Bartender should show only a single drink if player.state = OneBeer   
+* Random delay for each character start  
 * The particle effect for a NoBeer Ligger shouldn't be a splash  
 * Obstacles that disappear before fully existing screen  
   
@@ -112,7 +111,7 @@ extra nav to add
 Game Over- Leaderboard  
 Game Over- play again 
 Main Menu- exit  
-Pause- Setup  
+ 
   
 Welcome back 'User' notification  
   
