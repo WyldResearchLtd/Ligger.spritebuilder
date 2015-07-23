@@ -53,6 +53,10 @@ const bool TESTUTILS = false; //used to make it test options available- delete p
 
 In Spritebuilder, set to Release and Publish
 
+Update Version
+
+
+
 
 TODO & Bugs
 ----------- 

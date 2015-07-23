@@ -36,8 +36,9 @@
 + (NSNumber*) soundtrack;
 + (void) setSoundtrack:(NSNumber*)value;
 
-//+(void) saveGameSettings;
+
 +(void) saveGameSettings:(NSMutableDictionary*)gameData;
++(void) archiveGameSettings:(NSMutableDictionary*)gameData;
 +(NSMutableDictionary*) getGameSettings;
 +(void) readAndInit;
 +(NSMutableDictionary*) getPersonalBest;
@@ -61,6 +62,7 @@
 //TODO: Implement
 -(void) collisionFinal:(CGPoint) position atSecs:(int)secs;
 -(void) collisionInterim:(CGPoint) position atSecs:(int)secs;
+-(void) logGameError:(NSString*)msg atSecs:(int)secs;
 
 //////
 

@@ -14,7 +14,7 @@
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
-	<integer>0</integer>
+	<integer>1</integer>
 	<key>currentSequenceId</key>
 	<integer>0</integer>
 	<key>docDimensionsType</key>
@@ -73,11 +73,11 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>279.29644775390625</real>
-							<real>157.29513549804688</real>
+							<real>0.54550087451934814</real>
+							<real>0.40962275862693787</real>
 							<integer>0</integer>
-							<integer>0</integer>
-							<integer>0</integer>
+							<integer>2</integer>
+							<integer>2</integer>
 						</array>
 					</dict>
 					<dict>
@@ -2689,10 +2689,10 @@
 				<string>Size</string>
 				<key>value</key>
 				<array>
-					<real>1</real>
-					<real>1</real>
-					<integer>2</integer>
-					<integer>2</integer>
+					<real>512</real>
+					<real>384</real>
+					<integer>0</integer>
+					<integer>0</integer>
 				</array>
 			</dict>
 			<dict>
@@ -2720,6 +2720,8 @@
 				</array>
 			</dict>
 		</array>
+		<key>selected</key>
+		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>

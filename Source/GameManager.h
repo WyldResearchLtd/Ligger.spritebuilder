@@ -22,8 +22,9 @@
 
 @property (nonatomic) float gameSpeed;
 
-//-(id) initWithGamedata:(GameData*)gameData;
+
 -(id) initWithTimer:(LevelTimer*)timer;
+-(void) sendArchivedData;
 -(void) incrementLevelCount;
 -(void) gameOver:(ScoreData*) scoreData;
 - (void)sendLog:(NSString*) log;

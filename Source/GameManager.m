@@ -69,8 +69,39 @@
             [GameData saveGameSettings:_settings];
                  
         }
+        
+       //send async
+    //[self performSelector:@selector(sendArchivedData) withObject:nil];
+        
     }
     return self;
+}
+
+//-(void) sendArchivedData
+//{
+//    //EACH GAME, WE CHECK IF WE CAN SEND ARCHIVES
+//    NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+//    NSArray *files = [self getFiles:destPath];
+//    NSFileManager *fileManager = [NSFileManager defaultManager];
+//    for (int i = 0; i < files.count; i++)
+//    {
+//        if ([((NSString*)files[i]) hasPrefix:@"ARCHIVE-"])
+//        {
+//            NSString* fileSpec = [destPath stringByAppendingPathComponent:files[i]];
+//            //first upload
+//            [self sendLog:fileSpec];
+//            //delete even if sucessful because the sendLog rewrites it to a new filename
+//            NSError *error = nil;
+//            [fileManager removeItemAtPath:fileSpec error:&error];
+//            if (error)
+//                NSLog(@"GameManager::initWithTimer File Delete Error : %@", error);
+//        }
+//    }
+//}
+
+-(NSArray*) getFiles:(NSString*)documentsDirectory
+{
+    return [[NSFileManager defaultManager] subpathsOfDirectoryAtPath:documentsDirectory  error:nil];
 }
 
 
@@ -107,7 +138,6 @@
     NSData* aData = [NSJSONSerialization dataWithJSONObject:[GameData getGameSettings] options:NSJSONWritingPrettyPrinted error:&err];
     NSString* strLog = [[NSString alloc] initWithData:aData encoding:NSUTF8StringEncoding];
     //NSString* strLog = [[GameData getGameSettings] description];
-    //TODO: TEST!!
     [self sendLog:strLog];
     NSLog(@"GameManager::gameOver sent Plist to Web Service");
     
@@ -134,12 +164,20 @@
            if (connectionError != nil)
            {
                NSLog(@"Log upload error: %@", connectionError);
+               [self._gameData  logGameError:[connectionError description] atSecs:((LevelTimer*)self._timer).seconds];
+               NSMutableDictionary* _settings = [GameData getGameSettings];
+               [_settings setObject:self._gameData.Gamelog forKey:@"log"];
+               [GameData archiveGameSettings:_settings];
            }
      }];
     }
     @catch (NSException * e) {
         NSLog(@"Exception: %@", e);
-        NSLog(@"%@",[NSThread callStackSymbols]);
+        NSLog(@"%@", [NSThread callStackSymbols]);
+        [self._gameData  logGameError:[NSString stringWithFormat:@"EXCEPTION: %@ STACKTRACE: %@", e, [NSThread callStackSymbols]] atSecs:((LevelTimer*)self._timer).seconds];
+        NSMutableDictionary* _settings = [GameData getGameSettings];
+        [_settings setObject:self._gameData.Gamelog forKey:@"log"];
+        [GameData archiveGameSettings:_settings];
     }
     @finally {
         //

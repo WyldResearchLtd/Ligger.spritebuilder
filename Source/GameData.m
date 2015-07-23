@@ -274,6 +274,10 @@ static NSString* _deviceID;
     [self addToGameLog:@"Collision: Interim" atSecs:secs forPosition:position];
 }
 
+-(void) logGameError:(NSString*) msg atSecs:(int)secs
+{
+    [self addToGameLog:[NSString stringWithFormat:@"ERROR:: %@", msg] atSecs:secs forPosition:CGPointMake(0,0)];
+}
 
 /////////////////////////////////////////////////////////////////////////////////////////
 
@@ -289,6 +293,7 @@ static NSString* _deviceID;
     [_Gamelog addObject:entry];
     //NSLog(@"%@",entry);
 }
+
 
 -(void) reset
 {
@@ -307,6 +312,20 @@ static NSString* _deviceID;
     }
 }
 
++(void) archiveGameSettings:(NSMutableDictionary*)gameData
+{
+    
+    NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    double timestamp = [[NSDate date] timeIntervalSince1970];
+    NSString* achiveFilename = [[NSString stringWithFormat:@"archive-%02x.plist", (unsigned int) timestamp] uppercaseString];
+    destPath = [destPath stringByAppendingPathComponent:achiveFilename];
+    
+    [gameData writeToFile:destPath atomically:YES];
+    NSLog(@"PList Written at %@",destPath);
+    
+    //should we check if it is empty, and if empty,
+}
+
 
 +(void) saveGameSettings:(NSMutableDictionary*)gameData
 {
@@ -321,9 +340,7 @@ static NSString* _deviceID;
 }
 
 
-
 // see http://stackoverflow.com/questions/7628372/ios-how-to-write-a-data-in-plist
-// should I use NSUserDefaults instead?
 +(NSMutableDictionary*) getGameSettings
 {
     NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
