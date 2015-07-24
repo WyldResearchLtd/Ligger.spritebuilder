@@ -55,7 +55,7 @@ bool isCollisionInProgress = false;
 
     _gameManager = [[GameManager alloc] initWithTimer:_timer];
 
-    //self.gameData = _gameManager._gameData;
+    self.gameData = _gameManager._gameData;
     NSLog(@"GameScene: GameManager (GameData) created");
     
 
