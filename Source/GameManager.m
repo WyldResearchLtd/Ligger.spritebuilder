@@ -77,32 +77,28 @@
     return self;
 }
 
-//-(void) sendArchivedData
-//{
-//    //EACH GAME, WE CHECK IF WE CAN SEND ARCHIVES
-//    NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-//    NSArray *files = [self getFiles:destPath];
-//    NSFileManager *fileManager = [NSFileManager defaultManager];
-//    for (int i = 0; i < files.count; i++)
-//    {
-//        if ([((NSString*)files[i]) hasPrefix:@"ARCHIVE-"])
-//        {
-//            NSString* fileSpec = [destPath stringByAppendingPathComponent:files[i]];
-//            //first upload
-//            [self sendLog:fileSpec];
-//            //delete even if sucessful because the sendLog rewrites it to a new filename
-//            NSError *error = nil;
-//            [fileManager removeItemAtPath:fileSpec error:&error];
-//            if (error)
-//                NSLog(@"GameManager::initWithTimer File Delete Error : %@", error);
-//        }
-//    }
-//}
-
--(NSArray*) getFiles:(NSString*)documentsDirectory
+-(void) sendArchivedData
 {
-    return [[NSFileManager defaultManager] subpathsOfDirectoryAtPath:documentsDirectory  error:nil];
+    NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSArray *files = [[NSFileManager defaultManager] subpathsOfDirectoryAtPath:destPath  error:nil];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    for (int i = 0; i < files.count; i++)
+    {
+        if ([((NSString*)files[i]) hasPrefix:@"ARCHIVE-"])
+        {
+            NSString* fileSpec = [destPath stringByAppendingPathComponent:files[i]];
+            //first upload
+            [self sendLog:fileSpec];
+            //delete even if sucessful because the sendLog rewrites it to a new filename
+            NSError *error = nil;
+            [fileManager removeItemAtPath:fileSpec error:&error];
+            if (error)
+                NSLog(@"GameManager::initWithTimer File Delete Error : %@", error);
+        }
+    }
 }
+
+
 
 
 // like i++;
@@ -161,23 +157,46 @@
                            completionHandler:^(NSURLResponse *response,
                                                NSData *data, NSError *connectionError)
      {
-           if (connectionError != nil)
-           {
-               NSLog(@"Log upload error: %@", connectionError);
-               [self._gameData  logGameError:[connectionError description] atSecs:((LevelTimer*)self._timer).seconds];
-               NSMutableDictionary* _settings = [GameData getGameSettings];
-               [_settings setObject:self._gameData.Gamelog forKey:@"log"];
-               [GameData archiveGameSettings:_settings];
-           }
+         if (connectionError != nil)
+         {
+             //convert the json 'log' back into a dictionary
+             NSError* jsonError;
+             NSData *objectData = [log dataUsingEncoding:NSUTF8StringEncoding];
+             NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
+                                                                         options:NSJSONReadingMutableContainers
+                                                                           error:&jsonError];
+             //make an archive copy of the LiggerGamedata.plist
+             NSLog(@"Log upload error: %@", connectionError);
+             [self._gameData  logGameError:[connectionError description] atSecs:((LevelTimer*)self._timer).seconds];
+             //NSMutableDictionary* _settings = [GameData getGameSettings];
+             [json setObject:self._gameData.Gamelog forKey:@"log"];
+             [GameData archiveGameSettings:json];
+         }
+//         else
+//         {
+//             //finally remove the scoreObject from LiggerGamedata.plist
+//             //this is how we know if we should retry sending- if the scoreObj is missing, we dont try
+//             NSMutableDictionary* _settings = [GameData getGameSettings];
+//             [_settings setObject:nil forKey:@"scoreObj"];
+//             [GameData saveGameSettings:_settings];
+//         }
+
      }];
     }
     @catch (NSException * e) {
         NSLog(@"Exception: %@", e);
         NSLog(@"%@", [NSThread callStackSymbols]);
         [self._gameData  logGameError:[NSString stringWithFormat:@"EXCEPTION: %@ STACKTRACE: %@", e, [NSThread callStackSymbols]] atSecs:((LevelTimer*)self._timer).seconds];
-        NSMutableDictionary* _settings = [GameData getGameSettings];
-        [_settings setObject:self._gameData.Gamelog forKey:@"log"];
-        [GameData archiveGameSettings:_settings];
+        
+        //convert the json 'log' back into a dictionary
+        NSError* jsonError;
+        NSData *objectData = [log dataUsingEncoding:NSUTF8StringEncoding];
+        NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
+                                                                    options:NSJSONReadingMutableContainers
+                                                                      error:&jsonError];
+        //make an archive copy of the LiggerGamedata.plist
+        [json setObject:self._gameData.Gamelog forKey:@"log"];
+        [GameData archiveGameSettings:json];
     }
     @finally {
         //

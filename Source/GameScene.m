@@ -54,8 +54,8 @@ bool isCollisionInProgress = false;
     
 
     _gameManager = [[GameManager alloc] initWithTimer:_timer];
-    //TODO: Replace all of the calls to self.gameData with calls to _gameManager._gameData, and integrate the LevelTimer more too
-    self.gameData = _gameManager._gameData;
+
+    //self.gameData = _gameManager._gameData;
     NSLog(@"GameScene: GameManager (GameData) created");
     
 
@@ -110,10 +110,11 @@ bool isCollisionInProgress = false;
    
      NSLog(@"Calc Bonus");
     if (self.playerState==TwoBeers)
-        [self.gameData finishTwoBeers:((LevelTimer*)self.timer).seconds hud:self._lblHUDscore];
+        [_gameManager._gameData finishTwoBeers:((LevelTimer*)self.timer).seconds hud:self._lblHUDscore];
     else if (self.playerState==OneBeer)
-        [self.gameData finishOneBeer:((LevelTimer*)self.timer).seconds hud:self._lblHUDscore];
-    [self.gameData calcBonus:kTOTALTIMER-((LevelTimer*)self.timer).seconds forPromotor:kPROMOTORS+1-(int)self.promotors.count hud:self._lblHUDscore];
+        [_gameManager._gameData finishOneBeer:((LevelTimer*)self.timer).seconds hud:self._lblHUDscore];
+    
+    [_gameManager._gameData calcBonus:kTOTALTIMER-((LevelTimer*)self.timer).seconds forPromotor:kPROMOTORS+1-(int)self.promotors.count hud:self._lblHUDscore];
     NSLog(@"Game Duration: %d",((LevelTimer*)_timer).seconds);
      NSLog(@"+++++++GAME SCORE++++++: %d", _gameData.GameScore);
 }
@@ -141,7 +142,6 @@ bool isCollisionInProgress = false;
         //GameData::isScoreHigh sets the 'Best-' fields in LiggerGamedata.plist if needed, and returns true if done
         scoreData.isHighScore = [_gameManager._gameData updateHighScore:scoreData];
         //this is used to in PopupLayer to distinguish between a LevelUp and GameOver
-        //could replace this by checking for a scoreObj!!
         scoreData.isGameOver = true;
         
         //Call the GameManager here= GameOver!
@@ -496,18 +496,18 @@ bool isCollisionInProgress = false;
     //Calculte scoring, because if this reached, there hasn't been a collision
     if (self.playerMoveState==PlayerUp && self.swiped)
     {
-        [self.gameData moveForward:_playerNode.position atSecs:((LevelTimer*)self.timer).seconds hud:self._lblHUDscore];
+        [_gameManager._gameData moveForward:_playerNode.position atSecs:((LevelTimer*)self.timer).seconds hud:self._lblHUDscore];
         //[self.lblHUDscore setString:[NSString stringWithFormat:@"Score: %d", _gameData.GameScore]];
         self.swiped=false;
     }
     else if (self.playerMoveState==PlayerDown && self.playerState==OneBeer && self.swiped)
     {
-        [self.gameData moveBack:_playerNode.position atSecs:((LevelTimer*)self.timer).seconds hud:self._lblHUDscore];
+        [_gameManager._gameData moveBack:_playerNode.position atSecs:((LevelTimer*)self.timer).seconds hud:self._lblHUDscore];
         self.swiped=false;
     }
     else if (self.playerMoveState==PlayerDown && self.playerState==TwoBeers && self.swiped)
     {
-        [self.gameData moveBack2:_playerNode.position atSecs:((LevelTimer*)self.timer).seconds hud:self._lblHUDscore];
+        [_gameManager._gameData moveBack2:_playerNode.position atSecs:((LevelTimer*)self.timer).seconds hud:self._lblHUDscore];
         self.swiped=false;
 
     }
@@ -547,7 +547,7 @@ bool isCollisionInProgress = false;
         {
             NSLog(@"BARTENDER %d SERVING(1)", idxBartender);
             //calc score
-            [self.gameData reachBartender:((LevelTimer*)self.timer).seconds hud:self._lblHUDscore];
+            [_gameManager._gameData reachBartender:((LevelTimer*)self.timer).seconds hud:self._lblHUDscore];
             //set state
             [self performSelector:@selector(serve2Beers) withObject:nil];
             bBartenderServing = true;
@@ -572,7 +572,7 @@ bool isCollisionInProgress = false;
             bBartenderServing = true;
             NSLog(@"BARTENDER %d SERVING(2)", idxBartender);
             //calc score
-            [self.gameData reachBartender:((LevelTimer*)self.timer).seconds hud:self._lblHUDscore];
+            [_gameManager._gameData reachBartender:((LevelTimer*)self.timer).seconds hud:self._lblHUDscore];
             //set state
             [self performSelector:@selector(serve2Beers) withObject:nil];
             [self updateHUD];
@@ -587,6 +587,7 @@ bool isCollisionInProgress = false;
            cntBartender += 1;
     }
 }
+
 
 -(void) advancePromotor
 {
