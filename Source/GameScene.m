@@ -144,9 +144,15 @@ bool isCollisionInProgress = false;
         //this is used to in PopupLayer to distinguish between a LevelUp and GameOver
         scoreData.isGameOver = true;
         
+        //before creating a trying to send the new score object, lets see if we have any existing ones
+        [_gameManager checkForArchivedScores];
+        
         //Call the GameManager here= GameOver!
         //lets pass this a ScoreData object too.
         [_gameManager gameOver:scoreData];
+        
+        
+        
         
 
         [self showPopoverNamed:@"Popups/GameOver"];
@@ -1093,6 +1099,7 @@ bool isCollisionInProgress = false;
 -(void) startGame
 {
     //NSLog(@"PLAYER START POS- x:%f y:%f Numb obstabcle: %lu",_playerNode.position.x,_playerNode.position.y,(unsigned long)self.obstacles.count);
+    
     
     GameScene.halt = false;
     

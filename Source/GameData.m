@@ -321,7 +321,7 @@ static NSString* _deviceID;
     destPath = [destPath stringByAppendingPathComponent:achiveFilename];
     
     [gameData writeToFile:destPath atomically:YES];
-    NSLog(@"PList Written at %@",destPath);
+    NSLog(@"PList ARCHIVE Written at %@",destPath);
     
     //should we check if it is empty, and if empty,
 }

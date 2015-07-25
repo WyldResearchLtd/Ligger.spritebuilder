@@ -24,9 +24,10 @@
 
 
 -(id) initWithTimer:(LevelTimer*)timer;
--(void) sendArchivedData;
+//-(void) sendArchivedData; //keep private- blocking
+-(void) checkForArchivedScores; //the public version- non blocking
 -(void) incrementLevelCount;
 -(void) gameOver:(ScoreData*) scoreData;
-- (void)sendLog:(NSString*) log;
+//- (void)sendLog:(NSString*) log;
 
 @end

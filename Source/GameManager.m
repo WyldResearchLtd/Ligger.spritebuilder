@@ -77,23 +77,28 @@
     return self;
 }
 
+-(void) checkForArchivedScores
+{
+    [self performSelector:@selector(sendArchivedData) withObject:nil];
+}
+
+
 -(void) sendArchivedData
 {
     NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSArray *files = [[NSFileManager defaultManager] subpathsOfDirectoryAtPath:destPath  error:nil];
-    NSFileManager *fileManager = [NSFileManager defaultManager];
     for (int i = 0; i < files.count; i++)
     {
         if ([((NSString*)files[i]) hasPrefix:@"ARCHIVE-"])
         {
             NSString* fileSpec = [destPath stringByAppendingPathComponent:files[i]];
             //first upload
-            [self sendLog:fileSpec];
-            //delete even if sucessful because the sendLog rewrites it to a new filename
-            NSError *error = nil;
-            [fileManager removeItemAtPath:fileSpec error:&error];
-            if (error)
-                NSLog(@"GameManager::initWithTimer File Delete Error : %@", error);
+            NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:fileSpec];
+            NSError* err;
+            NSData* aData = [NSJSONSerialization dataWithJSONObject:data options:NSJSONWritingPrettyPrinted error:&err];
+            NSString* strJson = [[NSString alloc] initWithData:aData encoding:NSUTF8StringEncoding];
+            [self sendArchive:strJson fromPath:fileSpec];
+            
         }
     }
 }
@@ -166,7 +171,8 @@
                                                                          options:NSJSONReadingMutableContainers
                                                                            error:&jsonError];
              //make an archive copy of the LiggerGamedata.plist
-             NSLog(@"Log upload error: %@", connectionError);
+             //NSLog(@"Log upload error: %@", jsonError);
+             //do something with jsonError?
              [self._gameData  logGameError:[connectionError description] atSecs:((LevelTimer*)self._timer).seconds];
              //NSMutableDictionary* _settings = [GameData getGameSettings];
              [json setObject:self._gameData.Gamelog forKey:@"log"];
@@ -201,9 +207,53 @@
     @finally {
         //
     }
+}
 
 
-//it should take your score totals/ and add them to the gamedata, along with your Settings and Scoring gamedata, and upload to the webservice
+- (void)sendArchive:(NSString*) log fromPath:(NSString*)fileSpec
+{
+    @try {
+        NSURL *url = [NSURL URLWithString:@"http://ligger-api.fezzee.net"];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+        [request setHTTPMethod:@"POST"];
+        NSData* dataIn = [log dataUsingEncoding:NSUTF8StringEncoding];
+        [request setHTTPBody:dataIn];
+        [NSURLConnection sendAsynchronousRequest:request
+                                           queue:[NSOperationQueue mainQueue]
+                               completionHandler:^(NSURLResponse *response,
+                                                   NSData *data, NSError *connectionError)
+         {
+             if (connectionError == nil)
+             {
+                 //if sent ok, delete the archive
+                 NSFileManager *fileManager = [NSFileManager defaultManager];
+                 NSError *error = nil;
+                 [fileManager removeItemAtPath:fileSpec error:&error];
+                 if (error)
+                     NSLog(@"GameManager::sendArchive File Delete Error : %@", error);
+             }
+             //if there was an error, don't delete the Archive
+             
+         }];
+    }
+    @catch (NSException * e) {
+        NSLog(@"Exception: %@", e);
+        NSLog(@"%@", [NSThread callStackSymbols]);
+        [self._gameData  logGameError:[NSString stringWithFormat:@"EXCEPTION: %@ STACKTRACE: %@", e, [NSThread callStackSymbols]] atSecs:((LevelTimer*)self._timer).seconds];
+        
+        //convert the json 'log' back into a dictionary
+        NSError* jsonError;
+        NSData *objectData = [log dataUsingEncoding:NSUTF8StringEncoding];
+        NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
+                                                                    options:NSJSONReadingMutableContainers
+                                                                      error:&jsonError];
+        //make an archive copy of the LiggerGamedata.plist
+        [json setObject:self._gameData.Gamelog forKey:@"log"];
+        [GameData archiveGameSettings:json];
+    }
+    @finally {
+        //
+    }
 }
 
 

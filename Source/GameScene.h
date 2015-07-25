@@ -29,8 +29,7 @@
 
 @property (nonatomic) id timer;
 @property (nonatomic) GameData* gameData;
-//@property (nonatomic) GameManager* gameManager;
-//this is now an instance variable
+//gameManager is a provate instance variable- see .m file
 
 @property (nonatomic) PlayerState playerState;
 @property (nonatomic) LevelState levelState;
