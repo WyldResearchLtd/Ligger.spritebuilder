@@ -80,12 +80,7 @@ KNOWN ISSUES
 * Beers in HUD are lowres
 
 NI Mute audio and change selection- new selection not played - KNOWN ISSUE  
-NR can not access 'notification area - NOT REPRODUCABLE
-
-*offline caching of Log
-
-NI Mute audio and change selection- new selection not played - KNOWN ISSUE  
-NR can not access 'notification area - CANNOT REPRO
+NI can not access control area - KNOWN ISSUE
 
 TODO
 --------------------
