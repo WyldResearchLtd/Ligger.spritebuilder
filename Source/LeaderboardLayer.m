@@ -23,16 +23,22 @@
 {
     NSLog(@">>>>>> LeaderboardLayer::initWithPersonalBest: %lu >>>>>>",(unsigned long)best.count);
     self.bestPersonal=best;
+    [self fetchLeaders];
     return self;
+}
+
+-(void) didLoadFromCCB
+{
+    NSLog(@"±±±±±±±±± Leaderboard didLoadFromCCB");
 }
 
 -(void) onEnter
 {
     [super onEnter];
-    NSLog(@"Leaderboard onEnter");
+    NSLog(@"§§§§§§§§§ Leaderboard onEnter");
     
     
-    [self fetchLeaders];
+    //[self fetchLeaders];
     
 }
 
@@ -93,7 +99,7 @@
             else
             {
                  NSLog(@"CONNECTION == nil OR Data empty");
-                 self._lblStatus.string = @"Unable to Update";
+                 self._lblStatus.string = @"Unable to Update.";
             }
          }
         ];//comment this out for SynchronousRequest

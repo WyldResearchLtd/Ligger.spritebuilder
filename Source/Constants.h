@@ -25,6 +25,7 @@ typedef enum Navigation {Swipe,Touch} Navigation;
 
 extern const bool EASYPASS;
 extern const bool TESTUTILS;
+extern const bool VERBOSE_CONSOLE;
 extern const int kPROMOTORS;
 extern const int kTOTALTIMER;
 

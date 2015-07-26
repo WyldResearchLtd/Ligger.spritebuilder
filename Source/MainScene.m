@@ -237,7 +237,9 @@
 {
     if (_popoverMenuLayer == nil)
     {
-        //LeaderboardLayer* test = (LeaderboardLayer*)
+
+        [GameScene.gameManager checkForArchivedScores];
+            
         NSDictionary* dict = [GameData getPersonalBest];
         NSLog(@"+++++++Show LEADERBOARD++++++: ");
         [self showPopoverNamed:@"Popups/Leaderboard"];

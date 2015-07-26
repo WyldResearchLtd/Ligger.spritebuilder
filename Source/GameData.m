@@ -11,6 +11,7 @@
 
 #import "GameData.h"
 #import "ScoreData.h"
+#import "Constants.h"
 
 @implementation GameData
 
@@ -306,9 +307,12 @@ static NSString* _deviceID;
 
 -(void) printLog
 {
-    for (int i =0; i < self.Gamelog.count; i++)
+    if (VERBOSE_CONSOLE)
     {
-        NSLog(@">> %@",self.Gamelog[i]);
+        for (int i =0; i < self.Gamelog.count; i++)
+        {
+            NSLog(@">> %@",self.Gamelog[i]);
+        }
     }
 }
 
@@ -367,21 +371,23 @@ static NSString* _deviceID;
     // Load the Property List.
     NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:destPath];
   
-    
-    NSLog(@"========= GameData::getGameSettings =================");
-    NSLog(@"UserIdentifier: %@",[data objectForKey:@"UserIdentifier"]);
-    NSLog(@"DeviceIdentifier: %@",[data objectForKey:@"DeviceIdentifier"]);
-    NSLog(@"Username: %@",[data objectForKey:@"Username"]);
-    NSLog(@"Character: %@",[[data objectForKey:@"Character"] integerValue]==0?@"GeordieGunter":@"SparklePony");
-    NSLog(@"Movement: %@",[[data objectForKey:@"Movement"] integerValue]==1?@"Touch":@"Swipe");
-    NSLog(@"Audio: %@",[[data objectForKey:@"Audio"] boolValue]? @"True" : @"False");
-    NSLog(@"Soundtrack: %@",[[data objectForKey:@"Soundtrack"] integerValue]==0?@"The Soul Immigrants":@"The Caufield Beats");
-    
-    NSLog(@"log: %@",[data objectForKey:@"log"]);
-    NSLog(@"Best-1: %@",[data objectForKey:@"Best-1"]);
-    NSLog(@"Best-2: %@",[data objectForKey:@"Best-2"]);
-    NSLog(@"Best-3: %@",[data objectForKey:@"Best-3"]);
-    NSLog(@"=====================================================");
+    if (VERBOSE_CONSOLE)
+    {
+        NSLog(@"========= GameData::getGameSettings =================");
+        NSLog(@"UserIdentifier: %@",[data objectForKey:@"UserIdentifier"]);
+        NSLog(@"DeviceIdentifier: %@",[data objectForKey:@"DeviceIdentifier"]);
+        NSLog(@"Username: %@",[data objectForKey:@"Username"]);
+        NSLog(@"Character: %@",[[data objectForKey:@"Character"] integerValue]==0?@"GeordieGunter":@"SparklePony");
+        NSLog(@"Movement: %@",[[data objectForKey:@"Movement"] integerValue]==1?@"Touch":@"Swipe");
+        NSLog(@"Audio: %@",[[data objectForKey:@"Audio"] boolValue]? @"True" : @"False");
+        NSLog(@"Soundtrack: %@",[[data objectForKey:@"Soundtrack"] integerValue]==0?@"The Soul Immigrants":@"The Caufield Beats");
+        
+        NSLog(@"log: %@",[data objectForKey:@"log"]);
+        NSLog(@"Best-1: %@",[data objectForKey:@"Best-1"]);
+        NSLog(@"Best-2: %@",[data objectForKey:@"Best-2"]);
+        NSLog(@"Best-3: %@",[data objectForKey:@"Best-3"]);
+        NSLog(@"=====================================================");
+    }
     
     return data;
 

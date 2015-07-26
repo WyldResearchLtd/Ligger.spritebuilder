@@ -75,14 +75,15 @@ TODO for Release
   
 KNOWN ISSUES  
 --------------------
-Beers in HUD are lowres  
-Mute audio and change selection- new selection not played 
-Can not access 'Control Center' (swipe up) 
-2G error uploading score data
-
+Mute audio and change selection- new selection not played  
+Can not access 'Control Center' (swipe up)  
+2G error uploading score data  
+ 
 
 TODO- Future Release  
 --------------------  
+
+* Beers in HUD are lowres 
 
 * Game Manager-Extra Players 
 

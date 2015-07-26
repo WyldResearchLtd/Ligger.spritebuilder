@@ -46,15 +46,18 @@
     //save the scoreData
     self.scoreData = value;
     
-    //TODO: format the string
+
     [self._lblCompleted setString:[NSString stringWithFormat:@"Score: %@", value.scoreValue.stringValue]];
-    //@ is NSSNumnner literal
-    [self._lblTime setString:[value.timeRemaining isEqual:@0]?@"Time expired":@"No more tries"]; //[NSString stringWithFormat:@"%@ secs left", value.timeRemaining.stringValue]];  
     [self._lblLevels setString:[NSString stringWithFormat:@"Level: %@", value.scoreLevel.stringValue]];
     [self._lblHighScore setString:value.isHighScore?@"Personal High Score":@"The Hustle Is On"];
     
     if (value.isGameOver)
     {
+        
+        //@ is NSSNumnner literal
+        [self._lblTime setString:[value.timeRemaining isEqual:@0]?@"Time expired":@"No more tries"]; //[NSString stringWithFormat:@"%@ secs left", value.timeRemaining.stringValue]];
+        
+        
         OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
         [audio setBgPaused:true];
         
@@ -68,6 +71,11 @@
         [self.backgroundMusicPlayer prepareToPlay];
         [self.backgroundMusicPlayer play];
         [self doVolumeFadeIn:[NSNumber numberWithFloat:fadeTo]];
+    }
+    else
+    {
+        
+        [self._lblTime setString:[NSString stringWithFormat:@"%@ secs left", value.timeRemaining.stringValue]];
     }
     
 }

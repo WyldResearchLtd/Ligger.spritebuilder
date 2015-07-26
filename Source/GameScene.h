@@ -6,10 +6,8 @@
 //  Copyright (c) 2015 Fezzee Limited. All rights reserved.
 //
 
-//#import "CCNode.h"
-#import "Constants.h"
+
 #import "CCActionInterval.h"
-//#import "UITouch+CC.h"
 #import "CCDirector.h"
 #import "Constants.h"
 #import "GameManager.h"
@@ -29,7 +27,8 @@
 
 @property (nonatomic) id timer;
 @property (nonatomic) GameData* gameData;
-//gameManager is a provate instance variable- see .m file
+//@property (nonatomic) GameManager* gameManager;
+
 
 @property (nonatomic) PlayerState playerState;
 @property (nonatomic) LevelState levelState;
@@ -50,6 +49,9 @@
 @property (nonatomic) CCButton * arrowRight;
 
 //- (void) refreshUI;
++ (GameManager*) gameManager;
++ (void) setGameManager:(GameManager*)value;
++ (GameManager*) getGameManager;
 + (Boolean) halt;
 + (void) setHalt:(Boolean)value;
 
