@@ -188,10 +188,15 @@
  */
 -(void) btnTandCs
 {
+    _popoverMenuLayer = nil;
+    
     NSLog(@"PopupLayer::btnTandCs");
-    [self showPopoverNamed:@"Popups/TandCs"];
-    //this hides the text entered in the textfield that shows through onto T&C
-    self._txtUsername.visible = false;
+    
+    if ([self showPopoverNamed:@"Popups/TandCs"])
+    {
+        //this hides the text entered in the textfield that shows through onto T&C
+        self._txtUsername.visible = false;
+    }
 }
 
 //
@@ -209,7 +214,7 @@
     
     [self removePopover];
     
-    
+    _popoverMenuLayer = nil;
     
 
 }
@@ -223,7 +228,7 @@
 
 
 
--(void) showPopoverNamed:(NSString*)name
+-(BOOL) showPopoverNamed:(NSString*)name
 {
     if (_popoverMenuLayer == nil)
     {
@@ -234,7 +239,9 @@
         _popoverMenuLayer.parent = self;
         GameScene.halt=true;
         //_levelNode.paused = YES;
+        return true;
     }
+    return false;
 }
 
 -(void) removePopover

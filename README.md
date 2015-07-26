@@ -58,34 +58,47 @@ Update Version
 
 
 
-TODO & Bugs
------------ 
-* Timeout Message (Louie)
-
-* Sizing 4/4s and iPad
-
+TODO for Release  
+-------------------
+* Timeout Message (Louie)  
+  
+* Sizing 4/4s and iPad  
+  
 * Fonts for Instructions, Credits and T&C's'  
-
+ 
 * All text reviewed  
     * T&Cs  
     * Gameplay  * Advise users in First pass wizard to read about gameplay  
     * Credits  
   
-* Feedback email link 
+* Feedback email link  
+ 
+* Ligger app icon under iPhone Settings is different from Desktop icon.  
+
   
 KNOWN ISSUES  
 --------------------
-* New Icons for swipe, touch, audio on/off, touchpad arrows
+Beers in HUD are lowres  
+Mute audio and change selection- new selection not played 
+Can not access 'Control Center' (swipe up) 
+T&C's only display once
+
+
+
+
+TODO- Future Release  
+--------------------  
+
+* Game Manager-Extra Players 
+
+* add versioning to About view
+
+* create callback to update Leaderboard in realtime (rather than at launch)- then remove blockng call on LiggerBoard UI startup
+
+* the Service logging should include timestamp and craete verboce mode for logging full objects 
+
+* New Icons for swipe, touch, audio on/off, touchpad arrows  
 * flowers as bullet points 
-* Beers in HUD are lowres
-
-NI Mute audio and change selection- new selection not played - KNOWN ISSUE  
-NI can not access control area - KNOWN ISSUE
-
-TODO
---------------------
-
-* Game Manager-Extra Players - need level number 
   
 * Upgrade GameLog  
     * Add Non-Scoring milestones- Collision1, Collision2, Levelup, Game Over to GameData  
@@ -101,7 +114,7 @@ P2
   
 P3   
 * Random delay for each character start  
-* The particle effect for a NoBeer Ligger shouldn't be a splash  
+* A particle effect for Returning home/Getting beer 
 * Obstacles that disappear before fully existing screen  
   
  
@@ -113,9 +126,15 @@ Main Menu- exit
  
   
 Welcome back 'User' notification  
+
+Test
+---------
+DeviceID
   
   
-  
+Technical Debt
+----------------
+Move FirstPass func from PopupLayer to its own class (already stubbed out as FirstPassLayer)
 
   
 
