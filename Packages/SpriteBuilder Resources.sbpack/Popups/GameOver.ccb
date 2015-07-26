@@ -157,7 +157,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCLabelTTF</string>
+				<string>lblHighScore</string>
 				<key>memberVarAssignmentName</key>
 				<string>_lblHighScore</string>
 				<key>memberVarAssignmentType</key>
@@ -180,7 +180,7 @@
 						<key>value</key>
 						<array>
 							<real>279.1898193359375</real>
-							<real>123.05331420898438</real>
+							<real>90.053314208984375</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -816,8 +816,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -937,21 +935,13 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCLabelTTF</string>
+				<string>lblTimeout</string>
 				<key>memberVarAssignmentName</key>
 				<string>_lblTime</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
 				<array>
-					<dict>
-						<key>name</key>
-						<string>visible</string>
-						<key>type</key>
-						<string>Check</string>
-						<key>value</key>
-						<false/>
-					</dict>
 					<dict>
 						<key>name</key>
 						<string>name</string>
@@ -968,7 +958,7 @@
 						<key>value</key>
 						<array>
 							<real>279.1898193359375</real>
-							<real>101.05331420898438</real>
+							<real>116.05331420898438</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -1005,7 +995,7 @@
 						<string>Text</string>
 						<key>value</key>
 						<array>
-							<string>Remaining</string>
+							<string>Timeout</string>
 							<false/>
 						</array>
 					</dict>
@@ -1154,6 +1144,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -1165,7 +1157,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCLabelTTF</string>
+				<string>lblLevels</string>
 				<key>memberVarAssignmentName</key>
 				<string>_lblLevels</string>
 				<key>memberVarAssignmentType</key>

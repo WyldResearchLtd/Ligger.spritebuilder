@@ -241,9 +241,10 @@
         NSDictionary* dict = [GameData getPersonalBest];
         NSLog(@"+++++++Show LEADERBOARD++++++: ");
         [self showPopoverNamed:@"Popups/Leaderboard"];
+        //this sets the values before the update
         [_popoverLeaderboardLayer setPersonalBest:dict];
-        //[_popoverLeaderboardLayer refreshBoard];
-        //[_popoverLeaderboardLayer refreshBoard];
+        [_popoverLeaderboardLayer refreshBoard];
+
        
         
     }

@@ -59,8 +59,7 @@ Update Version
 
 
 TODO for Release  
--------------------
-* Gameover Timeout Message (Louie)  
+------------------- 
   
 * Sizing 4/4s and iPad  
   
@@ -72,9 +71,7 @@ TODO for Release
     * Credits  
   
 * Feedback email link  
- 
-* Ligger app icon under iPhone Settings is different from Desktop icon.  
-
+   
   
 KNOWN ISSUES  
 --------------------

@@ -48,9 +48,10 @@
     
     //TODO: format the string
     [self._lblCompleted setString:[NSString stringWithFormat:@"Score: %@", value.scoreValue.stringValue]];
-    [self._lblTime setString:[NSString stringWithFormat:@"%@ secs left", value.timeRemaining.stringValue]];
+    //@ is NSSNumnner literal
+    [self._lblTime setString:[value.timeRemaining isEqual:@0]?@"Time expired":@"No more tries"]; //[NSString stringWithFormat:@"%@ secs left", value.timeRemaining.stringValue]];  
     [self._lblLevels setString:[NSString stringWithFormat:@"Level: %@", value.scoreLevel.stringValue]];
-    [self._lblHighScore setString:value.isHighScore?@"High Score":@"The Hustle Is On"];
+    [self._lblHighScore setString:value.isHighScore?@"Personal High Score":@"The Hustle Is On"];
     
     if (value.isGameOver)
     {
