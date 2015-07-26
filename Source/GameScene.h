@@ -49,7 +49,7 @@
 @property (nonatomic) CCButton * arrowRight;
 
 //- (void) refreshUI;
-+ (GameManager*) gameManager;
+//+ (GameManager*) _gameManager;
 + (void) setGameManager:(GameManager*)value;
 + (GameManager*) getGameManager;
 + (Boolean) halt;

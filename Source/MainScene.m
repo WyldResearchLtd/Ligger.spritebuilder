@@ -238,7 +238,7 @@
     if (_popoverMenuLayer == nil)
     {
 
-        [GameScene.gameManager checkForArchivedScores];
+        [GameScene.getGameManager checkForArchivedScores];
             
         NSDictionary* dict = [GameData getPersonalBest];
         NSLog(@"+++++++Show LEADERBOARD++++++: ");
