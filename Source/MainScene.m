@@ -242,7 +242,8 @@
         NSLog(@"+++++++Show LEADERBOARD++++++: ");
         [self showPopoverNamed:@"Popups/Leaderboard"];
         [_popoverLeaderboardLayer setPersonalBest:dict];
-        [_popoverLeaderboardLayer refreshBoard];
+        //[_popoverLeaderboardLayer refreshBoard];
+        //[_popoverLeaderboardLayer refreshBoard];
        
         
     }

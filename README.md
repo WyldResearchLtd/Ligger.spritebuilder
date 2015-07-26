@@ -61,6 +61,8 @@ Update Version
 TODO for Release  
 -------------------
 * Timeout Message (Louie)  
+
+*Leaderboard Message- offline/last updated
   
 * Sizing 4/4s and iPad  
   
@@ -81,8 +83,6 @@ KNOWN ISSUES
 Beers in HUD are lowres  
 Mute audio and change selection- new selection not played 
 Can not access 'Control Center' (swipe up) 
-T&C's only display once
-
 
 
 

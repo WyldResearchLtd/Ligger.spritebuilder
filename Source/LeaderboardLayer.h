@@ -39,8 +39,10 @@
 @property (nonatomic) CCLabelTTF * _row5date;
 @property (nonatomic) CCLabelTTF * _row6date;
 
-@property (nonatomic) NSArray * _ScoresDatum;
+//@property (nonatomic) NSArray * _ScoresDatum;
 @property (nonatomic) NSDictionary* bestPersonal;
+
+@property (nonatomic) CCLabelTTF * _lblStatus;
 
 //-(id) initWithPersonalBest:(NSDictionary*) best;
 -(id) setPersonalBest:(NSDictionary*) best;

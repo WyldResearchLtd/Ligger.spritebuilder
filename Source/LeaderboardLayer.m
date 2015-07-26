@@ -30,28 +30,32 @@
 {
     [super onEnter];
     NSLog(@"Leaderboard onEnter");
-    //[self fetchLeaders];
+    
+    
+    [self fetchLeaders];
     
 }
 
 - (void)fetchLeaders;
 {
     @try {
-        
+        //first populate with saved values
+        [self refreshBoard];
   
+        //next fetch new values
         NSURL *url = [NSURL URLWithString:@"http://ligger-api.fezzee.net"];
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
         
-//        [NSURLConnection sendAsynchronousRequest:request
-//                                           queue:[NSOperationQueue mainQueue]
-//                               completionHandler:^(NSURLResponse *response,
-//                                                   NSData *data, NSError *connectionError)
+        [NSURLConnection sendAsynchronousRequest:request
+                                           queue:[NSOperationQueue mainQueue]
+                               completionHandler:^(NSURLResponse *response,
+                                                   NSData *data, NSError *connectionError)
         
-        NSURLResponse * response = nil;
-        NSError * connectionError = nil;
-        NSData * data = [NSURLConnection sendSynchronousRequest:request
-                                              returningResponse:&response
-                                                          error:&connectionError];
+//        NSURLResponse * response = nil;
+//        NSError * connectionError = nil;
+//        NSData * data = [NSURLConnection sendSynchronousRequest:request
+//                                              returningResponse:&response
+//                                                          error:&connectionError];
         {
              if (data.length > 0 && connectionError == nil)
              {
@@ -82,11 +86,20 @@
                  }
                  [GameData saveGameSettings:_settings];
                  NSLog(@"LeaderBoard::fetchLeaders updated Plist with Leaders");
+                 //Last, populate with newly saved values
+                 [self refreshBoard];
+                 self._lblStatus.string = @"Update Complete.";
              }
+            else
+            {
+                 NSLog(@"CONNECTION == nil OR Data empty");
+                 self._lblStatus.string = @"Unable to Update";
+            }
          }
-         //];//comment this out for Synchronise
+        ];//comment this out for SynchronousRequest
     }
     @catch (NSException * e) {
+            self._lblStatus.string = @"Update Error.";
             NSLog(@"Exception: %@", e);
             NSLog(@"%@",[NSThread callStackSymbols]);
     }
@@ -104,7 +117,7 @@
 
     @try
     {
-        [self fetchLeaders];
+        //[self fetchLeaders];
         
         NSLog(@"refreshBoard");
             
