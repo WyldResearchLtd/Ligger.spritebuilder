@@ -15,6 +15,8 @@
 #define SWITCH(s)                       for (NSString *__s__ = (s); ; )
 #define DEFAULT
 
+#define isiPhoneWide  ([[UIScreen mainScreen] bounds].size.height == 568)?TRUE:FALSE
+#define isiPhone  (UI_USER_INTERFACE_IDIOM() == 0)?TRUE:FALSE
 
 typedef enum PlayerMoveState {PlayerUp, PlayerDown, PlayerLeft, PlayerRight} PlayerMoveState;
 typedef enum PlayerState {NoBeers, TwoBeers, OneBeer} PlayerState;

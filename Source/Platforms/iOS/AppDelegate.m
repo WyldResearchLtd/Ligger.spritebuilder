@@ -30,6 +30,7 @@
 #import "CCBuilderReader.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import "Constants.h"
 
 
 @implementation AppController
@@ -65,8 +66,19 @@
 
 - (CCScene*) startScene
 {
+    if(isiPhone)
+    {
+        return [CCBReader loadAsScene:@"MainScene"];
+    }
+    else
+    {
+        //[ipad]
+        CCNode* newLayer = [CCBReader loadAsScene:@"MainScene"];
+        newLayer.position = CGPointMake(10.0f,20.0f);
+        newLayer.scaleY = 1.10f;
+        return (CCScene*)newLayer;
+    }
     
-    return [CCBReader loadAsScene:@"MainScene"];
 }
 
 @end

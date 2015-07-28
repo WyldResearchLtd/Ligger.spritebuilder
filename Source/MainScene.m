@@ -128,17 +128,37 @@
         {
             _popoverOptionsLayer = (OptionsLayer*)newMenuLayer;
             _popoverOptionsLayer.parent = self;
-
+            if (isiPhone && !isiPhoneWide)
+                _popoverOptionsLayer.position = CGPointMake(-60.0f,0.0f);
+            else if (!isiPhone)
+            {
+                 _popoverOptionsLayer.scaleX = 1.1f;
+                 _popoverOptionsLayer.position = CGPointMake(-80.0f,-20.0f);
+            }
         }
         else if ([name isEqualToString:@"Popups/Leaderboard"] )
         {
             _popoverLeaderboardLayer = (LeaderboardLayer*)newMenuLayer;
             _popoverLeaderboardLayer.parent = self;
+            if (isiPhone && !isiPhoneWide)
+                _popoverLeaderboardLayer.position = CGPointMake(-60.0f,0.0f);
+            else if (!isiPhone)
+            {
+                _popoverLeaderboardLayer.scaleX = 1.1f;
+                _popoverLeaderboardLayer.position = CGPointMake(-80.0f,-20.0f);
+            }
         }
         else
         {
             _popoverMenuLayer = (PopupLayer*)newMenuLayer;
             _popoverMenuLayer.parent = self;
+            if (isiPhone && !isiPhoneWide)
+                _popoverMenuLayer.position = CGPointMake(-60.0f,0.0f);
+            else if (!isiPhone)
+            {
+                _popoverMenuLayer.scaleX = 1.1f;
+                _popoverMenuLayer.position = CGPointMake(-80.0f,-20.0f);
+            }
         }
     }
 }
