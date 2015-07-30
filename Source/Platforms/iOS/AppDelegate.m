@@ -66,19 +66,31 @@
 
 - (CCScene*) startScene
 {
-    if(isiPhone)
+    CCScene* scene;
+    
+    if(isiPhone) //MAINSCREEN
     {
-        return [CCBReader loadAsScene:@"MainScene"];
+        if (isiPhoneWide) //MAINSCREEN
+        {
+            scene = [CCBReader loadAsScene:@"MainScene"];
+        }
+        else
+        {
+            CCNode* newLayer = [CCBReader loadAsScene:@"MainScene"];
+            newLayer.position = CGPointMake(-40.0f,-15.0f);
+            scene = (CCScene*)newLayer;
+        }
     }
     else
     {
         //[ipad]
         CCNode* newLayer = [CCBReader loadAsScene:@"MainScene"];
-        newLayer.position = CGPointMake(10.0f,20.0f);
+        newLayer.position = CGPointMake(-10.0f,20.0f);
         newLayer.scaleY = 1.10f;
-        return (CCScene*)newLayer;
+        scene = (CCScene*)newLayer;
     }
     
+    return scene;
 }
 
 @end

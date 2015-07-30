@@ -184,22 +184,29 @@
 {
     NSLog(@"PopupLayer::back2Menu");
     
-    CCScene* scene;// = [CCBReader loadAsScene:@"MainScene"];
+    CCScene* scene;
     
-    if(isiPhone)
+    if(isiPhone) //MAINSCENE
     {
-        scene = [CCBReader loadAsScene:@"MainScene"];
+        if (isiPhoneWide) //MAINSCENE
+        {
+            scene = [CCBReader loadAsScene:@"MainScene"];
+        }
+        else
+        {
+            CCNode* newLayer = [CCBReader loadAsScene:@"MainScene"];
+            newLayer.position = CGPointMake(-40.0f,-15.0f);
+            scene = (CCScene*)newLayer;
+        }
     }
     else
     {
         //[ipad]
         CCNode* newLayer = [CCBReader loadAsScene:@"MainScene"];
-        newLayer.position = CGPointMake(10.0f,20.0f);
-        newLayer.scaleY = 1.1f;
+        newLayer.position = CGPointMake(-10.0f,20.0f);
+        newLayer.scaleY = 1.10f;
         scene = (CCScene*)newLayer;
     }
-
-    
     
     
     CCTransition* transition = [CCTransition transitionFadeWithDuration:1.5];

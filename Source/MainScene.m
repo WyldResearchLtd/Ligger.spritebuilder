@@ -128,39 +128,49 @@
         {
             _popoverOptionsLayer = (OptionsLayer*)newMenuLayer;
             _popoverOptionsLayer.parent = self;
-            if (isiPhone && !isiPhoneWide)
-                _popoverOptionsLayer.position = CGPointMake(-60.0f,0.0f);
-            else if (!isiPhone)
-            {
-                 _popoverOptionsLayer.scaleX = 1.1f;
-                 _popoverOptionsLayer.position = CGPointMake(-80.0f,-20.0f);
-            }
+            _popoverOptionsLayer = (OptionsLayer*)[self offsetUI:_popoverOptionsLayer];
+            
         }
         else if ([name isEqualToString:@"Popups/Leaderboard"] )
         {
             _popoverLeaderboardLayer = (LeaderboardLayer*)newMenuLayer;
             _popoverLeaderboardLayer.parent = self;
-            if (isiPhone && !isiPhoneWide)
-                _popoverLeaderboardLayer.position = CGPointMake(-60.0f,0.0f);
-            else if (!isiPhone)
-            {
-                _popoverLeaderboardLayer.scaleX = 1.1f;
-                _popoverLeaderboardLayer.position = CGPointMake(-80.0f,-20.0f);
-            }
+            _popoverLeaderboardLayer = (LeaderboardLayer*)[self offsetUI:_popoverLeaderboardLayer];
+            
         }
         else
         {
             _popoverMenuLayer = (PopupLayer*)newMenuLayer;
             _popoverMenuLayer.parent = self;
-            if (isiPhone && !isiPhoneWide)
-                _popoverMenuLayer.position = CGPointMake(-60.0f,0.0f);
-            else if (!isiPhone)
-            {
-                _popoverMenuLayer.scaleX = 1.1f;
-                _popoverMenuLayer.position = CGPointMake(-80.0f,-20.0f);
-            }
+            _popoverMenuLayer = (PopupLayer*)[self offsetUI:_popoverMenuLayer];
+            
         }
     }
+}
+
+//
+-(CCNode*) offsetUI:(CCNode*)popoverLayer
+{
+    if(isiPhone) //POPOVER
+    {
+        if (isiPhoneWide) //POPOVER
+        {
+            //[iphone5 or higher]
+        }
+        else
+        {
+            //[iPhone4/4s]
+            popoverLayer.position = CGPointMake(-20.0f,0.0f);//-30
+        }
+    }
+    else
+    {
+        //[ipad]
+        popoverLayer.scaleX = 1.1f;
+        popoverLayer.scaleY = 1.1f;
+        popoverLayer.position = CGPointMake(-60.0f,-15.0f);
+    }
+    return popoverLayer;
 }
 
 

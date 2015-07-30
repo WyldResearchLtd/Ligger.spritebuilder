@@ -273,20 +273,20 @@ bool isCollisionInProgress = false;
         
         Obstacle* ob1a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[_levelNode getChildByName:@"congaline-r" recursively:NO] atStartPosition:CGPointMake(-350.0f,112.0f)];
         Obstacle* ob2a = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[_levelNode getChildByName:@"golfcart-l" recursively:NO] atStartPosition:CGPointMake(950.0f,174.5f)];
-        Obstacle* ob3a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[_levelNode getChildByName:@"fstreaker-r" recursively:NO] atStartPosition:CGPointMake(-350.0f,238.5f)];
+        Obstacle* ob3a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[_levelNode getChildByName:@"poyspiners-l" recursively:NO] atStartPosition:CGPointMake(-350.0f,238.5f)];
         Obstacle* ob4a = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[_levelNode getChildByName:@"hulahoop-l" recursively:NO] atStartPosition:CGPointMake(950.0f,306.5f)];
         Obstacle* ob5a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[_levelNode getChildByName:@"hulahoop-2-r" recursively:NO] atStartPosition:CGPointMake(-450.0f,372.0f)];
         Obstacle* ob6a = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[_levelNode getChildByName:@"bongos-2-l" recursively:NO] atStartPosition:CGPointMake(950.0f,494.6f)];
         Obstacle* ob7a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[_levelNode getChildByName:@"huggers-r" recursively:NO] atStartPosition:CGPointMake(-440.5f,563.2f)];
         Obstacle* ob8a = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[_levelNode getChildByName:@"bongos-3-l" recursively:NO] atStartPosition:CGPointMake(957.5f,627.2f)];
-        Obstacle* ob9a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[_levelNode getChildByName:@"fstreaker-2-r" recursively:NO] atStartPosition:CGPointMake(-450.0f,690.2f)];
+        Obstacle* ob9a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[_levelNode getChildByName:@"conga-topleft" recursively:NO] atStartPosition:CGPointMake(-450.0f,690.2f)];
         Obstacle* ob10a = [[Obstacle alloc] initWithDirection:MoveLeft forSprite:[_levelNode getChildByName:@"forklift-l" recursively:NO] atStartPosition:CGPointMake(964.0f,751.2f)];
 
 //        Obstacle* ob1a = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[CCBReader load:@"Prefabs/CongaLine"] atPosition:
 //            CGPointMake(-350.0f,112.0f)];
         
         //doesn't need to be added as a child, because its on the scene Level1
-        Obstacle* ob11 = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[_levelNode getChildByName:@"obstacle11" recursively:NO] atStartPosition:CGPointMake(-75.0f,814.7f)];
+        Obstacle* ob11 = [[Obstacle alloc] initWithDirection:MoveRight forSprite:[_levelNode getChildByName:@"congaline-toprow-l" recursively:NO] atStartPosition:CGPointMake(-75.0f,814.7f)];
 
         //[self addChild:ob1a.sprite];
         
@@ -734,18 +734,27 @@ bool isCollisionInProgress = false;
 
 -(void) backToMenu
 {
-    CCScene* scene;// = [CCBReader loadAsScene:@"MainScene"];
+    CCScene* scene;
     
-    if(isiPhone)
+    if(isiPhone)//MAINSCREEN
     {
-        scene = [CCBReader loadAsScene:@"MainScene"];
+        if (isiPhoneWide) //MAINSCREEN
+        {
+            scene = [CCBReader loadAsScene:@"MainScene"];
+        }
+        else
+        {
+            CCNode* newLayer = [CCBReader loadAsScene:@"MainScene"];
+            newLayer.position = CGPointMake(-40.0f,-15.0f);
+            scene = (CCScene*)newLayer;
+        }
     }
     else
     {
         //[ipad]
         CCNode* newLayer = [CCBReader loadAsScene:@"MainScene"];
-        newLayer.position = CGPointMake(10.0f,20.0f);
-        newLayer.scaleY = 1.1f;
+        newLayer.position = CGPointMake(-10.0f,20.0f);
+        newLayer.scaleY = 1.10f;
         scene = (CCScene*)newLayer;
     }
 
@@ -1179,11 +1188,37 @@ bool isCollisionInProgress = false;
         _popoverMenuLayer = (PopupLayer*)[CCBReader load:name];
         NSAssert(_popoverMenuLayer!=nil, @"PopupLayer in showPopoverNamed is Nil");
         [self addChild:_popoverMenuLayer];
-        //_popoverMenuLayer = newMenuLayer;
         _popoverMenuLayer.parent = self;
+        _popoverMenuLayer = (PopupLayer*)[self offsetUI:_popoverMenuLayer];
         GameScene.halt=true;
         _levelNode.paused = YES;
     }
+}
+
+
+//
+-(CCNode*) offsetUI:(CCNode*)popoverLayer
+{
+    if(isiPhone) //POPOVER
+    {
+        if (isiPhoneWide) //POPOVER
+        {
+            //[iphone5 or higher]
+        }
+        else
+        {
+            //[iPhone4/4s]
+            popoverLayer.position = CGPointMake(-20.0f,0.0f);//-30
+        }
+    }
+    else
+    {
+        //[ipad]
+        popoverLayer.scaleX = 1.1f;
+        popoverLayer.scaleY = 1.1f;
+        popoverLayer.position = CGPointMake(-60.0f,-15.0f);
+    }
+    return popoverLayer;
 }
 
 -(void) removePopover

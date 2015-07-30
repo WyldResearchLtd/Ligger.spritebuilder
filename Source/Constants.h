@@ -6,6 +6,9 @@
 //  Copyright (c) 2015 Fezzee Limited. All rights reserved.
 //
 
+#import "CCNode.h"
+#import <Foundation/Foundation.h>
+
 //#ifndef Ligger_Constants_h
 //#define Ligger_Constants_h
 
@@ -17,6 +20,7 @@
 
 #define isiPhoneWide  ([[UIScreen mainScreen] bounds].size.height == 568)?TRUE:FALSE
 #define isiPhone  (UI_USER_INTERFACE_IDIOM() == 0)?TRUE:FALSE
+
 
 typedef enum PlayerMoveState {PlayerUp, PlayerDown, PlayerLeft, PlayerRight} PlayerMoveState;
 typedef enum PlayerState {NoBeers, TwoBeers, OneBeer} PlayerState;
