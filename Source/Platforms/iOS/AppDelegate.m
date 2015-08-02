@@ -68,6 +68,10 @@
 {
     CCScene* scene;
     
+    int height = [[UIScreen mainScreen] bounds].size.height;
+    int width = [[UIScreen mainScreen] bounds].size.width;
+    NSLog(@"AppDelegate::startScene size H: %d  W: %d",height, width);
+    
     if(isiPhone) //MAINSCREEN
     {
         if (isiPhoneWide) //MAINSCREEN

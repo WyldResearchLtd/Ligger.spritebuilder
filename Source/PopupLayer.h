@@ -60,4 +60,6 @@
 //return to previous popup
 -(void) btnOKTandCs;
 
+-(void)launchFeedback;
+
 @end

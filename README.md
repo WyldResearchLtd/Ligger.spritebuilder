@@ -22,10 +22,16 @@ Everyone knows that festival promotors are a gracious lot, and will happily walk
   
   
 The field is a wonderful place, filled with a bevy of curtious girls and boys that will help you navigate your way. At the halfway point, you can take respite in the flower lined path. When you get to the bar area, a bartender  will be eagarly waiting to get your drinks. If you spill a drink  you'll be teleported to the flower lined path, to give you a bit of head space before you continue your trek.  As you pass each level, things speed up, to a point. A level 2, beware fo the giant frog that can now flatten you in the flower lined path at the half way point.
+
+The Heads Up Display
+
+
+
+
     Lookout for Phil O. Cybin, a new character in Level 3. On some days, once you meet Phil, life can be wonderful and full of Sunflowers that bring you much joy and 
     more points. But on other days, you'll be confronted by Multi-eyed Monsters, that seem to appear from nowhere and will haunt your dreams and rob your bank.  
   
-The Heads Up Display
+
 
   
 ==========================
@@ -48,20 +54,15 @@ On leaderboard opened, query the api for new data, and if so wite it to the Ligg
 
 Release Checklist
 -----------------
-const bool EASYPASS = false; //used to make it easy to level up
-const bool TESTUTILS = false; //used to make it test options available- delete plist
+x const bool EASYPASS = false; //used to make it easy to level up
+x const bool TESTUTILS = false; //used to make it test options available- delete plist
 
-In Spritebuilder, set to Release and Publish
+x In Spritebuilder, set to Release and Publish
 
-Update Version
-
-
-
+x Update Version (108)
 
 TODO for Release  
-------------------- 
-  
-* Sizing 4/4s and iPad  
+-------------------   
   
 * Fonts for Instructions, Credits and T&C's'  
  
@@ -69,8 +70,8 @@ TODO for Release
     * T&Cs  
     * Gameplay  * Advise users in First pass wizard to read about gameplay  
     * Credits  
-  
-* Feedback email link  
+
+* create new Amazon account
    
   
 KNOWN ISSUES  
@@ -91,7 +92,7 @@ TODO- Future Release
 
 * create callback to update Leaderboard in realtime (rather than at launch)- then remove blockng call on LiggerBoard UI startup
 
-* the Service logging should include timestamp and craete verboce mode for logging full objects 
+* the Service logging should include timestamp and create verbose mode for logging full objects 
 
 * New Icons for swipe, touch, audio on/off, touchpad arrows  
 * flowers as bullet points 

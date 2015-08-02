@@ -49,7 +49,7 @@
 
     [self._lblCompleted setString:[NSString stringWithFormat:@"Score: %@", value.scoreValue.stringValue]];
     [self._lblLevels setString:[NSString stringWithFormat:@"Level: %@", value.scoreLevel.stringValue]];
-    [self._lblHighScore setString:value.isHighScore?@"Personal High Score":@"The Hustle Is On"];
+    [self._lblHighScore setString:value.isHighScore?@"A Personal High Score":@"The Hustle Is On"];
     
     if (value.isGameOver)
     {
@@ -360,6 +360,19 @@
         else if ([[GameData soundtrack] integerValue]==1)
             [audio playBg:@"dustbowl.m4a" loop:YES];
     }
+}
+
+-(void)launchFeedback
+{
+     NSMutableDictionary* _settings = [GameData getGameSettings];
+    
+    NSString *recipients = @"mailto:support@fezzee.com?subject=Ligger Support";
+    NSString *body = [NSString stringWithFormat:@"&body=\n\n\n\n\nuid: %@\ndid: %@", [_settings objectForKey:@"UserIdentifier"],[_settings objectForKey:@"DeviceIdentifier"]];
+    
+    NSString *email = [NSString stringWithFormat:@"%@%@", recipients, body];
+    email = [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:email]];
 }
 
 @end
