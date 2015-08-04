@@ -86,6 +86,8 @@
  
  Bonus score: 10 points x each second remaining on timer x Promotor Index (eg-1=Michael, 4=Rob).
  
+ TO DO
+ 
  Mushroom Man: 500 points bonus.
  
  Good Trip: 200 points.

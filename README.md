@@ -3,39 +3,22 @@
 
 [![Build Status](https://travis-ci.org/fezzee/Ligger.svg?branch=master)](https://travis-ci.org/fezzee/Ligger)
 
-  
 Built with Spritebuilder/Cocos2d 
-
 
 For iOS 6 and above (TBC)
 
+Note- Ipad Retina and iPad Air- labels are limited in length! Test this!
   
 Gameplay  
 ---------  
-What is a Ligger?  
-  
-Rumour has it that the term Ligger was coined by the Big Hair Glam bands in the 70 and 80's and popularised by NME Magazine in the nineties as a nickname for persons who attend parties, concerts, and festivals with the sole intention of obtaining free food and drink. 
+To add later---
 
-Objective  
-  
-Everyone knows that festival promotors are a gracious lot, and will happily walk you into the backstage area, if you run a simple errand for them. Get to the bar and return with at least one drink for Michael, John, Melvyn and Rob, and they'll escort you backstage. If you spill a drink, you can return to the bar to get yourself another, or just head back to the promotor with their drink. If you spill both, you'll loose your turn with that promotor, but don't worry, the others are queued up to take your bait. 
-  
-  
-The field is a wonderful place, filled with a bevy of curtious girls and boys that will help you navigate your way. At the halfway point, you can take respite in the flower lined path. When you get to the bar area, a bartender  will be eagarly waiting to get your drinks. If you spill a drink  you'll be teleported to the flower lined path, to give you a bit of head space before you continue your trek.  As you pass each level, things speed up, to a point. A level 2, beware fo the giant frog that can now flatten you in the flower lined path at the half way point.
-
-The Heads Up Display
-
-
-
+    The Frog- Level 2
 
     Lookout for Phil O. Cybin, a new character in Level 3. On some days, once you meet Phil, life can be wonderful and full of Sunflowers that bring you much joy and 
     more points. But on other days, you'll be confronted by Multi-eyed Monsters, that seem to appear from nowhere and will haunt your dreams and rob your bank.  
-  
 
-
-  
 ==========================
-
 App Notes
 
 
@@ -49,11 +32,10 @@ On game finish, we see if the game scored is > top3 saved personal best games, a
 On leaderboard opened, query the api for new data, and if so wite it to the LiggerGamedata.plist. Write the LiggerGamedata.plist data to the Popup UI. 
 
 
-
 ==========================
 
 Release Checklist
------------------
+---------------------
 x const bool EASYPASS = false; //used to make it easy to level up
 x const bool TESTUTILS = false; //used to make it test options available- delete plist
 
@@ -62,10 +44,12 @@ x In Spritebuilder, set to Release and Publish
 x Update Version (108)
 
 TODO for Release  
--------------------   
-  
-* Fonts for Instructions, Credits and T&C's'  
- 
+---------------------- 
+
+TEST-
+-what happens if you tie a score on PersonalBest- eg- PB is 100, 70, 50....you score 70 again...does it end up 100,70,50?
+-DeviceID
+
 * All text reviewed  
     * T&Cs  
     * Gameplay  * Advise users in First pass wizard to read about gameplay  
@@ -76,9 +60,9 @@ TODO for Release
   
 KNOWN ISSUES  
 --------------------
-Mute audio and change selection- new selection not played  
-Can not access 'Control Center' (swipe up)  
-2G error uploading score data  
+-Mute audio and change selection- new selection not played  
+-Can not access 'Control Center' (swipe up)  
+-2G error uploading score data  
  
 
 TODO- Future Release  
@@ -124,9 +108,6 @@ Main Menu- exit
   
 Welcome back 'User' notification  
 
-Test
----------
-DeviceID
   
   
 Technical Debt
@@ -134,6 +115,9 @@ Technical Debt
 Move FirstPass func from PopupLayer to its own class (already stubbed out as FirstPassLayer)
 
   
+Removed from T&C's
+-------------------
+We may translate these terms into multiple languages, and in the event there is any difference between the English version and any other language version of these terms, the English version will apply (to the extent permitted by applicable law).
 
 
 

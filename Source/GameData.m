@@ -238,7 +238,7 @@ static NSString* _deviceID;
 }
 -(void) calcBonus:(int)secsRemaining forPromotor:(int)index hud:(CCLabelBMFont*)label
 {
-     _GameScore += (10*secsRemaining*index);
+     _GameScore += (10*(kTOTALTIMER-secsRemaining)*index);
     //don't log the secsRemaing as secs
     NSMutableString *bonusMsg = [NSMutableString string];
     [bonusMsg appendFormat:@"Bonus SecsRemaing: %d Index: %d",secsRemaining, index];

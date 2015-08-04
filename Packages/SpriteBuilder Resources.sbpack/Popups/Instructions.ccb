@@ -146,8 +146,6 @@
 						<array/>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -231,7 +229,7 @@
 						<key>type</key>
 						<string>CCBFile</string>
 						<key>value</key>
-						<string>Popups/InstructionsTextlayer.ccb</string>
+						<string>Popups/InstructionsTextLayer.ccb</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -266,6 +264,8 @@
 						<true/>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
