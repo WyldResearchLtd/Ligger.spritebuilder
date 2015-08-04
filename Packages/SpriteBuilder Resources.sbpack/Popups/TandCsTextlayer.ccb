@@ -1931,6 +1931,8 @@ You acknowledge that the Secret Garden Party shall not be liable for user submis
 								</array>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>UUID</key>
@@ -2171,7 +2173,7 @@ You acknowledge that the Secret Garden Party shall not be liable for user submis
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>0.0</real>
+									<real>3</real>
 									<real>3334</real>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -2209,9 +2211,8 @@ You acknowledge that the Secret Garden Party shall not be liable for user submis
 								<string>Text</string>
 								<key>value</key>
 								<array>
-									<string>The following document outlines terms and conditions (or 'terms') of compliance for users (hereinafter referred to as 'you', the 'user' or 'users') of Ligger, the game ("oe app") and all related mobile and/or web services (referred to hereinafter as 'the app', 'services' or 'our services') from The Secret Garden Party (referred to hereinafter as the 'the company', 'we', 'us' or other pronouns). Playing Ligger is acknowledgement that you agree and  comply with the terms outlined in this document and its supporting privacy policy, as well as all applicable laws and regulations, in your use of all its services, wherever you may be when you use them.
-
-If you do not agree to the terms outlined herein, you must not play Ligger. We will will not be held responsible for any activity or activities undertaken either playing Ligger, or implicating the Secret Garden Party brand identity, its directors, officers, employees and agents, that fails to abide by the terms outlined herein.</string>
+									<string>The following document outlines terms and conditions (or 'terms') of compliance for users (hereinafter referred to as 'you', the 'user' or 'users') of Ligger, the game (hereinafter referred to as "the app" or 'the game") and all related mobile and/or web services (referred to hereinafter as 'the services', 'services' or 'our services') from The Secret Garden Party (referred to hereinafter as the 'the company', 'we', 'us' or other pronouns). Playing Ligger is acknowledgement that you agree and  comply with the terms outlined in this document and its supporting privacy policy, as well as all applicable laws and regulations, in your use of all its services, wherever you may be when you use them.
+If you do not agree to the terms outlined herein, you must not play Ligger. We will will not be held responsible for any activity or activities undertaken either playing Ligger, or implicating the Secret Garden Party brand identity, its directors, officers, employees and agents, that fails to abide by the terms outlined herein. </string>
 									<false/>
 								</array>
 							</dict>
@@ -2555,8 +2556,6 @@ If you do not agree to the terms outlined herein, you must not play Ligger. We w
 								</array>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>UUID</key>
@@ -2590,7 +2589,7 @@ If you do not agree to the terms outlined herein, you must not play Ligger. We w
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>15</real>
+									<real>5</real>
 									<real>3984</real>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -2628,7 +2627,7 @@ If you do not agree to the terms outlined herein, you must not play Ligger. We w
 								<string>Text</string>
 								<key>value</key>
 								<array>
-									<string>As usual, here's some legal stuff you should read before installing and playing Ligger. Before we get down to it, we want to say thanks a lot for playying Ligger, and we sincerely hope you enjoy the game.- The Head Gardener- Secret Garden Party
+									<string>As usual, here's some legal stuff you should read before playing Ligger. Before we get down to it, we want to say thanks a lot for installing Ligger, and we sincerely hope you stay childish and enjoy the game.- The Head Gardener- Secret Garden Party
 </string>
 									<false/>
 								</array>

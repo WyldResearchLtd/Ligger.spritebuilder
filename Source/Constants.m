@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 const bool EASYPASS = false; //used to make it easy to level up
-const bool TESTUTILS = true; //used to make it test options available- delete plist
+const bool TESTUTILS = false; //used to make it test options available- delete plist
 const bool VERBOSE_CONSOLE = false; //turns printLog and logging settingss, on and off
 
 const int kPROMOTORS = 4; //number of promotors
