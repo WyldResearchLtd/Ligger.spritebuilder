@@ -186,8 +186,16 @@
             break;
     }
     
+    UIDevice *currentDevice = [UIDevice currentDevice];
+    bool  isSimulator = false;
+    NSLog(@"CurrentDevice location: %lu",(unsigned long)[currentDevice.model rangeOfString:@"Simulator"].location);
+    
+    isSimulator = (!([currentDevice.model rangeOfString:@"Simulator"].location == NSNotFound));// Not NotFound = running in Simulator
+
+
+    
     //Other Options setup
-    [self._btnDeletePlist setVisible:TESTUTILS];
+    [self._btnDeletePlist setVisible:TESTUTILS||isSimulator];
     
 }
 

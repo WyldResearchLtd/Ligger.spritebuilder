@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 const bool EASYPASS = false; //used to make it easy to level up
-const bool TESTUTILS = false; //used to make it test options available- delete plist
+const bool TESTUTILS = false; //used to make it test options available- delete plist- it will automatically turn on in simulator- not as useful as it was.
 const bool VERBOSE_CONSOLE = false; //turns printLog and logging settingss, on and off
 
 const int kPROMOTORS = 4; //number of promotors
@@ -23,10 +23,9 @@ const int kBOARDRIGHTBOUND = 450;
 const int kHORIZONTALMOVE = 52;
 const int kVERTICALMOVE = 64;
 
-//const int kMedianStripRow = 432;
-
 const int kStartOffset = 4;
 const int kStopOffset = 3;
 
 //const float kSPEED = 1.5 ;//3.5;3.0;2.5;
+//const int kMedianStripRow = 432;
 

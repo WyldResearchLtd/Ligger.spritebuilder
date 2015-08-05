@@ -25,6 +25,8 @@
 @property (nonatomic) CCLabelTTF *_lblTime;
 @property (nonatomic) CCLabelTTF *_lblHighScore;
 
+@property (nonatomic) CCLabelTTF *_lblVers;
+
 @property (nonatomic) ScoreData *scoreData;
 
 
@@ -36,6 +38,7 @@
 //Popup Layers
 -(void) initWizard;
 -(void) initWithScoreData:(ScoreData*)value;// andGameData:(GameData*)game;
+-(void) initInstructions;
 
 // COMMON
 -(void) btnBack;
@@ -59,6 +62,8 @@
 -(void) btnTandCs;
 //return to previous popup
 -(void) btnOKTandCs;
+
+
 
 -(void)launchFeedback;
 

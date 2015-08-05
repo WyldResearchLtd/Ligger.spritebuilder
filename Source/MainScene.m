@@ -257,6 +257,7 @@
     if (_popoverMenuLayer == nil)
     {
         [self showPopoverNamed:@"Popups/Instructions"];
+        [_popoverMenuLayer initInstructions];
         NSLog(@"+++++++Show Instructions++++++: ");
         
     }

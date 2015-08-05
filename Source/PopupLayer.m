@@ -32,9 +32,19 @@
 -(id) init {
     if((self=[super init]))
     {
+        
         NSLog(@">>>>>> PopupLayer init() >>>>>>");
+        
     }
     return self;
+}
+
+-(void) initInstructions
+{
+    NSString * version = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
+    NSString * build = [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey];
+    NSString * strVers = [NSString stringWithFormat:@"%@.%@", version,build];
+    [self._lblVers setString:strVers];
 }
 
 
