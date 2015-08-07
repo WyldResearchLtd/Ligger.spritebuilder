@@ -146,6 +146,8 @@
 						<array/>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -488,8 +490,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -2484,7 +2484,7 @@
 						<key>value</key>
 						<array>
 							<real>110.29460144042969</real>
-							<real>216.81343078613281</real>
+							<real>213.44415283203125</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -3107,8 +3107,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>319.41006469726562</real>
-							<real>183.93930053710938</real>
+							<real>317.611083984375</real>
+							<real>181.01325988769531</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -3145,9 +3145,9 @@
 						<string>Text</string>
 						<key>value</key>
 						<array>
-							<string>You can change the Ligger character, how you 
-move it, and the audio settings. After you tap
-'done' here, choose 'Setup' from the main menu.</string>
+							<string>After you tap 'done' here, choose 'Setup' from the 
+main menu to set options, or choose 'About' to learn 
+about the gameplay.</string>
 							<false/>
 						</array>
 					</dict>
@@ -3176,7 +3176,7 @@ move it, and the audio settings. After you tap
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>name</key>

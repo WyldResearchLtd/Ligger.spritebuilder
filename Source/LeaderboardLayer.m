@@ -94,18 +94,18 @@
                  
                  //Last, populate with newly saved values
                  [self refreshBoard];
-                 self._lblStatus.string = @"Update Complete.";
+                 self._lblStatus.string = @"Update Complete";
              }
             else
             {
                  NSLog(@"CONNECTION == nil OR Data empty");
-                 self._lblStatus.string = @"Unable to Update.";
+                 self._lblStatus.string = @"Unable to Update";
             }
          }
         ];//comment this out for SynchronousRequest
     }
     @catch (NSException * e) {
-            self._lblStatus.string = @"Update Error.";
+            self._lblStatus.string = @"Update Error";
             NSLog(@"Exception: %@", e);
             NSLog(@"%@",[NSThread callStackSymbols]);
     }

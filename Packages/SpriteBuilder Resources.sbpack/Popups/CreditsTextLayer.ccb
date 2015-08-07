@@ -184,19 +184,6 @@ title of his album, "The Hustle is On" as the Ligger subtitle.
 							</dict>
 							<dict>
 								<key>name</key>
-								<string>color</string>
-								<key>type</key>
-								<string>Color3</string>
-								<key>value</key>
-								<array>
-									<real>0.40000000596046448</real>
-									<real>1</real>
-									<real>1</real>
-									<real>1</real>
-								</array>
-							</dict>
-							<dict>
-								<key>name</key>
 								<string>dimensions</string>
 								<key>type</key>
 								<string>Size</string>
@@ -231,8 +218,8 @@ title of his album, "The Hustle is On" as the Ligger subtitle.
 								<string>Color4</string>
 								<key>value</key>
 								<array>
-									<real>0.40000000596046448</real>
-									<real>1</real>
+									<real>0.0</real>
+									<real>0.50196081399917603</real>
 									<real>1</real>
 									<real>1</real>
 								</array>
@@ -300,6 +287,8 @@ title of his album, "The Hustle is On" as the Ligger subtitle.
 								</array>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>UUID</key>
@@ -438,8 +427,8 @@ title of his album, "The Hustle is On" as the Ligger subtitle.
 								<string>Color4</string>
 								<key>value</key>
 								<array>
-									<real>0.0</real>
-									<real>0.50196081399917603</real>
+									<real>0.40000000596046448</real>
+									<real>1</real>
 									<real>1</real>
 									<real>1</real>
 								</array>

@@ -1366,7 +1366,7 @@ Under no circumstances is the company, its officers, directors, employees, or ag
 								<string>Text</string>
 								<key>value</key>
 								<array>
-									<string>Access to company services is granted given the understanding that you are fully competent to enter into our listed terms and conditions (as outlined in point 3 above).
+									<string>Access to company services is granted given the understanding that you are fully competent to enter into our listed terms and conditions (as outlined above).
 
 The company reserves the right to collect an assortment of data, including but not limited to names, and information about your mobile device Although the Secret Garden Party may periodically have access to this data, you are solely responsible for all submissions while using our services, and the company cannot be held responsible for this.
 
@@ -1394,7 +1394,7 @@ You are forbidden from duplicating or 'ripping' any submissions contained within
 								<string>FloatScale</string>
 								<key>value</key>
 								<array>
-									<real>24</real>
+									<real>22</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1511,6 +1511,8 @@ You are forbidden from duplicating or 'ripping' any submissions contained within
 								</array>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>UUID</key>
@@ -1545,7 +1547,7 @@ You are forbidden from duplicating or 'ripping' any submissions contained within
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>2578</real>
+									<real>2360</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -1752,7 +1754,7 @@ You are forbidden from duplicating or 'ripping' any submissions contained within
 								<key>value</key>
 								<array>
 									<real>0.0</real>
-									<real>2598</real>
+									<real>2380</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -1931,8 +1933,6 @@ You acknowledge that the Secret Garden Party shall not be liable for user submis
 								</array>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>UUID</key>
@@ -1967,7 +1967,7 @@ You acknowledge that the Secret Garden Party shall not be liable for user submis
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>3314</real>
+									<real>3096</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -2174,7 +2174,7 @@ You acknowledge that the Secret Garden Party shall not be liable for user submis
 								<key>value</key>
 								<array>
 									<real>3</real>
-									<real>3334</real>
+									<real>3116</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -2211,7 +2211,7 @@ You acknowledge that the Secret Garden Party shall not be liable for user submis
 								<string>Text</string>
 								<key>value</key>
 								<array>
-									<string>The following document outlines terms and conditions (or 'terms') of compliance for users (hereinafter referred to as 'you', the 'user' or 'users') of Ligger, the game (hereinafter referred to as "the app" or 'the game") and all related mobile and/or web services (referred to hereinafter as 'the services', 'services' or 'our services') from The Secret Garden Party (referred to hereinafter as the 'the company', 'we', 'us' or other pronouns). Playing Ligger is acknowledgement that you agree and  comply with the terms outlined in this document and its supporting privacy policy, as well as all applicable laws and regulations, in your use of all its services, wherever you may be when you use them.
+									<string>The following document outlines terms and conditions (or 'terms') of compliance for users (hereinafter referred to as 'you', the 'user', the 'dude', the 'godess', 'cupcake', or 'users') of Ligger, the game (hereinafter referred to as "the app", 'the game", or 'da bomb') and all related mobile and/or web services (referred to hereinafter as 'the services', 'services', 'things', 'stuff', or 'our services') from The Secret Garden Party (referred to hereinafter as the 'the company', 'we', 'us', 'SGP', 'The Head Gardener', or 'the ministry of silly walks'). Playing Ligger is acknowledgement that you agree and  comply with the terms outlined in this document and its supporting privacy policy, as well as all applicable laws and regulations, in your use of all its services, wherever you may be when you use them.
 If you do not agree to the terms outlined herein, you must not play Ligger. We will will not be held responsible for any activity or activities undertaken either playing Ligger, or implicating the Secret Garden Party brand identity, its directors, officers, employees and agents, that fails to abide by the terms outlined herein. </string>
 									<false/>
 								</array>
@@ -2382,7 +2382,7 @@ If you do not agree to the terms outlined herein, you must not play Ligger. We w
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>3964</real>
+									<real>3804</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -2590,7 +2590,7 @@ If you do not agree to the terms outlined herein, you must not play Ligger. We w
 								<key>value</key>
 								<array>
 									<real>5</real>
-									<real>3984</real>
+									<real>3824</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -2798,7 +2798,7 @@ If you do not agree to the terms outlined herein, you must not play Ligger. We w
 								<key>value</key>
 								<array>
 									<real>301.51998901367188</real>
-									<real>4159</real>
+									<real>3999</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>

@@ -64,6 +64,11 @@
     return YES;
 }
 
+- (void)applicationWillTerminate:(UIApplication *)application
+{
+    NSLog(@"AppDelegate::applicationWillTerminate %s", __PRETTY_FUNCTION__);
+}
+
 - (CCScene*) startScene
 {
     CCScene* scene;
