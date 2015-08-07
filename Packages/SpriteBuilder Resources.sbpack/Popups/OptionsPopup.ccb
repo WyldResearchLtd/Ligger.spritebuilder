@@ -3227,7 +3227,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Helvetica</string>
+						<string>Fonts/Cookies.ttf</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -3236,7 +3236,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>16</real>
+							<real>20</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -3247,19 +3247,6 @@
 						<string>Check</string>
 						<key>value</key>
 						<false/>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>color</string>
-						<key>type</key>
-						<string>Color3</string>
-						<key>value</key>
-						<array>
-							<real>0.0</real>
-							<real>0.0</real>
-							<real>1</real>
-							<real>1</real>
-						</array>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -3297,7 +3284,7 @@
 						<string>Color4</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
+							<real>0.40000000596046448</real>
 							<real>1</real>
 							<real>1</real>
 							<real>1</real>
@@ -3313,7 +3300,7 @@
 							<real>0.0</real>
 							<real>0.0</real>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>1</real>
 						</array>
 					</dict>
 					<dict>
@@ -3448,7 +3435,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Helvetica</string>
+						<string>Fonts/Cookies.ttf</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -3457,7 +3444,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>16</real>
+							<real>20</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -3468,19 +3455,6 @@
 						<string>Check</string>
 						<key>value</key>
 						<false/>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>color</string>
-						<key>type</key>
-						<string>Color3</string>
-						<key>value</key>
-						<array>
-							<real>0.0</real>
-							<real>0.0</real>
-							<real>1</real>
-							<real>1</real>
-						</array>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -3518,7 +3492,7 @@
 						<string>Color4</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
+							<real>0.40000000596046448</real>
 							<real>1</real>
 							<real>1</real>
 							<real>1</real>
@@ -3534,7 +3508,7 @@
 							<real>0.0</real>
 							<real>0.0</real>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>1</real>
 						</array>
 					</dict>
 					<dict>
@@ -4549,7 +4523,7 @@ Swipe</string>
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Helvetica</string>
+						<string>Fonts/Cookies.ttf</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -4558,7 +4532,7 @@ Swipe</string>
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>16</real>
+							<real>20</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -4569,19 +4543,6 @@ Swipe</string>
 						<string>Check</string>
 						<key>value</key>
 						<false/>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>color</string>
-						<key>type</key>
-						<string>Color3</string>
-						<key>value</key>
-						<array>
-							<real>0.0</real>
-							<real>0.0</real>
-							<real>1</real>
-							<real>1</real>
-						</array>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -4619,7 +4580,7 @@ Swipe</string>
 						<string>Color4</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
+							<real>0.40000000596046448</real>
 							<real>1</real>
 							<real>1</real>
 							<real>1</real>
@@ -4635,7 +4596,7 @@ Swipe</string>
 							<real>0.0</real>
 							<real>0.0</real>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>1</real>
 						</array>
 					</dict>
 					<dict>
@@ -4770,7 +4731,7 @@ Swipe</string>
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Helvetica</string>
+						<string>Fonts/Cookies.ttf</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -4779,7 +4740,7 @@ Swipe</string>
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>16</real>
+							<real>20</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -4790,19 +4751,6 @@ Swipe</string>
 						<string>Check</string>
 						<key>value</key>
 						<false/>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>color</string>
-						<key>type</key>
-						<string>Color3</string>
-						<key>value</key>
-						<array>
-							<real>0.0</real>
-							<real>0.0</real>
-							<real>1</real>
-							<real>1</real>
-						</array>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -4840,7 +4788,7 @@ Swipe</string>
 						<string>Color4</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
+							<real>0.40000000596046448</real>
 							<real>1</real>
 							<real>1</real>
 							<real>1</real>
@@ -4856,7 +4804,7 @@ Swipe</string>
 							<real>0.0</real>
 							<real>0.0</real>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>1</real>
 						</array>
 					</dict>
 					<dict>
@@ -4909,6 +4857,8 @@ Swipe</string>
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -5211,7 +5161,7 @@ Swipe</string>
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Helvetica</string>
+						<string>Fonts/Cookies.ttf</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -5220,7 +5170,7 @@ Swipe</string>
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>16</real>
+							<real>20</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -5231,19 +5181,6 @@ Swipe</string>
 						<string>Check</string>
 						<key>value</key>
 						<false/>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>color</string>
-						<key>type</key>
-						<string>Color3</string>
-						<key>value</key>
-						<array>
-							<real>0.0</real>
-							<real>0.0</real>
-							<real>1</real>
-							<real>1</real>
-						</array>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -5281,7 +5218,7 @@ Swipe</string>
 						<string>Color4</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
+							<real>0.40000000596046448</real>
 							<real>1</real>
 							<real>1</real>
 							<real>1</real>
@@ -5297,7 +5234,7 @@ Swipe</string>
 							<real>0.0</real>
 							<real>0.0</real>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>1</real>
 						</array>
 					</dict>
 					<dict>
@@ -6477,8 +6414,6 @@ Swipe</string>
 				</array>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>

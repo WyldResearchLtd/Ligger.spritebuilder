@@ -79,7 +79,7 @@
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>262</real>
+									<real>232</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -116,11 +116,14 @@
 								<string>Text</string>
 								<key>value</key>
 								<array>
-									<string>-The Sountrack selection doesn't work correctly if the Audio is Off.
-
-- You cannot  access the iPhone 'Control Center' (Swipe up)  while playing Ligger
-
-- There may be issues with some Phone Service Providers 2G service that is unable to upload the scores for the LiggerBoard.</string>
+									<string>-The Sountrack selection doesn't work correctly if the
+	Audio is Off.
+- You cannot  access the iPhone 'Control 
+	Center' (Swipe up)  while playing Ligger
+- There may be issues with some  2G iPhone Service 
+	Providers where you do not sucessfully upload your 
+	the scores for the LiggerBoard, yet an error 
+	message is not returned.</string>
 									<false/>
 								</array>
 							</dict>
@@ -290,7 +293,7 @@
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>282</real>
+									<real>252</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -498,7 +501,7 @@
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>534</real>
+									<real>504</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -535,7 +538,7 @@
 								<string>Text</string>
 								<key>value</key>
 								<array>
-									<string>The Headup Display is in the upper left corner of the Game board, and has an indicator for the time remaining, shows the current Score, and allows you to Pause the game. The round area displays the selected Ligger and the current number of beers carried by the Ligger if in Swipe mode, or if you are in TouchPad mode, it displays clickable arrows to navigate the Ligger.</string>
+									<string>The Headup Display is in the upper left corner of the Game board and has an indicator of the Gameplay  Duration Expired, displays the Current Score, and allows you to Pause the game. The round  display shows the selected Ligger character and the current number of beers carried by the Ligger if (in Swipe mode), or *if you are in TouchPad mode) it displays clickable arrows to navigate the Ligger.</string>
 									<false/>
 								</array>
 							</dict>
@@ -705,7 +708,7 @@
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>554</real>
+									<real>524</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -913,7 +916,7 @@
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>778</real>
+									<real>806</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -950,7 +953,13 @@
 								<string>Text</string>
 								<key>value</key>
 								<array>
-									<string>Setup from the main menu lets you chainge your Ligger character, the Soundtrack, and lets you turn the Audio on and off. You can also change how you move the Ligger; Swipe lets you move the Ligger up, down. left and right with a swipe of yoru finger, whereas TouchPad lets you click on the arrows in Headups Display to move the Ligger.</string>
+									<string>Setup from the main menu lets you select:
+- your Ligger character
+- the Soundtrack
+- turn the Audio on and off.
+- Motion-how you move the Ligger
+	- Swipe lets you move the Ligger up, down, left and 	   right with a swipe of your finger
+	- TouchPad lets you click on the arrows in Headups 	   Display, or Swipe, to move the Ligger.</string>
 									<false/>
 								</array>
 							</dict>
@@ -1086,6 +1095,8 @@
 								</array>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>UUID</key>
@@ -1120,7 +1131,7 @@
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>798</real>
+									<real>826</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -1328,7 +1339,7 @@
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>964</real>
+									<real>992</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -1365,7 +1376,7 @@
 								<string>Text</string>
 								<key>value</key>
 								<array>
-									<string>Check out the LiggerBoard to see how you're doing  against others, and keep track of your own personal best scores. If you are offline, your scores will be uploaded the next time your online, and open the LiggerBoard.</string>
+									<string>Check out the LiggerBoard to see how you're doing  against others, and keep track of your own personal best scores. If you are offline, your scores will be uploaded the next time you open the LiggerBoard when online.</string>
 									<false/>
 								</array>
 							</dict>
@@ -1535,7 +1546,7 @@
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>984</real>
+									<real>1012</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -1743,7 +1754,7 @@
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>1208</real>
+									<real>1236</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -1780,7 +1791,7 @@
 								<string>Text</string>
 								<key>value</key>
 								<array>
-									<string>You score 10 points for each row you cross with no or one beer, or 20 points if you have two beers. You score 100 points when the bartender serves you. If you returns with one beer, you score 500 points, and with two beers ytou score 1000 points. You also get a bonus of 10 points for every second played, multiplies by the number of levels reached.</string>
+									<string>You score 10 points as you land on each row, or 20 points if you have two beers. You score 100 points when the bartender serves you. If you returns with one beer, you score 500 points, and with two beers ytou score 1000 points. You also get a bonus of 10 points for every second played, multiplies by the number of levels reached.</string>
 									<false/>
 								</array>
 							</dict>
@@ -1950,7 +1961,7 @@
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>1228</real>
+									<real>1256</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -2158,7 +2169,7 @@
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>1770</real>
+									<real>1798</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -2195,13 +2206,13 @@
 								<string>Text</string>
 								<key>value</key>
 								<array>
-									<string>Swipe up, down, left, or right to avoid the maze of characters in the field and get to the bartender to get two drinks. Return back to the start to level up.
+									<string>Swipe up, down, left, or right to avoid the maze of characters in the field, as you move up the screen to find the bartender and get 2 beers, then return back to the start without spilling at least 1 beer, to level up.
   
-Everyone knows that festival promotors are a gracious lot, and will happily walk you into the backstage area, if you run a simple errand for them. Michael, John, Melvyn and Rob will escort you backstage, if you return with at least one drink. 
+Festival promotors Michael, John, Melvyn and Rob take turns escorting you backstage, at each level.
 
-If you spill a drink, you can return to the bar to get yourself another, or just head back to the promotor with just one. If you spill both, that promotor is finished, but if you make it back with at least one, you'll be walked backstage and that promotor will queue up again for the next ligger to do his bidding.
-  
- As you pass each level, things speed up. </string>
+If you spill a drink, you can return to the bar to get yourself another, or just head back to the promotor with just one. If you spill both, that promotor is finished, but if you make it back with at least one, you've sucessuly ligged your way backstage and that promotor will queue up again to give you another chance to serve.
+
+But get what you can, when you can, because at each level, things speed up. </string>
 									<false/>
 								</array>
 							</dict>
@@ -2371,7 +2382,7 @@ If you spill a drink, you can return to the bar to get yourself another, or just
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>1790</real>
+									<real>1818</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -2579,7 +2590,7 @@ If you spill a drink, you can return to the bar to get yourself another, or just
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>2072</real>
+									<real>2100</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -2786,7 +2797,7 @@ If you spill a drink, you can return to the bar to get yourself another, or just
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>2092</real>
+									<real>2120</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -2994,7 +3005,7 @@ If you spill a drink, you can return to the bar to get yourself another, or just
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>2232</real>
+									<real>2260</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -3194,8 +3205,8 @@ If you spill a drink, you can return to the bar to get yourself another, or just
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>286</real>
-							<real>2225</real>
+							<real>282</real>
+							<real>2116</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -3219,8 +3230,8 @@ If you spill a drink, you can return to the bar to get yourself another, or just
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
+							<real>0.94485551118850708</real>
+							<real>0.94485551118850708</real>
 							<true/>
 							<integer>0</integer>
 						</array>
@@ -3317,8 +3328,6 @@ If you spill a drink, you can return to the bar to get yourself another, or just
 				</array>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
@@ -3330,7 +3339,7 @@ If you spill a drink, you can return to the bar to get yourself another, or just
 			<key>ext</key>
 			<string>phone</string>
 			<key>height</key>
-			<integer>2225</integer>
+			<integer>2125</integer>
 			<key>name</key>
 			<string>Phone</string>
 			<key>scale</key>
@@ -3344,7 +3353,7 @@ If you spill a drink, you can return to the bar to get yourself another, or just
 			<key>ext</key>
 			<string>tablet phonehd</string>
 			<key>height</key>
-			<integer>2225</integer>
+			<integer>2125</integer>
 			<key>name</key>
 			<string>Tablet</string>
 			<key>scale</key>

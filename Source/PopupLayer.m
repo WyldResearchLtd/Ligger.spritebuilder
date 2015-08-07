@@ -43,7 +43,7 @@
 {
     NSString * version = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
     NSString * build = [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey];
-    NSString * strVers = [NSString stringWithFormat:@"%@.%@", version,build];
+    NSString * strVers = [NSString stringWithFormat:@"v%@.%@", version,build];
     [self._lblVers setString:strVers];
 }
 
