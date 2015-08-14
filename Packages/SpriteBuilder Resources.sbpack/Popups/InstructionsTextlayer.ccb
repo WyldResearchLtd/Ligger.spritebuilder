@@ -1095,8 +1095,6 @@
 								</array>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>UUID</key>
@@ -3206,7 +3204,7 @@ But get what you can, when you can, because at each level, things speed up. </st
 						<key>value</key>
 						<array>
 							<real>282</real>
-							<real>2116</real>
+							<real>2150</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -3256,6 +3254,8 @@ But get what you can, when you can, because at each level, things speed up. </st
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
@@ -3339,7 +3339,7 @@ But get what you can, when you can, because at each level, things speed up. </st
 			<key>ext</key>
 			<string>phone</string>
 			<key>height</key>
-			<integer>2125</integer>
+			<integer>2150</integer>
 			<key>name</key>
 			<string>Phone</string>
 			<key>scale</key>
@@ -3353,7 +3353,7 @@ But get what you can, when you can, because at each level, things speed up. </st
 			<key>ext</key>
 			<string>tablet phonehd</string>
 			<key>height</key>
-			<integer>2125</integer>
+			<integer>2150</integer>
 			<key>name</key>
 			<string>Tablet</string>
 			<key>scale</key>
