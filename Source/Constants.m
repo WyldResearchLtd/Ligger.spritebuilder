@@ -30,5 +30,5 @@ const int kStopOffset = 3;
 //const int kMedianStripRow = 432;
 
 
-NSString *const WEBSERVURL = @"http://127.0.0.1:5433"; //@"http://ligger-api.fezzee.net";
+NSString *const WEBSERVURL = @"http://ligger-api.fezzee.net";  //@"http://127.0.0.1:5433"; //
 NSString *const SHAREDSECRET = @"608169da637a58ac0bff23895b58f8de5ef982a5a30f5477e2fdea27c5bdef8d5b0b13bfc8c2c77c";
