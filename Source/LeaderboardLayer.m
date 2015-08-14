@@ -48,7 +48,7 @@
 
   
         //First fetch new values
-        NSURL *url = [NSURL URLWithString:@"http://ligger-api.fezzee.net"];
+        NSURL *url = [NSURL URLWithString:WEBSERVURL];
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
         
         [NSURLConnection sendAsynchronousRequest:request

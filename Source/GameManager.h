@@ -29,5 +29,6 @@
 -(void) incrementLevelCount;
 -(void) gameOver:(ScoreData*) scoreData;
 //- (void)sendLog:(NSString*) log;
+-(NSString*) hmacSHA256:(NSString*) key forData:(NSString*) data;
 
 @end

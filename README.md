@@ -36,12 +36,17 @@ On leaderboard opened, query the api for new data, and if so wite it to the Ligg
 
 Release Checklist
 ---------------------
-x const bool EASYPASS = false; //used to make it easy to level up
-x const bool TESTUTILS = false; //used to make it test options available- delete plist
+const bool EASYPASS = false; //used to make it easy to level up
+const bool TESTUTILS = false; //used to make it test options available- delete plist- it will automatically turn on in simulator- not as useful as it was.
+const bool VERBOSE_CONSOLE = false; //turns printLog and logging settingss, on and off
 
-x In Spritebuilder, set to Release and Publish
+NSString *const WEBSERVURL = @"http://ligger-api.fezzee.net"; //@"http://127.0.0.1:5433";
 
-x Update Version (108)
+In Spritebuilder, set to Release and Publish
+
+Update Version (108)
+
+
 
 TODO for Release  
 ---------------------- 

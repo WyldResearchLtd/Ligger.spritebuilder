@@ -17,6 +17,7 @@
  */
 
 #import "GameManager.h"
+#import <CommonCrypto/CommonCrypto.h>
 //#import "GameData.h"
 
 @implementation GameManager
@@ -152,9 +153,22 @@
 - (void)sendLog:(NSString*) log
 {
     @try {
-    NSURL *url = [NSURL URLWithString:@"http://ligger-api.fezzee.net"];
+    NSURL *url = [NSURL URLWithString:WEBSERVURL];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"POST"];
+        
+        //
+        NSMutableString * data = [NSMutableString string];
+        [data appendString:@"post /\n"];
+        [data appendString:[NSString stringWithFormat:@"host: %@ /\n", WEBSERVURL]];
+        [data appendString:[NSString stringWithFormat:@"body: %@", log]];
+        NSString* signature = [self hmacSHA256:SHAREDSECRET forData:data];
+        NSLog(@"[HMAC]      data: %@",data);
+        NSLog(@"[HMAC]    secret: %@",SHAREDSECRET);
+        NSLog(@"[HMAC] signature: %@",signature);
+        [request addValue:signature forHTTPHeaderField:@"Content-HMAC"]; //or setValue  //Content-HMAC is a HEX Encoded SHA-256 Hash
+        //
+        
     NSData* dataIn = [log dataUsingEncoding:NSUTF8StringEncoding];
     [request setHTTPBody:dataIn];
     [NSURLConnection sendAsynchronousRequest:request
@@ -178,14 +192,6 @@
              [json setObject:self._gameData.Gamelog forKey:@"log"];
              [GameData archiveGameSettings:json];
          }
-//         else
-//         {
-//             //finally remove the scoreObject from LiggerGamedata.plist
-//             //this is how we know if we should retry sending- if the scoreObj is missing, we dont try
-//             NSMutableDictionary* _settings = [GameData getGameSettings];
-//             [_settings setObject:nil forKey:@"scoreObj"];
-//             [GameData saveGameSettings:_settings];
-//         }
 
      }];
     }
@@ -213,9 +219,24 @@
 - (void)sendArchive:(NSString*) log fromPath:(NSString*)fileSpec
 {
     @try {
-        NSURL *url = [NSURL URLWithString:@"http://ligger-api.fezzee.net"];
+        
+        NSURL *url = [NSURL URLWithString:WEBSERVURL];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
         [request setHTTPMethod:@"POST"];
+        
+        //we are only using HMAC for auth- not integrity (prevent tampering by hmac'ing 'log' too)
+        //or replay attacks (hmac sessiontoken/random number and send with 'log')
+        //
+        NSMutableString * data = [NSMutableString string];
+        [data appendString:@"post / "];
+        [data appendString:[NSString stringWithFormat:@"host: %@", WEBSERVURL]];
+        NSString* signature = [self hmacSHA256:SHAREDSECRET forData:data];
+        NSLog(@"[HMAC]      data: %@",data);
+        NSLog(@"[HMAC]    secret: %@",SHAREDSECRET);
+        NSLog(@"[HMAC] signature: %@",signature);
+        [request addValue:signature forHTTPHeaderField:@"Content-HMAC"]; //or setValue  //Content-HMAC is a HEX Encoded SHA-256 Hash
+        //
+        
         NSData* dataIn = [log dataUsingEncoding:NSUTF8StringEncoding];
         [request setHTTPBody:dataIn];
         [NSURLConnection sendAsynchronousRequest:request
@@ -255,6 +276,20 @@
         //
     }
 }
+
+-(NSString*) hmacSHA256:(NSString*) key forData:(NSString*) data
+{
+    const char *cKey  = [key cStringUsingEncoding:NSASCIIStringEncoding];
+    const char *cData = [data cStringUsingEncoding:NSASCIIStringEncoding];
+    unsigned char cHMAC[CC_SHA256_DIGEST_LENGTH];
+    CCHmac(kCCHmacAlgSHA256, cKey, strlen(cKey), cData, strlen(cData), cHMAC);
+    NSMutableString *result = [NSMutableString string];
+    for(int i = 0; i < sizeof cHMAC; i++) {
+        [result appendFormat:@"%02x", cHMAC[i]];
+    }
+    return result;
+}
+
 
 
 @end

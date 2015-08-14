@@ -50,4 +50,7 @@ extern const int kStopOffset;
 
 //extern const float kSPEED;
 
+FOUNDATION_EXPORT NSString *const WEBSERVURL;
+FOUNDATION_EXPORT NSString *const SHAREDSECRET;
+
 //#endif
