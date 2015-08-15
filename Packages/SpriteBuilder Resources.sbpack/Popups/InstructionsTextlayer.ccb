@@ -122,8 +122,8 @@
 	Center' (Swipe up)  while playing Ligger
 - There may be issues with some  2G iPhone Service 
 	Providers where you do not sucessfully upload your 
-	the scores for the LiggerBoard, yet an error 
-	message is not returned.</string>
+	the scores to the LiggerBoard, yet no error 
+	is given.</string>
 									<false/>
 								</array>
 							</dict>
@@ -538,7 +538,7 @@
 								<string>Text</string>
 								<key>value</key>
 								<array>
-									<string>The Headup Display is in the upper left corner of the Game board and has an indicator of the Gameplay  Duration Expired, displays the Current Score, and allows you to Pause the game. The round  display shows the selected Ligger character and the current number of beers carried by the Ligger if (in Swipe mode), or *if you are in TouchPad mode) it displays clickable arrows to navigate the Ligger.</string>
+									<string>The Headup Display in the upper left corner of the Game board has an indicator of the Gameplay  Duration Expired, it displays the Current Score, and it allows you to Pause the game. The round  section of the display shows the selected Ligger character and the current number of beers carried by the Ligger, in Swipe mode), or  it displays the TouchPad; clickable arrows to navigate the Ligger.</string>
 									<false/>
 								</array>
 							</dict>
@@ -916,7 +916,7 @@
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>806</real>
+									<real>834</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -957,9 +957,12 @@
 - your Ligger character
 - the Soundtrack
 - turn the Audio on and off.
-- Motion-how you move the Ligger
-	- Swipe lets you move the Ligger up, down, left and 	   right with a swipe of your finger
-	- TouchPad lets you click on the arrows in Headups 	   Display, or Swipe, to move the Ligger.</string>
+- how you move the Ligger
+	- Swipe Motion lets you move the Ligger up, down, 
+       left and right with a swipe of your finger
+	- TouchPad Motion lets you click on the 
+       arrows on the Headups Display, or Swipe, to 
+       move the Ligger.</string>
 									<false/>
 								</array>
 							</dict>
@@ -1129,7 +1132,7 @@
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>826</real>
+									<real>854</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -1337,7 +1340,7 @@
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>992</real>
+									<real>1020</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -1544,7 +1547,7 @@
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>1012</real>
+									<real>1040</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -1752,7 +1755,7 @@
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>1236</real>
+									<real>1264</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -1789,7 +1792,7 @@
 								<string>Text</string>
 								<key>value</key>
 								<array>
-									<string>You score 10 points as you land on each row, or 20 points if you have two beers. You score 100 points when the bartender serves you. If you returns with one beer, you score 500 points, and with two beers ytou score 1000 points. You also get a bonus of 10 points for every second played, multiplies by the number of levels reached.</string>
+									<string>You score 10 points as you land on each row, or 20 points if you have two beers. You score 100 points when the bartender serves you. If you return with one beer, you score 500 points, and with two beers you score 1000 points. You also get a bonus of 10 points for every second played, multiplied by the number of levels reached.</string>
 									<false/>
 								</array>
 							</dict>
@@ -1959,7 +1962,7 @@
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>1256</real>
+									<real>1284</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -2167,7 +2170,7 @@
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>1798</real>
+									<real>1826</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -2380,7 +2383,7 @@ But get what you can, when you can, because at each level, things speed up. </st
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>1818</real>
+									<real>1846</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -2588,7 +2591,7 @@ But get what you can, when you can, because at each level, things speed up. </st
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>2100</real>
+									<real>2128</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -2795,7 +2798,7 @@ But get what you can, when you can, because at each level, things speed up. </st
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>2120</real>
+									<real>2148</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -3003,7 +3006,7 @@ But get what you can, when you can, because at each level, things speed up. </st
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>2260</real>
+									<real>2288</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -3040,7 +3043,7 @@ But get what you can, when you can, because at each level, things speed up. </st
 								<string>Text</string>
 								<key>value</key>
 								<array>
-									<string>Questions? Comments? Problems? Praise? Let us know how we're doing, click on the Feedback  button on the left.</string>
+									<string>Questions? Comments? Problems? Praise? Let us know how we're doing, click on the Feedback  button on the right.</string>
 									<false/>
 								</array>
 							</dict>
@@ -3059,7 +3062,7 @@ But get what you can, when you can, because at each level, things speed up. </st
 								<string>FloatScale</string>
 								<key>value</key>
 								<array>
-									<real>24</real>
+									<real>30</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -3204,7 +3207,7 @@ But get what you can, when you can, because at each level, things speed up. </st
 						<key>value</key>
 						<array>
 							<real>282</real>
-							<real>2150</real>
+							<real>2175</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -3339,7 +3342,7 @@ But get what you can, when you can, because at each level, things speed up. </st
 			<key>ext</key>
 			<string>phone</string>
 			<key>height</key>
-			<integer>2150</integer>
+			<integer>2175</integer>
 			<key>name</key>
 			<string>Phone</string>
 			<key>scale</key>
@@ -3353,7 +3356,7 @@ But get what you can, when you can, because at each level, things speed up. </st
 			<key>ext</key>
 			<string>tablet phonehd</string>
 			<key>height</key>
-			<integer>2150</integer>
+			<integer>2175</integer>
 			<key>name</key>
 			<string>Tablet</string>
 			<key>scale</key>
