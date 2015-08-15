@@ -21,6 +21,8 @@
 #define isiPhoneWide  ([[UIScreen mainScreen] bounds].size.width == 568)?TRUE:FALSE
 #define isiPhone  (UI_USER_INTERFACE_IDIOM() == 0)?TRUE:FALSE
 
+#define ALLOWED_CHARECTERS @" ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+
 
 typedef enum PlayerMoveState {PlayerUp, PlayerDown, PlayerLeft, PlayerRight} PlayerMoveState;
 typedef enum PlayerState {NoBeers, TwoBeers, OneBeer} PlayerState;
@@ -42,6 +44,8 @@ extern const int kBOARDRIGHTBOUND;
 
 extern const int kHORIZONTALMOVE;
 extern const int kVERTICALMOVE;
+
+extern const int kMAXUSERNAMELENGTH;
 
 //const int kMedianStripRow = 432;
 

@@ -9,8 +9,7 @@
 #import "CCNode.h"
 #import "GameScene.h"
 
-@interface PopupLayer : CCNode
-
+@interface PopupLayer : CCNode <UITextFieldDelegate>
 
 //FIRST PASS LAYER & OPTIONS
 @property(nonatomic) CCTextField *_txtUsername;

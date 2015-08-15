@@ -196,7 +196,27 @@
     
     //Other Options setup
     [self._btnDeletePlist setVisible:TESTUTILS||isSimulator];
+    [self._txtUsername.textField  setDelegate:self];
     
+}
+
+//UITextFiledDelegate Protocol method
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
+    //disallow leading spaces. must allow trailing spaces- never know if we'll add another char
+    //so, we trim trailing spaces when we add to the PLIST- see btnBackSave
+    if (range.location == 0 && [string isEqualToString:@" "]) return NO;
+
+    //we use defined ALLOWED_CHARACTERS so we can add chars later, easily. Also, [NSCharacterSet alphanumericCharacterSet] doesn't have a space
+    NSCharacterSet *allowedInput = [NSCharacterSet characterSetWithCharactersInString:ALLOWED_CHARECTERS];
+    NSArray* arChar = [string componentsSeparatedByCharactersInSet:allowedInput]; //arChar.count = 1 if 'allowedInput' not in 'string'
+    
+    //disallow input if its not a backspace (replacementString paramater string equal to @"" is a backspace) AND
+    //(disallow input > kMAXUSERNAMELENGTH chars, OR disallow if not in allowed allowedChar set
+    if ( ![string isEqual:@""]  && (  [textField.text length] >= kMAXUSERNAMELENGTH || !([arChar count] > 1)) ) return NO;
+    
+    return YES;
+
 }
 
 
@@ -271,7 +291,21 @@
     
     NSMutableDictionary* settings = [GameData getGameSettings];
     //so, savefields here????
-    [settings setObject:self._txtUsername.string forKey:@"Username"];
+    
+    NSString *trimmedString = [self._txtUsername.string stringByTrimmingCharactersInSet:
+                               [NSCharacterSet whitespaceCharacterSet]];
+    
+    if (trimmedString.length == 0)
+    {
+        NSLog(@"ERROR: EMPTY ENTRY");
+        //not sucessful
+        //this returns you to Menu- it should exit?
+        self._lblWarning.string = @"*** Required field";
+        return;
+    }
+    
+    
+    [settings setObject:trimmedString forKey:@"Username"];
     [GameData saveGameSettings:settings];
     
     [((MainScene*)self.parent) removePopover];

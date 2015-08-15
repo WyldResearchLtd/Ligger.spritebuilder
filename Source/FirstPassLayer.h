@@ -8,6 +8,8 @@
 
 #import "CCNode.h"
 
-@interface FirstPassLayer : CCNode
+@interface FirstPassLayer : CCNode <UITextFieldDelegate>
+
+
 
 @end
