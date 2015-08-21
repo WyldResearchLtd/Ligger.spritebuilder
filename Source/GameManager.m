@@ -224,12 +224,11 @@
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
         [request setHTTPMethod:@"POST"];
         
-        //we are only using HMAC for auth- not integrity (prevent tampering by hmac'ing 'log' too)
-        //or replay attacks (hmac sessiontoken/random number and send with 'log')
         //
         NSMutableString * data = [NSMutableString string];
-        [data appendString:@"post / "];
-        [data appendString:[NSString stringWithFormat:@"host: %@", WEBSERVURL]];
+        [data appendString:@"post /\n"];
+        [data appendString:[NSString stringWithFormat:@"host: %@ /\n", WEBSERVURL]];
+        [data appendString:[NSString stringWithFormat:@"body: %@", log]];
         NSString* signature = [self hmacSHA256:SHAREDSECRET forData:data];
         NSLog(@"[HMAC]      data: %@",data);
         NSLog(@"[HMAC]    secret: %@",SHAREDSECRET);
