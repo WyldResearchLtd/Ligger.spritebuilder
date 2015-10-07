@@ -15,8 +15,8 @@ env:
   - BUILD_OFFSET="0"
   - RELEASE_VERS="true"
   - APP_NAME="Ligger"
-  - 'DEVELOPER_NAME="iPhone Distribution: Eugene Myers(VFX8SCY653)"'
-  - PROFILE_NAME="LiggerProfile_AddHoc"
+  - 'DEVELOPER_NAME="iPhone Distribution: Eugene Myers (VFX8SCY653)"'
+  - PROFILE_NAME="LiggerProfile_AdHoc"
   - INFO_PLIST="Source/Resources/Platforms/IOS/Info.plist"
   - BUNDLE_DISPLAY_NAME="Ligger"
   - BUNDLE_IDENTIFIER="com.wyld.Ligger"
