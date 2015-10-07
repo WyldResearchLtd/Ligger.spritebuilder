@@ -51,6 +51,7 @@ Change History
 --------------
 6-Oct-15 :: IOS9 issue- App Transport Security - New entries in Info.plist to turn off new security features- see
 https://developer.apple.com/library/prerelease/ios/technotes/App-Transport-Security-Technote/index.html
+7-Oct-15 :: Updated the Code Signing Licenses and Provisioing profiles
 
 
 
