@@ -49,7 +49,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>73</string>
+	<string>108</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -74,10 +74,10 @@
 		<dict>
 			<key>ligger-api.fezzee.net</key>
 			<dict>
-				<key>New item</key>
-				<string></string>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
+				<key>New item</key>
+				<string></string>
 			</dict>
 		</dict>
 	</dict>
