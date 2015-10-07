@@ -69,13 +69,15 @@
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key> NSAllowsArbitraryLoads</key>
-		<false/>
+		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
 			<key>ligger-api.fezzee.net</key>
 			<dict>
+				<key>New item</key>
+				<string></string>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
-				<false/>
+				<true/>
 			</dict>
 		</dict>
 	</dict>
