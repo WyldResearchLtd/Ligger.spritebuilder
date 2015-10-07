@@ -81,6 +81,11 @@
 		B0468A591B56BA88000524F1 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = B0468A581B56BA88000524F1 /* .travis.yml */; };
 		B04B07701BC59DE500959574 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B04B076E1BC59DE500959574 /* Icon.png */; settings = {ASSET_TAGS = (); }; };
 		B04B07711BC59DE500959574 /* iPhone-old.png in Resources */ = {isa = PBXBuildFile; fileRef = B04B076F1BC59DE500959574 /* iPhone-old.png */; settings = {ASSET_TAGS = (); }; };
+		B04B07731BC5A95300959574 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = B04B07721BC5A95300959574 /* Icon-Small-50.png */; settings = {ASSET_TAGS = (); }; };
+		B04B07781BC5AA9400959574 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = B04B07741BC5AA9400959574 /* Icon-72.png */; settings = {ASSET_TAGS = (); }; };
+		B04B07791BC5AA9400959574 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = B04B07751BC5AA9400959574 /* Icon-Small.png */; settings = {ASSET_TAGS = (); }; };
+		B04B077A1BC5AA9400959574 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B04B07761BC5AA9400959574 /* Icon-Small@2x.png */; settings = {ASSET_TAGS = (); }; };
+		B04B077B1BC5AA9400959574 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B04B07771BC5AA9400959574 /* Icon@2x.png */; settings = {ASSET_TAGS = (); }; };
 		B04E04991B272505009E6DA3 /* LevelTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = B04E04981B272505009E6DA3 /* LevelTimer.m */; };
 		B062DF0E1B29666F0014ADA5 /* Obstacle.m in Sources */ = {isa = PBXBuildFile; fileRef = B062DF0D1B29666F0014ADA5 /* Obstacle.m */; };
 		B067AF561B3EE4280067B325 /* LiggerGamedata.plist in Resources */ = {isa = PBXBuildFile; fileRef = B067AF551B3EE4280067B325 /* LiggerGamedata.plist */; };
@@ -224,6 +229,11 @@
 		B0468A581B56BA88000524F1 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 		B04B076E1BC59DE500959574 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Icons/Icon.png; sourceTree = "<group>"; };
 		B04B076F1BC59DE500959574 /* iPhone-old.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPhone-old.png"; path = "Icons/iPhone-old.png"; sourceTree = "<group>"; };
+		B04B07721BC5A95300959574 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50.png"; path = "Icons/Icon-Small-50.png"; sourceTree = "<group>"; };
+		B04B07741BC5AA9400959574 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "Icons/Icon-72.png"; sourceTree = "<group>"; };
+		B04B07751BC5AA9400959574 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "Icons/Icon-Small.png"; sourceTree = "<group>"; };
+		B04B07761BC5AA9400959574 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@2x.png"; path = "Icons/Icon-Small@2x.png"; sourceTree = "<group>"; };
+		B04B07771BC5AA9400959574 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "Icons/Icon@2x.png"; sourceTree = "<group>"; };
 		B04E04971B272505009E6DA3 /* LevelTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LevelTimer.h; path = Source/LevelTimer.h; sourceTree = "<group>"; };
 		B04E04981B272505009E6DA3 /* LevelTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LevelTimer.m; path = Source/LevelTimer.m; sourceTree = "<group>"; };
 		B062DF0C1B29666F0014ADA5 /* Obstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Obstacle.h; path = Source/Obstacle.h; sourceTree = "<group>"; };
@@ -595,6 +605,11 @@
 		B73789911807667A0076A88C /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				B04B07741BC5AA9400959574 /* Icon-72.png */,
+				B04B07751BC5AA9400959574 /* Icon-Small.png */,
+				B04B07761BC5AA9400959574 /* Icon-Small@2x.png */,
+				B04B07771BC5AA9400959574 /* Icon@2x.png */,
+				B04B07721BC5A95300959574 /* Icon-Small-50.png */,
 				B04B076E1BC59DE500959574 /* Icon.png */,
 				B04B076F1BC59DE500959574 /* iPhone-old.png */,
 				B71F5907188484E7003F4D28 /* iPad-old.png */,
@@ -889,6 +904,7 @@
 				B03DBA511B329D86009ECC4E /* hustle.caf in Resources */,
 				B03DBA521B329D86009ECC4E /* hustle2.caf in Resources */,
 				B03DBA891B32AD1D009ECC4E /* add-key.sh in Resources */,
+				B04B07791BC5AA9400959574 /* Icon-Small.png in Resources */,
 				B71F5919188484E7003F4D28 /* Settings.png in Resources */,
 				B03DBA8F1B32AD1E009ECC4E /* XC_Ad_Hoc_comfezzeeLigger.mobileprovision in Resources */,
 				B7378978180762440076A88C /* Default@2x.png in Resources */,
@@ -901,16 +917,20 @@
 				B71F5912188484E7003F4D28 /* iPad-old@2x.png in Resources */,
 				B737893B180761570076A88C /* Published-iOS in Resources */,
 				B03DBA901B32AD1E009ECC4E /* remove-key.sh in Resources */,
+				B04B077A1BC5AA9400959574 /* Icon-Small@2x.png in Resources */,
 				B71F591A188484E7003F4D28 /* Settings@2x.png in Resources */,
 				B7378976180762440076A88C /* Default-Landscape~ipad.png in Resources */,
 				B71F5917188484E7003F4D28 /* iPhone.png in Resources */,
 				B7378975180762440076A88C /* Default-568h@2x.png in Resources */,
+				B04B07731BC5A95300959574 /* Icon-Small-50.png in Resources */,
 				B71F5918188484E7003F4D28 /* iPhone@2x.png in Resources */,
 				B03DBA8C1B32AD1E009ECC4E /* dev.p12 in Resources */,
 				B067AF561B3EE4280067B325 /* LiggerGamedata.plist in Resources */,
 				B03DBA921B32AD1E009ECC4E /* update-bundle.sh in Resources */,
 				B7378977180762440076A88C /* Default.png in Resources */,
 				B71F5911188484E7003F4D28 /* iPad-old.png in Resources */,
+				B04B077B1BC5AA9400959574 /* Icon@2x.png in Resources */,
+				B04B07781BC5AA9400959574 /* Icon-72.png in Resources */,
 				B03DBA911B32AD1E009ECC4E /* sign-and-upload.sh in Resources */,
 				B03DBA8A1B32AD1E009ECC4E /* apple.cer in Resources */,
 			);
