@@ -47,6 +47,12 @@ In Spritebuilder, set to Release and Publish
 Update Version (108)
 
 
+Change History
+--------------
+6-Oct-15 :: IOS9 issue- App Transport Security - New entries in Info.plist to turn off new security features- see
+https://developer.apple.com/library/prerelease/ios/technotes/App-Transport-Security-Technote/index.html
+
+
 
 TODO for Release  
 ---------------------- 
@@ -61,12 +67,14 @@ TEST-
     * Credits  
 
 * create new Amazon account
+
+
+
    
   
 KNOWN ISSUES  
 --------------------
--Mute audio and change selection- new selection not played  
--Can not access 'Control Center' (swipe up)  
+-Mute audio and change selection- new selection not played   
 -2G error uploading score data  
  
 
@@ -112,7 +120,6 @@ Main Menu- exit
  
   
 Welcome back 'User' notification  
-
   
   
 Technical Debt

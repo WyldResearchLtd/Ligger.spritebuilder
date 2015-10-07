@@ -763,7 +763,7 @@
 						CreatedOnToolsVersion = 6.0.1;
 					};
 					B77F1B2D17B978D7009739AE = {
-						DevelopmentTeam = ZGH69W535D;
+						DevelopmentTeam = VFX8SCY653;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
 								enabled = 0;
@@ -1301,8 +1301,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Eugene Myers (6BQS88G7QS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eugene Myers (6BQS88G7QS)";
 				CODE_SIGN_RESOURCE_RULES_PATH = "";
 				"CODE_SIGN_RESOURCE_RULES_PATH[sdk=*]" = "";
 				COPY_PHASE_STRIP = NO;
@@ -1329,9 +1329,9 @@
 					"-lz",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.fezzee.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wyld.Ligger;
 				PRODUCT_NAME = Ligger;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "15079c2a-797f-45ae-8efe-6251094c6cee";
 				SWIFT_OBJC_BRIDGING_HEADER = "Source/Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1345,8 +1345,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Fezzee Corp.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Fezzee Corp.";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Eugene Myers (VFX8SCY653)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eugene Myers (VFX8SCY653)";
 				CODE_SIGN_RESOURCE_RULES_PATH = "";
 				"CODE_SIGN_RESOURCE_RULES_PATH[sdk=*]" = "";
 				COPY_PHASE_STRIP = YES;
@@ -1371,9 +1371,9 @@
 					"-lz",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.fezzee.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wyld.Ligger;
 				PRODUCT_NAME = Ligger;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "15079c2a-797f-45ae-8efe-6251094c6cee";
 				SWIFT_OBJC_BRIDGING_HEADER = "Source/Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;

@@ -79,7 +79,7 @@
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>232</real>
+									<real>88</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -118,12 +118,7 @@
 								<array>
 									<string>-The Sountrack selection doesn't work correctly if the
 	Audio is Off.
-- You cannot  access the iPhone 'Control 
-	Center' (Swipe up)  while playing Ligger
-- There may be issues with some  2G iPhone Service 
-	Providers where you do not sucessfully upload your 
-	the scores to the LiggerBoard, yet no error 
-	is given.</string>
+- </string>
 									<false/>
 								</array>
 							</dict>
@@ -293,7 +288,7 @@
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>252</real>
+									<real>108</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -501,7 +496,7 @@
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>504</real>
+									<real>360</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -708,7 +703,7 @@
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>524</real>
+									<real>380</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -916,7 +911,7 @@
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>834</real>
+									<real>690</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -1132,7 +1127,7 @@
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>854</real>
+									<real>710</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -1340,7 +1335,7 @@
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>1020</real>
+									<real>876</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -1547,7 +1542,7 @@
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>1040</real>
+									<real>896</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -1755,7 +1750,7 @@
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>1264</real>
+									<real>1120</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -1962,7 +1957,7 @@
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>1284</real>
+									<real>1140</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -2170,7 +2165,7 @@
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>1826</real>
+									<real>1682</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -2383,7 +2378,7 @@ But get what you can, when you can, because at each level, things speed up. </st
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>1846</real>
+									<real>1702</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -2591,7 +2586,7 @@ But get what you can, when you can, because at each level, things speed up. </st
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>2128</real>
+									<real>1984</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -2798,7 +2793,7 @@ But get what you can, when you can, because at each level, things speed up. </st
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>2148</real>
+									<real>2004</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -3006,7 +3001,7 @@ But get what you can, when you can, because at each level, things speed up. </st
 								<key>value</key>
 								<array>
 									<real>290</real>
-									<real>2288</real>
+									<real>2144</real>
 									<integer>0</integer>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -3043,7 +3038,7 @@ But get what you can, when you can, because at each level, things speed up. </st
 								<string>Text</string>
 								<key>value</key>
 								<array>
-									<string>Questions? Comments? Problems? Praise? Let us know how we're doing, click on the Feedback  button on the right.</string>
+									<string>Please let us know how we're doing, click on the Feedback  button on the right.</string>
 									<false/>
 								</array>
 							</dict>
@@ -3257,8 +3252,6 @@ But get what you can, when you can, because at each level, things speed up. </st
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
@@ -3331,6 +3324,8 @@ But get what you can, when you can, because at each level, things speed up. </st
 				</array>
 			</dict>
 		</array>
+		<key>selected</key>
+		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
