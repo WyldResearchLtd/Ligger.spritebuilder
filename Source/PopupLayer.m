@@ -397,7 +397,7 @@
 {
      NSMutableDictionary* _settings = [GameData getGameSettings];
     
-    NSString *recipients = @"mailto:support@fezzee.com?subject=Ligger Support";
+    NSString *recipients = @"mailto:support@ligger.org?subject=Ligger Support";
     NSString *body = [NSString stringWithFormat:@"&body=\n\n\n\n\nuid: %@\ndid: %@", [_settings objectForKey:@"UserIdentifier"],[_settings objectForKey:@"DeviceIdentifier"]];
     
     NSString *email = [NSString stringWithFormat:@"%@%@", recipients, body];
