@@ -2206,7 +2206,7 @@
   
 Festival promotors Michael, John, Melvyn and Rob take turns escorting you backstage, at each level.
 
-If you spill a drink, you can return to the bar to get yourself another, or just head back to the promotor with just one. If you spill both, that promotor is finished, but if you make it back with at least one, you've sucessuly ligged your way backstage and that promotor will queue up again to give you another chance to serve.
+If you spill a beer, you can return to the bar to get yourself another, or just head back to the promotor with just one. If you spill both, that promotor is finished, but if you make it back with at least one, you've successfully ligged your way backstage and that promotor will queue up again to give you another chance to serve.
 
 But get what you can, when you can, because at each level, things speed up. </string>
 									<false/>
@@ -2623,7 +2623,7 @@ But get what you can, when you can, because at each level, things speed up. </st
 								<string>Text</string>
 								<key>value</key>
 								<array>
-									<string>Legend has it that the term Ligger was coined by the Big Hair Glam bands of the '70s and '80s, for persons who attend parties, concerts, and festivals with the sole intention of obtaining free food and drink. It originated from the fishing term for a 'baited line', and was later popularised by NME Magazine in the '90s. Liggers know no boundries; they're black, white red, yellow, brown, rich, poor, male, female and everyting in between. </string>
+									<string>Legend has it that the term Ligger was coined by the Big Hair Glam bands of the '70s and '80s, for persons who attend parties, concerts, and festivals with the sole intention of obtaining free food and drink. It originated from the fishing term for a 'baited line', and was later popularised by NME Magazine in the '90s. Liggers know no boundaries; they're black, white red, yellow, brown, rich, poor, male, female and everything in between. </string>
 									<false/>
 								</array>
 							</dict>
@@ -3252,6 +3252,8 @@ But get what you can, when you can, because at each level, things speed up. </st
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
@@ -3324,8 +3326,6 @@ But get what you can, when you can, because at each level, things speed up. </st
 				</array>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
